@@ -33,8 +33,8 @@ public class TrashCollector extends Item {
 
     public void GenerateIcons() {
         icons = new ImageIcon[2];
-        icons[0] = new ImageIcon("images/trashcollector0.gif");
-        icons[1] = new ImageIcon("images/trashcollector1.gif");
+        icons[0] = new ImageIcon(getClass().getResource("/images/trashcollector0.gif"));
+        icons[1] = new ImageIcon(getClass().getResource("/images/trashcollector1.gif"));
         currentIcon = icons[0].getImage();
     }
 

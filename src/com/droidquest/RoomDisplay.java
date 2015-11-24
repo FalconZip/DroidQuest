@@ -445,7 +445,7 @@ public class RoomDisplay extends JPanel {
     public void SaveLevel(String filename) {
         System.out.println("Saving level " + filename);
         try {
-            FileOutputStream out = new FileOutputStream(filename);
+            FileOutputStream out = new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/" + "ROlevels/" + filename);
             ObjectOutputStream s = new ObjectOutputStream(out);
             level.writeObject(s);
             s.flush();
@@ -471,7 +471,7 @@ public class RoomDisplay extends JPanel {
 
         // Add flags for loading Object inventories or running Init()
         try {
-            FileInputStream in = new FileInputStream(filename);
+            FileInputStream in = new FileInputStream(System.getProperty("user.home") + "/.DroidQuest/" + "ROlevels/" + filename);
             ObjectInputStream s = new ObjectInputStream(in);
             level.readObject(s);
             s.close();

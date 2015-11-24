@@ -19,15 +19,15 @@ class ROTut3 extends Level {
 
         // Material 0, Blank
         materials.addElement(new Material(true, false));
-        // Material 1, Green Wall 
+        // Material 1, Green Wall
         materials.addElement(new Material(new Color(0, 255, 0), false, true));
         // Material 2, Light Blue Wall
         materials.addElement(new Material(new Color(190, 190, 255), false, true));
-        // Material 3, Blue Wall 
+        // Material 3, Blue Wall
         materials.addElement(new Material(new Color(0, 0, 255), false, true));
-        // Material 4, LightOrange Wall 
+        // Material 4, LightOrange Wall
         materials.addElement(new Material(new Color(255, 224, 192), false, true));
-        // Material 5, Red Wall 
+        // Material 5, Red Wall
         materials.addElement(new Material(new Color(255, 0, 0), false, true));
         // Material 6, Recharger
         materials.addElement(new CrystalRecharger());
@@ -54,7 +54,7 @@ class ROTut3 extends Level {
             rooms.addElement(new Room());
         }
 
-        { // Room 0, Help Screen 
+        { // Room 0, Help Screen
             Room room = rooms.elementAt(0);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -89,7 +89,7 @@ class ROTut3 extends Level {
                     6 * 28, 8 * 32, 500);
             room.AddTextBox("To continue, press RETURN.", 4 * 28, 11 * 32, 500);
         }
-        { // Room 1, Title Screen 
+        { // Room 1, Title Screen
             Room room = rooms.elementAt(1);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -116,7 +116,7 @@ class ROTut3 extends Level {
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
-        { // Room 2, Crossroads 
+        { // Room 2, Crossroads
             Room room = rooms.elementAt(2);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2},
@@ -147,7 +147,7 @@ class ROTut3 extends Level {
             toolbox = new ToolBox(28, 10 * 32, room);
             items.addElement(toolbox);
         }
-        { // Room 3, Paths to Paintbrush & Shape Editor 
+        { // Room 3, Paths to Paintbrush & Shape Editor
             Room room = rooms.elementAt(3);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -167,7 +167,7 @@ class ROTut3 extends Level {
             room.AddArrow(10 * 28, 0, Arrow.DIR_UP, 28, Color.white);
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
-        { // Room 4, Paintbrush intro 
+        { // Room 4, Paintbrush intro
             Room room = rooms.elementAt(4);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -293,7 +293,7 @@ class ROTut3 extends Level {
             };
             room.editable = true;
         }
-        { // Room 10, Shape Editor intro 
+        { // Room 10, Shape Editor intro
             Room room = rooms.elementAt(10);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -319,7 +319,7 @@ class ROTut3 extends Level {
             items.addElement(new Crystal(5 * 28, 8 * 32, room, 100000));
             items.addElement(new DirectionalSensor(11 * 28, 6 * 32, room, new Crystal(0, 0, null, 0)));
         }
-        { // Room 11, Shape Editor room 
+        { // Room 11, Shape Editor room
             Room room = rooms.elementAt(11);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -341,7 +341,7 @@ class ROTut3 extends Level {
                     2 * 28, 3 * 32, 500);
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
-        { // Room 12, Shape Editor workshop 
+        { // Room 12, Shape Editor workshop
             Room room = rooms.elementAt(12);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -373,7 +373,7 @@ class ROTut3 extends Level {
             items.addElement(new Triangle(15 * 28, 4 * 32, room, new Color(255, 128, 0)));
             items.addElement(new Crystal(17 * 28, 4 * 32, room, 100000));
         }
-        { // Room 13, Prototype Intro 
+        { // Room 13, Prototype Intro
             Room room = rooms.elementAt(13);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -405,7 +405,7 @@ class ROTut3 extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.addElement(new PrototypeChip(14 * 28, 2 * 32 - 8, room));
         }
-        { // Room 14, Prototype Intro 2 
+        { // Room 14, Prototype Intro 2
             Room room = rooms.elementAt(14);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -429,7 +429,7 @@ class ROTut3 extends Level {
                     2 * 28, 8 * 32, 480);
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
-        { // Room 15, Prototype Chip 
+        { // Room 15, Prototype Chip
             Room room = rooms.elementAt(15);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -464,7 +464,7 @@ class ROTut3 extends Level {
             wire = new Wire(ng.ports[0], node.ports[2]);
             wire = new Wire(pc.portdevices[0].ports[0], node.ports[1]);
         }
-        { // Room 16, Antenna 
+        { // Room 16, Antenna
             Room room = rooms.elementAt(16);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -487,7 +487,7 @@ class ROTut3 extends Level {
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
         }
-        { // Room 17, Antenna & SmallChip 
+        { // Room 17, Antenna & SmallChip
             Room room = rooms.elementAt(17);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -513,9 +513,9 @@ class ROTut3 extends Level {
             items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
             SmallChip sc = new SmallChip(4 * 28, 4 * 32, room, "1");
             items.addElement(sc);
-            sc.LoadChip("chips/oscillator.chip");
+            sc.LoadChip("oscillator.chip", true);
         }
-        { // Room 18, Burner Intro 
+        { // Room 18, Burner Intro
             Room room = rooms.elementAt(18);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2},
@@ -542,7 +542,7 @@ class ROTut3 extends Level {
             room.AddArrow(0, 7 * 32, Arrow.DIR_LEFT, 28, Color.white);
             room.AddArrow(2 * 28 + 14, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
-        { // Room 19, Burner Room 
+        { // Room 19, Burner Room
             Room room = rooms.elementAt(19);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -577,7 +577,7 @@ class ROTut3 extends Level {
             sc.inBurner = true;
             items.addElement(new Burner(18 * 28, 10 * 32 + 2, room));
         }
-        { // Room 20, Nesting 
+        { // Room 20, Nesting
             Room room = rooms.elementAt(20);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -597,7 +597,7 @@ class ROTut3 extends Level {
                     4 * 28, 2 * 32, 400);
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 21, Nesting II 
+        { // Room 21, Nesting II
             Room room = rooms.elementAt(21);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2},
@@ -624,7 +624,7 @@ class ROTut3 extends Level {
             room.AddArrow(18 * 28 + 14, 0, Arrow.DIR_UP, 28, Color.white);
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 22, Nesting III 
+        { // Room 22, Nesting III
             Room room = rooms.elementAt(22);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -648,7 +648,7 @@ class ROTut3 extends Level {
                     2 * 28, 9 * 32, 500);
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 23, Nesting workshop 
+        { // Room 23, Nesting workshop
             Room room = rooms.elementAt(23);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -680,7 +680,7 @@ class ROTut3 extends Level {
             items.addElement(new ContactSensor(10 * 28, 5 * 32, robot.InternalRoom,
                     new Hexagon(0, 0, null, Color.white)));
         }
-        { // Room 24, Wallhugger intro 
+        { // Room 24, Wallhugger intro
             Room room = rooms.elementAt(24);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -705,9 +705,9 @@ class ROTut3 extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             SmallChip sc = new SmallChip(4 * 28, 5 * 32, room, "3");
             items.addElement(sc);
-            sc.LoadChip("chips/WallHugger.chip");
+            sc.LoadChip("WallHugger.chip", true);
         }
-        { // Room 25, Wallhugger wiring 
+        { // Room 25, Wallhugger wiring
             Room room = rooms.elementAt(25);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -768,7 +768,7 @@ class ROTut3 extends Level {
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 27, Wallhugger maze 
+        { // Room 27, Wallhugger maze
             Room room = rooms.elementAt(27);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2},
@@ -785,7 +785,7 @@ class ROTut3 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
         }
-        { // Room 28, Chip speed 
+        { // Room 28, Chip speed
             Room room = rooms.elementAt(28);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -809,7 +809,7 @@ class ROTut3 extends Level {
                     2 * 28, 8 * 32, 500);
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 29, Chip talk 
+        { // Room 29, Chip talk
             Room room = rooms.elementAt(29);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -837,7 +837,7 @@ class ROTut3 extends Level {
                     3 * 28, 9 * 32, 450);
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
-        { // Room 30, Chip Record 
+        { // Room 30, Chip Record
             Room room = rooms.elementAt(30);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -862,9 +862,9 @@ class ROTut3 extends Level {
             room.AddArrow(2 * 28 + 14, 0, Arrow.DIR_UP, 28, Color.white);
             SmallChip sc = new SmallChip(2 * 28, 5 * 32, room, "5");
             items.addElement(sc);
-            sc.LoadChip("chips/gates.chip");
+            sc.LoadChip("gates.chip", true);
         }
-        { // Room 31, Chip Save 
+        { // Room 31, Chip Save
             Room room = rooms.elementAt(31);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -888,7 +888,7 @@ class ROTut3 extends Level {
                     4 * 28, 8 * 32, 400);
             room.AddArrow(2 * 28 + 14, 0, Arrow.DIR_UP, 28, Color.white);
         }
-        { // Room 32, Chip Load 
+        { // Room 32, Chip Load
             Room room = rooms.elementAt(32);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -912,7 +912,7 @@ class ROTut3 extends Level {
                     4 * 28, 8 * 32, 400);
             room.AddArrow(2 * 28 + 14, 0, Arrow.DIR_UP, 28, Color.white);
         }
-        { // Room 33, Exit 
+        { // Room 33, Exit
             Room room = rooms.elementAt(33);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -937,7 +937,7 @@ class ROTut3 extends Level {
             room.AddTextBox("Press ? for help or hints.",
                     2 * 28, 11 * 32, 500);
         }
-        { // Room 34, Paintbrush colors 
+        { // Room 34, Paintbrush colors
             Room room = rooms.elementAt(34);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -963,7 +963,7 @@ class ROTut3 extends Level {
                     3 * 28, 9 * 32, 500);
         }
 
-        { // Room 35, Factory Intro 
+        { // Room 35, Factory Intro
             Room room = rooms.elementAt(35);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -987,7 +987,7 @@ class ROTut3 extends Level {
                     2 * 28, 8 * 32, 500);
             room.AddArrow(11 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
-        { // Room 36, Factory 
+        { // Room 36, Factory
             Room room = rooms.elementAt(36);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1017,7 +1017,7 @@ class ROTut3 extends Level {
             room.AddTextBox("Return to the Crossroads.",
                     12 * 28, 10 * 32, 200);
         }
-        { // Room 37, Unburning 
+        { // Room 37, Unburning
             Room room = rooms.elementAt(37);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1041,7 +1041,7 @@ class ROTut3 extends Level {
                     2 * 28, 8 * 32, 500);
             room.AddArrow(2 * 28 + 14, 559, Arrow.DIR_DOWN, 28, Color.white);
         }
-        { // Room 38, ChipTest intro 
+        { // Room 38, ChipTest intro
             Room room = rooms.elementAt(38);
             room.RoomArray = new int[][]{
                     {3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -1067,7 +1067,7 @@ class ROTut3 extends Level {
                     4 * 28, 10 * 32, 450);
             room.AddArrow(28 + 14, 0, Arrow.DIR_UP, 28, Color.white);
         }
-        { // Room 39, Chip Testing 
+        { // Room 39, Chip Testing
             Room room = rooms.elementAt(39);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1116,7 +1116,7 @@ class ROTut3 extends Level {
             room.AddArrow(3 * 28, 10 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             room.AddTextBox("Autowirer", 4 * 28, 11 * 32 - 8, 200);
         }
-        { // Room 40, Maze Control 
+        { // Room 40, Maze Control
             Room room = rooms.elementAt(40);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1141,7 +1141,7 @@ class ROTut3 extends Level {
             room.AddTextBox("Try it in the next room.",
                     2 * 28, 11 * 32, 500);
         }
-        { // Room 41, Maze Control 
+        { // Room 41, Maze Control
             Room room = rooms.elementAt(41);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -1207,7 +1207,7 @@ class ROTut3 extends Level {
         LinkRoomsUpDown(5, 6);
 
 
-        { // Paintbrush code comes after Robots are constructed 
+        { // Paintbrush code comes after Robots are constructed
             Room room = rooms.elementAt(4);
             PaintBrush pb = new PaintBrush();
             pb.x = 17 * 28 + 10;

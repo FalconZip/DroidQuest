@@ -25,7 +25,7 @@ public class SkywayFlyer extends Item {
     public void GenerateIcons() {
         icons = new ImageIcon[filenames.length];
         for (int a = 0; a < filenames.length; a++) {
-            icons[a] = new ImageIcon("images/" + filenames[a]);
+            icons[a] = new ImageIcon(getClass().getResource("/images/" + filenames[a]));
         }
         currentIcon = icons[0].getImage();
     }

@@ -22,7 +22,7 @@ public class SkyGuard extends Item {
     public void GenerateIcons() {
         icons = new ImageIcon[5];
         for (int a = 0; a < 5; a++) {
-            icons[a] = new ImageIcon("images/skyguard" + a + ".gif");
+            icons[a] = new ImageIcon(getClass().getResource("/images/skyguard" + a + ".gif"));
         }
         currentIcon = icons[0].getImage();
     }

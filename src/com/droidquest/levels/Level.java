@@ -68,7 +68,9 @@ public class Level implements ImageObserver, Serializable {
             BURNSOUND, ENDMUSICSOUND, STARTMUSICSOUND,
             TELEPORTSOUND, TRANSPORTSOUND
     };
-    public transient boolean cheatmode = true;
+    /* Cromer: Disable cheatmode */
+    public transient boolean cheatmode = false;
+    /* Cromer */
 
     Level() {
         Item.level = this;
@@ -892,7 +894,7 @@ public class Level implements ImageObserver, Serializable {
             if (item.getClass().toString().endsWith("SmallChip")) {
                 SmallChip sc = (SmallChip) item;
                 String chipfilename = "tmp" + (a - orgNumItems) + ".chip";
-                sc.LoadChip(chipfilename);
+                sc.LoadChip(chipfilename, false);
                 File f = new File(chipfilename);
                 f.delete();
             }

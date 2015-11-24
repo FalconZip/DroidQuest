@@ -12,8 +12,11 @@ import com.droidquest.materials.SmallChipBurner;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Vector;
+
+import java.nio.file.Files;
 
 public class SmallChip extends GenericChip {
     public int speed;
@@ -231,8 +234,119 @@ public class SmallChip extends GenericChip {
         }
     }
 
-    public void LoadChip(String filename) {
+    public void LoadChip(String filename, boolean gameChip) {
         try {
+			File file;
+			InputStream link;
+
+			if (!gameChip) {
+				filename = System.getProperty("user.home") + "/.DroidQuest/chips/" + filename;
+
+				/* Create default chips for user */
+				file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/");
+				if (!file.exists()) {
+					file.mkdirs();
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/CountToN.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/CountToN.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/gates.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/gates.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/oscillator.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/oscillator.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/WallHugger.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/WallHugger.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/4NodeL2R.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/4NodeL2R.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/4NodeR2L.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/4NodeR2L.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/4ORL2R.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/4ORL2R.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/4ORR2L.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/4ORR2L.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/6BitCounter.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/6BitCounter.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/Bus.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/Bus.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/Clock.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/Clock.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/Delay.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/Delay.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/FullAdder.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/FullAdder.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/Monomer.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/Monomer.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/old_WallHugger.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/old_WallHugger.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/OneShot.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/OneShot.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/quarter.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/quarter.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/RSflipflop.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/RSflipflop.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+					file = new File(System.getProperty("user.home") + "/.DroidQuest/chips/Token.chip");
+					if (!file.exists()) {
+						link = getClass().getResourceAsStream("/chips/Token.chip");
+						Files.copy(link, file.getAbsoluteFile().toPath());
+					}
+				}
+			}
+			else {
+				filename = "/usr/share/DroidQuest/chips/" + filename;
+			}
+
             FileInputStream in = new FileInputStream(filename);
             ObjectInputStream s = new ObjectInputStream(in);
 
@@ -366,5 +480,13 @@ public class SmallChip extends GenericChip {
         }
 
     }
+
+	public void copyFile(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[1024];
+		int read;
+		while((read = in.read(buffer)) != -1){
+		  out.write(buffer, 0, read);
+		}
+	}
 
 }

@@ -27,7 +27,7 @@ public class PlayerBlocker extends Material {
             int numfiles = filenames.length;
             images = new ImageIcon[numfiles];
             for (int a = 0; a < filenames.length; a++) {
-                images[a] = new ImageIcon("images/" + filenames[a]);
+                images[a] = new ImageIcon(getClass().getResource("/images/" + filenames[a]));
             }
             icon = images[0];
         }
