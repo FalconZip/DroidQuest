@@ -6,6 +6,9 @@ A Java recreation of the classic game Robot Odyssey I
 
 Copyright (c) 2000 Thomas Foote
 
+Optimization to compile, install, and run under linux:
+Copyright (c) 2015 Chris Cromer
+
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including

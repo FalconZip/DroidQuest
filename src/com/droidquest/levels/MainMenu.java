@@ -267,7 +267,7 @@ public class MainMenu extends Level {
         player = gameCursor;
         currentViewer = player;
 
-        File f = new File(System.getProperty("user.home") + "/.DroidQuest/" + "ROlevels/");
+        File f = new File(System.getProperty("user.home") + "/.DroidQuest/ROlevels/");
         if (!f.exists()) {
             f.mkdir();
         }

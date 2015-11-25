@@ -136,8 +136,8 @@ public class Player extends Item implements Avatar {
                         + fd.getFile());
                 if (fd.getFile() != null) {
                     ((SmallChip) carrying).Empty();
-                    //((SmallChip) carrying).LoadChip(fd.getDirectory() + fd.getFile());
-                    ((SmallChip) carrying).LoadChip(fd.getFile(), false);
+                    ((SmallChip) carrying).LoadChip(fd.getDirectory() + fd.getFile(), false);
+                    //((SmallChip) carrying).LoadChip(fd.getFile(), false);
                 }
                 return true;
             }
