@@ -16,6 +16,8 @@ install:
 	cp -v src/main/resources/chips/* /usr/share/DroidQuest/chips/
 	cp -v target/$(JAR) /usr/share/DroidQuest/$(JAR)
 	cp -v $(BIN) /usr/bin/$(BIN)
+	cp -v DroidQuest.png /usr/share/pixmaps/DroidQuest.png
+	cp -v DroidQuest.desktop /usr/share/applications/DroidQuest.desktop
 
 uninstall:
 	rm -v /usr/share/DroidQuest/chips/*
@@ -23,6 +25,8 @@ uninstall:
 	rmdir -v /usr/share/DroidQuest/chips
 	rmdir -v /usr/share/DroidQuest
 	rm -v /usr/bin/$(BIN)
+	rm -v /usr/share/pixmaps/DroidQuest.png
+	rm -v /usr/share/applications/DroidQuest.desktop
 
 clean:
 	rm -vR -f *.o *.~ target/classes/ target/maven-archiver target/maven-status
