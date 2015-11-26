@@ -29,4 +29,4 @@ uninstall:
 	rm -v /usr/share/applications/DroidQuest.desktop
 
 clean:
-	rm -vR -f *.o *.~ target/classes/ target/maven-archiver target/maven-status
+	rm -vR -f *.o *.~ target DroidQuest
