@@ -269,7 +269,7 @@ public class MainMenu extends Level {
 
         File f = new File(System.getProperty("user.home") + "/.DroidQuest/ROlevels/");
         if (!f.exists()) {
-            f.mkdir();
+            f.mkdirs();
         }
         String[] files = f.list();
         int pageIndex = 5;
