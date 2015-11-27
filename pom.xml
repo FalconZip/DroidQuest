@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>DroidQuest</name>
-	<url>https://github.com/ThomasFooteDQ/DroidQuest</url>
+	<url>https://github.com/cromerc/DroidQuest</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

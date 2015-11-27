@@ -188,8 +188,7 @@ public class RoomDisplay extends JPanel {
                     }
 
                     level.roomdisplay.useSounds = tempsound;
-                    level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
-
+					level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
 
                     // Handle menu item initialization
                     if (level.gameCursor instanceof LabCursor) {
