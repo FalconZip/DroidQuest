@@ -281,11 +281,11 @@ public class DQ extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Save Level")) {
             FileDialog fd = new FileDialog(this, "Save Level", FileDialog.SAVE);
-            fd.setDirectory(System.getProperty("user.home") + "/.DroidQuest/" + "ROlevels");
+            fd.setDirectory(System.getProperty("user.home") + "/.DroidQuest/" + "Saves");
             fd.show();
             System.out.println("Dialog returned with "
-                    + fd.getDirectory()
-                    + fd.getFile());
+				+ fd.getDirectory()
+				+ fd.getFile());
             if (fd.getFile() != null) {
                 myRoom.SaveLevel(fd.getDirectory() + fd.getFile());
             }

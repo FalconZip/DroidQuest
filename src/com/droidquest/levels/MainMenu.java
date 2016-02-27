@@ -267,11 +267,11 @@ public class MainMenu extends Level {
         player = gameCursor;
         currentViewer = player;
 
-        File f = new File(System.getProperty("user.home") + "/.DroidQuest/ROlevels/");
-        if (!f.exists()) {
-            f.mkdirs();
+        File file = new File(System.getProperty("user.home") + "/.DroidQuest/Saves/");
+        if (!file.exists()) {
+            file.mkdirs();
         }
-        String[] files = f.list();
+        String[] files = file.list();
         int pageIndex = 5;
         for (int a = 0; a < files.length; a++) {
             if (a > 4 && a % 5 == 0) {
@@ -301,7 +301,7 @@ public class MainMenu extends Level {
                 LinkRoomsUpDown(pageIndex, newPageIndex);
                 pageIndex = newPageIndex;
             }
-            materials.addElement(new Portal(files[a], false, false));
+            materials.addElement(new Portal(System.getProperty("user.home") + "/.DroidQuest/Saves/" + files[a], false, false));
             int matIndex = materials.size() - 1;
             int y = 1 + (a % 5) * 2;
             Room room = rooms.elementAt(pageIndex);
