@@ -3,11 +3,50 @@ Droid Quest
 
 A Java recreation of the classic game Robot Odyssey I
 
+=======
+Build with:
+
+    mvn install
+
+Run the game:
+
+    MacOSX / Linux: ./start.sh
+    Windows: start.bat (IN PROGRESS)
+OR
+    java -jar target/dq-2.8.jar
+
+Controls:
+
+    / - contextual help
+    arrows - normal movement
+    control + arrows - fine-grained movement [OS X: command + arrows]
+    space - pickup/drop
+    C - game cursor
+    H - hot cursor
+    S - solder pen
+    R - toggle radio
+    P - paintbrush
+    T - toolbox
+    [, ] - rotate device
+    F - flip
+    L - load small chip
+    E - enter robot
+    X - exit robot
+
+    Cheat/debug:
+
+    shift + arrows - move rooms
+    M - dump memory usage
+
+Note: On OS X, control + arrow-keys are bound to Apple's "Mission Control".  I switched to the 'shortcut' modifier which is control on windows and command on OS X.  Alternatively, you can disable
+built in OS X shortcuts via System Preferences -> Keyboard -> Shorcuts.
+
+
 Copyright (c) 2000 Thomas Foote
 
 Optimization to compile, install, and run under linux:
 
-Copyright (c) 2015 Chris Cromer
+Copyright (c) 2015-2016 Chris Cromer
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

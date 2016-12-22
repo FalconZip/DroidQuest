@@ -144,7 +144,7 @@ public class MainMenu extends Level {
             room.AddTextBox("Saved Games", 9 * 28, 10 * 32, 80);
             room.AddTextBox("Games", 450, 6 * 32 + 8, 500);
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddTextBox("{000,000,000} Version 2.7", 0, 16, 500);
+            room.AddTextBox("{000,000,000} Version 2.8", 0, 16, 500);
             if (cheatmode) {
                 room.AddTextBox("{BIG} CHEAT ENABLED!", 91, 8 * 32, 500);
             }

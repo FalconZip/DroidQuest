@@ -4,7 +4,7 @@ MV = mvn
 CFLAGS=-Wall -Werror -ggdb
 
 BIN=DroidQuest
-JAR=dq-2.7.jar
+JAR=dq-2.8.jar
 
 all:
 	$(CC) $(CFLAGS) dq.c -o dq.o
