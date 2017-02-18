@@ -5,3 +5,7 @@ target/
 DroidQuest
 .idea/
 *.iml
+/.classpath
+/.project
+ROlevels/
+*.settings
