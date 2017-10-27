@@ -275,7 +275,7 @@ public class Player extends Item implements Avatar {
 
     public boolean handleMoveDown(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
-            if (isShiftDown && room != null) {
+            if (isShiftDown && room != null && room.downRoom != null) {
                 SetRoom(room.downRoom);
             }
         }
@@ -288,7 +288,7 @@ public class Player extends Item implements Avatar {
 
     public boolean handleMoveUp(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
-            if (isShiftDown && room != null) {
+            if (isShiftDown && room != null && room.upRoom != null) {
                 SetRoom(room.upRoom);
             }
         }
@@ -301,7 +301,7 @@ public class Player extends Item implements Avatar {
 
     public boolean handleMoveLeft(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
-            if (isShiftDown && room != null) {
+            if (isShiftDown && room != null && room.leftRoom != null) {
                 SetRoom(room.leftRoom);
             }
         }
@@ -314,7 +314,7 @@ public class Player extends Item implements Avatar {
 
     public boolean handleMoveRight(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
-            if (isShiftDown && room != null) {
+            if (isShiftDown && room != null && room.rightRoom != null) {
                 SetRoom(room.rightRoom);
             }
         }
