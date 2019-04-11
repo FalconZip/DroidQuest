@@ -9,3 +9,5 @@ DroidQuest
 /.project
 ROlevels/
 *.settings
+/.settings
+/ROlevels
