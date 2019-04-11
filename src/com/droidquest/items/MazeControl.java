@@ -112,7 +112,7 @@ public class MazeControl extends Item {
                 mazeWidth++;
                 break;
         }
-        TextBox tb = room.textBoxes.elementAt(1);
+        TextBox tb = room.textBoxes.get(1);
         tb.textString = mazeWidth + "x" + mazeHeight;
         tb.x = (560 - 12 * tb.textString.length()) / 2;
 

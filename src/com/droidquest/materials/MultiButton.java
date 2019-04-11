@@ -108,7 +108,7 @@ public class MultiButton extends Material {
 
         if (flag) {
             Portal ptl = new Portal("ROEndGame.lvl", true, true);
-            level.materials.addElement(ptl);
+            level.materials.add(ptl);
             room.SetMaterial(10, 9, ptl);
         }
 

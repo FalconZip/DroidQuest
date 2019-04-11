@@ -107,7 +107,7 @@ public class MultiSwitch extends Material {
 
         if (flag) {
             for (int a = 0; a < level.materials.size(); a++) {
-                Material mat = level.materials.elementAt(a);
+                Material mat = level.materials.get(a);
                 if (mat instanceof BinaryLock) {
                     BinaryLock bl = (BinaryLock) mat;
                     if (bl.program.length == 1) {

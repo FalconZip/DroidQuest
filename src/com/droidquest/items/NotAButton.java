@@ -54,7 +54,7 @@ public class NotAButton extends Item {
     public void Animate() {
         if (eb == null) {
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item instanceof EnergyButton) {
                     eb = (EnergyButton) item;
                     eb.nb = this;

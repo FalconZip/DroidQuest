@@ -158,19 +158,19 @@ public class Sweeper extends Item {
 
     public void Animate() {
         for (int a = 0; a < level.items.size(); a++) {
-            Item testItem = level.items.elementAt(a);
+            Item testItem = level.items.get(a);
             if (testItem.carriedBy == null) {
                 if (Overlaps(testItem)) {
                     testItem.x = 280;
                     testItem.y = 192;
-                    testItem.SetRoom(level.rooms.elementAt(1));
+                    testItem.SetRoom(level.rooms.get(1));
                 }
             }
         }
 
         switch (animationState) {
             case 1:
-                if (room == level.rooms.elementAt(14) && x >= 120) {
+                if (room == level.rooms.get(14) && x >= 120) {
                     animationState = 2;
                     currentIcon = icons[1].getImage();
                 }
@@ -185,7 +185,7 @@ public class Sweeper extends Item {
                 break;
 
             case 3:
-                if (room == level.rooms.elementAt(2) && x <= 504) {
+                if (room == level.rooms.get(2) && x <= 504) {
                     animationState = 4;
                     currentIcon = icons[2].getImage();
                 }

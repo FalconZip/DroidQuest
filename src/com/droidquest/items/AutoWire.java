@@ -79,7 +79,7 @@ public class AutoWire extends Item {
         chip = null;
         int pdcount = 0;
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item instanceof PrototypeChip) {
                 PrototypeChip pc = (PrototypeChip) item;
                 if (pc.inTester) {

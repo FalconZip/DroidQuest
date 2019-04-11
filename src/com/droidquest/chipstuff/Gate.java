@@ -1,12 +1,13 @@
 package com.droidquest.chipstuff;
 
-import com.droidquest.devices.SmallChip;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.droidquest.devices.SmallChip;
 
 public class Gate implements Serializable {
     public transient PortSignal[] portSignals = new PortSignal[8];
@@ -14,8 +15,8 @@ public class Gate implements Serializable {
     public String type;
     public int speed;
 
-    public Vector<Signal> mySignals = new Vector<Signal>();
-    public Vector<Gate> myGates = new Vector<Gate>();
+    public List<Signal> mySignals = new ArrayList<Signal>();
+    public List<Gate> myGates = new ArrayList<Gate>();
 
     public Gate(String t) {
         // Called whenever a non-chip gate is created.
@@ -37,20 +38,20 @@ public class Gate implements Serializable {
         }
         for (int a = 0; a < sc.signals.size(); a++) {
             Signal newsig = new Signal();
-            Signal oldsig = sc.signals.elementAt(a);
+            Signal oldsig = sc.signals.get(a);
             newsig.Set(oldsig.Get());
             newsig.working = oldsig.working;
-            mySignals.addElement(newsig);
+            mySignals.add(newsig);
         }
 
         for (int a = 0; a < sc.gates.size(); a++) {
-            Gate oldgate = sc.gates.elementAt(a);
+            Gate oldgate = sc.gates.get(a);
             Gate newgate = new Gate(oldgate);
-            myGates.addElement(newgate);
+            myGates.add(newgate);
             for (int b = 0; b < 8; b++) {
                 if (oldgate.portSignals[b].externalSignal != null) {
                     int sigIndex = sc.signals.indexOf(oldgate.portSignals[b].externalSignal);
-                    newgate.portSignals[b].externalSignal = mySignals.elementAt(sigIndex);
+                    newgate.portSignals[b].externalSignal = mySignals.get(sigIndex);
                 }
             }
         }
@@ -58,7 +59,7 @@ public class Gate implements Serializable {
         for (int a = 0; a < 8; a++) {
             if (sc.portSignals[a].internalSignal != null) {
                 int sigIndex = sc.signals.indexOf(sc.portSignals[a].internalSignal);
-                portSignals[a].internalSignal = mySignals.elementAt(sigIndex);
+                portSignals[a].internalSignal = mySignals.get(sigIndex);
                 portSignals[a].type = sc.portSignals[a].type;
             }
         }
@@ -77,26 +78,26 @@ public class Gate implements Serializable {
         if (type.equalsIgnoreCase("Chip")) {
             for (int a = 0; a < g.mySignals.size(); a++) {
                 Signal newsig = new Signal();
-                Signal oldsig = g.mySignals.elementAt(a);
+                Signal oldsig = g.mySignals.get(a);
                 newsig.Set(oldsig.Get());
                 newsig.working = oldsig.working;
-                mySignals.addElement(newsig);
+                mySignals.add(newsig);
             }
             for (int a = 0; a < g.myGates.size(); a++) {
-                Gate oldgate = g.myGates.elementAt(a);
+                Gate oldgate = g.myGates.get(a);
                 Gate newgate = new Gate(oldgate);
-                myGates.addElement(newgate);
+                myGates.add(newgate);
                 for (int b = 0; b < 8; b++) {
                     int signalIndex = g.mySignals.indexOf(oldgate.portSignals[b].externalSignal);
                     if (signalIndex != -1) {
-                        newgate.portSignals[b].externalSignal = mySignals.elementAt(signalIndex);
+                        newgate.portSignals[b].externalSignal = mySignals.get(signalIndex);
                     }
                 }
             }
             for (int a = 0; a < 8; a++) {
                 if (g.portSignals[a].internalSignal != null) {
                     int sigIndex = g.mySignals.indexOf(g.portSignals[a].internalSignal);
-                    portSignals[a].internalSignal = mySignals.elementAt(sigIndex);
+                    portSignals[a].internalSignal = mySignals.get(sigIndex);
                     portSignals[a].type = g.portSignals[a].type;
                 }
             }
@@ -108,7 +109,7 @@ public class Gate implements Serializable {
             s.writeInt(mySignals.indexOf(portSignals[a].internalSignal));
         }
         for (int a = 0; a < myGates.size(); a++) {
-            Gate gate = myGates.elementAt(a);
+            Gate gate = myGates.get(a);
             for (int b = 0; b < 8; b++) {
                 s.writeInt(mySignals.indexOf(gate.portSignals[b].externalSignal));
                 s.writeInt(gate.portSignals[b].type);
@@ -121,17 +122,17 @@ public class Gate implements Serializable {
         for (int a = 0; a < 8; a++) {
             int portIndex = s.readInt();
             if (portIndex >= 0) {
-                portSignals[a].internalSignal = mySignals.elementAt(portIndex);
+                portSignals[a].internalSignal = mySignals.get(portIndex);
             }
         }
         for (int a = 0; a < myGates.size(); a++) {
-            Gate gate = myGates.elementAt(a);
+            Gate gate = myGates.get(a);
             gate.portSignals = new PortSignal[8];
             for (int b = 0; b < 8; b++) {
                 gate.portSignals[b] = new PortSignal();
                 int sigIndex = s.readInt();
                 if (sigIndex >= 0) {
-                    gate.portSignals[b].externalSignal = mySignals.elementAt(sigIndex);
+                    gate.portSignals[b].externalSignal = mySignals.get(sigIndex);
                 }
                 gate.portSignals[b].type = s.readInt();
             }
@@ -173,7 +174,7 @@ public class Gate implements Serializable {
 
             for (int s = 0; s < speed; s++) {
                 for (int a = 0; a < mySignals.size(); a++) {
-                    mySignals.elementAt(a).Flip();
+                    mySignals.get(a).Flip();
                 }
 
                 for (int a = 0; a < 8; a++) {
@@ -186,7 +187,7 @@ public class Gate implements Serializable {
                 }
 
                 for (int a = 0; a < myGates.size(); a++) {
-                    myGates.elementAt(a).Function();
+                    myGates.get(a).Function();
                 }
 
                 for (int a = 0; a < 8; a++) {
@@ -204,7 +205,7 @@ public class Gate implements Serializable {
     public void SaveSubGate(ObjectOutputStream s) throws IOException {
         s.writeInt(mySignals.size());
         for (int a = 0; a < mySignals.size(); a++) {
-            Signal sig = mySignals.elementAt(a);
+            Signal sig = mySignals.get(a);
             s.writeBoolean(sig.Get());
             s.writeBoolean(sig.working);
         }
@@ -216,7 +217,7 @@ public class Gate implements Serializable {
 
         s.writeInt(myGates.size());
         for (int a = 0; a < myGates.size(); a++) {
-            Gate gate = myGates.elementAt(a);
+            Gate gate = myGates.get(a);
             s.writeObject(gate.type);
             s.writeBoolean(gate.state);
             for (int b = 0; b < 8; b++) {
@@ -231,18 +232,18 @@ public class Gate implements Serializable {
 
     public void LoadSubGate(ObjectInputStream s) throws IOException, ClassNotFoundException {
         int numSignals = s.readInt();
-        mySignals = new Vector<Signal>();
+        mySignals = new ArrayList<Signal>();
         for (int a = 0; a < numSignals; a++) {
             Signal newSignal = new Signal();
             newSignal.Set(s.readBoolean());
             newSignal.working = s.readBoolean();
-            mySignals.addElement(newSignal);
+            mySignals.add(newSignal);
         }
 
         for (int a = 0; a < 8; a++) {
             int sigIndex = s.readInt();
             if (sigIndex >= 0) {
-                portSignals[a].internalSignal = mySignals.elementAt(sigIndex);
+                portSignals[a].internalSignal = mySignals.get(sigIndex);
             }
             portSignals[a].type = s.readInt();
         }
@@ -251,11 +252,11 @@ public class Gate implements Serializable {
         for (int a = 0; a < numGates; a++) {
             Gate newGate = new Gate((String) s.readObject());
             newGate.state = s.readBoolean();
-            myGates.addElement(newGate);
+            myGates.add(newGate);
             for (int b = 0; b < 8; b++) {
                 int sigIndex = s.readInt();
                 if (sigIndex >= 0) {
-                    newGate.portSignals[b].externalSignal = mySignals.elementAt(sigIndex);
+                    newGate.portSignals[b].externalSignal = mySignals.get(sigIndex);
                 }
             }
             if (newGate.type.equalsIgnoreCase("Chip")) {

@@ -49,7 +49,7 @@ public class F12Form extends Item {
 
     public void IsDropped() {
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item.getClass().toString().endsWith("GateKeeper")) {
                 gk = (GateKeeper) item;
             }

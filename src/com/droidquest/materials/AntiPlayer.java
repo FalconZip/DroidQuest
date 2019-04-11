@@ -26,7 +26,7 @@ public class AntiPlayer extends Material {
         }
 
         if (trigger) {
-            level.player.room = level.rooms.elementAt(40);
+            level.player.room = level.rooms.get(40);
             level.player.x = 10 * 28;
             level.player.y = 5 * 32;
             level.currentViewer = level.player;

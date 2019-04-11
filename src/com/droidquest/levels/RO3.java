@@ -25,36 +25,36 @@ class RO3 extends Level {
     public RO3(RoomDisplay rd) {
         super(rd);
 
-        materials.addElement(new Material(true, false));                        // 0= Empty Space
-        materials.addElement(new Material(new Color(0, 204, 0), false, true));     // 1= Green
-        materials.addElement(new Material(new Color(255, 224, 192), false, true)); // 2= Lt Orange
-        materials.addElement(new Material(new Color(128, 128, 128), false, true)); // 3= Grey
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));   // 4= Orange
-        materials.addElement(new Material(new Color(255, 255, 255), false, true)); // 5= White
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));     // 6= Blue
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));      // 7= Dk Blue
-        materials.addElement(new Material(new Color(63, 32, 0), false, true));     // 8= Dk Orange
-        materials.addElement(new ShapeEditor(new StormCloud(0, 0, null)));        // 9= Storm Editor
-        materials.addElement(new ElevatorLock());                               // 10= ElevatorLock
-        materials.addElement(new ElevatorInPortal());                           // 11= ElevatorIn
-        materials.addElement(new ElevatorOutPortal());                          // 12= ElevatorOut
-        materials.addElement(new ElevatorSwitch());                             // 13= ElevatorSwitch
-        materials.addElement(new VendingSlot());                                // 14= VendingSlot
-        materials.addElement(new PlayerBlocker(Color.black));                   // 15= PlayerBlock
-        materials.addElement(new SwitchA());                                    // 16
-        materials.addElement(new SwitchB());                                    // 17
-        materials.addElement(new CameraEnable());                               // 18= Periscope
-        materials.addElement(new CameraDisable());                              // 19
+        materials.add(new Material(true, false));                        // 0= Empty Space
+        materials.add(new Material(new Color(0, 204, 0), false, true));     // 1= Green
+        materials.add(new Material(new Color(255, 224, 192), false, true)); // 2= Lt Orange
+        materials.add(new Material(new Color(128, 128, 128), false, true)); // 3= Grey
+        materials.add(new Material(new Color(255, 128, 0), false, true));   // 4= Orange
+        materials.add(new Material(new Color(255, 255, 255), false, true)); // 5= White
+        materials.add(new Material(new Color(0, 0, 255), false, true));     // 6= Blue
+        materials.add(new Material(new Color(0, 0, 128), false, true));      // 7= Dk Blue
+        materials.add(new Material(new Color(63, 32, 0), false, true));     // 8= Dk Orange
+        materials.add(new ShapeEditor(new StormCloud(0, 0, null)));        // 9= Storm Editor
+        materials.add(new ElevatorLock());                               // 10= ElevatorLock
+        materials.add(new ElevatorInPortal());                           // 11= ElevatorIn
+        materials.add(new ElevatorOutPortal());                          // 12= ElevatorOut
+        materials.add(new ElevatorSwitch());                             // 13= ElevatorSwitch
+        materials.add(new VendingSlot());                                // 14= VendingSlot
+        materials.add(new PlayerBlocker(Color.black));                   // 15= PlayerBlock
+        materials.add(new SwitchA());                                    // 16
+        materials.add(new SwitchB());                                    // 17
+        materials.add(new CameraEnable());                               // 18= Periscope
+        materials.add(new CameraDisable());                              // 19
         String[] files = {"field0.jpg", "field1.jpg"};
-        materials.addElement(new PlayerBlocker(files));                         // 20= Blue FF
-        materials.addElement(new Portal("RO4.lvl", true, true));                // 21= Portal
+        materials.add(new PlayerBlocker(files));                         // 20= Blue FF
+        materials.add(new Portal("RO4.lvl", true, true));                // 21= Portal
 
         for (int a = 0; a <= 36; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         {// Room 0  : Help Screen 
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -78,7 +78,7 @@ class RO3 extends Level {
             room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 500);
         }
         {// Room 1  : Intro Maze 1 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
@@ -100,7 +100,7 @@ class RO3 extends Level {
             room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 2  : Intro Maze 2 
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.RoomArray = new int[][]{
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
@@ -122,7 +122,7 @@ class RO3 extends Level {
             room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 3  : Intro Maze 3 
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.RoomArray = new int[][]{
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
@@ -144,7 +144,7 @@ class RO3 extends Level {
             room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 4  : Sensor Editor Room, Magnetic Shield here 
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -161,10 +161,10 @@ class RO3 extends Level {
             };
             room.AddTextBox("Sensor Editor", 64, 56, 560);
             room.AddTextBox("Magnetic Storm Shield (For Robots Only)", 60, 346, 560);
-            items.addElement(new StormShield(3 * 28, 8 * 32, room));
+            items.add(new StormShield(3 * 28, 8 * 32, room));
         }
         {// Room 5  : Street Maze 
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3},
@@ -179,12 +179,12 @@ class RO3 extends Level {
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 6  : Street Maze 
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.RoomArray = new int[][]{
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3},
                     {3, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3},
@@ -199,12 +199,12 @@ class RO3 extends Level {
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 7  : Street Maze 
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.RoomArray = new int[][]{
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3},
@@ -219,12 +219,12 @@ class RO3 extends Level {
                     {3, 0, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3},
                     {3, 0, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 8 : Brown Tunnel 
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -241,7 +241,7 @@ class RO3 extends Level {
             };
         }
         {// Room 9 : Lower Elevator, Trash Pile 
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
@@ -259,12 +259,12 @@ class RO3 extends Level {
             room.AddTextBox("ELEVATOR", 9 * 28, 152, 560);
             room.AddTextBox("The things robots throw away...", 0, 6 * 32, 200);
             room.AddArrow(14 * 28, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new ElevatorKey(1 * 28, 9 * 32, room));
+            items.add(new ElevatorKey(1 * 28, 9 * 32, room));
             String[] filelist = {"trash0.gif", "trash1.gif", "trash2.gif", "trash3.gif"};
-            room.graphix.addElement(new Graphix(filelist, 28, 8 * 32));
+            room.graphix.add(new Graphix(filelist, 28, 8 * 32));
         }
         {// Room 10 : Stairs, Sentry 
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
@@ -283,10 +283,10 @@ class RO3 extends Level {
             int[] pace = {6 * 28, 2 * 32, 6 * 28, 8 * 32};
             int[] pounce = {5 * 28, 3 * 32, 14 * 28, 5 * 32, 12 * 28, 0,
                     5 * 28, 6 * 32, 14 * 28, 8 * 32, 9 * 28, 11 * 32};
-            items.addElement(new Sentry(7 * 28, 2 * 32, room, pace, pounce, true));
+            items.add(new Sentry(7 * 28, 2 * 32, room, pace, pounce, true));
         }
         {// Room 11 : Upper Elevator, Top of Stairs 
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
@@ -301,10 +301,10 @@ class RO3 extends Level {
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7}
             };
-            items.addElement(new Crystal(7 * 28, 4 * 32, room, 100000));
+            items.add(new Crystal(7 * 28, 4 * 32, room, 100000));
         }
         {// Room 12 : Vending Machine 
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -325,11 +325,11 @@ class RO3 extends Level {
             room.AddTextBox("VENDING MACHINE", 48, 50, 560);
             room.AddArrow(3 * 28, 5 * 32, Arrow.DIR_UP, 32, Color.white);
             room.AddArrow(11 * 28 + 22, 4 * 32 + 4, Arrow.DIR_DOWN, 30, Color.white);
-            items.addElement(new VendingHandle(11 * 28, 4 * 32 + 10, room));
-            items.addElement(new F12Form(3 * 28, 2 * 32, room));
+            items.add(new VendingHandle(11 * 28, 4 * 32 + 10, room));
+            items.add(new F12Form(3 * 28, 2 * 32, room));
         }
         {// Room 13 : Blue Maze : Button Room 
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.RoomArray = new int[][]{
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -344,11 +344,11 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
-            items.addElement(new HiddenCamera(room));
-            items.addElement(new FFButton(10 * 28, 5 * 32, room));
+            items.add(new HiddenCamera(room));
+            items.add(new FFButton(10 * 28, 5 * 32, room));
         }
         {// Room 14 : Blue Maze 
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -365,7 +365,7 @@ class RO3 extends Level {
             };
         }
         {// Room 15 : Blue Maze 
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -382,7 +382,7 @@ class RO3 extends Level {
             };
         }
         {// Room 16 : Street Maze 
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.RoomArray = new int[][]{
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3},
@@ -397,12 +397,12 @@ class RO3 extends Level {
                     {3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 17 : Street Maze 
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 3},
                     {3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3},
@@ -417,12 +417,12 @@ class RO3 extends Level {
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3},
                     {3, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 0, 0, 3, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 18 : Street Maze 
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 3, 3, 0, 0, 3, 0, 0, 3, 3, 0, 0, 3, 3, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3},
@@ -437,13 +437,13 @@ class RO3 extends Level {
                     {3, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3, 3, 0, 0, 3},
                     {3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 0, 0, 3}
             };
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new SmallChip(28 + 14, 2 * 32 + 16, room, "6"));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new SmallChip(28 + 14, 2 * 32 + 16, room, "6"));
         }
         {// Room 19 : Street Tunnel 
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -460,7 +460,7 @@ class RO3 extends Level {
             };
         }
         {// Room 20 : Blue Maze 
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -477,7 +477,7 @@ class RO3 extends Level {
             };
         }
         {// Room 21 : Blue Maze 
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7},
@@ -492,10 +492,10 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7}
             };
-            items.addElement(new SmallChip(10 * 28, 3 * 32, room, "5"));
+            items.add(new SmallChip(10 * 28, 3 * 32, room, "5"));
         }
         {// Room 22 : Blue Maze 
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -510,11 +510,11 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7}
             };
-            items.addElement(new ContactSensor(13 * 28, 8 * 32, room,
+            items.add(new ContactSensor(13 * 28, 8 * 32, room,
                     new Key(0, 0, null, Color.blue)));
         }
         {// Room 23 : Blue Maze : 2 buttons 
-            Room room = rooms.elementAt(23);
+            Room room = rooms.get(23);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 16, 0, 0, 0, 0, 0, 0, 7},
@@ -534,10 +534,10 @@ class RO3 extends Level {
             int[] protect = {4 * 28, 1 * 32, 6 * 28, 3 * 32, 0, 2 * 32,
                     4 * 28, 3 * 32, 6 * 28, 9 * 32, 0, 6 * 32,
                     4 * 28, 9 * 32, 6 * 28, 11 * 32, 0, 9 * 32};
-            items.addElement(new Sentry(3 * 28, 3 * 32, room, pace, protect, true));
+            items.add(new Sentry(3 * 28, 3 * 32, room, pace, protect, true));
         }
         {// Room 24 : Blue Maze: Button Anteroom 
-            Room room = rooms.elementAt(24);
+            Room room = rooms.get(24);
             room.RoomArray = new int[][]{
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -556,7 +556,7 @@ class RO3 extends Level {
             room.AddArrow(17 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 25 : Blue Maze 
-            Room room = rooms.elementAt(25);
+            Room room = rooms.get(25);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -573,7 +573,7 @@ class RO3 extends Level {
             };
         }
         {// Room 26 : Blue Maze 
-            Room room = rooms.elementAt(26);
+            Room room = rooms.get(26);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -590,7 +590,7 @@ class RO3 extends Level {
             };
         }
         {// Room 27 : Blue Maze 
-            Room room = rooms.elementAt(27);
+            Room room = rooms.get(27);
             room.RoomArray = new int[][]{
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7},
@@ -607,7 +607,7 @@ class RO3 extends Level {
             };
         }
         {// Room 28 : Brown Tunnel 
-            Room room = rooms.elementAt(28);
+            Room room = rooms.get(28);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -624,7 +624,7 @@ class RO3 extends Level {
             };
         }
         {// Room 29 : Blue Maze : Form Taker 
-            Room room = rooms.elementAt(29);
+            Room room = rooms.get(29);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 7, 7},
@@ -642,12 +642,12 @@ class RO3 extends Level {
             room.AddTextBox("Submit a Form-12, please.", 3 * 28, 3 * 32, 150);
             room.AddTextBox(" OFFICIAL GATEKEEPER", 112, 9 * 32, 200);
             room.AddGraphix("trashcan.gif", 2 * 28, 8 * 32);
-            items.addElement(new GateKeeper(7 * 28, 4 * 32, room));
-            items.addElement(new DirectionalSensor(16 * 28, 5 * 32, room,
+            items.add(new GateKeeper(7 * 28, 4 * 32, room));
+            items.add(new DirectionalSensor(16 * 28, 5 * 32, room,
                     new Button(0, 0, null, Color.white)));
         }
         {// Room 30 : Blue Maze 
-            Room room = rooms.elementAt(30);
+            Room room = rooms.get(30);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0},
                     {7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0},
@@ -662,10 +662,10 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7}
             };
-            items.addElement(new DirectionalSensor(6 * 28, 3 * 32, room, new Key(0, 0, null, Color.blue)));
+            items.add(new DirectionalSensor(6 * 28, 3 * 32, room, new Key(0, 0, null, Color.blue)));
         }
         {// Room 31 : Blue Maze 
-            Room room = rooms.elementAt(31);
+            Room room = rooms.get(31);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0},
@@ -682,7 +682,7 @@ class RO3 extends Level {
             };
         }
         {// Room 32 : Blue Maze 
-            Room room = rooms.elementAt(32);
+            Room room = rooms.get(32);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7},
@@ -699,7 +699,7 @@ class RO3 extends Level {
             };
         }
         {// Room 33 : Brown Tunnel 
-            Room room = rooms.elementAt(33);
+            Room room = rooms.get(33);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -716,7 +716,7 @@ class RO3 extends Level {
             };
         }
         {// Room 34 : Street Maze : Token 
-            Room room = rooms.elementAt(34);
+            Room room = rooms.get(34);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 0, 0, 3},
                     {3, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 3, 3},
@@ -732,13 +732,13 @@ class RO3 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3}
             };
             room.AddTextBox("I never could hang onto money...", 3 * 28, 152, 560);
-            items.addElement(new SlipperyToken(3 * 28, 3 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
-            items.addElement(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new SlipperyToken(3 * 28, 3 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
+            items.add(new StormCloud(10 * 28, 6 * 32, room));
         }
         {// Room 35 : Elevator 
-            Room room = rooms.elementAt(35);
+            Room room = rooms.get(35);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
                     {4, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4},
@@ -761,7 +761,7 @@ class RO3 extends Level {
         }
 
         {// Room 36 : Secret room 
-            Room room = rooms.elementAt(36);
+            Room room = rooms.get(36);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -793,9 +793,9 @@ class RO3 extends Level {
                     "helper5.gif", "helper5.gif", "helper5.gif", "helper5.gif",
             };
             Graphix helper = new Graphix(helperlist, 15 * 28, 8 * 32);
-            room.graphix.addElement(helper);
-            items.addElement(new Crystal(2 * 28, 8 * 32, room, 100000));
-            items.addElement(new Key(2 * 28, 9 * 32, room, Color.red));
+            room.graphix.add(helper);
+            items.add(new Crystal(2 * 28, 8 * 32, room, 100000));
+            items.add(new Key(2 * 28, 9 * 32, room, Color.red));
         }
 
         // Intro Maze
@@ -838,14 +838,14 @@ class RO3 extends Level {
         LinkRoomsLeftRight(7, 28);
         LinkRoomsLeftRight(28, 31);
 
-        gameCursor = new GameCursor(10 * 28, 6 * 32, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new GameCursor(10 * 28, 6 * 32, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

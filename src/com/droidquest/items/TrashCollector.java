@@ -48,25 +48,25 @@ public class TrashCollector extends Item {
             gotoY = 176;
             switch (behavior) {
                 case 0:
-                    gotoRoom = level.rooms.elementAt(31);
+                    gotoRoom = level.rooms.get(31);
                     break;
                 case 1:
-                    gotoRoom = level.rooms.elementAt(5);
+                    gotoRoom = level.rooms.get(5);
                     break;
                 case 2:
-                    gotoRoom = level.rooms.elementAt(11);
+                    gotoRoom = level.rooms.get(11);
                     break;
                 case 3:
-                    gotoRoom = level.rooms.elementAt(17);
+                    gotoRoom = level.rooms.get(17);
                     break;
                 case 4:
-                    gotoRoom = level.rooms.elementAt(19);
+                    gotoRoom = level.rooms.get(19);
                     break;
                 case 5:
-                    gotoRoom = level.rooms.elementAt(58);
+                    gotoRoom = level.rooms.get(58);
                     break;
                 case 6:
-                    gotoRoom = level.rooms.elementAt(19);
+                    gotoRoom = level.rooms.get(19);
                     break;
             }
         }
@@ -74,7 +74,7 @@ public class TrashCollector extends Item {
         if (behavior < 5) // Check for items in hallway
         {
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item != this && item != level.player) {
                     if (item.room == room && item.carriedBy == null) {
                         previousBehavior = behavior;
@@ -242,9 +242,9 @@ public class TrashCollector extends Item {
                 else {
                     if (x == gotoX && y == gotoY) {
                         int holdings = 0;
-                        Room purge = level.rooms.elementAt(60);
+                        Room purge = level.rooms.get(60);
                         for (int a = 0; a < level.items.size(); a++) {
-                            Item item = level.items.elementAt(a);
+                            Item item = level.items.get(a);
                             if (item.room == purge) {
                                 holdings++;
                             }
@@ -289,9 +289,9 @@ public class TrashCollector extends Item {
                 }
                 else {
                     if (x == gotoX && y == gotoY) {
-                        Room purge = level.rooms.elementAt(60);
+                        Room purge = level.rooms.get(60);
                         for (int a = 0; a < level.items.size(); a++) {
-                            Item item = level.items.elementAt(a);
+                            Item item = level.items.get(a);
                             if (item.room == purge) {
                                 item.room = room;
                             }
@@ -355,7 +355,7 @@ public class TrashCollector extends Item {
             case 7: // Approach item
                 if (target.room == room && target.carriedBy == null) {
                     if (Overlaps(target)) {
-                        target.room = level.rooms.elementAt(60);
+                        target.room = level.rooms.get(60);
                         behavior = previousBehavior;
                     }
                     else {

@@ -70,7 +70,7 @@ public class BlueGridSwitch extends Material {
             animationState = 1;
             room = item.room;
             timeout = new Date(new Date().getTime() + 20000);
-            textbox = item.room.textBoxes.elementAt(0);
+            textbox = item.room.textBoxes.get(0);
         }
     }
 
@@ -102,7 +102,7 @@ public class BlueGridSwitch extends Material {
                 room.SetMaterial(2, 0, 0);
                 room.upRoom.SetMaterial(2, 11, 0);
                 for (int a = 0; a < level.materials.size(); a++) {
-                    Material mat = level.materials.elementAt(a);
+                    Material mat = level.materials.get(a);
                     if (mat instanceof HotWires) {
                         HotWires hw = (HotWires) mat;
                         if (hw.wall == 0) {
@@ -111,12 +111,12 @@ public class BlueGridSwitch extends Material {
                     }
                 }
                 for (int a = 0; a < 5; a++) {
-                    Graphix gr = room.graphix.elementAt(a);
+                    Graphix gr = room.graphix.get(a);
                     gr.filenames = new String[]{"whiteHorizontal.gif"};
                     gr.GenerateIcons();
                 }
                 for (int a = 0; a < 5; a++) {
-                    Graphix gr = room.graphix.elementAt(a + 5);
+                    Graphix gr = room.graphix.get(a + 5);
                     gr.filenames = new String[]{"whiteVertical.gif"};
                     gr.GenerateIcons();
                 }
@@ -144,7 +144,7 @@ public class BlueGridSwitch extends Material {
                 room.upRoom.SetMaterial(5, 11, 9);
                 value = false;
                 for (int a = 0; a < level.materials.size(); a++) {
-                    Material mat = level.materials.elementAt(a);
+                    Material mat = level.materials.get(a);
                     if (mat instanceof HotWires) {
                         HotWires hw = (HotWires) mat;
                         if (hw.wall == 0) {
@@ -153,12 +153,12 @@ public class BlueGridSwitch extends Material {
                     }
                 }
                 for (int a = 0; a < 5; a++) {
-                    Graphix gr = room.graphix.elementAt(a);
+                    Graphix gr = room.graphix.get(a);
                     gr.filenames = new String[]{"blueHorizontal.gif"};
                     gr.GenerateIcons();
                 }
                 for (int a = 0; a < 5; a++) {
-                    Graphix gr = room.graphix.elementAt(a + 5);
+                    Graphix gr = room.graphix.get(a + 5);
                     gr.filenames = new String[]{"blueVertical.gif"};
                     gr.GenerateIcons();
                 }
