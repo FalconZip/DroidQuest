@@ -23,32 +23,32 @@ class ROTutE extends Level {
         super(rd);
 
         // Material 0, Blank
-        materials.addElement(new Material(true, false));
+        materials.add(new Material(true, false));
         // Material 1, LightBlue Wall
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));
+        materials.add(new Material(new Color(192, 192, 255), false, true));
         // Material 2, Green Wall
-        materials.addElement(new Material(new Color(0, 255, 0), false, true));
+        materials.add(new Material(new Color(0, 255, 0), false, true));
         // Material 3, Orange Wall
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));
+        materials.add(new Material(new Color(255, 128, 0), false, true));
         // Material 4, LightOrange Wall
-        materials.addElement(new Material(new Color(255, 224, 192), false, true));
+        materials.add(new Material(new Color(255, 224, 192), false, true));
         // Material 5, Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));
+        materials.add(new Material(new Color(0, 0, 255), false, true));
         // Material 6, Dark Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));
+        materials.add(new Material(new Color(0, 0, 128), false, true));
         // Material 7, Portal to next Tutorial
-        materials.addElement(new Portal("ROTutF.lvl", false, true));
+        materials.add(new Portal("ROTutF.lvl", false, true));
         // Material 8, Portal to Main Menu
-        materials.addElement(new Portal("MainMenu.lvl", false, true));
+        materials.add(new Portal("MainMenu.lvl", false, true));
         // Material 9, Panic Button #1
-        materials.addElement(new PanicButton(1));
+        materials.add(new PanicButton(1));
 
         for (int a = 0; a < 23; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         { // Room 0, Help Screen
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.SetMaterialOutline(0, 0, 19, 11, 2);
             room.AddTextBox("If your circuit doesn't work, check to see that the Remote Control  and robot thruster switch is on, and the battery still has energy",
                     2 * 28, 2 * 32, 500);
@@ -56,7 +56,7 @@ class ROTutE extends Level {
                     4 * 28, 10 * 32, 500);
         }
         { // Room 1, Title Screen
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterial(0, 10, 0);
@@ -66,7 +66,7 @@ class ROTutE extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 2, Scanner
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterialOutline(19, 7, 19, 9, 0);
@@ -78,17 +78,17 @@ class ROTutE extends Level {
                     2 * 28, 10 * 32, 500);
             room.AddArrow(559, 8 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             BlueRobot robot = new BlueRobot(2 * 28, 32 + 16, room);
-            items.addElement(robot);
+            items.add(robot);
             robot.thrusterPower = true;
             FlipFlop ff = new FlipFlop(9 * 28, 5 * 32, robot.InternalRoom);
-            items.addElement(ff);
+            items.add(ff);
             new Wire(ff.ports[0], robot.devices[7].ports[0]);
             new Wire(ff.ports[1], robot.devices[5].ports[0]);
             new Wire(ff.ports[2], robot.devices[3].ports[0]);
             new Wire(ff.ports[3], robot.devices[1].ports[0]);
         }
         { // Room 3, Ping-Pong explained
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 7, 0, 9, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -101,7 +101,7 @@ class ROTutE extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 4, Disconnect FlipFlop
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.SetMaterialOutline(0, 0, 19, 11, 3);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("Can yo make Scanner bounce up and down instead? (yo-yo circuit) First disconnect the flipflop. The fastest way to disconnect it is to pick it up and carry it outside Scanner. All the wires will break. Then bring it back inside the robot.",
@@ -111,7 +111,7 @@ class ROTutE extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 5, Wire a Yo-Yo
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.SetMaterialOutline(0, 0, 19, 11, 3);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("Connect a wire from the left OUTPUT of the flipflop to top thruster. Connect another wire from the left INPUT of the flipflop to the top bumper. Connect the rest of the flipflop to the bottom thruster and bumper.",
@@ -121,7 +121,7 @@ class ROTutE extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 6, ping-pong & yo-yo
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -131,10 +131,10 @@ class ROTutE extends Level {
                     2 * 28, 6 * 32, 500);
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             toolbox = new ToolBox(4 * 28, 10 * 32, room);
-            items.addElement(toolbox);
+            items.add(toolbox);
         }
         { // Room 7, Intro to Sentry problem
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(0, 9, 0, 10, 0);
@@ -153,7 +153,7 @@ class ROTutE extends Level {
             room.AddArrow(15 * 28, 7 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 8, Sample Sentry
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.SetMaterialOutline(0, 0, 19, 11, 3);
             room.SetMaterialOutline(14, 0, 14, 3, 3);
             room.SetMaterialOutline(14, 7, 14, 11, 3);
@@ -161,24 +161,24 @@ class ROTutE extends Level {
             room.SetMaterialOutline(19, 9, 19, 10, 0);
             room.AddTextBox("Blue Sentries won't let you ride past in- side a robot.",
                     4 * 28, 3 * 32, 200);
-            items.addElement(new Crystal(6 * 28, 9 * 32, room, 100000));
+            items.add(new Crystal(6 * 28, 9 * 32, room, 100000));
             int[] pace = {12 * 28, 3 * 32, 12 * 28, 9 * 32};
             int[] program = {0, 0, 0, 0, 0, 0};
-            items.addElement(new Sentry(0, 0, room, pace, program, true));
+            items.add(new Sentry(0, 0, room, pace, program, true));
         }
         { // Room 9, Parts
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 4, 0, 6, 0);
-            items.addElement(new WhiteRobot(6 * 28, 8 * 32, room));
-            items.addElement(new DirectionalSensor(9 * 28, 2 * 32, room,
+            items.add(new WhiteRobot(6 * 28, 8 * 32, room));
+            items.add(new DirectionalSensor(9 * 28, 2 * 32, room,
                     new Crystal(0, 0, null, 0)));
-            items.addElement(new Key(15 * 28, 5 * 32, room, Color.blue));
-            items.addElement(new RoomSensor(14 * 28, 6 * 32, room,
+            items.add(new Key(15 * 28, 5 * 32, room, Color.blue));
+            items.add(new RoomSensor(14 * 28, 6 * 32, room,
                     new Key(0, 0, null, Color.white)));
         }
         { // Room 10, Break problem to pieces
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(1, 0, 5, 0, 0);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
@@ -187,7 +187,7 @@ class ROTutE extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 11, Grabbing
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterialOutline(0, 4, 0, 6, 0);
@@ -196,10 +196,10 @@ class ROTutE extends Level {
             room.AddTextBox("Try it, by putting Checkers on top of the triangle. Now, how do you make Checkers let go? One way is to disconnect the NOT-gate. There is a better way, though.",
                     2 * 28, 8 * 32, 450);
             room.AddArrow(0, 5 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            items.addElement(new Triangle(12 * 28, 5 * 32, room, new Color(255, 128, 0)));
+            items.add(new Triangle(12 * 28, 5 * 32, room, new Color(255, 128, 0)));
         }
         { // Room 12, Releasing
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(19, 4, 19, 6, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -210,7 +210,7 @@ class ROTutE extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 13, Moving
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(1, 0, 4, 11, 0);
             room.AddTextBox("Now you need to make Checkers go into the room and find the crystal. The robot must go up to the doorway, and then left and down to find the crystal. You have seen circuits that move both ways. Do you know what they are?",
@@ -220,7 +220,7 @@ class ROTutE extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 14, Yo-Yo
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
@@ -231,7 +231,7 @@ class ROTutE extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 15, Get the Crystal
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.SetMaterialOutline(14, 11, 17, 11, 0);
@@ -244,15 +244,15 @@ class ROTutE extends Level {
             room.AddArrow(16 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 16, Crystal room
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.SetMaterialOutline(0, 0, 19, 11, 3);
             room.SetMaterialOutline(14, 0, 14, 3, 3);
             room.SetMaterialOutline(14, 7, 14, 11, 3);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
-            items.addElement(new Crystal(6 * 28, 9 * 32, room, 100000));
+            items.add(new Crystal(6 * 28, 9 * 32, room, 100000));
         }
         { // Room 17, How to return
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(14, 0, 17, 0, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -261,7 +261,7 @@ class ROTutE extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 18, Now the test
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
@@ -273,20 +273,20 @@ class ROTutE extends Level {
             room.AddArrow(599, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 19, Sentry puzzle
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.SetMaterialOutline(0, 0, 19, 11, 3);
             room.SetMaterialOutline(14, 0, 14, 3, 3);
             room.SetMaterialOutline(14, 7, 14, 11, 3);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterial(18, 1, 9);
             room.AddTextBox("PANIC BUTTON", 100, 15 * 28, 2 * 32);
-            items.addElement(new Crystal(6 * 28, 9 * 32, room, 100000));
+            items.add(new Crystal(6 * 28, 9 * 32, room, 100000));
             int[] pace = {12 * 28, 3 * 32, 12 * 28, 9 * 32};
             int[] program = {0, 0, 15 * 28 - 1, 11 * 32, 19 * 28, 8 * 32};
-            items.addElement(new Sentry(0, 0, room, pace, program, true));
+            items.add(new Sentry(0, 0, room, pace, program, true));
         }
         { // Room 20, Congratulations
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("Congratulations! You solved a complex problem by breaking it down into small parts and trying each part. This is a good strategy to use in the game. You can use the Innovation Lab to test your solutions before risking robots in Robotropolis.",
@@ -296,7 +296,7 @@ class ROTutE extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 21, Portals
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterial(19, 10, 0);
@@ -308,7 +308,7 @@ class ROTutE extends Level {
                     5 * 28, 6 * 32, 500);
         }
         { // Room 22, Shortcut to beginning
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.SetMaterialOutline(0, 0, 19, 9, 5);
             room.SetMaterialOutline(0, 11, 19, 11, 5);
             room.SetMaterial(0, 10, 0);
@@ -333,14 +333,14 @@ class ROTutE extends Level {
         LinkRoomsUpDown(15, 17);
         LinkRoomsUpDown(17, 18);
 
-        gameCursor = new LabCursor(16 * 28 + 14, 9 * 32 + 16, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new LabCursor(16 * 28 + 14, 9 * 32 + 16, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
     }

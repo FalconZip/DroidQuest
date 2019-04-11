@@ -51,7 +51,7 @@ public class PC16Button extends Item {
 
     public boolean CanBePickedUp(Item i) {
         Prototype16Chip newPC = new Prototype16Chip(228, 160, room);
-        level.items.addElement(newPC);
+        level.items.add(newPC);
         level.PlaySound(room, Level.CHARGESOUND);
         return false;
     }

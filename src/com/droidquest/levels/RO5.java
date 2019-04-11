@@ -18,18 +18,18 @@ class RO5 extends Level {
     public RO5(RoomDisplay rd) {
         super(rd);
 
-        materials.addElement(new Material(true, false));                         // 0  = Empty Space 
-        materials.addElement(new Material(new Color(0, 204, 0), false, true));      // 1  = Green
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));  // 2  = Light Blue
-        materials.addElement(new Material(new Color(63, 32, 0), false, true));      // 3  = Brown
-        materials.addElement(new Material(new Color(128, 128, 128), false, true));  // 4  = Grey
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));    // 5  = Orange
-        materials.addElement(new Material(new Color(255, 255, 255), false, true));  // 6  = White
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));      // 7  = Blue
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));       // 8  = DarkBlue
-        materials.addElement(new Material(new Color(255, 224, 192), false, true));  // 9  = Tan Flesh
-//	materials.addElement(new Material(new Color(128,0,0),false, true));      // 10 = Black Wall
-        materials.addElement(new Material(Color.black, false, true));      // 10 = Black Wall
+        materials.add(new Material(true, false));                         // 0  = Empty Space 
+        materials.add(new Material(new Color(0, 204, 0), false, true));      // 1  = Green
+        materials.add(new Material(new Color(192, 192, 255), false, true));  // 2  = Light Blue
+        materials.add(new Material(new Color(63, 32, 0), false, true));      // 3  = Brown
+        materials.add(new Material(new Color(128, 128, 128), false, true));  // 4  = Grey
+        materials.add(new Material(new Color(255, 128, 0), false, true));    // 5  = Orange
+        materials.add(new Material(new Color(255, 255, 255), false, true));  // 6  = White
+        materials.add(new Material(new Color(0, 0, 255), false, true));      // 7  = Blue
+        materials.add(new Material(new Color(0, 0, 128), false, true));       // 8  = DarkBlue
+        materials.add(new Material(new Color(255, 224, 192), false, true));  // 9  = Tan Flesh
+//	materials.add(new Material(new Color(128,0,0),false, true));      // 10 = Black Wall
+        materials.add(new Material(Color.black, false, true));      // 10 = Black Wall
         int[][] program1 = {
                 {Lock.NARROW},
                 {15, 4, 0, 15, 5, 0, 15, 6, 0, 15, 7, 0, 16, 4, 2, 17, 5, 2, 17, 6, 2, 16, 7, 2},
@@ -38,16 +38,16 @@ class RO5 extends Level {
                 {16, 4, 2, 17, 5, 2, 17, 6, 2, 16, 7, 2, 16, 3, 0, 17, 3, 0, 16, 8, 0, 17, 8, 0},
                 {15, 4, 2, 15, 5, 2, 15, 6, 2, 15, 7, 2, 16, 4, 0, 17, 5, 0, 17, 6, 0, 16, 7, 0}
         };
-        materials.addElement(new Lock(Color.blue, Color.blue, program1)); // 11= 1st lock
-        materials.addElement(new AutoRunner(AutoRunner.UP));              // 12= UP
-        materials.addElement(new AutoRunner(AutoRunner.RIGHTUP));         // 13= RIGHTUP
-        materials.addElement(new AutoRunner(AutoRunner.RIGHT));           // 14= RIGHT
-        materials.addElement(new AutoRunner(AutoRunner.RIGHTDOWN));       // 15= RIGHTDOWN
-        materials.addElement(new AutoRunner(AutoRunner.DOWN));            // 16= DOWN
-        materials.addElement(new AutoRunner(AutoRunner.LEFTDOWN));        // 17= LEFTDOWN
-        materials.addElement(new AutoRunner(AutoRunner.LEFT));            // 18= LEFT
-        materials.addElement(new AutoRunner(AutoRunner.LEFTUP));          // 19= LEFTUP
-        materials.addElement(new AutoRunner(AutoRunner.STOP));            // 20= STOP
+        materials.add(new Lock(Color.blue, Color.blue, program1)); // 11= 1st lock
+        materials.add(new AutoRunner(AutoRunner.UP));              // 12= UP
+        materials.add(new AutoRunner(AutoRunner.RIGHTUP));         // 13= RIGHTUP
+        materials.add(new AutoRunner(AutoRunner.RIGHT));           // 14= RIGHT
+        materials.add(new AutoRunner(AutoRunner.RIGHTDOWN));       // 15= RIGHTDOWN
+        materials.add(new AutoRunner(AutoRunner.DOWN));            // 16= DOWN
+        materials.add(new AutoRunner(AutoRunner.LEFTDOWN));        // 17= LEFTDOWN
+        materials.add(new AutoRunner(AutoRunner.LEFT));            // 18= LEFT
+        materials.add(new AutoRunner(AutoRunner.LEFTUP));          // 19= LEFTUP
+        materials.add(new AutoRunner(AutoRunner.STOP));            // 20= STOP
         int[][] program2 = {
                 {BinaryLock.NARROW},
                 {2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 2, 9, 2, 3, 8, 2, 4, 8, 2, 5, 9, 2},
@@ -56,25 +56,25 @@ class RO5 extends Level {
                 {2, 9, 2, 3, 8, 2, 4, 8, 2, 5, 9, 2, 1, 9, 0, 1, 8, 0, 6, 9, 0, 6, 8, 0},
                 {2, 10, 2, 3, 10, 2, 4, 10, 2, 5, 10, 2, 2, 9, 0, 3, 8, 0, 4, 8, 0, 5, 9, 0},
         };
-        materials.addElement(new BinaryLock(Color.blue, program2));       // 21=Lock
-        materials.addElement(new HotWires(HotWires.LEFT + HotWires.RIGHT, true)); // 22=HotWire
-        materials.addElement(new HotWires(HotWires.LEFT + HotWires.DOWN, true));  // 23=HotWire
-        materials.addElement(new HotWires(HotWires.UP + HotWires.DOWN, true));    // 24=HotWire
-        materials.addElement(new DeactivatorSwitch());                     // 25=Deactivator
-        materials.addElement(new CrystalRecharger());                      // 26=Recharger
+        materials.add(new BinaryLock(Color.blue, program2));       // 21=Lock
+        materials.add(new HotWires(HotWires.LEFT + HotWires.RIGHT, true)); // 22=HotWire
+        materials.add(new HotWires(HotWires.LEFT + HotWires.DOWN, true));  // 23=HotWire
+        materials.add(new HotWires(HotWires.UP + HotWires.DOWN, true));    // 24=HotWire
+        materials.add(new DeactivatorSwitch());                     // 25=Deactivator
+        materials.add(new CrystalRecharger());                      // 26=Recharger
         int[][] program3 = {
                 {BinaryLock.NARROW}
         };
-        materials.addElement(new BinaryLock(Color.white, program3));       // 27=BinaryLock2
-        materials.addElement(new MultiSwitch(0, 0));                        // 28=Starter
-        materials.addElement(new MultiSwitch(1, 0));                        // 29=1
-        materials.addElement(new MultiSwitch(2, 0));                        // 30=2
-        materials.addElement(new MultiSwitch(3, 0));                        // 31=3
-        materials.addElement(new MultiSwitch(4, 0));                        // 32=4
-        materials.addElement(new HotWires(0, true));                        // 33=BlueGrid
-        materials.addElement(new CameraEnable());                          // 34=CameraEnable
-        materials.addElement(new CameraDisable());                         // 35=Cam Disable
-        materials.addElement(new BlueGridSwitch());                        // 36=BlueGridOff
+        materials.add(new BinaryLock(Color.white, program3));       // 27=BinaryLock2
+        materials.add(new MultiSwitch(0, 0));                        // 28=Starter
+        materials.add(new MultiSwitch(1, 0));                        // 29=1
+        materials.add(new MultiSwitch(2, 0));                        // 30=2
+        materials.add(new MultiSwitch(3, 0));                        // 31=3
+        materials.add(new MultiSwitch(4, 0));                        // 32=4
+        materials.add(new HotWires(0, true));                        // 33=BlueGrid
+        materials.add(new CameraEnable());                          // 34=CameraEnable
+        materials.add(new CameraDisable());                         // 35=Cam Disable
+        materials.add(new BlueGridSwitch());                        // 36=BlueGridOff
         int[][] program4 = {
                 {-12}, // {Switch.WAIT4PLAYERCONTACT},
 //	     {Switch.WAIT4CONTACT},
@@ -94,7 +94,7 @@ class RO5 extends Level {
                 {Switch.REPLACE, 2, 0, 9, 3, 0, 9, 4, 0, 9, 5, 0, 9},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_RIGHT, program4)); //37=Grid door Switch
+        materials.add(new Switch(Switch.ROT_RIGHT, program4)); //37=Grid door Switch
         int[][] program5 = {
                 {BinaryLock.NARROW},
                 {6, 2, 2, 9, 2, 0, 10, 2, 0, 13, 2, 2},
@@ -103,23 +103,23 @@ class RO5 extends Level {
                 {5, 2, 0, 8, 2, 2, 11, 2, 2, 14, 2, 0},
                 {6, 2, 0, 9, 2, 2, 10, 2, 2, 13, 2, 0}
         };
-        materials.addElement(new BinaryLock(Color.blue, program5)); //38=Binary Lock
-        materials.addElement(new MultiButton(0, 1)); // 39= MultiButton Starter
-        materials.addElement(new MultiButton(1, 0)); // 40= Multibutton 1
-        materials.addElement(new MultiButton(2, 0)); // 41= Multibutton 2
-        materials.addElement(new MultiButton(3, 0)); // 42= Multibutton 3
-        materials.addElement(new MultiButton(4, 0)); // 43= Multibutton 4
-        materials.addElement(new MultiButton(5, 0)); // 44= Multibutton 5
-        materials.addElement(new MultiButton(6, 0)); // 45= Multibutton 6
-        materials.addElement(new MultiButton(7, 0)); // 46= Multibutton 7
-        materials.addElement(new MultiButton(8, 0)); // 47= Multibutton 8
-        materials.addElement(new MultiButton(9, 0)); // 48= Multibutton 9
-        materials.addElement(new SkyGuardMat());       // 49= SkyGuard
+        materials.add(new BinaryLock(Color.blue, program5)); //38=Binary Lock
+        materials.add(new MultiButton(0, 1)); // 39= MultiButton Starter
+        materials.add(new MultiButton(1, 0)); // 40= Multibutton 1
+        materials.add(new MultiButton(2, 0)); // 41= Multibutton 2
+        materials.add(new MultiButton(3, 0)); // 42= Multibutton 3
+        materials.add(new MultiButton(4, 0)); // 43= Multibutton 4
+        materials.add(new MultiButton(5, 0)); // 44= Multibutton 5
+        materials.add(new MultiButton(6, 0)); // 45= Multibutton 6
+        materials.add(new MultiButton(7, 0)); // 46= Multibutton 7
+        materials.add(new MultiButton(8, 0)); // 47= Multibutton 8
+        materials.add(new MultiButton(9, 0)); // 48= Multibutton 9
+        materials.add(new SkyGuardMat());       // 49= SkyGuard
 
-        materials.addElement(new Material(new Color(192, 192, 255), true, true)); // 50=False wall
+        materials.add(new Material(new Color(192, 192, 255), true, true)); // 50=False wall
 
         for (int a = 0; a < 38; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         String[] skyway0 = {"skyway00.gif", "skyway01.gif", "skyway02.gif"};
@@ -133,7 +133,7 @@ class RO5 extends Level {
         String[] skyguard = {"skyguard0.gif", "skyguard1.gif", "skyguard2.gif", "skyguard3.gif", "skyguard4.gif"};
 
         {// Room  0 Help 
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -166,7 +166,7 @@ class RO5 extends Level {
                     96, 346, 500);
         }
         {// Room  1 Entrance: Locked Door 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2},
@@ -184,7 +184,7 @@ class RO5 extends Level {
 
         }
         {// Room  2 Entrance Chamber 
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2},
@@ -202,7 +202,7 @@ class RO5 extends Level {
 
         }
         {// Room  3 Skyway 
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -219,23 +219,23 @@ class RO5 extends Level {
             };
 
             room.AddTextBox("The Skyways of Robotropolis", 118, 86, 560);
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway1, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway3, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway4, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway5, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway7, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway1, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway2, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway3, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway1, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway3, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway4, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway5, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway7, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway1, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway2, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway3, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  4 Skyway 
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -251,23 +251,23 @@ class RO5 extends Level {
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0}
             };
 
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway4, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway6, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway7, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway1, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway2, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway3, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway4, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway5, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway6, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway7, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway4, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway6, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway7, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway1, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway2, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway3, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway4, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway5, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway6, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway7, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  5 Skyway 
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -284,23 +284,23 @@ class RO5 extends Level {
             };
 
             room.AddTextBox("I left my nodes in Robotropolis.", 160, 98, 250);
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway2, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway4, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway6, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway1, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway3, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway5, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway7, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway3, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway6, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway1, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway2, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway4, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway6, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway1, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway3, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway5, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway7, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway3, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway6, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway1, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  6 Skyway 
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -316,23 +316,23 @@ class RO5 extends Level {
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0}
             };
 
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway4, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway7, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway5, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway4, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway1, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway5, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway2, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway6, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway3, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway7, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway4, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway7, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway5, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway4, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway1, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway5, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway2, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway6, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway3, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway7, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  7 Skyway 
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -349,23 +349,23 @@ class RO5 extends Level {
             };
 
             room.AddTextBox("I'll have a ramburger and chips to go.", 160, 96, 300);
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway7, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway4, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway1, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway3, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway6, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway4, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway2, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway0, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway2, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway7, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway4, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway1, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway3, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway0, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway6, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway4, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway2, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  8 Skyway 
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0},
                     {0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0},
@@ -381,23 +381,23 @@ class RO5 extends Level {
                     {0, 0, 0, 4, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 49, 4, 0, 0, 0}
             };
 
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway7, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
-            items.addElement(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway3, -4));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway1, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
-            items.addElement(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway7, 2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway5, -2));
-            items.addElement(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway4, -2));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway3, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway2, 4));
-            items.addElement(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway1, 4));
-            items.addElement(new SkyGuard(4 * 28, 0, room, 4));
-            items.addElement(new SkyGuard(10 * 28, 11 * 32, room, 4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 2 * 32, room, skyway7, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 5 * 32, room, skyway5, -4));
+            items.add(new SkywayFlyer(5 * 28 + 2, 8 * 32, room, skyway3, -4));
+            items.add(new SkywayFlyer(8 * 28 + 2, 2 * 32, room, skyway1, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 5 * 32, room, skyway0, 2));
+            items.add(new SkywayFlyer(8 * 28 + 2, 8 * 32, room, skyway7, 2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 2 * 32, room, skyway6, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 5 * 32, room, skyway5, -2));
+            items.add(new SkywayFlyer(11 * 28 + 2, 8 * 32, room, skyway4, -2));
+            items.add(new SkywayFlyer(14 * 28 + 2, 2 * 32, room, skyway3, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 5 * 32, room, skyway2, 4));
+            items.add(new SkywayFlyer(14 * 28 + 2, 8 * 32, room, skyway1, 4));
+            items.add(new SkyGuard(4 * 28, 0, room, 4));
+            items.add(new SkyGuard(10 * 28, 11 * 32, room, 4));
         }
         {// Room  9 Pinto Puzzle 
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4},
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4},
@@ -424,10 +424,10 @@ class RO5 extends Level {
             room.AddGraphix("whiteVertical.gif", 14 * 28, 2 * 32);
             int[] pace = {14 * 28, 3 * 32, 14 * 28, 9 * 32};
             int[] protect = {14 * 28, 2 * 32, 19 * 28, 10 * 32, 10 * 28, 0};
-            items.addElement(new Sentry(14 * 28, 3 * 32, room, pace, protect, false));
+            items.add(new Sentry(14 * 28, 3 * 32, room, pace, protect, false));
         }
         {// Room 10 First Sentry, Upper 
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 8, 8, 0, 0, 8, 0, 0, 0, 0, 8, 0, 0, 0, 0, 8},
@@ -445,10 +445,10 @@ class RO5 extends Level {
 
             int[] pace = {11 * 28, 3 * 32, 11 * 28, 10 * 32};
             int[] program = {4 * 28, 0, 13 * 28, 11 * 32, 0, 3 * 32, 13 * 28, 0, 18 * 28, 11 * 32, 19 * 28, 8 * 32};
-            items.addElement(new Sentry(11 * 28, 3 * 32, room, pace, program, false));
+            items.add(new Sentry(11 * 28, 3 * 32, room, pace, program, false));
         }
         {// Room 11 Sound Lock 
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 8, 0, 0, 0, 8},
@@ -474,10 +474,10 @@ class RO5 extends Level {
                     {SonicLock.MODIFY, 16, 4, 8, 17, 5, 8, 17, 6, 8, 16, 7, 8, 16, 3, 0, 17, 3, 0, 16, 8, 0, 17, 8, 0},
                     {SonicLock.MODIFY, 15, 4, 8, 15, 5, 8, 15, 6, 8, 15, 7, 8, 16, 4, 0, 17, 5, 0, 17, 6, 0, 16, 7, 0}
             };
-            items.addElement(new SonicLock(18 * 28, 5 * 32 + 15, room, program));
+            items.add(new SonicLock(18 * 28, 5 * 32 + 15, room, program));
         }
         {// Room 12 Path after Disk Drive 
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.RoomArray = new int[][]{
                     {8, 8, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -495,7 +495,7 @@ class RO5 extends Level {
 
         }
         {// Room 13 Chamber before Hot Wires 
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.RoomArray = new int[][]{
                     {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
                     {9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9},
@@ -513,7 +513,7 @@ class RO5 extends Level {
 
         }
         {// Room 14 Dark Maze 
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.RoomArray = new int[][]{
                     {10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 10, 10, 0, 0, 0, 10},
                     {10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 10, 10, 0, 0, 0, 10},
@@ -536,7 +536,7 @@ class RO5 extends Level {
             room.AddArrow(360, 192, Arrow.DIR_RIGHT, 30, Color.white);
         }
         {// Room 15 First Sentry, Lower 
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.RoomArray = new int[][]{
                     {8, 0, 0, 0, 8, 8, 8, 8, 8, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 8},
@@ -554,7 +554,7 @@ class RO5 extends Level {
 
         }
         {// Room 16 Rest Stop 
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0},
@@ -574,7 +574,7 @@ class RO5 extends Level {
             room.AddTextBox("Next Rest Stop 50 Klicks.", 130, 4 * 28, 500);
         }
         {// Room 17 Timer Sentry Button 
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.RoomArray = new int[][]{
                     {3, 3, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3},
                     {0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -597,7 +597,7 @@ class RO5 extends Level {
             room.AddArrow(3 * 28, 10 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         {// Room 18 Hot Wire Room 
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -616,10 +616,10 @@ class RO5 extends Level {
             room.AddTextBox("Hot wires burn batteries...", 80, 60, 560);
             int[] pace = {2 * 28, 5 * 32, 11 * 28, 5 * 32};
             int[] program = {4 * 28, 0, 12 * 28, 11 * 32, 0, 5 * 32};
-            items.addElement(new Sentry(2 * 28, 5 * 32, room, pace, program, true));
+            items.add(new Sentry(2 * 28, 5 * 32, room, pace, program, true));
         }
         {// Room 19 Chamber before Disk Drive 
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -639,7 +639,7 @@ class RO5 extends Level {
             room.AddArrow(18 * 28, 6 * 32 + 8, Arrow.DIR_RIGHT, 2 * 28, Color.white);
         }
         {// Room 20 Path after Disk Drive 
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -657,7 +657,7 @@ class RO5 extends Level {
 
         }
         {// Room 21 Dark Maze 
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.RoomArray = new int[][]{
                     {10, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 0, 0, 0, 10, 10, 0, 0, 0, 10},
                     {10, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 0, 0, 0, 10},
@@ -680,7 +680,7 @@ class RO5 extends Level {
             room.AddArrow(360, 192, Arrow.DIR_RIGHT, 30, Color.white);
         }
         {// Room 22 Dark Maze 
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.RoomArray = new int[][]{
                     {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                     {10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -703,7 +703,7 @@ class RO5 extends Level {
             room.AddArrow(360, 192, Arrow.DIR_RIGHT, 30, Color.white);
         }
         {// Room 23 Dark Maze 
-            Room room = rooms.elementAt(23);
+            Room room = rooms.get(23);
             room.RoomArray = new int[][]{
                     {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10},
@@ -726,7 +726,7 @@ class RO5 extends Level {
             room.AddArrow(360, 192, Arrow.DIR_RIGHT, 30, Color.white);
         }
         {// Room 24 Dark Maze 
-            Room room = rooms.elementAt(24);
+            Room room = rooms.get(24);
             room.RoomArray = new int[][]{
                     {10, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10, 10, 10, 10, 10, 10, 10, 10, 0, 10},
                     {10, 0, 0, 0, 0, 0, 0, 0, 10, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 10},
@@ -749,7 +749,7 @@ class RO5 extends Level {
             room.AddArrow(360, 192, Arrow.DIR_RIGHT, 30, Color.white);
         }
         {// Room 25 Grid Puzzle 
-            Room room = rooms.elementAt(25);
+            Room room = rooms.get(25);
             room.RoomArray = new int[][]{
                     {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
                     {9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 33, 33, 33, 33, 9, 9},
@@ -765,7 +765,7 @@ class RO5 extends Level {
                     {9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9}
             };
 
-            items.addElement(new HiddenCamera(room));
+            items.add(new HiddenCamera(room));
             room.AddTextBox("00", 28, 350, 100);
             room.AddTextBox("Timer", 4 * 28, 350, 100);
             room.AddArrow(3 * 28, 10 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
@@ -783,7 +783,7 @@ class RO5 extends Level {
             room.AddGraphix("blueVertical.gif", 18 * 28 - 6, 34);
         }
         {// Room 26 Grid puzzle map 
-            Room room = rooms.elementAt(26);
+            Room room = rooms.get(26);
             room.RoomArray = new int[][]{
                     {9, 9, 0, 0, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
                     {9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9},
@@ -832,7 +832,7 @@ class RO5 extends Level {
 
         }
         {// Room 27 Final Puzzle 
-            Room room = rooms.elementAt(27);
+            Room room = rooms.get(27);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 2, 38, 0, 0, 39, 2, 0, 0, 0, 0, 0, 0, 2},
@@ -864,7 +864,7 @@ class RO5 extends Level {
             room.AddArrow(8 * 28 + 14, 10 * 32, Arrow.DIR_DOWN, 32, Color.white);
         }
         {// Room 28 Disk Drive Entrance 
-            Room room = rooms.elementAt(28);
+            Room room = rooms.get(28);
             room.RoomArray = new int[][]{
                     {0, 8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 8, 0, 8, 0, 8, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -883,7 +883,7 @@ class RO5 extends Level {
             room.AddTextBox("{BIG} {255,255,255}  Robart ", 320, 208, 560);
         }
         {// Room 29 Disk Drive Path 
-            Room room = rooms.elementAt(29);
+            Room room = rooms.get(29);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 12, 12, 12, 8, 0, 0, 0},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 12, 12, 12, 8, 0, 0, 0},
@@ -902,7 +902,7 @@ class RO5 extends Level {
             room.AddTextBox("{BIG} {255,255,255} RO400 Disk Drive", 12, 208, 560);
         }
         {// Room 30 Disk Drive Top Left 
-            Room room = rooms.elementAt(30);
+            Room room = rooms.get(30);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 18, 18},
@@ -921,7 +921,7 @@ class RO5 extends Level {
             room.AddTextBox("On a clear disk you can seek forever...", 200, 188, 300);
         }
         {// Room 31 Disk Drive Top Right 
-            Room room = rooms.elementAt(31);
+            Room room = rooms.get(31);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {18, 18, 18, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
@@ -939,7 +939,7 @@ class RO5 extends Level {
 
         }
         {// Room 32 Disk Drive Bottom Right 
-            Room room = rooms.elementAt(32);
+            Room room = rooms.get(32);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 12, 13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 7},
                     {7, 7, 7, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 12, 12, 12, 12, 12, 12, 7},
@@ -957,7 +957,7 @@ class RO5 extends Level {
 
         }
         {// Room 33 Disk Drive Bottom Left 
-            Room room = rooms.elementAt(33);
+            Room room = rooms.get(33);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 16, 16, 16, 16, 16, 16, 7, 7, 7, 7},
                     {14, 14, 14, 15, 15, 15, 16, 7, 7, 16, 16, 16, 16, 16, 16, 16, 0, 7, 7, 7},
@@ -976,7 +976,7 @@ class RO5 extends Level {
             room.AddTextBox("Welcome to", 284, 222, 250);
             room.AddTextBox("The Robotropolis", 248, 242, 250);
             room.AddTextBox("Disk-O-Tek", 316, 262, 250);
-            items.addElement(new BinaryKey(9 * 28, 1 * 32, room));
+            items.add(new BinaryKey(9 * 28, 1 * 32, room));
             String[] disco1 = {"disco0.gif", "disco1.gif"};
             String[] disco2 = {"disco2.gif", "disco3.gif"};
             String[] disco3 = {"disco4.gif", "disco5.gif"};
@@ -985,7 +985,7 @@ class RO5 extends Level {
             room.AddGraphix(disco3, 16 * 28, 9 * 32);
         }
         {// Room 34 Disk Drive Path 
-            Room room = rooms.elementAt(34);
+            Room room = rooms.get(34);
             room.RoomArray = new int[][]{
                     {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 12, 12, 12, 9, 9, 9, 9},
                     {9, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 12, 12, 12, 9, 0, 0, 0},
@@ -1003,7 +1003,7 @@ class RO5 extends Level {
 
         }
         {// Room 35 Disk Drive Path 
-            Room room = rooms.elementAt(35);
+            Room room = rooms.get(35);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14},
@@ -1021,7 +1021,7 @@ class RO5 extends Level {
 
         }
         {// Room 36 Chamber after Grid Puzzle 
-            Room room = rooms.elementAt(36);
+            Room room = rooms.get(36);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2},
@@ -1040,7 +1040,7 @@ class RO5 extends Level {
         }
 
         {// Room 37 Secret Room 
-            Room room = rooms.elementAt(37);
+            Room room = rooms.get(37);
             room.SetMaterialOutline(0, 0, 19, 11, 2);
             room.SetMaterial(16, 0, 0);
             room.AddTextBox("All right! You've found the fifth secret.", 2 * 28, 4 * 32, 500);
@@ -1059,8 +1059,8 @@ class RO5 extends Level {
                     "helper5.gif", "helper5.gif", "helper5.gif", "helper5.gif",
             };
             Graphix helper = new Graphix(helperlist, 15 * 28, 8 * 32);
-            room.graphix.addElement(helper);
-            items.addElement(new Key(16 * 28, 3 * 32, room, new Color(255, 0, 255)));
+            room.graphix.add(helper);
+            items.add(new Key(16 * 28, 3 * 32, room, new Color(255, 0, 255)));
         }
 
         int[] skyways = {8, 7, 6, 5, 4, 3, 1};
@@ -1092,19 +1092,19 @@ class RO5 extends Level {
         LinkRoomsUpDown(21, 14);
         LinkRoomsUpDown(23, 24);
 
-        rooms.elementAt(24).rightRoom = rooms.elementAt(14); // 1-way connection
+        rooms.get(24).rightRoom = rooms.get(14); // 1-way connection
 
         int[] roomlist4 = {13, 16, 9, 26, 25, 36, 27};
         LinkRoomsVertically(roomlist4);
 
-        gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

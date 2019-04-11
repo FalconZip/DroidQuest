@@ -12,7 +12,7 @@ public class MazeCreator extends Button {
     public boolean CanBePickedUp(Item item) {
         Room mazeEntrance = null;
         for (int a = 0; a < level.rooms.size(); a++) {
-            Room r = level.rooms.elementAt(a);
+            Room r = level.rooms.get(a);
             if (r.downRoom != null) {
                 if (!r.editable && r.downRoom.editable) {
                     mazeEntrance = r;
@@ -21,7 +21,7 @@ public class MazeCreator extends Button {
         }
 
         for (int a = 0; a < level.items.size(); a++) {
-            Item i = level.items.elementAt(a);
+            Item i = level.items.get(a);
             if (i.room != null) {
                 if (i.room.editable) {
                     i.room = room;
@@ -29,13 +29,8 @@ public class MazeCreator extends Button {
             }
         }
 
-        for (int a = 0; a < level.rooms.size(); a++) {
-            Room r = level.rooms.elementAt(a);
-            if (r.editable) {
-                level.rooms.removeElement(r);
-                a--;
-            }
-        }
+        level.rooms.removeIf(r -> r.editable);
+
         if(mazeEntrance != null) {
             mazeEntrance.downRoom = null;
         }
@@ -45,14 +40,14 @@ public class MazeCreator extends Button {
                 Room newRoom = new Room();
                 newRoom.editable = true;
                 newRoom.GenerateArray();
-                level.rooms.addElement(newRoom);
+                level.rooms.add(newRoom);
                 if (Y == 0) {
                     for (int a = 0; a < 20; a++) {
                         newRoom.SetMaterial(a, 0, 3);
                     }
                 }
                 else {
-                    Room UpRoom = level.rooms.elementAt(level.rooms.size() - 1 - MazeControl.mazeWidth);
+                    Room UpRoom = level.rooms.get(level.rooms.size() - 1 - MazeControl.mazeWidth);
                     UpRoom.downRoom = newRoom;
                     newRoom.upRoom = UpRoom;
                 }
@@ -68,7 +63,7 @@ public class MazeCreator extends Button {
                     }
                 }
                 else {
-                    Room LeftRoom = level.rooms.elementAt(level.rooms.size() - 2);
+                    Room LeftRoom = level.rooms.get(level.rooms.size() - 2);
                     LeftRoom.rightRoom = newRoom;
                     newRoom.leftRoom = LeftRoom;
                 }

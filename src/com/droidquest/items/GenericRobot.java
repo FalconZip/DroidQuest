@@ -91,7 +91,7 @@ public class GenericRobot extends Item {
         InternalRoom.RoomArray[9][2] = battOutIndex;
         InternalRoom.RoomArray[9][3] = battInIndex;
         InternalRoom.portalItem = this;
-        level.rooms.addElement(InternalRoom);
+        level.rooms.add(InternalRoom);
         InternalRoom.upRoom = null;
         InternalRoom.downRoom = null;
         InternalRoom.leftRoom = null;
@@ -106,7 +106,7 @@ public class GenericRobot extends Item {
         upPortal = new Rectangle(10, -30, 12, 18);
         downPortal = new Rectangle(10, 24, 12, 18);
 
-        level.items.addElement(new PowerSwitch(17 * 28 - 4, 9 * 32 - 4, InternalRoom));
+        level.items.add(new PowerSwitch(17 * 28 - 4, 9 * 32 - 4, InternalRoom));
 
         GenerateIcons();
         Animate();
@@ -123,8 +123,8 @@ public class GenericRobot extends Item {
 //	icons[0]= new ImageIcon(new BufferedImage(122,92,BufferedImage.TYPE_4BYTE_ABGR));
         icons[0] = new ImageIcon(new BufferedImage(84, 84, BufferedImage.TYPE_4BYTE_ABGR));
         currentIcon = icons[0].getImage();
-        ((BatteryIn) level.materials.elementAt(InternalRoom.RoomArray[9][3])).robot = this;
-        ((BatteryOut) level.materials.elementAt(InternalRoom.RoomArray[9][2])).robot = this;
+        ((BatteryIn) level.materials.get(InternalRoom.RoomArray[9][3])).robot = this;
+        ((BatteryOut) level.materials.get(InternalRoom.RoomArray[9][2])).robot = this;
         images = new ImageIcon[10];
         for (int a = 0; a < 10; a++) {
 //	     images[a] = new ImageIcon( new BufferedImage(122,92,BufferedImage.TYPE_4BYTE_ABGR));
@@ -308,23 +308,23 @@ public class GenericRobot extends Item {
             int X = d.width;
             int Y = d.height;
             if (topThruster) {
-                level.sparks.addElement(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
-                level.sparks.addElement(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
+                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
+                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
                 charge -= 2;
             }
             if (rightThruster) {
-                level.sparks.addElement(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
-                level.sparks.addElement(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
+                level.sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
+                level.sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
                 charge -= 2;
             }
             if (bottomThruster) {
-                level.sparks.addElement(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
-                level.sparks.addElement(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
+                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
+                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
                 charge -= 2;
             }
             if (leftThruster) {
-                level.sparks.addElement(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
-                level.sparks.addElement(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
+                level.sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
+                level.sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
                 charge -= 2;
             }
             charge--;
@@ -337,7 +337,7 @@ public class GenericRobot extends Item {
         // Draw Antenna sparks around Broadcasting Antenna
         if (broadcasting && level.electricity) {
             Dimension d = GetXY();
-            level.sparks.addElement(new Spark(d.width - orgX + 34, d.height - orgY + 10,
+            level.sparks.add(new Spark(d.width - orgX + 34, d.height - orgY + 10,
                     level.random.nextInt(9) - 4,
                     level.random.nextInt(9) - 4,
                     room));

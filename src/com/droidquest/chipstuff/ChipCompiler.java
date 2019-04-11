@@ -1,5 +1,7 @@
 package com.droidquest.chipstuff;
 
+import java.util.Iterator;
+
 import com.droidquest.Wire;
 import com.droidquest.devices.Device;
 import com.droidquest.devices.FlipFlop;
@@ -13,30 +15,29 @@ public class ChipCompiler extends Thread {
     public ChipCompiler(PrototypeChip pc, SmallChip sc) {
         pc.grabbable = false;
         sc.grabbable = false;
-        int a;
 
         sc.Empty();
 
-        for (a = 0; a < pc.InternalRoom.wires.size(); a++) {
-            sc.signals.addElement(new Signal());
+        for (int a = 0; a < pc.InternalRoom.wires.size(); a++) {
+            sc.signals.add(new Signal());
         }
 
         Signal dummy = new Signal();
         dummy.working = false;
-        sc.signals.addElement(dummy);
+        sc.signals.add(dummy);
 
-        for (a = 0; a < 8; a++) {
+        for (int a = 0; a < 8; a++) {
             Wire wire = pc.portdevices[a].ports[0].myWire;
             int index = pc.InternalRoom.wires.indexOf(wire);
             if (index >= 0) {
-                sc.portSignals[a].internalSignal = sc.signals.elementAt(index);
+                sc.portSignals[a].internalSignal = sc.signals.get(index);
             }
             sc.ports[a].type = pc.ports[a].type;
             sc.portSignals[a].type = pc.ports[a].type;
         }
 
-        for (a = 0; a < pc.level.items.size(); a++) {
-            Item item = pc.level.items.elementAt(a);
+        for (int a = 0; a < pc.level.items.size(); a++) {
+            Item item = pc.level.items.get(a);
             if (item.room == pc.InternalRoom) {
                 if (item.isDevice()) {
                     Device device = (Device) item;
@@ -65,11 +66,11 @@ public class ChipCompiler extends Thread {
                         gate = new Gate((SmallChip) device);
                     }
                     if (gate != null) {
-                        sc.gates.addElement(gate);
+                        sc.gates.add(gate);
                         for (int p = 0; p < device.ports.length; p++) {
                             if (device.ports[p].myWire != null) {
                                 int index = pc.InternalRoom.wires.indexOf(device.ports[p].myWire);
-                                gate.portSignals[p].externalSignal = sc.signals.elementAt(index);
+                                gate.portSignals[p].externalSignal = sc.signals.get(index);
                             }
                             else {
                                 gate.portSignals[p].externalSignal = dummy;
@@ -81,9 +82,9 @@ public class ChipCompiler extends Thread {
         }
 
         // Remove Node Gates, and transfer Signals
-        for (a = 0; a < sc.gates.size(); a++) //For every Gate in the chip
+        for (Iterator<Gate> it = sc.gates.iterator(); it.hasNext();) //For every Gate in the chip
         {
-            Gate gate1 = sc.gates.elementAt(a);
+            Gate gate1 = it.next();
             if (gate1.type.equals("NODE")) {
                 for (int ap = 1; ap < 4; ap++) // For every output Signal in the Node
                 {
@@ -91,7 +92,7 @@ public class ChipCompiler extends Thread {
                     if (s1 != null && s1 != dummy) {
                         for (int b = 0; b < sc.gates.size(); b++) // For every other Gate in the Chip
                         {
-                            Gate gate2 = sc.gates.elementAt(b);
+                            Gate gate2 = sc.gates.get(b);
                             if (gate1 != gate2) {
                                 for (int bp = 0; bp < 8; bp++) // For every Signal connection in that other gate
                                 {
@@ -112,17 +113,16 @@ public class ChipCompiler extends Thread {
                         }
                     }
                 }
-                sc.gates.removeElement(gate1);
-                a--;
+                it.remove();;
             }
         }
 
         // Remove unused Signals
-        for (a = 0; a < sc.signals.size(); a++) {
+        for (Iterator<Signal> it = sc.signals.iterator(); it.hasNext();) {
             boolean used = false;
-            Signal sig1 = sc.signals.elementAt(a);
+            Signal sig1 = it.next();
             for (int g = 0; g < sc.gates.size(); g++) {
-                Gate gate = sc.gates.elementAt(g);
+                Gate gate = sc.gates.get(g);
                 for (int s = 0; s < 8; s++) {
                     Signal sig2 = gate.portSignals[s].externalSignal;
                     if (sig2 != null)
@@ -139,13 +139,12 @@ public class ChipCompiler extends Thread {
                 }
             }
             if (!used) {
-                sc.signals.removeElement(sig1);
-                a--;
+                it.remove();
             }
         }
 
         // Set Signal types
-        for (a = 0; a < 8; a++) {
+        for (int a = 0; a < 8; a++) {
             if (sc.portSignals[a] != null) {
                 sc.portSignals[a].type = sc.ports[a].type;
             }
@@ -154,8 +153,8 @@ public class ChipCompiler extends Thread {
         // Debug report
         System.out.println(sc.signals.size() + " Signals");
         System.out.println(sc.gates.size() + " Gates");
-        for (a = 0; a < sc.gates.size(); a++) {
-            Gate gate1 = sc.gates.elementAt(a);
+        for (int a = 0; a < sc.gates.size(); a++) {
+            Gate gate1 = sc.gates.get(a);
             for (int b = 0; b < 8; b++) {
                 if (gate1.portSignals[b].externalSignal != null) {
                     System.out.println(a + ": " + gate1.type
@@ -166,7 +165,7 @@ public class ChipCompiler extends Thread {
                 }
             }
         }
-        for (a = 0; a < 8; a++) {
+        for (int a = 0; a < 8; a++) {
             if (sc.portSignals[a].internalSignal != null) {
                 System.out.println("PortSignal "
                         + a

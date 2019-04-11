@@ -21,30 +21,30 @@ class ROTutD extends Level {
         super(rd);
 
         // Material 0, Blank
-        materials.addElement(new Material(true, false));
+        materials.add(new Material(true, false));
         // Material 1, LightBlue Wall 
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));
+        materials.add(new Material(new Color(192, 192, 255), false, true));
         // Material 2, Green Wall 
-        materials.addElement(new Material(new Color(0, 255, 0), false, true));
+        materials.add(new Material(new Color(0, 255, 0), false, true));
         // Material 3, Orange Wall
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));
+        materials.add(new Material(new Color(255, 128, 0), false, true));
         // Material 4, LightOrange Wall 
-        materials.addElement(new Material(new Color(255, 224, 192), false, true));
+        materials.add(new Material(new Color(255, 224, 192), false, true));
         // Material 5, Blue Wall 
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));
+        materials.add(new Material(new Color(0, 0, 255), false, true));
         // Material 6, Dark Blue Wall 
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));
+        materials.add(new Material(new Color(0, 0, 128), false, true));
         // Material 7, Portal to next Tutorial
-        materials.addElement(new Portal("ROTutE.lvl", false, true));
+        materials.add(new Portal("ROTutE.lvl", false, true));
         // Material 8, Portal to Main Menu
-        materials.addElement(new Portal("MainMenu.lvl", false, true));
+        materials.add(new Portal("MainMenu.lvl", false, true));
 
         for (int a = 0; a < 31; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         { // Room 0, Help Screen 
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.SetMaterialOutline(0, 0, 19, 11, 2);
             room.AddTextBox("SPECIAL KEYS",
                     7 * 28, 2 * 32, 500);
@@ -60,7 +60,7 @@ class ROTutD extends Level {
                     4 * 28, 10 * 32, 500);
         }
         { // Room 1, Title Screen 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(19, 6, 19, 8, 0);
             room.SetMaterial(0, 10, 0);
@@ -72,7 +72,7 @@ class ROTutD extends Level {
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 2, Freeze Electricity 
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 6, 19, 8, 0);
             room.AddTextBox("This circuit was made by connecting wires between the INPUTS and OUTPUTS of two parts from the Toolkit. Use the Remote Control to stop and start the flow of electricity in the circuit.",
@@ -82,13 +82,13 @@ class ROTutD extends Level {
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             Node node = new Node(10 * 28, 5 * 32, room, Node.TYPE_STRAIGHT);
             NOTGate notgate = new NOTGate(15 * 28, 6 * 32, room);
-            items.addElement(node);
-            items.addElement(notgate);
+            items.add(node);
+            items.add(notgate);
             Wire wire = new Wire(node.ports[0], notgate.ports[1]);
             wire = new Wire(notgate.ports[0], node.ports[2]);
         }
         { // Room 3, Move parts 
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 6, 0, 8, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -99,13 +99,13 @@ class ROTutD extends Level {
             room.AddArrow(17 * 28, 559, Arrow.DIR_DOWN, 28, Color.white);
             Node node = new Node(10 * 28, 7 * 32, room, Node.TYPE_STRAIGHT);
             NOTGate notgate = new NOTGate(15 * 28, 6 * 32, room);
-            items.addElement(node);
-            items.addElement(notgate);
+            items.add(node);
+            items.add(notgate);
             Wire wire = new Wire(node.ports[0], notgate.ports[1]);
             wire = new Wire(notgate.ports[0], node.ports[2]);
         }
         { // Room 4, Toolkit 
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
@@ -115,10 +115,10 @@ class ROTutD extends Level {
                     2 * 28, 5 * 32, 300);
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             toolbox = new ToolBox(16 * 28, 9 * 32, room);
-            items.addElement(toolbox);
+            items.add(toolbox);
         }
         { // Room 5, Open & close 
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterialOutline(1, 11, 3, 11, 0);
@@ -132,7 +132,7 @@ class ROTutD extends Level {
             room.AddArrow(7 * 28, 8 * 32, Arrow.DIR_RIGHT, 56, Color.white);
         }
         { // Room 6, Toolkit Sentry 
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -153,7 +153,7 @@ class ROTutD extends Level {
             items.add(new SentryT2(2 * 28, 2 * 32, room));
         }
         { // Room 7, Summon 
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 4, 0, 7, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -164,7 +164,7 @@ class ROTutD extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 8, Objects in Toolkit 
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("You can take parts in and out of the Toolkit with the cursor.",
@@ -177,7 +177,7 @@ class ROTutD extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 9, Rotating Objects 
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -191,7 +191,7 @@ class ROTutD extends Level {
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 10, Hot Cursor 
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -204,10 +204,10 @@ class ROTutD extends Level {
             room.AddTextBox("Press H again to make the cursor cold.",
                     5 * 28, 10 * 32, 400);
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
-            items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
+            items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
         }
         { // Room 11, Hot Cursor 2 
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -218,10 +218,10 @@ class ROTutD extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             OrangeRobot robot = new OrangeRobot(13 * 28, 4 * 32, room);
             robot.thrusterPower = true;
-            items.addElement(robot);
+            items.add(robot);
         }
         { // Room 12, Crossroads intro 
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("The next room is called the CROSSROADS. From it you can follow various paths to learn about different parts in the Toolkit.",
@@ -229,7 +229,7 @@ class ROTutD extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 13, Crossroads 
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.RoomArray = new int[][]{
                     {6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
@@ -262,7 +262,7 @@ class ROTutD extends Level {
             room.AddArrow(10 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 14, Paths to Nodes & FlipFlops 
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.RoomArray = new int[][]{
                     {6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
@@ -281,7 +281,7 @@ class ROTutD extends Level {
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 15, Nodes Intro 
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 5},
@@ -301,12 +301,12 @@ class ROTutD extends Level {
             room.AddTextBox("Take a node from the Toolkit and carry it to the next room.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            items.addElement(new Node(13 * 28, 32 + 16, room, Node.TYPE_STRAIGHT));
-            items.addElement(new Node(15 * 28, 32 + 16, room, Node.TYPE_RIGHT));
-            items.addElement(new Node(17 * 28, 32 + 16, room, Node.TYPE_THREE));
+            items.add(new Node(13 * 28, 32 + 16, room, Node.TYPE_STRAIGHT));
+            items.add(new Node(15 * 28, 32 + 16, room, Node.TYPE_RIGHT));
+            items.add(new Node(17 * 28, 32 + 16, room, Node.TYPE_THREE));
         }
         { // Room 16, Nodes Workshop 
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0},
@@ -325,13 +325,13 @@ class ROTutD extends Level {
                     2 * 28, 2 * 32, 275);
             room.AddTextBox("Drop the blue key so that it touches the sensor. Electricity flows to both thrusters.",
                     2 * 28, 9 * 32, 500);
-            items.addElement(new Key(11 * 28, 2 * 32, room, Color.white));
-            items.addElement(new ContactSensor(11 * 28, 4 * 32, room, new Key(0, 0, null, Color.white)));
-            items.addElement(new Thruster(15 * 28, 32 + 16, room, Port.ROT_UP, Color.white));
-            items.addElement(new Thruster(16 * 28, 3 * 32, room, Port.ROT_RIGHT, Color.white));
+            items.add(new Key(11 * 28, 2 * 32, room, Color.white));
+            items.add(new ContactSensor(11 * 28, 4 * 32, room, new Key(0, 0, null, Color.white)));
+            items.add(new Thruster(15 * 28, 32 + 16, room, Port.ROT_UP, Color.white));
+            items.add(new Thruster(16 * 28, 3 * 32, room, Port.ROT_RIGHT, Color.white));
         }
         { // Room 17, Flipflop intro 
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.RoomArray = new int[][]{
                     {5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5},
@@ -350,11 +350,11 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 300);
             room.AddTextBox("Take a flipflop from the Toolkit. Put the hot cursor on one input at a time to make the electricity 'flip' or 'flop'.",
                     5 * 28, 6 * 32, 300);
-            items.addElement(new FlipFlop(17 * 28 + 7, 32 + 16, room));
+            items.add(new FlipFlop(17 * 28 + 7, 32 + 16, room));
             room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         { // Room 18, Flipflop workshop 
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -372,16 +372,16 @@ class ROTutD extends Level {
             room.AddTextBox("Go inside the robot and wire the orange OUTPUT of the flipflop to the thruster on the right. Sit on the eye to see what you did.",
                     5 * 28, 8 * 32, 420);
             BlueRobot robot = new BlueRobot(9 * 28, 4 * 32, room);
-            items.addElement(robot);
+            items.add(robot);
             FlipFlop ff = new FlipFlop(10 * 28, 5 * 32, robot.InternalRoom);
-            items.addElement(ff);
+            items.add(ff);
             Wire wire = new Wire(ff.ports[0], robot.devices[7].ports[0]);
             wire = new Wire(ff.ports[2], robot.devices[3].ports[0]);
             wire = new Wire(robot.devices[5].ports[0], ff.ports[1]);
             robot.thrusterPower = true;
         }
         { // Room 19, Crossroads II 
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.RoomArray = new int[][]{
                     {6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -413,7 +413,7 @@ class ROTutD extends Level {
             room.AddArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 20, NOT gate intro 
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.RoomArray = new int[][]{
                     {5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5},
@@ -432,11 +432,11 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 300);
             room.AddTextBox("Take a NOT-gate from the Toolkit and use the hot cursor to see how it works.",
                     5 * 28, 6 * 32, 400);
-            items.addElement(new NOTGate(17 * 28 + 10, 32 + 12, room));
+            items.add(new NOTGate(17 * 28 + 10, 32 + 12, room));
             room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         { // Room 21, NOT gate workshop 
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -455,16 +455,16 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 400);
             room.AddTextBox("The antenna beeps when the crystal is NOT touching the CONTACT sensor.",
                     5 * 28, 8 * 32, 400);
-            items.addElement(new Crystal(3 * 28, 7 * 32, room, 100000));
+            items.add(new Crystal(3 * 28, 7 * 32, room, 100000));
             ContactSensor sensor = new ContactSensor(2 * 28, 6 * 32, room, new Crystal(0, 0, null, 0));
-            items.addElement(sensor);
+            items.add(sensor);
             NOTGate ng = new NOTGate(4 * 28, 4 * 32, room);
-            items.addElement(ng);
-            items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
+            items.add(ng);
+            items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
             Wire wire = new Wire(sensor.ports[0], ng.ports[0]);
         }
         { // Room 22, OR gate intro 
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.RoomArray = new int[][]{
                     {5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5},
@@ -483,11 +483,11 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 300);
             room.AddTextBox("Take an OR-gate from the Toolkit and use the hot cursor to see how it works.",
                     2 * 28, 8 * 32, 400);
-            items.addElement(new ORGate(17 * 28 + 10, 32 + 12, room));
+            items.add(new ORGate(17 * 28 + 10, 32 + 12, room));
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 23, OR workshop 
-            Room room = rooms.elementAt(23);
+            Room room = rooms.get(23);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -506,18 +506,18 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 400);
             room.AddTextBox("The antenna beeps when the key is above OR left of the sensor.",
                     5 * 28, 10 * 32, 400);
-            items.addElement(new Key(3 * 28, 7 * 32, room, Color.blue));
+            items.add(new Key(3 * 28, 7 * 32, room, Color.blue));
             DirectionalSensor sensor = new DirectionalSensor(8 * 28, 6 * 32, room,
                     new Key(0, 0, null, Color.white));
-            items.addElement(sensor);
+            items.add(sensor);
             ORGate og = new ORGate(4 * 28, 4 * 32, room);
-            items.addElement(og);
-            items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
+            items.add(og);
+            items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
             Wire wire = new Wire(sensor.ports[0], og.ports[1]);
             wire = new Wire(sensor.ports[3], og.ports[0]);
         }
         { // Room 24, Paths to AND & XOR 
-            Room room = rooms.elementAt(24);
+            Room room = rooms.get(24);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6},
@@ -536,7 +536,7 @@ class ROTutD extends Level {
             room.AddArrow(5 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 25, AND gate intro 
-            Room room = rooms.elementAt(25);
+            Room room = rooms.get(25);
             room.RoomArray = new int[][]{
                     {5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5},
@@ -555,11 +555,11 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 300);
             room.AddTextBox("Take a AND-gate from the Toolkit and test it with the hot cursor.",
                     5 * 28, 6 * 32, 400);
-            items.addElement(new ANDGate(17 * 28 + 10, 32 + 12, room));
+            items.add(new ANDGate(17 * 28 + 10, 32 + 12, room));
             room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         { // Room 26, AND gate workshop 
-            Room room = rooms.elementAt(26);
+            Room room = rooms.get(26);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -578,18 +578,18 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 400);
             room.AddTextBox("The antenna beeps when the key is left AND up from this DIRECTIONAL sensor.",
                     5 * 28, 9 * 32, 400);
-            items.addElement(new Key(3 * 28, 7 * 32, room, Color.blue));
+            items.add(new Key(3 * 28, 7 * 32, room, Color.blue));
             DirectionalSensor sensor = new DirectionalSensor(5 * 28, 6 * 32, room,
                     new Key(0, 0, null, Color.white));
-            items.addElement(sensor);
+            items.add(sensor);
             ANDGate ag = new ANDGate(4 * 28, 4 * 32, room);
-            items.addElement(ag);
-            items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
+            items.add(ag);
+            items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
             Wire wire = new Wire(sensor.ports[0], ag.ports[1]);
             wire = new Wire(sensor.ports[3], ag.ports[0]);
         }
         { // Room 27, XOR gate intro 
-            Room room = rooms.elementAt(27);
+            Room room = rooms.get(27);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 5},
@@ -608,11 +608,11 @@ class ROTutD extends Level {
                     7 * 28, 2 * 32, 250);
             room.AddTextBox("Take an XOR-gate from the Toolkit and test it with the hot cursor.",
                     2 * 28, 9 * 32, 400);
-            items.addElement(new XORGate(17 * 28 + 10, 32 + 12, room));
+            items.add(new XORGate(17 * 28 + 10, 32 + 12, room));
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 28, XOR workshop 
-            Room room = rooms.elementAt(28);
+            Room room = rooms.get(28);
             room.RoomArray = new int[][]{
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
@@ -631,24 +631,24 @@ class ROTutD extends Level {
                     5 * 28, 2 * 32, 400);
             room.AddTextBox("The antenna beeps when either the key or the crystal is in the room, but not both.",
                     5 * 28, 9 * 32, 400);
-            items.addElement(new Key(2 * 28, 9 * 32, room, Color.blue));
-            items.addElement(new Crystal(2 * 28, 7 * 32, room, 100000));
+            items.add(new Key(2 * 28, 9 * 32, room, Color.blue));
+            items.add(new Crystal(2 * 28, 7 * 32, room, 100000));
             RoomSensor sensor1 = new RoomSensor(8 * 28, 6 * 32, room, new Key(0, 0, null, Color.white));
             RoomSensor sensor2 = new RoomSensor(8 * 28, 7 * 32, room, new Crystal(0, 0, null, 0));
             sensor1.rotate(1);
             sensor1.rotate(1);
             sensor2.rotate(1);
             sensor2.rotate(1);
-            items.addElement(sensor1);
-            items.addElement(sensor2);
+            items.add(sensor1);
+            items.add(sensor2);
             XORGate xg = new XORGate(4 * 28, 4 * 32, room);
-            items.addElement(xg);
-            items.addElement(new Antenna(2 * 28, 2 * 32, room, Color.white));
+            items.add(xg);
+            items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
             Wire wire = new Wire(sensor1.ports[0], xg.ports[1]);
             wire = new Wire(sensor2.ports[0], xg.ports[0]);
         }
         { // Room 29, End 
-            Room room = rooms.elementAt(29);
+            Room room = rooms.get(29);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(8, 0, 11, 0, 0);
             room.SetMaterial(19, 10, 0);
@@ -662,7 +662,7 @@ class ROTutD extends Level {
                     5 * 28, 10 * 32, 450);
         }
         { // Room 30, Shortcut to beginning 
-            Room room = rooms.elementAt(30);
+            Room room = rooms.get(30);
             room.SetMaterialOutline(0, 0, 19, 9, 1);
             room.SetMaterialOutline(0, 11, 19, 11, 1);
             room.SetMaterial(0, 10, 0);
@@ -693,14 +693,14 @@ class ROTutD extends Level {
         LinkRoomsLeftRight(15, 14);
 
 
-        gameCursor = new LabCursor(17 * 28 + 14, 7 * 32 + 16, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new LabCursor(17 * 28 + 14, 7 * 32 + 16, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

@@ -35,7 +35,7 @@ public class Wire implements Serializable {
             System.out.println("f.myDevice is null");
         }
 
-        f.myDevice.room.wires.addElement(this);
+        f.myDevice.room.wires.add(this);
         f.myDevice.level.PlaySound(f.myDevice.room, Level.ATTACHSOUND);
 
         if (f.type == Port.TYPE_INPUT) {
@@ -320,7 +320,7 @@ public class Wire implements Serializable {
         toPort = null;
         inPort = null;
         outPort = null;
-        room.wires.removeElement(this);
+        room.wires.remove(this);
 
     }
 

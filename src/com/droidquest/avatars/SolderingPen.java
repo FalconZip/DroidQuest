@@ -104,7 +104,7 @@ public class SolderingPen extends Device implements Avatar {
         hot = false;
         currentPort = null;
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (!item.isDevice() || !Overlaps(item) || item == this) {
                 item = null;
             }

@@ -23,7 +23,7 @@ public class Disk extends Item {
         width = 28;
         height = 24;
         grabbable = true;
-        helpRoom = level.rooms.elementAt(hr);
+        helpRoom = level.rooms.get(hr);
         GenerateIcons();
     }
 

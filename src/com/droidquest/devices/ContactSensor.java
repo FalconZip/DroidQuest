@@ -61,7 +61,7 @@ public class ContactSensor extends Device {
         if (room.portalItem == null) {
             // Contact Sensor is not inside robot.
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.room == room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {
@@ -77,7 +77,7 @@ public class ContactSensor extends Device {
         else {
             // Contact Sensor is inside Robot.
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.room == room.portalItem.room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {

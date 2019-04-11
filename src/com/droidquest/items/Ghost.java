@@ -89,7 +89,7 @@ public class Ghost extends Item {
         if (!searched) {
             int rcounter = 0;
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item instanceof GenericRobot) {
                     robot[rcounter] = item;
                     rcounter++;

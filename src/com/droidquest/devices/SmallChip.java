@@ -1,26 +1,41 @@
 package com.droidquest.devices;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+
 import com.droidquest.Room;
 import com.droidquest.Wire;
-import com.droidquest.chipstuff.*;
+import com.droidquest.chipstuff.ChipCompiler;
+import com.droidquest.chipstuff.Gate;
+import com.droidquest.chipstuff.Port;
+import com.droidquest.chipstuff.PortSignal;
+import com.droidquest.chipstuff.Signal;
 import com.droidquest.decorations.TextBox;
 import com.droidquest.levels.Level;
 import com.droidquest.materials.ChipTester;
 import com.droidquest.materials.ChipTrash;
 import com.droidquest.materials.SmallChipBurner;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.Vector;
-
 public class SmallChip extends GenericChip {
     public int speed;
 
     public transient PortSignal[] portSignals = new PortSignal[8];
-    public Vector<Signal> signals = new Vector<Signal>();
-    public Vector<Gate> gates = new Vector<Gate>();
+    public List<Signal> signals = new ArrayList<Signal>();
+    public List<Gate> gates = new ArrayList<Gate>();
 
     public SmallChip(int X, int Y, Room r, String l) {
         x = X;
@@ -92,7 +107,7 @@ public class SmallChip extends GenericChip {
             s.writeInt(portSignals[a].type);
         }
         for (int a = 0; a < gates.size(); a++) {
-            Gate gate = gates.elementAt(a);
+            Gate gate = gates.get(a);
             for (int b = 0; b < 8; b++) {
                 s.writeInt(signals.indexOf(gate.portSignals[b].externalSignal));
                 s.writeInt(gate.portSignals[b].type);
@@ -107,18 +122,18 @@ public class SmallChip extends GenericChip {
         for (int a = 0; a < 8; a++) {
             int portIndex = s.readInt();
             if (portIndex >= 0) {
-                portSignals[a].internalSignal = signals.elementAt(portIndex);
+                portSignals[a].internalSignal = signals.get(portIndex);
             }
             portSignals[a].type = s.readInt();
         }
         for (int a = 0; a < gates.size(); a++) {
-            Gate gate = gates.elementAt(a);
+            Gate gate = gates.get(a);
             gate.portSignals = new PortSignal[8];
             for (int b = 0; b < 8; b++) {
                 gate.portSignals[b] = new PortSignal();
                 int sigIndex = s.readInt();
                 if (sigIndex >= 0) {
-                    gate.portSignals[b].externalSignal = signals.elementAt(sigIndex);
+                    gate.portSignals[b].externalSignal = signals.get(sigIndex);
                 }
                 gate.portSignals[b].type = s.readInt();
             }
@@ -151,13 +166,13 @@ public class SmallChip extends GenericChip {
                     y = 8 * 32 - height / 2;
                     inBurner = true;
                     ChipCompiler.chipSpeed = speed;
-                    TextBox tb = room.textBoxes.elementAt(1);
+                    TextBox tb = room.textBoxes.get(1);
                     tb.textString = speed + "x";
                     return;
                 }
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
-                    level.items.removeElement(this);
+                    level.items.remove(this);
                     level.PlaySound(room, Level.DISCHARGESOUND);
                     return;
                 }
@@ -176,7 +191,7 @@ public class SmallChip extends GenericChip {
 
         for (int s = 0; s < speed; s++) {
             for (a = 0; a < signals.size(); a++) {
-                signals.elementAt(a).Flip();
+                signals.get(a).Flip();
             }
 
             for (a = 0; a < 8; a++) {
@@ -188,7 +203,7 @@ public class SmallChip extends GenericChip {
             }
 
             for (a = 0; a < gates.size(); a++) {
-                gates.elementAt(a).Function();
+                gates.get(a).Function();
             }
 
             for (a = 0; a < 8; a++) {
@@ -211,13 +226,13 @@ public class SmallChip extends GenericChip {
 
     public void Empty() {
         if (signals != null) {
-            signals.removeAllElements();
+            signals.clear();
         }
-        signals = new Vector<Signal>();
+        signals = new ArrayList<Signal>();
         if (gates != null) {
-            gates.removeAllElements();
+            gates.clear();
         }
-        gates = new Vector<Gate>();
+        gates = new ArrayList<Gate>();
         if (portSignals == null) {
             portSignals = new PortSignal[8];
             for (int a = 0; a < 8; a++) {
@@ -238,25 +253,25 @@ public class SmallChip extends GenericChip {
 
             // Signals
             int numSignals = s.readInt();
-            signals = new Vector<Signal>();
+            signals = new ArrayList<Signal>();
             for (int a = 0; a < numSignals; a++) {
                 Signal sig = new Signal();
                 sig.Set(s.readBoolean());
                 sig.working = s.readBoolean();
-                signals.addElement(sig);
+                signals.add(sig);
             }
 
             // Gates
             int numGates = s.readInt();
-            gates = new Vector<Gate>();
+            gates = new ArrayList<Gate>();
             for (int a = 0; a < numGates; a++) {
                 Gate gate = new Gate((String) s.readObject());
-                gates.addElement(gate);
+                gates.add(gate);
                 gate.state = s.readBoolean();
                 for (int b = 0; b < 8; b++) {
                     int sigIndex = s.readInt();
                     if (sigIndex >= 0) {
-                        gate.portSignals[b].externalSignal = signals.elementAt(sigIndex);
+                        gate.portSignals[b].externalSignal = signals.get(sigIndex);
                     }
                     gate.portSignals[b].type = s.readInt();
                 }
@@ -269,7 +284,7 @@ public class SmallChip extends GenericChip {
             for (int a = 0; a < 8; a++) {
                 int sigIndex = s.readInt();
                 if (sigIndex >= 0) {
-                    portSignals[a].internalSignal = signals.elementAt(sigIndex);
+                    portSignals[a].internalSignal = signals.get(sigIndex);
                 }
                 ports[a].type = s.readInt();
                 portSignals[a].type = ports[a].type;
@@ -322,7 +337,7 @@ public class SmallChip extends GenericChip {
             // Signals
             s.writeInt(signals.size());
             for (int a = 0; a < signals.size(); a++) {
-                Signal sig = signals.elementAt(a);
+                Signal sig = signals.get(a);
                 s.writeBoolean(sig.Get());
                 s.writeBoolean(sig.working);
             }
@@ -330,7 +345,7 @@ public class SmallChip extends GenericChip {
             // Gates
             s.writeInt(gates.size());
             for (int a = 0; a < gates.size(); a++) {
-                Gate gate = gates.elementAt(a);
+                Gate gate = gates.get(a);
                 s.writeObject(gate.type);
                 s.writeBoolean(gate.state);
                 for (int b = 0; b < 8; b++) {

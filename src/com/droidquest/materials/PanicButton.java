@@ -66,7 +66,7 @@ public class PanicButton extends Material {
         if (item == level.player && level.player.carriedBy == null) {
             if (sentry == null) {
                 for (int a = 0; a < level.items.size(); a++) {
-                    Item i = level.items.elementAt(a);
+                    Item i = level.items.get(a);
                     if (i instanceof Sentry && i.room == item.room) {
                         sentry = (Sentry) i;
                     }

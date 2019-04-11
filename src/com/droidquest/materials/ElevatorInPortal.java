@@ -41,7 +41,7 @@ public class ElevatorInPortal extends Material {
 
     public void TouchedByItem(Item item) {
         if (item == level.player) {
-            Room elevatorRoom = level.rooms.elementAt(35);
+            Room elevatorRoom = level.rooms.get(35);
             item.x = 28;
             item.y = 10 * 32;
             item.SetRoom(elevatorRoom);

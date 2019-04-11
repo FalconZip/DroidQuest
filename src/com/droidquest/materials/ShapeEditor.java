@@ -60,11 +60,11 @@ public class ShapeEditor extends Material {
             carrier.Drops();
             int itemX = item.x;
             int itemY = item.y;
-            level.items.removeElement(item);
+            level.items.remove(item);
             newItem.x = itemX;
             newItem.y = itemY;
             newItem.room = carrier.room;
-            level.items.addElement(newItem);
+            level.items.add(newItem);
             carrier.PicksUp(newItem);
         }
     }

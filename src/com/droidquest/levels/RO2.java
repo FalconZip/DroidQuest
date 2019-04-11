@@ -21,15 +21,15 @@ class RO2 extends Level {
     public RO2(RoomDisplay rd) {
         super(rd);
 
-        materials.addElement(new Material(true, false));                        // 0= Empty Space 
-        materials.addElement(new Material(new Color(0, 204, 0), false, true));     // 1= Green
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));  // 2= Lt Blue
-        materials.addElement(new Material(new Color(255, 224, 192), false, true)); // 3= Brown
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));   // 4= Orange
-        materials.addElement(new Material(new Color(255, 255, 255), false, true)); // 5= White
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));      // 6= Blue
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));     // 7= Dk Blue
-        materials.addElement(new Material(new Color(63, 32, 0), false, true));     // 8= Dk Orange
+        materials.add(new Material(true, false));                        // 0= Empty Space 
+        materials.add(new Material(new Color(0, 204, 0), false, true));     // 1= Green
+        materials.add(new Material(new Color(192, 192, 255), false, true));  // 2= Lt Blue
+        materials.add(new Material(new Color(255, 224, 192), false, true)); // 3= Brown
+        materials.add(new Material(new Color(255, 128, 0), false, true));   // 4= Orange
+        materials.add(new Material(new Color(255, 255, 255), false, true)); // 5= White
+        materials.add(new Material(new Color(0, 0, 255), false, true));      // 6= Blue
+        materials.add(new Material(new Color(0, 0, 128), false, true));     // 7= Dk Blue
+        materials.add(new Material(new Color(63, 32, 0), false, true));     // 8= Dk Orange
         int[][] lockProgram = {
                 {Lock.NARROW},
                 {14, 5, 0},
@@ -37,9 +37,9 @@ class RO2 extends Level {
                 {Lock.REMOVE},
                 {14, 4, 6},
                 {14, 5, 6}};
-        materials.addElement(new Lock(Color.blue, Color.blue, lockProgram));    // 9= Lock
-        materials.addElement(new CoinSlot());                                   // 10=CoinSlot
-        materials.addElement(new Switch1());                                    // 11=Switch1
+        materials.add(new Lock(Color.blue, Color.blue, lockProgram));    // 9= Lock
+        materials.add(new CoinSlot());                                   // 10=CoinSlot
+        materials.add(new Switch1());                                    // 11=Switch1
         int[][] program1 = {
                 {Switch.WAIT4CONTACT},
                 {Switch.SETVALUEHIGH},
@@ -52,8 +52,8 @@ class RO2 extends Level {
                 {Switch.REPLACE, 5, 10, 2, 3, 4, 2},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_UP, program1));              // 12=Switch2
-        materials.addElement(new CrystalRecharger());                           // 13=Recharger
+        materials.add(new Switch(Switch.ROT_UP, program1));              // 12=Switch2
+        materials.add(new CrystalRecharger());                           // 13=Recharger
         int program2[][] = {
                 {Switch.WAIT4CONTACT},
                 {Switch.SETVALUEHIGH},
@@ -62,7 +62,7 @@ class RO2 extends Level {
                 {Switch.REPLACE, 16, 2, 2, 17, 2, 2},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_UP, program2));              // 14=Switch3
+        materials.add(new Switch(Switch.ROT_UP, program2));              // 14=Switch3
         int program3[][] = {
                 {Switch.WAIT4CONTACT},
                 {Switch.SETVALUEHIGH},
@@ -73,7 +73,7 @@ class RO2 extends Level {
                 {Switch.REPLACE, 16, 3, 6},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_UP, program3));              // 15=Switch4
+        materials.add(new Switch(Switch.ROT_UP, program3));              // 15=Switch4
 
         int program4[][] = {
                 {Switch.WAIT4CONTACT},
@@ -85,11 +85,11 @@ class RO2 extends Level {
                 {Switch.REPLACE, 1, 4, 6},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_UP, program4));              // 16=Switch4
-        materials.addElement(new XitSlot());                                    // 17=XitSlot
-        materials.addElement(new Portal("RO3.lvl", true, true));                // 18=Portal
-        materials.addElement(new SecretSet());                                  // 19=SecretSet
-        materials.addElement(new SecretReset());                                // 20=SecretReset
+        materials.add(new Switch(Switch.ROT_UP, program4));              // 16=Switch4
+        materials.add(new XitSlot());                                    // 17=XitSlot
+        materials.add(new Portal("RO3.lvl", true, true));                // 18=Portal
+        materials.add(new SecretSet());                                  // 19=SecretSet
+        materials.add(new SecretReset());                                // 20=SecretReset
 
         int program5[][] = {
                 {Lock.NARROW},
@@ -101,7 +101,7 @@ class RO2 extends Level {
                 {19, 4, 3, 19, 7, 3, 18, 4, 0, 18, 7, 0},
                 {19, 5, 3, 19, 6, 3, 18, 5, 0, 18, 6, 0},
         };
-        materials.addElement(new Lock(Color.blue, Color.blue, program5));       // 21=SecretLock1
+        materials.add(new Lock(Color.blue, Color.blue, program5));       // 21=SecretLock1
 
         int program6[][] = {
                 {Lock.NARROW},
@@ -111,14 +111,14 @@ class RO2 extends Level {
                 {17, 4, 3, 17, 7, 3},
                 {17, 5, 3, 17, 6, 3},
         };
-        materials.addElement(new Lock(Color.green, Color.green, program6));       // 22=SecretLock1
+        materials.add(new Lock(Color.green, Color.green, program6));       // 22=SecretLock1
 
         for (int a = 0; a < 41; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         {  // Room 0: Help Screen 
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -142,7 +142,7 @@ class RO2 extends Level {
             room.AddTextBox("(To continue, press RETURN.)", 96, 350, 500);
         }
         {  // Room 1: Escalator 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2},
@@ -160,7 +160,7 @@ class RO2 extends Level {
             room.AddTextBox("Insert Exit Ticket", 244, 10 * 32, 100);
         }
         {  // Room 2: Secret Room 
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -181,7 +181,7 @@ class RO2 extends Level {
         }
 
         {  // Room 3: Laundrobot, Level 1
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
@@ -198,7 +198,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 4: Laundrobot, Level 2 (Two Buttons) 
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0},
@@ -215,7 +215,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 5: Laundrobot, Level 3 (Sentry & Xit Ticket) 
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
                     {6, 6, 6, 6, 6, 6, 6, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
@@ -230,14 +230,14 @@ class RO2 extends Level {
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
             };
-            items.addElement(new XitTicket(15 * 28, 6 * 32 + 16, room));
+            items.add(new XitTicket(15 * 28, 6 * 32 + 16, room));
             int[] pace = {11 * 28, 7 * 32, 13 * 28, 7 * 32};
             int[] protect = {5 * 28, 2 * 32, 19 * 28, 5 * 32, 8 * 28, 0,
                     4 * 28, 6 * 32, 12 * 28, 10 * 32, 0, 3 * 32};
-            items.addElement(new Sentry(11 * 28, 7 * 32, room, pace, protect, true));
+            items.add(new Sentry(11 * 28, 7 * 32, room, pace, protect, true));
         }
         {  // Room 6: Laundrobot Station
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8},
@@ -256,7 +256,7 @@ class RO2 extends Level {
         }
 
         {  // Room 7: Muse Robotique Station, Level 1 
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 19, 7, 7, 7, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 7, 20, 7, 0, 0, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
@@ -273,7 +273,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 8: Muse Robotique Station, Level 2 
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.RoomArray = new int[][]{
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 0},
@@ -290,7 +290,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 9: Muse Robotique Station, Level 3 
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.RoomArray = new int[][]{
                     {6, 6, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0},
                     {6, 16, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6},
@@ -307,7 +307,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 10: Muse Robotique Station, Level 4 
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8},
@@ -326,7 +326,7 @@ class RO2 extends Level {
         }
 
         {  // Room 11: Jack in the Bot Station, Level 1 
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 7, 0, 0, 7, 7, 7, 0, 0, 7, 7, 7, 7, 0, 0, 7},
                     {0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -342,10 +342,10 @@ class RO2 extends Level {
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
             toolbox = new ToolBox(3 * 28, 7 * 32, room);
-            items.addElement(toolbox);
+            items.add(toolbox);
         }
         {  // Room 12: Jack in the Bot Station, Level 2 
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2},
@@ -364,7 +364,7 @@ class RO2 extends Level {
             room.AddArrow(0, 3 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         {  // Room 13: Big Magnet 
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6},
@@ -379,10 +379,10 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6}
             };
-            items.addElement(new SmallChip(13 * 28 + 14, 5 * 32 + 16, room, "4"));
+            items.add(new SmallChip(13 * 28 + 14, 5 * 32 + 16, room, "4"));
         }
         {  // Room 14: Jack in the Bot Station 
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8},
@@ -401,7 +401,7 @@ class RO2 extends Level {
         }
 
         {  // Room 15: Game starts here 
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -418,7 +418,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 16: Seer's and Robot Station, Level 2 
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 2, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2},
@@ -435,7 +435,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 17: Token first here 
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 6, 0},
@@ -450,13 +450,13 @@ class RO2 extends Level {
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 6, 0},
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 6, 0}
             };
-            items.addElement(new Token(6 * 28, 8 * 32, room));
+            items.add(new Token(6 * 28, 8 * 32, room));
             int[] pace = {3 * 28, 2 * 32, 12 * 28, 7 * 32};
             int[] protect = {0, 0, 18 * 28, 9 * 32 - 2, 15 * 28, 10 * 32};
-            items.addElement(new Sentry(2 * 28, 2 * 32, room, pace, protect, true));
+            items.add(new Sentry(2 * 28, 2 * 32, room, pace, protect, true));
         }
         {  // Room 18: Seer's and Robot Station 
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8},
@@ -475,7 +475,7 @@ class RO2 extends Level {
         }
 
         {  // Room 19: Picadilly Circuit Station, Level 1 
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 7, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 7, 7, 0, 0},
@@ -492,7 +492,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 20: Picadilly Circuit Station, Level 2 
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -509,7 +509,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 21: Xit Ticket sensor here 
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 6},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
@@ -524,10 +524,10 @@ class RO2 extends Level {
                     {0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
                     {0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6}
             };
-            items.addElement(new ContactSensor(11 * 28, 2 * 32, room, new XitTicket(0, 0, null)));
+            items.add(new ContactSensor(11 * 28, 2 * 32, room, new XitTicket(0, 0, null)));
         }
         {  // Room 22: Picadilly Circuit Station 
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.RoomArray = new int[][]{
                     {8, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
@@ -546,7 +546,7 @@ class RO2 extends Level {
         }
 
         {  // Room 23: Cobble Bot Station, Level 1 
-            Room room = rooms.elementAt(23);
+            Room room = rooms.get(23);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0},
@@ -561,10 +561,10 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0},
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7}
             };
-            items.addElement(new SmallChip(8 * 28, 9 * 32, room, "3"));
+            items.add(new SmallChip(8 * 28, 9 * 32, room, "3"));
         }
         {  // Room 24: Entrance to Token Maze 
-            Room room = rooms.elementAt(24);
+            Room room = rooms.get(24);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0},
@@ -581,7 +581,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 25: Cobble Bot Square Station, Level 3 
-            Room room = rooms.elementAt(25);
+            Room room = rooms.get(25);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 15, 0},
@@ -600,7 +600,7 @@ class RO2 extends Level {
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 26: Cobble Bot Square Station 
-            Room room = rooms.elementAt(26);
+            Room room = rooms.get(26);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8},
@@ -619,7 +619,7 @@ class RO2 extends Level {
         }
 
         {  // Room 27: Jack in the Bot Station, Level 1 
-            Room room = rooms.elementAt(27);
+            Room room = rooms.get(27);
             room.RoomArray = new int[][]{
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -636,7 +636,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 28: Token Maze 
-            Room room = rooms.elementAt(28);
+            Room room = rooms.get(28);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 2},
                     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
@@ -654,10 +654,10 @@ class RO2 extends Level {
             int[] pace = {11 * 28, 10 * 32, 14 * 28, 10 * 32};
             int[] protect = {3 * 28, 0, 10 * 28, 11 * 32, 0, 5 * 32,
                     10 * 28, 0, 16 * 28, 11 * 32, 19 * 28, 6 * 32};
-            items.addElement(new Sentry(0, 0, room, pace, protect, true));
+            items.add(new Sentry(0, 0, room, pace, protect, true));
         }
         {  // Room 29: Turnstile, BART 
-            Room room = rooms.elementAt(29);
+            Room room = rooms.get(29);
             room.RoomArray = new int[][]{
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -677,7 +677,7 @@ class RO2 extends Level {
             room.AddArrow(13 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 30: Jack in the Bot Station 
-            Room room = rooms.elementAt(30);
+            Room room = rooms.get(30);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8},
@@ -696,7 +696,7 @@ class RO2 extends Level {
         }
 
         {  // Room 31: Subway Depot, Level 1 
-            Room room = rooms.elementAt(31);
+            Room room = rooms.get(31);
             room.RoomArray = new int[][]{
                     {7, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7},
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -713,7 +713,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 32: Subway Depot, Level 2 
-            Room room = rooms.elementAt(32);
+            Room room = rooms.get(32);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
@@ -730,7 +730,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 33: After Turnstile 
-            Room room = rooms.elementAt(33);
+            Room room = rooms.get(33);
             room.RoomArray = new int[][]{
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6},
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6},
@@ -747,7 +747,7 @@ class RO2 extends Level {
             };
         }
         {  // Room 34: Subway Depot 
-            Room room = rooms.elementAt(34);
+            Room room = rooms.get(34);
             room.RoomArray = new int[][]{
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 8},
@@ -766,12 +766,12 @@ class RO2 extends Level {
             room.AddTextBox("Push this button to call train.", 104, 2 * 32, 200);
             room.AddTextBox("Pull here", 384, 206, 560);
             room.AddArrow(13 * 28 + 14, 5 * 32, Arrow.DIR_UP, 32, Color.white);
-            items.addElement(new Handle(13 * 28, 4 * 32 + 12, room));
-            items.addElement(new Train());
+            items.add(new Handle(13 * 28, 4 * 32 + 12, room));
+            items.add(new Train());
         }
 
         {  // Room 35: Secret tunnel 1 
-            Room room = rooms.elementAt(35);
+            Room room = rooms.get(35);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -789,7 +789,7 @@ class RO2 extends Level {
             room.AddTextBox("At last...", 220, 2 * 32, 450);
         }
         {  // Room 36: Secret tunnel 2 
-            Room room = rooms.elementAt(36);
+            Room room = rooms.get(36);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -807,7 +807,7 @@ class RO2 extends Level {
             room.AddTextBox("the mystery is finally revealed!", 88, 2 * 32, 450);
         }
         {  // Room 37: Secret tunnel 3 
-            Room room = rooms.elementAt(37);
+            Room room = rooms.get(37);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -826,7 +826,7 @@ class RO2 extends Level {
                     2 * 28, 2 * 32, 500);
         }
         {  // Room 38: Secret tunnel 4 
-            Room room = rooms.elementAt(38);
+            Room room = rooms.get(38);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -844,7 +844,7 @@ class RO2 extends Level {
             room.AddTextBox("What else, but a secret passage to...", 58, 2 * 32, 450);
         }
         {  // Room 39: Secret lock 
-            Room room = rooms.elementAt(39);
+            Room room = rooms.get(39);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -864,7 +864,7 @@ class RO2 extends Level {
             room.AddTextBox("If not, go back to the sewers and look around.", 58, 10 * 32, 450);
         }
         {  // Room 40: Secret room 
-            Room room = rooms.elementAt(40);
+            Room room = rooms.get(40);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -896,9 +896,9 @@ class RO2 extends Level {
                     "helper5.gif", "helper5.gif", "helper5.gif", "helper5.gif",
             };
             Graphix helper = new Graphix(helperlist, 14 * 28, 5 * 32);
-            room.graphix.addElement(helper);
-            items.addElement(new Polarizer(4 * 28, 5 * 32, room));
-            items.addElement(new Key(6 * 28, 5 * 32, room, Color.yellow));
+            room.graphix.add(helper);
+            items.add(new Polarizer(4 * 28, 5 * 32, room));
+            items.add(new Key(6 * 28, 5 * 32, room, Color.yellow));
         }
 
         //                 1
@@ -925,14 +925,14 @@ class RO2 extends Level {
         int[] secretlist = {2, 35, 36, 37, 38, 39, 40};
         LinkRoomsHorizontally(secretlist);
 
-        gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.elementAt(15));
+        gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.get(15));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        helpCam = new HelpCam(rooms.elementAt(0));
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        helpCam = new HelpCam(rooms.get(0));
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 
