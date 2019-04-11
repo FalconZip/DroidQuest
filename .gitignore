@@ -7,3 +7,5 @@ target/
 /.project
 ROlevels/
 *.settings
+/.settings
+/ROlevels
