@@ -13,7 +13,7 @@ public class Switch4B extends Switch {
     public void TouchedByItem(Item item) {
         if (sw == null) {
             for (int a = 0; a < Material.level.materials.size(); a++) {
-                Material mat = Material.level.materials.elementAt(a);
+                Material mat = Material.level.materials.get(a);
                 if (mat instanceof Switch4A) {
                     sw = (Switch4A) mat;
                 }

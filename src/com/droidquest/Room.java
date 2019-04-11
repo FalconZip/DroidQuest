@@ -1,18 +1,21 @@
 package com.droidquest;
 
+import java.awt.Color;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.droidquest.decorations.Arrow;
 import com.droidquest.decorations.Graphix;
 import com.droidquest.decorations.TextBox;
 import com.droidquest.items.Item;
 import com.droidquest.levels.Level;
 import com.droidquest.materials.Material;
-
-import java.awt.*;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.Vector;
 
 public class Room implements Serializable, Cloneable {
     public transient static Level level;
@@ -37,10 +40,10 @@ public class Room implements Serializable, Cloneable {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     };
     public transient Material[][] MaterialArray = new Material[12][20];
-    public Vector<TextBox> textBoxes = new Vector<TextBox>();
-    public Vector<Wire> wires = new Vector<Wire>();
-    public Vector<Graphix> graphix = new Vector<Graphix>();
-    public Vector<Arrow> arrows = new Vector<Arrow>();
+    public List<TextBox> textBoxes = new ArrayList<TextBox>();
+    public List<Wire> wires = new ArrayList<Wire>();
+    public List<Graphix> graphix = new ArrayList<Graphix>();
+    public List<Arrow> arrows = new ArrayList<Arrow>();
     public boolean editable;
 
     public Room() {
@@ -59,7 +62,7 @@ public class Room implements Serializable, Cloneable {
         s.writeInt(level.items.indexOf(portalItem));
         s.writeInt(wires.size());
         for (int a = 0; a < wires.size(); a++) {
-            wires.elementAt(a).writeRef(s);
+            wires.get(a).writeRef(s);
         }
     }
 
@@ -71,15 +74,15 @@ public class Room implements Serializable, Cloneable {
         portalItem = level.FindItem(s.readInt());
 
         int numWires = s.readInt();
-        wires = new Vector<Wire>();
+        wires = new ArrayList<Wire>();
         for (int a = 0; a < numWires; a++) {
             Wire wire = new Wire();
-            wires.addElement(wire);
+            wires.add(wire);
             wire.readRef(s, level);
         }
 
         for (int a = 0; a < graphix.size(); a++) {
-            graphix.elementAt(a).GenerateIcons();
+            graphix.get(a).GenerateIcons();
         }
 
         GenerateArray();
@@ -89,13 +92,13 @@ public class Room implements Serializable, Cloneable {
         MaterialArray = new Material[12][20];
         for (int y = 0; y < 12; y++) {
             for (int x = 0; x < 20; x++) {
-                MaterialArray[y][x] = level.materials.elementAt(RoomArray[y][x]);
+                MaterialArray[y][x] = level.materials.get(RoomArray[y][x]);
             }
         }
     }
 
     public void SetMaterial(int X, int Y, int index) {
-        Material mat = level.materials.elementAt(index);
+        Material mat = level.materials.get(index);
         if (mat != null) {
             RoomArray[Y][X] = index;
             MaterialArray[Y][X] = mat;
@@ -109,7 +112,7 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterialFill(int X1, int Y1, int X2, int Y2, int index) {
-        Material mat = level.materials.elementAt(index);
+        Material mat = level.materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
                 for (int X = X1; X <= X2; X++) {
@@ -121,7 +124,7 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterialOutline(int X1, int Y1, int X2, int Y2, int index) {
-        Material mat = level.materials.elementAt(index);
+        Material mat = level.materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
                 RoomArray[Y][X1] = index;
@@ -140,7 +143,7 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterialFromRoom(int roomIndex) {
-        Room r = level.rooms.elementAt(roomIndex);
+        Room r = level.rooms.get(roomIndex);
         for (int Y = 0; Y < 12; Y++) {
             for (int X = 0; X < 20; X++) {
                 RoomArray[Y][X] = r.RoomArray[Y][X];
@@ -151,27 +154,27 @@ public class Room implements Serializable, Cloneable {
 
     public void AddTextBox(String t, int X, int Y, int W) {
         TextBox newText = new TextBox(t, X, Y, W);
-        textBoxes.addElement(newText);
+        textBoxes.add(newText);
     }
 
     public void AddArrow(int X, int Y, int dir, int len, Color col) {
         Arrow newArrow = new Arrow(X, Y, dir, len, col);
-        arrows.addElement(newArrow);
+        arrows.add(newArrow);
     }
 
     public void AddGraphix(String t, int X, int Y) {
         Graphix newGraphix = new Graphix(t, X, Y);
-        graphix.addElement(newGraphix);
+        graphix.add(newGraphix);
     }
 
     public void AddGraphix(String[] t, int X, int Y) {
         Graphix newGraphix = new Graphix(t, X, Y);
-        graphix.addElement(newGraphix);
+        graphix.add(newGraphix);
     }
 
     public void DrawTextBoxes(Graphics g, RoomDisplay rd) {
         for (int a = 0; a < textBoxes.size(); a++) {
-            TextBox textBox = textBoxes.elementAt(a);
+            TextBox textBox = textBoxes.get(a);
             g.setColor(Color.white);
             g.setFont(rd.smallFont);
 
@@ -252,14 +255,14 @@ public class Room implements Serializable, Cloneable {
 
     public void DrawGraphix(Graphics g, RoomDisplay rd) {
         for (int a = 0; a < graphix.size(); a++) {
-            Graphix grx = graphix.elementAt(a);
+            Graphix grx = graphix.get(a);
             grx.Draw(g, rd);
         }
     }
 
     public void DrawArrows(Graphics g) {
         for (int a = 0; a < arrows.size(); a++) {
-            arrows.elementAt(a).Draw(g);
+            arrows.get(a).Draw(g);
         }
     }
 
@@ -286,7 +289,7 @@ public class Room implements Serializable, Cloneable {
         if (wireIndex >= wires.size()) {
             return null;
         }
-        return wires.elementAt(wireIndex);
+        return wires.get(wireIndex);
     }
 
     public Object clone() {
@@ -308,7 +311,7 @@ public class Room implements Serializable, Cloneable {
         arrows.clear();
         graphix.clear();
         for (int a = 0; a < wires.size(); a++) {
-            Wire wire = wires.elementAt(a);
+            Wire wire = wires.get(a);
             wire.fromPort = null;
             wire.toPort = null;
             wire.inPort = null;

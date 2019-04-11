@@ -71,7 +71,7 @@ public class DeactivatorSwitch extends Material {
             timeout = new Date(now.getTime() + 20000);
             // Find HotWires and set their value to false;
             for (int a = 0; a < level.materials.size(); a++) {
-                Material mat = level.materials.elementAt(a);
+                Material mat = level.materials.get(a);
                 if (mat instanceof HotWires) {
                     HotWires hw = (HotWires) mat;
                     if (hw.wall != 0) {
@@ -83,7 +83,7 @@ public class DeactivatorSwitch extends Material {
             // Find Sentry and set it's progam to something else.
             if (sentry == null) {
                 for (int a = 0; a < level.items.size(); a++) {
-                    Item i = level.items.elementAt(a);
+                    Item i = level.items.get(a);
                     if (i instanceof Sentry && i.room == item.room.upRoom) {
                         sentry = i;
                     }
@@ -93,7 +93,7 @@ public class DeactivatorSwitch extends Material {
 
             // Find the TextBox
             if (textbox == null) {
-                textbox = item.room.textBoxes.elementAt(0);
+                textbox = item.room.textBoxes.get(0);
             }
         }
     }
@@ -115,7 +115,7 @@ public class DeactivatorSwitch extends Material {
             }
             else {
                 for (int a = 0; a < level.materials.size(); a++) {
-                    Material mat = level.materials.elementAt(a);
+                    Material mat = level.materials.get(a);
                     if (mat instanceof HotWires) {
                         ((HotWires) mat).value = true;
                     }

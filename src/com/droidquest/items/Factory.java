@@ -65,7 +65,7 @@ public class Factory extends Item {
         item.x = (560 - item.width) / 2;
         item.y = (384 - item.height) / 2;
         item.room = room;
-        level.items.addElement(item);
+        level.items.add(item);
         level.PlaySound(room, Level.CHARGESOUND);
         return false;
     }

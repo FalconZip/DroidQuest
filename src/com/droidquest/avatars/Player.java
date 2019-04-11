@@ -101,7 +101,7 @@ public class Player extends Item implements Avatar {
                 Drops();
             }
             level.toolbox = new ToolBox(x, y + 8, room);
-            level.items.addElement(level.toolbox);
+            level.items.add(level.toolbox);
             ((ToolBox) level.toolbox).Toggle();
             PicksUp(level.toolbox);
         }

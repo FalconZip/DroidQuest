@@ -1,5 +1,20 @@
 package com.droidquest.levels;
 
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+
 import com.droidquest.Room;
 import com.droidquest.RoomDisplay;
 import com.droidquest.SoundClip;
@@ -14,13 +29,6 @@ import com.droidquest.items.ToolBox;
 import com.droidquest.materials.Material;
 import com.droidquest.materials.Portal;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.io.*;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Vector;
-
 public class Level implements ImageObserver, Serializable {
     public Item player;
     public Item gameCursor;
@@ -33,18 +41,18 @@ public class Level implements ImageObserver, Serializable {
     public transient Portal portal;
     public boolean electricity;
 
-    public Vector<Room> rooms = new Vector<Room>();
-    public Vector<Material> materials = new Vector<Material>();
-    public Vector<Item> items = new Vector<Item>();
-    public Vector<Spark> sparks = new Vector<Spark>();
+    public List<Room> rooms = new ArrayList<Room>();
+    public List<Material> materials = new ArrayList<Material>();
+    public List<Item> items = new ArrayList<Item>();
+    public List<Spark> sparks = new ArrayList<Spark>();
 
     public transient RoomDisplay roomdisplay;
-    private transient Vector<Room> invRooms = new Vector<Room>();
-    private transient Vector<Integer> invRoomIndexes = new Vector<Integer>();
-    private transient Vector<Material> invMaterials = new Vector<Material>();
-    private transient Vector<Integer> invMaterialIndexes = new Vector<Integer>();
-    private transient Vector<Item> invItems = new Vector<Item>();
-    private transient Vector<Integer> invItemIndexes = new Vector<Integer>();
+    private transient List<Room> invRooms = new ArrayList<Room>();
+    private transient List<Integer> invRoomIndexes = new ArrayList<Integer>();
+    private transient List<Material> invMaterials = new ArrayList<Material>();
+    private transient List<Integer> invMaterialIndexes = new ArrayList<Integer>();
+    private transient List<Item> invItems = new ArrayList<Item>();
+    private transient List<Integer> invItemIndexes = new ArrayList<Integer>();
 
     public transient HashMap<String, SoundClip> sounds = new HashMap<String, SoundClip>();
 
@@ -86,13 +94,13 @@ public class Level implements ImageObserver, Serializable {
     }
 
     public void LinkRoomsLeftRight(int L, int R) {
-        rooms.elementAt(L).rightRoom = rooms.elementAt(R);
-        rooms.elementAt(R).leftRoom = rooms.elementAt(L);
+        rooms.get(L).rightRoom = rooms.get(R);
+        rooms.get(R).leftRoom = rooms.get(L);
     }
 
     public void LinkRoomsUpDown(int U, int D) {
-        rooms.elementAt(U).downRoom = rooms.elementAt(D);
-        rooms.elementAt(D).upRoom = rooms.elementAt(U);
+        rooms.get(U).downRoom = rooms.get(D);
+        rooms.get(D).upRoom = rooms.get(U);
     }
 
     void LinkRoomsHorizontally(int[] roomlist) {
@@ -125,31 +133,31 @@ public class Level implements ImageObserver, Serializable {
 
     public Material materialAt(int x, int y, Room r) {
         if (x < 0 || x > 19 || y < 0 || y > 11) {
-            Material mat = materials.elementAt(0);
+            Material mat = materials.get(0);
             if (x < 0) {
                 if (r.leftRoom != null) {
-                    mat = materials.elementAt(r.leftRoom.RoomArray[y][x + 20]);
+                    mat = materials.get(r.leftRoom.RoomArray[y][x + 20]);
                 }
             }
             if (x > 19) {
                 if (r.rightRoom != null) {
-                    mat = materials.elementAt(r.rightRoom.RoomArray[y][x - 20]);
+                    mat = materials.get(r.rightRoom.RoomArray[y][x - 20]);
                 }
             }
             if (y < 0) {
                 if (r.upRoom != null) {
-                    mat = materials.elementAt(r.upRoom.RoomArray[y + 12][x]);
+                    mat = materials.get(r.upRoom.RoomArray[y + 12][x]);
                 }
             }
             if (y > 11) {
                 if (r.downRoom != null) {
-                    mat = materials.elementAt(r.downRoom.RoomArray[y - 12][x]);
+                    mat = materials.get(r.downRoom.RoomArray[y - 12][x]);
                 }
             }
             return mat;
         }
         else {
-            return materials.elementAt(r.RoomArray[y][x]);
+            return materials.get(r.RoomArray[y][x]);
         }
     }
 
@@ -160,7 +168,7 @@ public class Level implements ImageObserver, Serializable {
         int cxa = a.x + a.getWidth() / 2;
         int cya = a.y + a.getHeight() / 2;
         for (int i = 0; i < items.size(); i++) {
-            Item b = items.elementAt(i);
+            Item b = items.get(i);
             if (a.Overlaps(b)) {
                 int cxb = b.x + b.getWidth() / 2;
                 int cyb = b.y + b.getHeight() / 2;
@@ -189,19 +197,19 @@ public class Level implements ImageObserver, Serializable {
         int a;
         s.writeInt(rooms.size());
         for (a = 0; a < rooms.size(); a++) {
-            s.writeObject(rooms.elementAt(a));
+            s.writeObject(rooms.get(a));
         }
 
         // Save Materials Data
         s.writeInt(materials.size());
         for (a = 0; a < materials.size(); a++) {
-            s.writeObject(materials.elementAt(a));
+            s.writeObject(materials.get(a));
         }
 
         // Save Basic Items data
         s.writeInt(items.size());
         for (a = 0; a < items.size(); a++) {
-            s.writeObject(items.elementAt(a));
+            s.writeObject(items.get(a));
         }
 
         // Save Electricity
@@ -219,12 +227,12 @@ public class Level implements ImageObserver, Serializable {
 
         // Save Room References (UDLRrooms, PortalItem, Wires)
         for (a = 0; a < rooms.size(); a++) {
-            rooms.elementAt(a).writeRef(s);
+            rooms.get(a).writeRef(s);
         }
 
         // Save Item References
         for (a = 0; a < items.size(); a++) {
-            items.elementAt(a).writeRef(s);
+            items.get(a).writeRef(s);
         }
 
     }
@@ -232,33 +240,33 @@ public class Level implements ImageObserver, Serializable {
     public void readObject(ObjectInputStream s) throws IOException {
         int a;
         int numRooms = s.readInt();
-        rooms = new Vector<Room>();
+        rooms = new ArrayList<Room>();
         for (a = 0; a < numRooms; a++) {
             try {
                 Room r = (Room) s.readObject();
-                rooms.addElement(r);
+                rooms.add(r);
             }
             catch (ClassNotFoundException e) {
             }
         }
 
         int numMaterials = s.readInt();
-        materials = new Vector<Material>();
+        materials = new ArrayList<Material>();
         for (a = 0; a < numMaterials; a++) {
             try {
                 Material m = (Material) s.readObject();
-                materials.addElement(m);
+                materials.add(m);
             }
             catch (ClassNotFoundException e) {
             }
         }
 
         int numItems = s.readInt();
-        items = new Vector<Item>();
+        items = new ArrayList<Item>();
         for (a = 0; a < numItems; a++) {
             try {
                 Item i = (Item) s.readObject();
-                items.addElement(i);
+                items.add(i);
             }
             catch (ClassNotFoundException e) {
             }
@@ -276,17 +284,17 @@ public class Level implements ImageObserver, Serializable {
 
         // Read Room References (UDLRrooms, PortalItem, Wires)
         for (a = 0; a < numRooms; a++) {
-            rooms.elementAt(a).readRef(s);
+            rooms.get(a).readRef(s);
         }
 
         // Read Item References
         for (a = 0; a < numItems; a++) {
-            items.elementAt(a).readRef(s);
+            items.get(a).readRef(s);
         }
 
         // Generate Material Icons
         for (a = 0; a < numMaterials; a++) {
-            materials.elementAt(a).GenerateIcons();
+            materials.get(a).GenerateIcons();
         }
 
     }
@@ -307,7 +315,7 @@ public class Level implements ImageObserver, Serializable {
         if (itemIndex >= items.size()) {
             return null;
         }
-        return items.elementAt(itemIndex);
+        return items.get(itemIndex);
     }
 
     public Room FindRoom(int roomIndex) {
@@ -317,7 +325,7 @@ public class Level implements ImageObserver, Serializable {
         if (roomIndex >= rooms.size()) {
             return null;
         }
-        return rooms.elementAt(roomIndex);
+        return rooms.get(roomIndex);
     }
 
     public void Empty() {
@@ -331,7 +339,7 @@ public class Level implements ImageObserver, Serializable {
 
         // Remove all Items
         for (a = 0; a < items.size(); a++) {
-            Item item = items.elementAt(a);
+            Item item = items.get(a);
             item.Erase();
         }
         items.clear();
@@ -343,7 +351,7 @@ public class Level implements ImageObserver, Serializable {
 
         // Remove all Rooms
         for (a = 0; a < rooms.size(); a++) {
-            Room room = rooms.elementAt(a);
+            Room room = rooms.get(a);
             room.Erase();
         }
         rooms.clear();
@@ -378,8 +386,8 @@ public class Level implements ImageObserver, Serializable {
         }
 
         Item clonedItem = (Item) item.clone();
-        invItems.addElement(clonedItem);
-        invItemIndexes.addElement(items.indexOf(item));
+        invItems.add(clonedItem);
+        invItemIndexes.add(items.indexOf(item));
 
         System.out.println((invItems.size() - 1) + ": "
                 + "Saving " + item.getClass() + ", index=" + items.indexOf(item));
@@ -401,8 +409,8 @@ public class Level implements ImageObserver, Serializable {
         if (item.InternalRoom != null) {
             // Store Copy of Room
             Room clonedRoom = (Room) item.InternalRoom.clone();
-            invRooms.addElement(clonedRoom);
-            invRoomIndexes.addElement(rooms.indexOf(item.InternalRoom));
+            invRooms.add(clonedRoom);
+            invRoomIndexes.add(rooms.indexOf(item.InternalRoom));
             System.out.println("Saving Room to Inventory.");
 
             // Store all Materials in the Internal Room
@@ -410,18 +418,18 @@ public class Level implements ImageObserver, Serializable {
             for (int Y = 0; Y < 12; Y++) {
                 for (int X = 0; X < 20; X++) {
                     int matIndex = item.InternalRoom.RoomArray[Y][X];
-                    Material originalMaterial = materials.elementAt(matIndex);
+                    Material originalMaterial = materials.get(matIndex);
                     Material clonedMaterial = (Material) originalMaterial.clone();
                     boolean found = false;
                     for (int a = 0; a < invMaterials.size(); a++) {
-                        Material testMaterial = invMaterials.elementAt(a);
+                        Material testMaterial = invMaterials.get(a);
                         if (testMaterial.equals(clonedMaterial)) {
                             found = true;
                         }
                     }
                     if (!found) {
-                        invMaterials.addElement(clonedMaterial);
-                        invMaterialIndexes.addElement(matIndex);
+                        invMaterials.add(clonedMaterial);
+                        invMaterialIndexes.add(matIndex);
                         matcount++;
                     }
                 }
@@ -431,7 +439,7 @@ public class Level implements ImageObserver, Serializable {
             // Store all Items in the Internal Room
             if (item.InternalRoom != null) {
                 for (int a = 0; a < items.size(); a++) {
-                    Item internalItem = items.elementAt(a);
+                    Item internalItem = items.get(a);
                     if (internalItem.room == item.InternalRoom) {
                         AddItemToInventory(internalItem);
                     }
@@ -442,15 +450,15 @@ public class Level implements ImageObserver, Serializable {
 
     void LinkInventory() {
         for (int a = 0; a < invItems.size(); a++) {
-            Item item = invItems.elementAt(a);
+            Item item = invItems.get(a);
             if (item.carrying != null) {
                 Integer realItemIndex = items.indexOf(item.carrying);
                 int b = 0;
-                while (invItemIndexes.elementAt(b).intValue()
+                while (invItemIndexes.get(b).intValue()
                         != realItemIndex.intValue()) {
                     b++;
                 }
-                item.carrying = invItems.elementAt(b);
+                item.carrying = invItems.get(b);
                 System.out.println(item.getClass()
                         + " carrying "
                         + item.carrying.getClass());
@@ -458,11 +466,11 @@ public class Level implements ImageObserver, Serializable {
             if (item.carriedBy != null) {
                 Integer realItemIndex = items.indexOf(item.carriedBy);
                 int b = 0;
-                while (invItemIndexes.elementAt(b).intValue()
+                while (invItemIndexes.get(b).intValue()
                         != realItemIndex.intValue()) {
                     b++;
                 }
-                item.carriedBy = invItems.elementAt(b);
+                item.carriedBy = invItems.get(b);
                 System.out.println(item.getClass()
                         + " carriedBy "
                         + item.carriedBy.getClass());
@@ -470,22 +478,22 @@ public class Level implements ImageObserver, Serializable {
             if (item.room != null) {
                 Integer realRoomIndex = rooms.indexOf(item.room);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realRoomIndex.intValue()) {
                     b++;
                 }
-                item.room = invRooms.elementAt(b);
+                item.room = invRooms.get(b);
                 System.out.println(item.getClass()
                         + " is in room #" + b);
             }
             if (item.InternalRoom != null) {
                 Integer realInternalRoomIndex = rooms.indexOf(item.InternalRoom);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realInternalRoomIndex.intValue()) {
                     b++;
                 }
-                item.InternalRoom = invRooms.elementAt(b);
+                item.InternalRoom = invRooms.get(b);
                 //		  item.InternalRoom.portalItem = item;
                 System.out.println(item.getClass()
                         + " has internal room #" + b);
@@ -493,51 +501,51 @@ public class Level implements ImageObserver, Serializable {
         }
 
         for (int a = 0; a < invRooms.size(); a++) {
-            Room room = invRooms.elementAt(a);
+            Room room = invRooms.get(a);
             if (room.upRoom != null) {
                 Integer realRoomIndex = rooms.indexOf(room.upRoom);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realRoomIndex.intValue()) {
                     b++;
                 }
-                room.upRoom = invRooms.elementAt(b);
+                room.upRoom = invRooms.get(b);
             }
             if (room.downRoom != null) {
                 Integer realRoomIndex = rooms.indexOf(room.downRoom);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realRoomIndex.intValue()) {
                     b++;
                 }
-                room.downRoom = invRooms.elementAt(b);
+                room.downRoom = invRooms.get(b);
             }
             if (room.leftRoom != null) {
                 Integer realRoomIndex = rooms.indexOf(room.leftRoom);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realRoomIndex.intValue()) {
                     b++;
                 }
-                room.leftRoom = invRooms.elementAt(b);
+                room.leftRoom = invRooms.get(b);
             }
             if (room.rightRoom != null) {
                 Integer realRoomIndex = rooms.indexOf(room.rightRoom);
                 int b = 0;
-                while (invRoomIndexes.elementAt(b).intValue()
+                while (invRoomIndexes.get(b).intValue()
                         != realRoomIndex.intValue()) {
                     b++;
                 }
-                room.rightRoom = invRooms.elementAt(b);
+                room.rightRoom = invRooms.get(b);
             }
             if (room.portalItem != null) {
                 Integer realItemIndex = items.indexOf(room.portalItem);
                 int b = 0;
-                while (invItemIndexes.elementAt(b).intValue()
+                while (invItemIndexes.get(b).intValue()
                         != realItemIndex.intValue()) {
                     b++;
                 }
-                room.portalItem = invItems.elementAt(b);
+                room.portalItem = invItems.get(b);
                 System.out.println("Room #" + a + " is inside "
                         + room.portalItem.getClass());
             }
@@ -550,15 +558,15 @@ public class Level implements ImageObserver, Serializable {
             }
 
             for (int w = 0; w < room.wires.size(); w++) {
-                Wire wire = room.wires.elementAt(w);
+                Wire wire = room.wires.get(w);
 
                 Integer realItemIndex = items.indexOf(wire.fromPort.myDevice);
                 int b = 0;
-                while (invItemIndexes.elementAt(b).intValue()
+                while (invItemIndexes.get(b).intValue()
                         != realItemIndex.intValue()) {
                     b++;
                 }
-                Item invItem = invItems.elementAt(b);
+                Item invItem = invItems.get(b);
                 Device invDevice = (Device) invItem;
                 b = 0;
                 while (((Device) (wire.fromPort.myDevice)).ports[b] != wire.fromPort) {
@@ -570,11 +578,11 @@ public class Level implements ImageObserver, Serializable {
 
                 realItemIndex = items.indexOf(wire.toPort.myDevice);
                 b = 0;
-                while (invItemIndexes.elementAt(b).intValue()
+                while (invItemIndexes.get(b).intValue()
                         != realItemIndex.intValue()) {
                     b++;
                 }
-                invItem = invItems.elementAt(b);
+                invItem = invItems.get(b);
                 invDevice = (Device) invItem;
                 b = 0;
                 while (((Device) (wire.toPort.myDevice)).ports[b] != wire.toPort) {
@@ -609,22 +617,22 @@ public class Level implements ImageObserver, Serializable {
 
             s.writeInt(invRooms.size());
             for (int a = 0; a < invRooms.size(); a++) {
-                s.writeObject(invRooms.elementAt(a));
+                s.writeObject(invRooms.get(a));
             }
 
             s.writeInt(invMaterials.size());
             for (int a = 0; a < invMaterials.size(); a++) {
-                s.writeObject(invMaterials.elementAt(a));
+                s.writeObject(invMaterials.get(a));
             }
 
             s.writeInt(invItems.size());
             for (int a = 0; a < invItems.size(); a++) {
-                s.writeObject(invItems.elementAt(a));
+                s.writeObject(invItems.get(a));
             }
 
             // Save Room References (UDLRrooms, PortalItem, Wires)
             for (int a = 0; a < invRooms.size(); a++) {
-                Room room = invRooms.elementAt(a);
+                Room room = invRooms.get(a);
                 s.writeInt(invRooms.indexOf(room.upRoom));
                 s.writeInt(invRooms.indexOf(room.downRoom));
                 s.writeInt(invRooms.indexOf(room.rightRoom));
@@ -633,7 +641,7 @@ public class Level implements ImageObserver, Serializable {
 
                 s.writeInt(room.wires.size());
                 for (int b = 0; b < room.wires.size(); b++) {
-                    Wire wire = room.wires.elementAt(b);
+                    Wire wire = room.wires.get(b);
                     int p;
                     s.writeInt(invItems.indexOf(wire.fromPort.myDevice)); // Index of fromport device
                     p = 0;
@@ -667,7 +675,7 @@ public class Level implements ImageObserver, Serializable {
 
             // Save Item References
             for (int a = 0; a < invItems.size(); a++) {
-                Item item = invItems.elementAt(a);
+                Item item = invItems.get(a);
                 s.writeInt(invItems.indexOf(item.carrying));
                 s.writeInt(invItems.indexOf(item.carriedBy));
                 s.writeInt(invRooms.indexOf(item.room));
@@ -710,7 +718,7 @@ public class Level implements ImageObserver, Serializable {
             for (int a = 0; a < numRooms; a++) {
                 try {
                     Room room = (Room) s.readObject();
-                    rooms.addElement(room);
+                    rooms.add(room);
                 }
                 catch (ClassNotFoundException e) {
                 }
@@ -721,7 +729,7 @@ public class Level implements ImageObserver, Serializable {
             for (int a = 0; a < numMaterials; a++) {
                 try {
                     Material material = (Material) s.readObject();
-                    materials.addElement(material);
+                    materials.add(material);
                     material.GenerateIcons();
                 }
                 catch (ClassNotFoundException e) {
@@ -732,7 +740,7 @@ public class Level implements ImageObserver, Serializable {
             for (int a = 0; a < numItems; a++) {
                 try {
                     Item item = (Item) s.readObject();
-                    items.addElement(item);
+                    items.add(item);
                     System.out.println("Loading " + item.getClass() + " from Inventory");
                 }
                 catch (ClassNotFoundException e) {
@@ -740,26 +748,26 @@ public class Level implements ImageObserver, Serializable {
             }
 
             for (int a = 0; a < numRooms; a++) {
-                Room room = rooms.elementAt(orgNumRooms + a);
+                Room room = rooms.get(orgNumRooms + a);
                 int upRoomIndex = s.readInt();
                 int downRoomIndex = s.readInt();
                 int rightRoomIndex = s.readInt();
                 int leftRoomIndex = s.readInt();
                 int portalItemIndex = s.readInt();
                 if (upRoomIndex != -1) {
-                    room.upRoom = rooms.elementAt(upRoomIndex + orgNumRooms);
+                    room.upRoom = rooms.get(upRoomIndex + orgNumRooms);
                 }
                 if (downRoomIndex != -1) {
-                    room.downRoom = rooms.elementAt(downRoomIndex + orgNumRooms);
+                    room.downRoom = rooms.get(downRoomIndex + orgNumRooms);
                 }
                 if (rightRoomIndex != -1) {
-                    room.rightRoom = rooms.elementAt(rightRoomIndex + orgNumRooms);
+                    room.rightRoom = rooms.get(rightRoomIndex + orgNumRooms);
                 }
                 if (leftRoomIndex != -1) {
-                    room.leftRoom = rooms.elementAt(leftRoomIndex + orgNumRooms);
+                    room.leftRoom = rooms.get(leftRoomIndex + orgNumRooms);
                 }
                 if (portalItemIndex != 1) {
-                    room.portalItem = items.elementAt(portalItemIndex + orgNumItems);
+                    room.portalItem = items.get(portalItemIndex + orgNumItems);
                     System.out.println("Room #" + a + " has portalItem:" + room.portalItem.getClass());
                 }
 
@@ -767,23 +775,23 @@ public class Level implements ImageObserver, Serializable {
                 System.out.println("Linking " + numWires + " wires");
 
                 for (int b = 0; b < numWires; b++) {
-                    Wire wire = room.wires.elementAt(b);
+                    Wire wire = room.wires.get(b);
 
-                    Item tmpItem = items.elementAt(s.readInt() + orgNumItems);
+                    Item tmpItem = items.get(s.readInt() + orgNumItems);
                     Device tmpDevice = (Device) tmpItem;
                     wire.fromPort = tmpDevice.ports[s.readInt()];
                     wire.fromPort.myWire = wire;
 
-                    tmpItem = items.elementAt(s.readInt() + orgNumItems);
+                    tmpItem = items.get(s.readInt() + orgNumItems);
                     tmpDevice = (Device) tmpItem;
                     wire.toPort = tmpDevice.ports[s.readInt()];
                     wire.toPort.myWire = wire;
 
-                    tmpItem = items.elementAt(s.readInt() + orgNumItems);
+                    tmpItem = items.get(s.readInt() + orgNumItems);
                     tmpDevice = (Device) tmpItem;
                     wire.inPort = tmpDevice.ports[s.readInt()];
 
-                    tmpItem = items.elementAt(s.readInt() + orgNumItems);
+                    tmpItem = items.get(s.readInt() + orgNumItems);
                     tmpDevice = (Device) tmpItem;
                     wire.outPort = tmpDevice.ports[s.readInt()];
 
@@ -800,21 +808,21 @@ public class Level implements ImageObserver, Serializable {
             }
 
             for (int a = 0; a < numItems; a++) {
-                Item item = items.elementAt(orgNumItems + a);
+                Item item = items.get(orgNumItems + a);
                 int carryingIndex = s.readInt();
                 int carriedByIndex = s.readInt();
                 int roomIndex = s.readInt();
                 int internalRoomIndex = s.readInt();
                 if (carryingIndex != -1) {
-                    item.carrying = items.elementAt(carryingIndex + orgNumItems);
+                    item.carrying = items.get(carryingIndex + orgNumItems);
                     System.out.println(item.getClass() + " carries " + item.carrying.getClass());
                 }
                 if (carriedByIndex != -1) {
-                    item.carriedBy = items.elementAt(carriedByIndex + orgNumItems);
+                    item.carriedBy = items.get(carriedByIndex + orgNumItems);
                     System.out.println(item.getClass() + " carriedBy " + item.carriedBy.getClass());
                 }
                 if (roomIndex != -1) {
-                    item.room = rooms.elementAt(roomIndex + orgNumRooms);
+                    item.room = rooms.get(roomIndex + orgNumRooms);
                     System.out.println(item.getClass() + " is in room #" + roomIndex);
                 }
                 else {
@@ -826,7 +834,7 @@ public class Level implements ImageObserver, Serializable {
                     }
                 }
                 if (internalRoomIndex != -1) {
-                    item.InternalRoom = rooms.elementAt(internalRoomIndex + orgNumRooms);
+                    item.InternalRoom = rooms.get(internalRoomIndex + orgNumRooms);
                     System.out.println(item.getClass() + " has InternalRoom #" + internalRoomIndex);
                     item.InternalRoom.portalItem = item;
                 }
@@ -838,7 +846,7 @@ public class Level implements ImageObserver, Serializable {
                 }
             }
 
-            Item item = items.elementAt(orgNumItems);
+            Item item = items.get(orgNumItems);
             gameCursor.carrying = item;
             item.carriedBy = gameCursor;
 
@@ -863,12 +871,12 @@ public class Level implements ImageObserver, Serializable {
         // Remove all unnecessary Materials
         for (int a = 0; a < materials.size() - 1; a++) {
             for (int b = a + 1; b < materials.size(); b++) {
-                Material mat1 = materials.elementAt(a);
-                Material mat2 = materials.elementAt(b);
+                Material mat1 = materials.get(a);
+                Material mat2 = materials.get(b);
                 if (mat1.equals(mat2)) {
                     materials.remove(mat2);
                     for (int c = 0; c < rooms.size(); c++) {
-                        Room room = rooms.elementAt(c);
+                        Room room = rooms.get(c);
                         for (int Y = 0; Y < 12; Y++) {
                             for (int X = 0; X < 20; X++) {
                                 if (room.RoomArray[Y][X] == b) {
@@ -886,7 +894,7 @@ public class Level implements ImageObserver, Serializable {
         }
 
         for (int a = orgNumItems; a < items.size(); a++) {
-            Item item = items.elementAt(a);
+            Item item = items.get(a);
             item.GenerateIcons();
             if (item.getClass().toString().endsWith("SmallChip")) {
                 SmallChip sc = (SmallChip) item;
@@ -931,7 +939,7 @@ public class Level implements ImageObserver, Serializable {
     public void Init() {
         // Generate all Room Material Arrays
         for (int a = 0; a < rooms.size(); a++) {
-            Room room = rooms.elementAt(a);
+            Room room = rooms.get(a);
             room.GenerateArray();
         }
 
@@ -944,6 +952,10 @@ public class Level implements ImageObserver, Serializable {
                 initializer.Init();
             }
         }
+    }
+    
+    protected <T> T lastOf(List<T> list) {
+    	return list.get(list.size() - 1);
     }
 
 }

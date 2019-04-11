@@ -232,32 +232,26 @@ public class RoomDisplay extends JPanel {
                 }
                 Electricity();
                 for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.elementAt(a);
+                    Item item = level.items.get(a);
                     item.Animate();
                     if (item.room == level.currentViewer.room) {
                         item.Decorate();
                     }
                 }
                 for (int a = 0; a < level.materials.size(); a++) {
-                    level.materials.elementAt(a).Animate();
+                    level.materials.get(a).Animate();
                 }
                 for (int a = 0; a < level.rooms.size(); a++) {
-                    Room room = level.rooms.elementAt(a);
+                    Room room = level.rooms.get(a);
                     for (int b = 0; b < room.graphix.size(); b++) {
-                        Graphix graphix = room.graphix.elementAt(b);
+                        Graphix graphix = room.graphix.get(b);
                         graphix.Animate();
                     }
                 }
 
                 repaint();
-                for (int a = 0; a < level.sparks.size(); a++) {
-                    Spark spark = level.sparks.elementAt(a);
-                    spark.Age();
-                    if (spark.age > 6) {
-                        level.sparks.removeElement(spark);
-                        a--;
-                    }
-                }
+                level.sparks.forEach(x -> x.Age());
+                level.sparks.removeIf(x -> x.age >6);
             }
         });
 
@@ -266,7 +260,7 @@ public class RoomDisplay extends JPanel {
         ImageIcon tempImageIcon;
 
         for (int a = 0; a < level.materials.size(); a++) {
-            Material mat = level.materials.elementAt(a);
+            Material mat = level.materials.get(a);
             tempImageIcon = mat.icon;
             if (tempImageIcon != null) {
                 g.drawImage(tempImageIcon.getImage(), 0, 0, this);
@@ -274,7 +268,7 @@ public class RoomDisplay extends JPanel {
         }
 
         for (int a = 0; a < level.items.size(); a++) {
-            Item itm = level.items.elementAt(a);
+            Item itm = level.items.get(a);
             for (int b = 0; b < itm.icons.length; b++) {
                 tempImageIcon = itm.icons[b];
                 if (tempImageIcon != null) {
@@ -313,19 +307,19 @@ public class RoomDisplay extends JPanel {
 
         // Paint Items
         for (int a = 0; a < level.items.size(); a++) {
-            if (level.currentViewer.room == level.items.elementAt(a).room) {
-                level.items.elementAt(a).Draw(g2, this);
+            if (level.currentViewer.room == level.items.get(a).room) {
+                level.items.get(a).Draw(g2, this);
             }
         }
 
         // Paint Wires
         for (int a = 0; a < level.currentViewer.room.wires.size(); a++) {
-            level.currentViewer.room.wires.elementAt(a).Draw(g2);
+            level.currentViewer.room.wires.get(a).Draw(g2);
         }
 
         // Paint Sparks
         for (int a = 0; a < level.sparks.size(); a++) {
-            Spark spark = level.sparks.elementAt(a);
+            Spark spark = level.sparks.get(a);
             if (spark.room == level.currentViewer.room) {
                 spark.Draw(g2);
             }
@@ -346,7 +340,7 @@ public class RoomDisplay extends JPanel {
         }
 
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item.isDevice()) {
                 Device device = (Device) item;
                 for (int b = 0; b < device.ports.length; b++) {
@@ -377,7 +371,7 @@ public class RoomDisplay extends JPanel {
         }
 
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item.isDevice()) {
                 Device device = (Device) item;
                 device.Function();
@@ -390,7 +384,7 @@ public class RoomDisplay extends JPanel {
         do {
             nodeChanged = false;
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.isDevice()) {
                     Device device = (Device) item;
                     for (int b = 0; b < device.ports.length; b++) {

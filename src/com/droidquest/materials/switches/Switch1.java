@@ -14,7 +14,7 @@ public class Switch1 extends Switch {
     public void TouchedByItem(Item item) {
         if (train == null) {
             for (int a = 0; a < Material.level.items.size(); a++) {
-                Item t = Material.level.items.elementAt(a);
+                Item t = Material.level.items.get(a);
                 if (t.getClass().toString().endsWith("Train")) {
                     train = (Train) t;
                 }

@@ -168,7 +168,7 @@ public class Item implements Serializable, Cloneable {
             for (int b = bigXl; b <= bigXr; b++) {
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
-                    level.items.removeElement(this);
+                    level.items.remove(this);
                     level.PlaySound(room, Level.DISCHARGESOUND);
                     return;
                 }

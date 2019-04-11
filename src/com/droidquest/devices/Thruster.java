@@ -148,34 +148,34 @@ public class Thruster extends Device {
             Dimension d = GetXY();
             switch (rotation) {
                 case Port.ROT_UP:
-                    level.sparks.addElement(new Spark(d.width + level.random.nextInt(30),
+                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
                             d.height + 0,
                             0, -4, room));
-                    level.sparks.addElement(new Spark(d.width + level.random.nextInt(30),
+                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
                             d.height + 0,
                             0, -4, room));
                     break;
                 case Port.ROT_RIGHT:
-                    level.sparks.addElement(new Spark(d.width + 54,
+                    level.sparks.add(new Spark(d.width + 54,
                             d.height + level.random.nextInt(20),
                             4, 0, room));
-                    level.sparks.addElement(new Spark(d.width + 54,
+                    level.sparks.add(new Spark(d.width + 54,
                             d.height + level.random.nextInt(20),
                             4, 0, room));
                     break;
                 case Port.ROT_DOWN:
-                    level.sparks.addElement(new Spark(d.width + level.random.nextInt(30),
+                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
                             d.height + 26,
                             0, 4, room));
-                    level.sparks.addElement(new Spark(d.width + level.random.nextInt(30),
+                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
                             d.height + 26,
                             0, 4, room));
                     break;
                 case Port.ROT_LEFT:
-                    level.sparks.addElement(new Spark(d.width + 44,
+                    level.sparks.add(new Spark(d.width + 44,
                             d.height + level.random.nextInt(20),
                             -4, 0, room));
-                    level.sparks.addElement(new Spark(d.width + 44,
+                    level.sparks.add(new Spark(d.width + 44,
                             d.height + level.random.nextInt(20),
                             -4, 0, room));
                     break;

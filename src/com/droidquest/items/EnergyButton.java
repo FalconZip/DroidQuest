@@ -17,14 +17,14 @@ public class EnergyButton extends Button {
         if (animationState == 0) {
             if (room != null) {
                 for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.elementAt(a);
+                    Item item = level.items.get(a);
                     if (Overlaps(item)) {
                         animationState = 1;
                         nb.animationState = 51;
                         for (int b = 1; b < 19; b++) {
                             room.downRoom.SetMaterial(b, 4, 0);
                         }
-                        TextBox line = room.downRoom.textBoxes.elementAt(1);
+                        TextBox line = room.downRoom.textBoxes.get(1);
                         line.textString = " ";
                     }
 

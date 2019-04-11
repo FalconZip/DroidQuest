@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
@@ -64,7 +65,8 @@ public class Polarizer extends Item {
 
         if (found) {
             if (room.upRoom == room) {
-                for(Item item : level.items) {
+                for(Iterator<Item> it= level.items.iterator(); it.hasNext(); ) {
+                	Item item = it.next();
                     if (item != null && item instanceof StormCloud) {
                         if (Overlaps(item)) {
                             level.PlaySound(room, Level.DISCHARGESOUND);
@@ -74,12 +76,11 @@ public class Polarizer extends Item {
                             room.SetMaterial(10, 0, 0);
                             room.SetMaterial(11, 0, 0);
                             item.room = null;
-                            level.items.removeElement(item);
+                            it.remove();
                             if (carriedBy != null) {
                                 carriedBy.Drops();
                             }
                             room = null;
-                            level.items.removeElement(this);
                         }
                     }
                 }

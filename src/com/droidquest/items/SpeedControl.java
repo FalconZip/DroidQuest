@@ -77,7 +77,7 @@ public class SpeedControl extends Item {
                 ChipCompiler.chipSpeed--;
                 break;
         }
-        TextBox tb = room.textBoxes.elementAt(1);
+        TextBox tb = room.textBoxes.get(1);
         tb.textString = ChipCompiler.chipSpeed + "x";
         return false;
     }

@@ -19,61 +19,61 @@ class RO6 extends Level {
     public RO6(RoomDisplay rd) {
         super(rd);
 
-        materials.addElement(new Material(true, false));               // 0  = Empty Space 
-        materials.addElement(new Material(Color.blue, false, true));   // 1  = Blue
-        materials.addElement(new Material(Color.white, false, true));  // 2  = White
-        materials.addElement(new Material(Color.red, false, true));  // 3  = Red
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));  // 4  = Orange
-        materials.addElement(new Material(Color.yellow, false, true));  // 5  = Yellow
-        materials.addElement(new Material(Color.green, false, true));  // 6  = Green
-        materials.addElement(new Material(new Color(255, 0, 255), false, true));  // 7  = Purple
+        materials.add(new Material(true, false));               // 0  = Empty Space 
+        materials.add(new Material(Color.blue, false, true));   // 1  = Blue
+        materials.add(new Material(Color.white, false, true));  // 2  = White
+        materials.add(new Material(Color.red, false, true));  // 3  = Red
+        materials.add(new Material(new Color(255, 128, 0), false, true));  // 4  = Orange
+        materials.add(new Material(Color.yellow, false, true));  // 5  = Yellow
+        materials.add(new Material(Color.green, false, true));  // 6  = Green
+        materials.add(new Material(new Color(255, 0, 255), false, true));  // 7  = Purple
 
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.DOWN
                 + HotWires.LEFT
                 + HotWires.RIGHT,
                 true
         ));           // 8=HotWire cross
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.DOWN,
                 true
         ));           // 9=HotWire Vertical
-        materials.addElement(new HotWires(HotWires.LEFT
+        materials.add(new HotWires(HotWires.LEFT
                 + HotWires.RIGHT,
                 true
         ));           // 10=HotWire Horizontal
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.LEFT,
                 true
         ));           // 11=HotWire J
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.RIGHT,
                 true
         ));           // 12=HotWire L
-        materials.addElement(new HotWires(+HotWires.DOWN
+        materials.add(new HotWires(+HotWires.DOWN
                 + HotWires.LEFT,
                 true
         ));           // 13=HotWire 7
-        materials.addElement(new HotWires(+HotWires.DOWN
+        materials.add(new HotWires(+HotWires.DOWN
                 + HotWires.RIGHT,
                 true
         ));           // 14=HotWire r
-        materials.addElement(new HotWires(HotWires.DOWN
+        materials.add(new HotWires(HotWires.DOWN
                 + HotWires.LEFT
                 + HotWires.RIGHT,
                 true
         ));           // 15=HotWire T
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.LEFT
                 + HotWires.RIGHT,
                 true
         ));           // 16=HotWire _|_
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.DOWN
                 + HotWires.RIGHT,
                 true
         ));           // 17=HotWire |-
-        materials.addElement(new HotWires(HotWires.UP
+        materials.add(new HotWires(HotWires.UP
                 + HotWires.DOWN
                 + HotWires.LEFT,
                 true
@@ -99,7 +99,7 @@ class RO6 extends Level {
                 {1, 4, 3, 1, 7, 3, 1, 1, 0, 1, 10, 0, 2, 5, 3, 2, 6, 3, 2, 2, 0, 2, 9, 0},
                 {1, 5, 3, 1, 6, 3, 1, 2, 0, 1, 9, 0}
         };
-        materials.addElement(new Lock(Color.red, Color.red, redlock)); // 19=RedLock
+        materials.add(new Lock(Color.red, Color.red, redlock)); // 19=RedLock
 
         int[][] orangelock = {
                 {Lock.WIDE},
@@ -119,7 +119,7 @@ class RO6 extends Level {
                 {4, 4, 4, 4, 7, 4, 4, 1, 0, 4, 10, 0, 5, 5, 4, 5, 6, 4, 5, 2, 0, 5, 9, 0},
                 {4, 5, 4, 4, 6, 4, 4, 2, 0, 4, 9, 0}
         };
-        materials.addElement(new Lock(new Color(255, 128, 0),
+        materials.add(new Lock(new Color(255, 128, 0),
                 new Color(255, 128, 0), orangelock)); // 20=OrangeLock
 
         int[][] yellowlock = {
@@ -140,7 +140,7 @@ class RO6 extends Level {
                 {7, 4, 5, 7, 7, 5, 7, 1, 0, 7, 10, 0, 8, 5, 5, 8, 6, 5, 8, 2, 0, 8, 9, 0},
                 {7, 5, 5, 7, 6, 5, 7, 2, 0, 7, 9, 0}
         };
-        materials.addElement(new Lock(Color.yellow,
+        materials.add(new Lock(Color.yellow,
                 Color.yellow, yellowlock)); // 21=YellowLock
 
         int[][] greenlock = {
@@ -161,7 +161,7 @@ class RO6 extends Level {
                 {10, 4, 6, 10, 7, 6, 10, 1, 0, 10, 10, 0, 11, 5, 6, 11, 6, 6, 11, 2, 0, 11, 9, 0},
                 {10, 5, 6, 10, 6, 6, 10, 2, 0, 10, 9, 0}
         };
-        materials.addElement(new Lock(Color.green,
+        materials.add(new Lock(Color.green,
                 Color.green, greenlock)); // 22=GreenLock
 
         int[][] bluelock = {
@@ -182,7 +182,7 @@ class RO6 extends Level {
                 {13, 4, 1, 13, 7, 1, 13, 1, 0, 13, 10, 0, 14, 5, 1, 14, 6, 1, 14, 2, 0, 14, 9, 0},
                 {13, 5, 1, 13, 6, 1, 13, 2, 0, 13, 9, 0}
         };
-        materials.addElement(new Lock(Color.blue,
+        materials.add(new Lock(Color.blue,
                 Color.blue, bluelock)); // 23=BlueLock
 
         int[][] purplelock = {
@@ -205,11 +205,11 @@ class RO6 extends Level {
                 {16, 4, 7, 16, 7, 7, 16, 1, 0, 16, 10, 0, 17, 5, 7, 17, 6, 7, 17, 2, 0, 17, 9, 0},
                 {16, 5, 7, 16, 6, 7, 16, 2, 0, 16, 9, 0}
         };
-        materials.addElement(new Lock(new Color(255, 0, 255),
+        materials.add(new Lock(new Color(255, 0, 255),
                 new Color(255, 0, 255), purplelock)); // 24=PurpleLock
 
         String[] files = {"field0.jpg", "field1.jpg"};
-        materials.addElement(new PlayerBlocker(files));                    // 25= Blue FF
+        materials.add(new PlayerBlocker(files));                    // 25= Blue FF
 
         int flipswitch[][] = {
                 {Switch.WAIT4CONTACT},
@@ -223,24 +223,24 @@ class RO6 extends Level {
                 {Switch.REPLACE, 15, 9, 0, 16, 9, 0, 15, 10, 0, 16, 10, 0, 17, 7, 1, 18, 7, 1, 17, 8, 1, 18, 8, 1},
                 {Switch.REPLACE, 18, 10, 0}
         };
-        materials.addElement(new Switch(Switch.ROT_DOWN, flipswitch)); // 26= FlipSwitch
+        materials.add(new Switch(Switch.ROT_DOWN, flipswitch)); // 26= FlipSwitch
 
-        materials.addElement(new CrystalRecharger()); // 27 = Recharger
-        materials.addElement(new Portal("ROEndGame2.lvl", true, true)); // 28= Portal
+        materials.add(new CrystalRecharger()); // 27 = Recharger
+        materials.add(new Portal("ROEndGame2.lvl", true, true)); // 28= Portal
 
         for (int a = 0; a <= 22; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         {// Room  0 Help 
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.AddTextBox("You're on your own here!",
                     136, 6 * 32, 560);
             room.AddTextBox("(To continue, press RETURN.)",
                     96, 346, 500);
         }
         {// Room  1 Maze 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1},
                     {1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1},
@@ -258,7 +258,7 @@ class RO6 extends Level {
 
         }
         {// Room  1 Maze 
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1},
                     {1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1},
@@ -276,23 +276,23 @@ class RO6 extends Level {
 
         }
         {// Room  2 Maze 
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.SetMaterialFromRoom(1);
         }
         {// Room  3 Maze 
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.SetMaterialFromRoom(1);
         }
         {// Room  4 Maze 
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.SetMaterialFromRoom(1);
         }
         {// Room  5 Maze 
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.SetMaterialFromRoom(1);
         }
         {// Room  6 Maze exit 
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -311,16 +311,16 @@ class RO6 extends Level {
             room.AddTextBox("Welcome to the Super Secret 6th level!", 52, 64, 560);
             room.AddTextBox("{255,000,000} Cross {255,128,000} the {255,255,000} rainbow {000,255,000} bridge {000,000,255} to {255,000,255} freedom!",
                     64, 9 * 32, 560);
-//	     items.addElement(new Key(2*28,3*32,room,Color.red));
-//	     items.addElement(new Key(2*28,4*32,room,new Color(255,128,0)));
-//	     items.addElement(new Key(2*28,5*32,room,Color.yellow));
-//	     items.addElement(new Key(2*28,6*32,room,Color.green));
-//	     items.addElement(new Key(2*28,7*32,room,Color.blue));
-//	     items.addElement(new Key(2*28,8*32,room,new Color(255,0,255)));
+//	     items.add(new Key(2*28,3*32,room,Color.red));
+//	     items.add(new Key(2*28,4*32,room,new Color(255,128,0)));
+//	     items.add(new Key(2*28,5*32,room,Color.yellow));
+//	     items.add(new Key(2*28,6*32,room,Color.green));
+//	     items.add(new Key(2*28,7*32,room,Color.blue));
+//	     items.add(new Key(2*28,8*32,room,new Color(255,0,255)));
         }
 
         {// Room  7 Hallway 
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
@@ -339,7 +339,7 @@ class RO6 extends Level {
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room  8 Rainbow Bridge 
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
@@ -357,7 +357,7 @@ class RO6 extends Level {
 
         }
         {// Room  9 Hallway 
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
@@ -379,7 +379,7 @@ class RO6 extends Level {
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 10 Hallway 
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -401,7 +401,7 @@ class RO6 extends Level {
             room.AddArrow(559, 2 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 11 Hallway 
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
@@ -423,7 +423,7 @@ class RO6 extends Level {
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 12 Hallway 
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
@@ -444,7 +444,7 @@ class RO6 extends Level {
         }
 
         {// Room 13 Red Lock upper 
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.RoomArray = new int[][]{
                     {10, 10, 10, 10, 10, 10, 10, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 13},
                     {0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9},
@@ -461,10 +461,10 @@ class RO6 extends Level {
             };
             int[] pace = {2 * 28, 2 * 32, 2 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 18 * 28, 11 * 32, 0, 2 * 32};
-            items.addElement(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
+            items.add(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
         }
         {// Room 14 Red Lock lower 
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.RoomArray = new int[][]{
                     {9, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9},
                     {9, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9},
@@ -482,7 +482,7 @@ class RO6 extends Level {
 
         }
         {// Room 15 Red Lock map upper (lower) 
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.RoomArray = new int[][]{
                     {1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
                     {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1},
@@ -499,7 +499,7 @@ class RO6 extends Level {
             };
         }
         {// Room 16 Red Lock map lower (upper) 
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -517,7 +517,7 @@ class RO6 extends Level {
 
         }
         {// Room 17 Orange Lock (pac-man) 
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
@@ -532,41 +532,41 @@ class RO6 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 20, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            items.addElement(new Pellet(2 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(4 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(6 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(8 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(10 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(12 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(14 * 28 - 14, 2 * 32 - 14, room));
-            items.addElement(new Pellet(2 * 28 - 14, 4 * 32 - 14, room));
-            items.addElement(new Pellet(6 * 28 - 14, 4 * 32 - 14, room));
-            items.addElement(new Pellet(10 * 28 - 14, 4 * 32 - 14, room));
-            items.addElement(new Pellet(14 * 28 - 14, 4 * 32 - 14, room));
-            items.addElement(new Pellet(2 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(4 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(6 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(8 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(10 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(12 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(14 * 28 - 14, 6 * 32 - 14, room));
-            items.addElement(new Pellet(2 * 28 - 14, 8 * 32 - 14, room));
-            items.addElement(new Pellet(6 * 28 - 14, 8 * 32 - 14, room));
-            items.addElement(new Pellet(10 * 28 - 14, 8 * 32 - 14, room));
-            items.addElement(new Pellet(14 * 28 - 14, 8 * 32 - 14, room));
-            items.addElement(new Pellet(2 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(4 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(6 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(8 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(10 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(12 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Pellet(14 * 28 - 14, 10 * 32 - 14, room));
-            items.addElement(new Ghost(42, 48, room));
-            items.addElement(new DirectionalSensor(16 * 28 + 8, 4 * 32 + 16, room,
+            items.add(new Pellet(2 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(4 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(6 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(8 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(10 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(12 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(14 * 28 - 14, 2 * 32 - 14, room));
+            items.add(new Pellet(2 * 28 - 14, 4 * 32 - 14, room));
+            items.add(new Pellet(6 * 28 - 14, 4 * 32 - 14, room));
+            items.add(new Pellet(10 * 28 - 14, 4 * 32 - 14, room));
+            items.add(new Pellet(14 * 28 - 14, 4 * 32 - 14, room));
+            items.add(new Pellet(2 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(4 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(6 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(8 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(10 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(12 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(14 * 28 - 14, 6 * 32 - 14, room));
+            items.add(new Pellet(2 * 28 - 14, 8 * 32 - 14, room));
+            items.add(new Pellet(6 * 28 - 14, 8 * 32 - 14, room));
+            items.add(new Pellet(10 * 28 - 14, 8 * 32 - 14, room));
+            items.add(new Pellet(14 * 28 - 14, 8 * 32 - 14, room));
+            items.add(new Pellet(2 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(4 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(6 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(8 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(10 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(12 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Pellet(14 * 28 - 14, 10 * 32 - 14, room));
+            items.add(new Ghost(42, 48, room));
+            items.add(new DirectionalSensor(16 * 28 + 8, 4 * 32 + 16, room,
                     new Ghost(0, 0, null)));
         }
         {// Room 18 Yellow Lock (Hot tunnel) 
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
@@ -581,14 +581,14 @@ class RO6 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            items.addElement(new Wave(room));
+            items.add(new Wave(room));
 
             int[] pace = {2 * 28, 2 * 32, 2 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 18 * 28, 11 * 32, 0, 5 * 32};
-            items.addElement(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
+            items.add(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
         }
         {// Room 19 Green Lock (Turbines) 
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -604,15 +604,15 @@ class RO6 extends Level {
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
             int[] cells1 = {12, 3, 0, 1, 11, 3, 0, 1, 10, 3, 0, 1, 9, 3, 0, 1, 8, 3, 0, 1, 7, 3, 0, 1};
-            items.addElement(new Turbine(28, 9 * 32, room, cells1));
+            items.add(new Turbine(28, 9 * 32, room, cells1));
             int[] cells2 = {12, 5, 0, 1, 11, 5, 0, 1, 10, 5, 0, 1, 9, 5, 0, 1, 8, 5, 0, 1, 7, 5, 0, 1};
-            items.addElement(new Turbine(5 * 28, 9 * 32, room, cells2));
+            items.add(new Turbine(5 * 28, 9 * 32, room, cells2));
             int[] pace = {6 * 28, 2 * 32, 13 * 28, 2 * 32};
             int[] program = {28, 32, 15 * 28, 10 * 32, 19 * 28, 5 * 32};
-            items.addElement(new Sentry(6 * 28, 2 * 32, room, pace, program, true));
+            items.add(new Sentry(6 * 28, 2 * 32, room, pace, program, true));
         }
         {// Room 20 Blue Lock (Flip Maze) 
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1},
@@ -630,10 +630,10 @@ class RO6 extends Level {
 
             int[] pace = {2 * 28, 2 * 32, 2 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 18 * 28, 11 * 32, 0, 5 * 32};
-            items.addElement(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
+            items.add(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
         }
         {// Room 21 Purple Lock (4 Pull Locks) 
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
@@ -648,17 +648,17 @@ class RO6 extends Level {
                     {1, 0, 0, 0, 0, 1, 0, 0, 0, 24, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            items.addElement(new WallHandle(11 * 28, 3 * 32 + 8, room));
-            items.addElement(new WallHandle(11 * 28, 5 * 32 + 8, room));
-            items.addElement(new WallHandle(11 * 28, 7 * 32 + 8, room));
-            items.addElement(new WallHandle(11 * 28, 9 * 32 + 8, room));
+            items.add(new WallHandle(11 * 28, 3 * 32 + 8, room));
+            items.add(new WallHandle(11 * 28, 5 * 32 + 8, room));
+            items.add(new WallHandle(11 * 28, 7 * 32 + 8, room));
+            items.add(new WallHandle(11 * 28, 9 * 32 + 8, room));
             int[] pace = {2 * 28, 2 * 32, 2 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 18 * 28, 11 * 32, 0, 5 * 32};
-            items.addElement(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
+            items.add(new Sentry(5 * 28, 2 * 32, room, pace, program, true));
         }
 
         {// Room 22 Final Portal! 
-            Room room = rooms.elementAt(22);
+            Room room = rooms.get(22);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -689,24 +689,24 @@ class RO6 extends Level {
                     "helper5.gif", "helper5.gif", "helper5.gif", "helper5.gif",
             };
             Graphix helper = new Graphix(helperlist, 15 * 28, 8 * 32);
-            room.graphix.addElement(helper);
+            room.graphix.add(helper);
         }
 
         for (int a = 1; a <= 5; a++) {
-            Room roomA = rooms.elementAt(a);
-            Room room1 = rooms.elementAt(1);
+            Room roomA = rooms.get(a);
+            Room room1 = rooms.get(1);
             roomA.upRoom = room1;
             roomA.downRoom = room1;
             roomA.leftRoom = room1;
             roomA.rightRoom = room1;
         }
 
-        rooms.elementAt(1).leftRoom = rooms.elementAt(2);
-        rooms.elementAt(2).upRoom = rooms.elementAt(3);
-        rooms.elementAt(3).rightRoom = rooms.elementAt(4);
-        rooms.elementAt(4).leftRoom = rooms.elementAt(5);
-        rooms.elementAt(5).downRoom = rooms.elementAt(6);
-        rooms.elementAt(6).upRoom = rooms.elementAt(1);
+        rooms.get(1).leftRoom = rooms.get(2);
+        rooms.get(2).upRoom = rooms.get(3);
+        rooms.get(3).rightRoom = rooms.get(4);
+        rooms.get(4).leftRoom = rooms.get(5);
+        rooms.get(5).downRoom = rooms.get(6);
+        rooms.get(6).upRoom = rooms.get(1);
 
         LinkRoomsLeftRight(6, 7);
         LinkRoomsLeftRight(7, 8);
@@ -725,14 +725,14 @@ class RO6 extends Level {
         LinkRoomsLeftRight(11, 20);
         LinkRoomsLeftRight(12, 21);
 
-        gameCursor = new GameCursor(9 * 28 + 14, 5 * 32 + 16, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new GameCursor(9 * 28 + 14, 5 * 32 + 16, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 
