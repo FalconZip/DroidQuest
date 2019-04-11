@@ -42,8 +42,8 @@ public class SpyCam extends Item implements Avatar {
             level.player = level.gameCursor;
             level.currentViewer = level.player;
             for (int a = 5; a < 60; a++) {
-                Room r = level.rooms.elementAt(a);
-                TextBox tb = r.textBoxes.elementAt(0);
+                Room r = level.rooms.get(a);
+                TextBox tb = r.textBoxes.get(0);
                 tb.y += 500;
             }
             return false;

@@ -17,7 +17,7 @@ public class FFButton extends Button {
             robots = new GenericRobot[3];
             int rcount = 0;
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item instanceof GenericRobot) {
                     robots[rcount] = (GenericRobot) item;
                     rcount++;

@@ -18,38 +18,38 @@ public class MainMenu extends Level {
         super(rd);
 
         // Material 0, Blank
-        materials.addElement(new Material(true, false));
+        materials.add(new Material(true, false));
         // Material 1, White Wall
-        materials.addElement(new Material(new Color(255, 255, 255), false, true));
+        materials.add(new Material(new Color(255, 255, 255), false, true));
         // Material 2, Green Wall
-        materials.addElement(new Material(new Color(0, 255, 0), false, true));
+        materials.add(new Material(new Color(0, 255, 0), false, true));
         // Material 3, Red Wall
-        materials.addElement(new Material(new Color(255, 0, 0), false, true));
+        materials.add(new Material(new Color(255, 0, 0), false, true));
         // Material 4, Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));
+        materials.add(new Material(new Color(0, 0, 255), false, true));
         // Material 5, Portal to RO game
-        materials.addElement(new Portal("RO1.lvl", false, true));
+        materials.add(new Portal("RO1.lvl", false, true));
         // Material 6, Portal to RO Lab
-        materials.addElement(new Portal("ROLab.lvl", false, true));
+        materials.add(new Portal("ROLab.lvl", false, true));
         // Material 7, Portal to RO tutorial A
-        materials.addElement(new Portal("ROTutA.lvl", false, true));
+        materials.add(new Portal("ROTutA.lvl", false, true));
         // Material 8, Portal to RO tutorial B
-        materials.addElement(new Portal("ROTutB.lvl", false, true));
+        materials.add(new Portal("ROTutB.lvl", false, true));
         // Material 9, Portal to RO tutorial C
-        materials.addElement(new Portal("ROTutC.lvl", false, true));
+        materials.add(new Portal("ROTutC.lvl", false, true));
         // Material 10, Portal to RO tutorial D
-        materials.addElement(new Portal("ROTutD.lvl", false, true));
+        materials.add(new Portal("ROTutD.lvl", false, true));
         // Material 11, Portal to RO tutorial E
-        materials.addElement(new Portal("ROTutE.lvl", false, true));
+        materials.add(new Portal("ROTutE.lvl", false, true));
         // Material 12, Portal to RO tutorial F
-        materials.addElement(new Portal("ROTutF.lvl", false, true));
+        materials.add(new Portal("ROTutF.lvl", false, true));
         // Material 13, Portal to RO Tutorial 3
-        materials.addElement(new Portal("ROTut3.lvl", false, true));
+        materials.add(new Portal("ROTut3.lvl", false, true));
 
         // Material 14, Portal to EndGame 1
-        materials.addElement(new Portal("ROEndGame.lvl", true, true));
+        materials.add(new Portal("ROEndGame.lvl", true, true));
         // Material 15, Portal to RO Level 6
-        materials.addElement(new Portal("RO6.lvl", true, true));
+        materials.add(new Portal("RO6.lvl", true, true));
 
 
         // Room  0, Help Screen
@@ -61,11 +61,11 @@ public class MainMenu extends Level {
         // Room  6, New Games List
 
         for (int a = 0; a < 10; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         {  // Room 0: Help Screen
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.AddTextBox("Droid Quest Temporary Cheats", 4 * 28, 2 * 32, 500);
             room.AddTextBox("Q = Quicken the Animation Timer", 2 * 28, 4 * 32, 500);
             room.AddTextBox("W = Slow the Animation Timer", 2 * 28, 5 * 32, 500);
@@ -74,7 +74,7 @@ public class MainMenu extends Level {
 
         }
         {  // Room 1: Credits
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.AddTextBox("Credits:", 7 * 28, 2 * 32, 500);
             room.AddTextBox("Original Robot Odyssey by Mike Wallace and Leslie Grimm, (C) The Learning Company",
                     2 * 28, 3 * 32, 500);
@@ -97,7 +97,7 @@ public class MainMenu extends Level {
             };
         }
         {  // Room 2: Credits 2
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.AddTextBox("Special thanks to...", 2 * 28, 2 * 32, 500);
             room.AddTextBox("Eric Welsh       Eric Jacobs Vladimir Dimitrov Nathan Woods John Isidoro Derek Pechel Jeffery Hanke Matheww Russo Jim Veneskey Erik Santiso Michael Mol", 2 * 28, 4 * 32, 220);
             room.AddTextBox("Che Fox illuvius lexspoon shuffles Locklainn samdroid", 12 * 28, 4 * 32, 200);
@@ -118,7 +118,7 @@ public class MainMenu extends Level {
             LinkRoomsUpDown(1, 2);
         }
         {  // Room 3: Credits 3
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.AddTextBox("Christopher Walkup, age 6  Billy Leete, age 5", 2 * 28, 4 * 32, 350);
             room.RoomArray = new int[][]{
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
@@ -137,7 +137,7 @@ public class MainMenu extends Level {
             LinkRoomsUpDown(2, 3);
         }
         {  // Room 4: Title
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.AddGraphix("DQlogo.gif", 2 * 28, 1 * 32);
             room.AddTextBox("Credits", 2 * 28, 6 * 32 + 8, 500);
             room.AddArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
@@ -165,7 +165,7 @@ public class MainMenu extends Level {
             LinkRoomsLeftRight(1, 4);
         }
         {  // Room 5: Save games
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -183,7 +183,7 @@ public class MainMenu extends Level {
             LinkRoomsUpDown(4, 5);
         }
         {  // Room 6: Robot Odyssey
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.AddTextBox("{BIG} ROBOT ODYSSEY I", 2 * 28, 2 * 32, 600);
             room.AddTextBox("The Original Game", 2 * 28, 3 * 32, 500);
             room.AddTextBox("Robotropolis", 8 * 28, 6 * 32, 500);
@@ -207,7 +207,7 @@ public class MainMenu extends Level {
             LinkRoomsLeftRight(4, 6);
         }
         {  // Room 7: RO Tutorials
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4},
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
@@ -229,7 +229,7 @@ public class MainMenu extends Level {
             LinkRoomsUpDown(6, 7);
         }
         {  // Room 8: RO Tutorials
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4},
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
@@ -250,20 +250,20 @@ public class MainMenu extends Level {
             LinkRoomsUpDown(7, 8);
         }
         {  // Room 9: Secret Room
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterial(2, 2, 14);
             room.SetMaterial(2, 4, 15);
             LinkRoomsUpDown(9, 4);
-            items.addElement(new BlueRobot(2 * 28, 6 * 32, room));
-            items.addElement(new Crystal(5 * 28, 6 * 32, room, 100000));
+            items.add(new BlueRobot(2 * 28, 6 * 32, room));
+            items.add(new Crystal(5 * 28, 6 * 32, room, 100000));
         }
 
 
-        gameCursor = new GameCursor(9 * 28, 6 * 32, rooms.elementAt(4));
-        helpCam = new HelpCam(rooms.elementAt(0));
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
+        gameCursor = new GameCursor(9 * 28, 6 * 32, rooms.get(4));
+        helpCam = new HelpCam(rooms.get(0));
+        items.add(gameCursor);
+        items.add(helpCam);
         player = gameCursor;
         currentViewer = player;
 
@@ -276,13 +276,13 @@ public class MainMenu extends Level {
         for (int a = 0; a < files.length; a++) {
             if (a > 4 && a % 5 == 0) {
                 // Add a new room
-                Room oldRoom = rooms.elementAt(pageIndex);
+                Room oldRoom = rooms.get(pageIndex);
                 oldRoom.RoomArray[11][8] = 0;
                 oldRoom.RoomArray[11][9] = 0;
                 oldRoom.RoomArray[11][10] = 0;
                 oldRoom.RoomArray[11][11] = 0;
                 Room newRoom = new Room();
-                rooms.addElement(newRoom);
+                rooms.add(newRoom);
                 newRoom.RoomArray = new int[][]{
                         {3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3},
                         {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
@@ -301,10 +301,10 @@ public class MainMenu extends Level {
                 LinkRoomsUpDown(pageIndex, newPageIndex);
                 pageIndex = newPageIndex;
             }
-            materials.addElement(new Portal("ROlevels/" + files[a], false, false));
+            materials.add(new Portal("ROlevels/" + files[a], false, false));
             int matIndex = materials.size() - 1;
             int y = 1 + (a % 5) * 2;
-            Room room = rooms.elementAt(pageIndex);
+            Room room = rooms.get(pageIndex);
             room.RoomArray[y][2] = matIndex;
             room.AddTextBox(files[a], 3 * 28 + 14, y * 32 + 32, 400);
         }

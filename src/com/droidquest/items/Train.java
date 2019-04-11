@@ -58,7 +58,7 @@ public class Train extends Item implements Avatar {
         if (item == level.player) {
             PicksUp(level.player);
             level.player = this;
-            Material mat = level.materials.elementAt(8);
+            Material mat = level.materials.get(8);
             mat.passable = true;
         }
         return false;
@@ -77,7 +77,7 @@ public class Train extends Item implements Avatar {
             level.player = carrying;
             Drops();
             room = null;
-            Material mat = level.materials.elementAt(8);
+            Material mat = level.materials.get(8);
             mat.passable = false;
         }
         return false;

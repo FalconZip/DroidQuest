@@ -22,34 +22,34 @@ class ROTutC extends Level {
         super(rd);
 
         // Material 0, Blank
-        materials.addElement(new Material(true, false));
+        materials.add(new Material(true, false));
         // Material 1, LightBlue Wall
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));
+        materials.add(new Material(new Color(192, 192, 255), false, true));
         // Material 2, Green Wall
-        materials.addElement(new Material(new Color(0, 255, 0), false, true));
+        materials.add(new Material(new Color(0, 255, 0), false, true));
         // Material 3, Orange Wall
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));
+        materials.add(new Material(new Color(255, 128, 0), false, true));
         // Material 4, LightOrange Wall
-        materials.addElement(new Material(new Color(255, 224, 192), false, true));
+        materials.add(new Material(new Color(255, 224, 192), false, true));
         // Material 5, Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));
+        materials.add(new Material(new Color(0, 0, 255), false, true));
         // Material 6, Dark Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));
+        materials.add(new Material(new Color(0, 0, 128), false, true));
         // Material 7, Shape Editor
-        materials.addElement(new ShapeEditor(new Square(0, 0, null, Color.white)));
+        materials.add(new ShapeEditor(new Square(0, 0, null, Color.white)));
         // Material 8, Portal to next Tutorial
-        materials.addElement(new Portal("ROTutD.lvl", false, true));
+        materials.add(new Portal("ROTutD.lvl", false, true));
         // Material 9, Portal to Innovation Lab
-        materials.addElement(new Portal("ROLab.lvl", false, true));
+        materials.add(new Portal("ROLab.lvl", false, true));
         // Material 10, Portal to Main Menu
-        materials.addElement(new Portal("MainMenu.lvl", false, true));
+        materials.add(new Portal("MainMenu.lvl", false, true));
 
         for (int a = 0; a < 22; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         { // Room 0, Help Screen
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.SetMaterialOutline(0, 0, 19, 11, 2);
             room.AddTextBox("CONTACT SENSORS detect objects that touch the sensor, or the robot containing the sensor.",
                     2 * 28, 2 * 32, 500);
@@ -67,7 +67,7 @@ class ROTutC extends Level {
                     2 * 28, 10 * 32, 500);
         }
         { // Room 1, Title Screen
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(19, 6, 19, 8, 0);
             room.SetMaterial(0, 10, 0);
@@ -79,7 +79,7 @@ class ROTutC extends Level {
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 2, Intro of all three
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.SetMaterialOutline(0, 0, 19, 5, 5);
             room.SetMaterialOutline(0, 9, 19, 11, 5);
             room.SetMaterialOutline(1, 9, 18, 10, 0);
@@ -92,15 +92,15 @@ class ROTutC extends Level {
             room.AddTextBox("There are three types of sensors in Robotropolis. The sensors will help you and the robots find various objects.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new DirectionalSensor(2 * 28, 1 * 32, room,
+            items.add(new DirectionalSensor(2 * 28, 1 * 32, room,
                     new Crystal(0, 0, null, 0)));
-            items.addElement(new RoomSensor(9 * 28, 2 * 32, room,
+            items.add(new RoomSensor(9 * 28, 2 * 32, room,
                     new Crystal(0, 0, null, 0)));
-            items.addElement(new ContactSensor(15 * 28, 2 * 32, room,
+            items.add(new ContactSensor(15 * 28, 2 * 32, room,
                     new Crystal(0, 0, null, 0)));
         }
         { // Room 3, Contact Sensor
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 6, 19, 8, 0);
             room.AddTextBox("This is a CONTACT sensor. It detects objects that touch it.",
@@ -110,12 +110,12 @@ class ROTutC extends Level {
             room.AddTextBox("Sensors only detect objects that are NOT be held. Take the sensor with you.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new ContactSensor(16 * 28, 3 * 32, room,
+            items.add(new ContactSensor(16 * 28, 3 * 32, room,
                     new Crystal(0, 0, null, 0)));
-            items.addElement(new Crystal(10 * 28, 6 * 32, room, 100000));
+            items.add(new Crystal(10 * 28, 6 * 32, room, 100000));
         }
         { // Room 4, Scanner
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 6, 19, 8, 0);
             room.AddTextBox("Carry the sensor into Scanner. Connect a wire from the sensor output to the antenna input. Come back outside.",
@@ -123,11 +123,11 @@ class ROTutC extends Level {
             room.AddTextBox("Drop the crystal on Scanner's body. When a CONTACT sensor is inside a robot, it detects objects that touch the robot's body. Take Scanner with you.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new Crystal(10 * 28, 6 * 32, room, 100000));
-            items.addElement(new BlueRobot(16 * 28, 2 * 32, room));
+            items.add(new Crystal(10 * 28, 6 * 32, room, 100000));
+            items.add(new BlueRobot(16 * 28, 2 * 32, room));
         }
         { // Room 5, Contact talk
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 6, 19, 8, 0);
             room.AddTextBox("This CONTACT sensor is on because the crystal is touching it. Turn the Remote Control off to freeze electricity. Move the crystal. The sensors work only if the Remote Control is on. Drop the crystal on Scanner's body.",
@@ -135,12 +135,12 @@ class ROTutC extends Level {
             room.AddTextBox("Turn the Remote Control on and off. Electricity in the sensor inside Scanner is frozen unless the Remote Control is on. Take Scanner with you.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new ContactSensor(10 * 28 + 8, 6 * 32, room,
+            items.add(new ContactSensor(10 * 28 + 8, 6 * 32, room,
                     new Crystal(0, 0, null, 0)));
-            items.addElement(new Crystal(10 * 28, 6 * 32, room, 100000));
+            items.add(new Crystal(10 * 28, 6 * 32, room, 100000));
         }
         { // Room 6, Triangle Contact
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 5, 0, 7, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -149,12 +149,12 @@ class ROTutC extends Level {
             room.AddTextBox("Can you rewire Scanner to beep when a triangle touches it? Leave Scanner here.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
-            items.addElement(new Triangle(15 * 28, 5 * 32, room, Color.blue));
-            items.addElement(new ContactSensor(14 * 28, 2 * 32, room,
+            items.add(new Triangle(15 * 28, 5 * 32, room, Color.blue));
+            items.add(new ContactSensor(14 * 28, 2 * 32, room,
                     new Triangle(0, 0, null, Color.white)));
         }
         { // Room 7, Room Sensor
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(0, 5, 0, 7, 0);
@@ -163,12 +163,12 @@ class ROTutC extends Level {
             room.AddTextBox("It is on now because there is a square in the room. Take the sensor with you into the next room.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            items.addElement(new Square(5 * 28, 6 * 32, room, Color.blue));
-            items.addElement(new RoomSensor(14 * 28, 6 * 32, room,
+            items.add(new Square(5 * 28, 6 * 32, room, Color.blue));
+            items.add(new RoomSensor(14 * 28, 6 * 32, room,
                     new Square(0, 0, null, Color.white)));
         }
         { // Room 8, Carrying items
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 5, 19, 7, 0);
             room.AddTextBox("Now the sensor is off, since there is no square in the room. Go back and bring the square into this room. Drop the sqaure. Now the sensor comes on.",
@@ -178,7 +178,7 @@ class ROTutC extends Level {
             room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 9, Checkers
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(19, 5, 19, 7, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -189,10 +189,10 @@ class ROTutC extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             WhiteRobot robot = new WhiteRobot(10 * 28, 7 * 32, room);
             robot.InternalRoom.AddTextBox("A", 16 * 28, 4 * 32, 100);
-            items.addElement(robot);
+            items.add(robot);
         }
         { // Room 10, Directional Sensor
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(0, 4, 0, 6, 0);
@@ -201,12 +201,12 @@ class ROTutC extends Level {
             room.AddTextBox("Pick up the sensor. Move it around the token. Outputs pointing in the DIRECTION of the token turn on. Put the sensor and the token inside Checkers and carry the robot with you.",
                     2 * 28, 8 * 32, 500);
             room.AddArrow(0, 5 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            items.addElement(new Token(8 * 28, 5 * 32, room));
-            items.addElement(new DirectionalSensor(15 * 28, 1 * 32, room,
+            items.add(new Token(8 * 28, 5 * 32, room));
+            items.add(new DirectionalSensor(15 * 28, 1 * 32, room,
                     new Token(0, 0, null)));
         }
         { // Room 11, Movement
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(19, 4, 19, 6, 0);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
@@ -217,7 +217,7 @@ class ROTutC extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 12, Complete Movement
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -228,7 +228,7 @@ class ROTutC extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 13, Intro to complex behavior
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.SetMaterialOutline(0, 0, 19, 11, 4);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -239,7 +239,7 @@ class ROTutC extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 14, Square
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.SetMaterialOutline(0, 0, 19, 11, 4);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("Because there is a square in this room, The grabber control is on. (Look inside Chekcers to see.)",
@@ -247,10 +247,10 @@ class ROTutC extends Level {
             room.AddTextBox("Now bring the token outside of Checkers. Checkers will home in on it and grab it. Take Checkers into the next room.",
                     2 * 28, 6 * 32, 300);
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new Square(17 * 28, 2 * 32, room, new Color(255, 128, 0)));
+            items.add(new Square(17 * 28, 2 * 32, room, new Color(255, 128, 0)));
         }
         { // Room 15, Questions
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.SetMaterialOutline(0, 0, 19, 11, 4);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterialOutline(19, 5, 19, 7, 0);
@@ -259,7 +259,7 @@ class ROTutC extends Level {
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 16, Carrying
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 5, 0, 7, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -268,13 +268,13 @@ class ROTutC extends Level {
             room.AddTextBox("Now the DIRECTIONAL sensor is off. Sensors can't detect an object that a robot is holding. Take the sensor with you.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
-            items.addElement(new Square(18 * 28, 1 * 32, room, new Color(255, 128, 0)));
-            items.addElement(new DirectionalSensor(14 * 28, 4 * 32, room,
+            items.add(new Square(18 * 28, 1 * 32, room, new Color(255, 128, 0)));
+            items.add(new DirectionalSensor(14 * 28, 4 * 32, room,
                     new Triangle(0, 0, null, Color.white)));
-            items.addElement(new Triangle(10 * 28, 6 * 32, room, new Color(255, 128, 0)));
+            items.add(new Triangle(10 * 28, 6 * 32, room, new Color(255, 128, 0)));
         }
         { // Room 17, Sensor Editor
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.SetMaterialOutline(0, 0, 19, 11, 4);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -288,7 +288,7 @@ class ROTutC extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 18, Sensor summary
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("Sensors are very useful. There are just three things to remember about them.",
@@ -302,7 +302,7 @@ class ROTutC extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 19, Last
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 19, 10, 0);
             room.AddTextBox("There are a lot of sensors and shape editors in the Innovation Lab. You might want to go there and just experiment with the sensors.",
@@ -311,7 +311,7 @@ class ROTutC extends Level {
                     2 * 28, 5 * 32, 500);
         }
         { // Room 20, Exit
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterial(19, 10, 0);
@@ -326,7 +326,7 @@ class ROTutC extends Level {
                     5 * 28, 9 * 32, 500);
         }
         { // Room 21, Shortcut to beginning
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.SetMaterialOutline(0, 0, 19, 9, 1);
             room.SetMaterialOutline(0, 11, 19, 11, 1);
             room.SetMaterial(0, 10, 0);
@@ -349,14 +349,14 @@ class ROTutC extends Level {
         LinkRoomsLeftRight(15, 16);
         LinkRoomsUpDown(16, 17);
 
-        gameCursor = new GameCursor(17 * 28 + 14, 6 * 32 + 16, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new GameCursor(17 * 28 + 14, 6 * 32 + 16, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

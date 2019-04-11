@@ -24,13 +24,13 @@ public class MineField extends Material {
             hit--;
         }
         if (hit >= 2) {
-            target.room = level.rooms.elementAt(58);
+            target.room = level.rooms.get(58);
             target.charge = 0;
             if (target.InternalRoom != null) {
                 Room room = target.InternalRoom;
                 if (room.wires.size() > 0) {
                     for (int a = 0; a < room.wires.size(); a++) {
-                        room.wires.elementAt(0).Remove();
+                        room.wires.get(0).Remove();
                     }
                 }
             }

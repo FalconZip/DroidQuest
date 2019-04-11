@@ -51,7 +51,7 @@ public class DirectionalSensor extends Device {
         if (room.portalItem == null) {
             // Directional Sensor is not inside robot.
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.room == room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         Dimension d = GetXY();
@@ -80,7 +80,7 @@ public class DirectionalSensor extends Device {
         else {
             // Directional Sensor is inside Robot.
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.room == room.portalItem.room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         Dimension d = room.portalItem.GetXY();

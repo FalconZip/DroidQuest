@@ -25,7 +25,7 @@ public class ElevatorDoor extends Material {
 
         if (!checkedForMagnet) {
             for (int a = 0; a < level.items.size(); a++) {
-                Item i = level.items.elementAt(a);
+                Item i = level.items.get(a);
                 if (i instanceof Magnet) {
                     magnet = i;
                     checkedForMagnet = true;
@@ -45,7 +45,7 @@ public class ElevatorDoor extends Material {
             }
         }
 
-        Graphix gr = item.room.graphix.elementAt(1);
+        Graphix gr = item.room.graphix.get(1);
         gr.x = 18 * 28;
 
         if (magnet != null) {
@@ -117,7 +117,7 @@ public class ElevatorDoor extends Material {
                     item.room.SetMaterial(11, 8, 2);
                     item.room.SetMaterial(11, 9, 2);
                     item.room.SetMaterial(11, 10, 2);
-                    item.room.textBoxes.elementAt(1).textString = "\"Hold please!\"";
+                    item.room.textBoxes.get(1).textString = "\"Hold please!\"";
                     break;
                 case 8:
                     item.room.SetMaterial(11, 1, 2);
@@ -130,7 +130,7 @@ public class ElevatorDoor extends Material {
                     item.room.SetMaterial(11, 8, 2);
                     item.room.SetMaterial(11, 9, 2);
                     item.room.SetMaterial(11, 10, 2);
-                    item.room.textBoxes.elementAt(1).textString = "\"Going up!\"";
+                    item.room.textBoxes.get(1).textString = "\"Going up!\"";
                     break;
             }
         }

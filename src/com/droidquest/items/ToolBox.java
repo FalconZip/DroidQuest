@@ -176,28 +176,28 @@ public class ToolBox extends Item {
 
             if (ix > 30 && ix < (30 + 28) && iy > 4 && iy < (4 + 50)) {
                 ANDGate ag = new ANDGate(x + 30, y + 4, item.room);
-                level.items.addElement(ag);
+                level.items.add(ag);
                 item.PicksUp(ag);
                 return false;
             }
 
             if (ix > 64 && ix < (64 + 28) && iy > 4 && iy < (4 + 50)) {
                 ORGate og = new ORGate(x + 64, y + 4, item.room);
-                level.items.addElement(og);
+                level.items.add(og);
                 item.PicksUp(og);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 4 && iy < (4 + 50)) {
                 XORGate xg = new XORGate(x + 98, y + 4, item.room);
-                level.items.addElement(xg);
+                level.items.add(xg);
                 item.PicksUp(xg);
                 return false;
             }
 
             if (ix > 132 && ix < (132 + 28) && iy > 4 && iy < (4 + 50)) {
                 NOTGate ng = new NOTGate(x + 132, y + 4, item.room);
-                level.items.addElement(ng);
+                level.items.add(ng);
                 ng.ports[1].value = true;
                 item.PicksUp(ng);
                 return false;
@@ -205,7 +205,7 @@ public class ToolBox extends Item {
 
             if (ix > 30 && ix < (30 + 48) && iy > 58 && iy < (58 + 32)) {
                 FlipFlop ff = new FlipFlop(x + 30, y + 58, item.room);
-                level.items.addElement(ff);
+                level.items.add(ff);
                 ff.ports[3].value = true;
                 item.PicksUp(ff);
                 return false;
@@ -213,21 +213,21 @@ public class ToolBox extends Item {
 
             if (ix > 74 && ix < (74 + 22) && iy > 58 && iy < (58 + 32)) {
                 Node n1 = new Node(x + 74, y + 58, item.room, Node.TYPE_STRAIGHT);
-                level.items.addElement(n1);
+                level.items.add(n1);
                 item.PicksUp(n1);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n2 = new Node(x + 98, y + 58, item.room, Node.TYPE_RIGHT);
-                level.items.addElement(n2);
+                level.items.add(n2);
                 item.PicksUp(n2);
                 return false;
             }
 
             if (ix > 128 && ix < (128 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n3 = new Node(x + 128, y + 58, item.room, Node.TYPE_THREE);
-                level.items.addElement(n3);
+                level.items.add(n3);
                 item.PicksUp(n3);
                 return false;
             }

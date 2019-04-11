@@ -148,7 +148,7 @@ public class Device extends Item {
                                 port.myWire.Remove();
                             }
                         }
-                        level.items.removeElement(this);
+                        level.items.remove(this);
                     }
                 }
             }

@@ -18,9 +18,9 @@ class ROEndGame extends Level {
     public ROEndGame(RoomDisplay rd) {
         super(rd);
 
-        materials.addElement(new Material(true, false));                         // 0 = Empty Space
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));      // 1 = Blue
-        materials.addElement(new Portal("MainMenu.lvl", false, false));             // 2 = Portal
+        materials.add(new Material(true, false));                         // 0 = Empty Space
+        materials.add(new Material(new Color(0, 0, 255), false, true));      // 1 = Blue
+        materials.add(new Portal("MainMenu.lvl", false, false));             // 2 = Portal
 
         int[][] program1 = {
                 {Lock.NARROW},
@@ -30,7 +30,7 @@ class ROEndGame extends Level {
                 {4, 4, 1, 4, 7, 1},
                 {4, 5, 1, 4, 6, 1},
         };
-        materials.addElement(new Lock(Color.green, Color.green, program1));      // 3=Green Lock
+        materials.add(new Lock(Color.green, Color.green, program1));      // 3=Green Lock
 
         int[][] program2 = {
                 {Lock.NARROW},
@@ -40,7 +40,7 @@ class ROEndGame extends Level {
                 {7, 4, 1, 7, 7, 1},
                 {7, 5, 1, 7, 6, 1},
         };
-        materials.addElement(new Lock(Color.yellow, Color.yellow, program2));      // 4=yellow Lock
+        materials.add(new Lock(Color.yellow, Color.yellow, program2));      // 4=yellow Lock
 
         int[][] program3 = {
                 {Lock.NARROW},
@@ -50,7 +50,7 @@ class ROEndGame extends Level {
                 {10, 4, 1, 10, 7, 1},
                 {10, 5, 1, 10, 6, 1},
         };
-        materials.addElement(new Lock(Color.red, Color.red, program3));      // 5=red Lock
+        materials.add(new Lock(Color.red, Color.red, program3));      // 5=red Lock
 
         int[][] program4 = {
                 {Lock.NARROW},
@@ -60,7 +60,7 @@ class ROEndGame extends Level {
                 {13, 4, 1, 13, 7, 1},
                 {13, 5, 1, 13, 6, 1},
         };
-        materials.addElement(new Lock(new Color(255, 128, 0), new Color(255, 128, 0), program4));      // 6=Orange lock
+        materials.add(new Lock(new Color(255, 128, 0), new Color(255, 128, 0), program4));      // 6=Orange lock
 
         int[][] program5 = {
                 {Lock.NARROW},
@@ -70,17 +70,17 @@ class ROEndGame extends Level {
                 {16, 4, 1, 16, 7, 1},
                 {16, 5, 1, 16, 6, 1},
         };
-        materials.addElement(new Lock(new Color(255, 0, 255), new Color(255, 0, 255), program5));      // 7=purple Lock
+        materials.add(new Lock(new Color(255, 0, 255), new Color(255, 0, 255), program5));      // 7=purple Lock
 
-        materials.addElement(new Portal("RO6.lvl", true, true)); // 8=portal
+        materials.add(new Portal("RO6.lvl", true, true)); // 8=portal
 
 
         for (int a = 0; a < 3; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         {// Room 0  Help
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.RoomArray = new int[][]{
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -100,7 +100,7 @@ class ROEndGame extends Level {
         }
 
         {// Room 1 Portal to Main Menu
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -121,11 +121,11 @@ class ROEndGame extends Level {
             room.AddTextBox("Robot Masters.", 196, 4 * 32 + 20, 560);
             room.AddTextBox("Return to the Main Menu", 2 * 28, 10 * 32 + 24, 500);
             room.AddArrow(360, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new EndAnimation(room));
+            items.add(new EndAnimation(room));
         }
 
         {// Room 2 Locks to Secret Level
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                     {1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1},
@@ -145,14 +145,14 @@ class ROEndGame extends Level {
 
         LinkRoomsLeftRight(1, 2);
 
-        gameCursor = new GameCursor(10 * 28, 8 * 32, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new GameCursor(10 * 28, 8 * 32, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

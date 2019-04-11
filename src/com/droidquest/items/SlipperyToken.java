@@ -20,7 +20,7 @@ public class SlipperyToken extends Token {
         Material mat = room.MaterialArray[bigY][bigX];
         if (mat.getClass().toString().endsWith("VendingSlot")) {
             for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.elementAt(a);
+                Item item = level.items.get(a);
                 if (item.getClass().toString().endsWith("VendingHandle")) {
                     VendingHandle vh = (VendingHandle) item;
                     vh.paid = true;
@@ -28,7 +28,7 @@ public class SlipperyToken extends Token {
             }
             x = 3 * 28;
             y = 3 * 32;
-            room = level.rooms.elementAt(34);
+            room = level.rooms.get(34);
             jumping = true;
         }
     }

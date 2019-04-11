@@ -84,12 +84,12 @@ public class Material implements Serializable, Cloneable {
 
     public static Material FindSimiliar(Material mat1) {
         for (int a = 0; a < level.materials.size(); a++) {
-            Material mat2 = level.materials.elementAt(a);
+            Material mat2 = level.materials.get(a);
             if (mat1.equals(mat2)) {
                 return mat2;
             }
         }
-        level.materials.addElement(mat1);
+        level.materials.add(mat1);
         return mat1;
     }
 

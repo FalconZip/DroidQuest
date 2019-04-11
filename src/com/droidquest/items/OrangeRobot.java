@@ -25,7 +25,7 @@ public class OrangeRobot extends GenericRobot {
         devices[8] = new Antenna(64, 70, InternalRoom, Color.white);
         devices[9] = new Grabber(126, 44, InternalRoom, Color.white);
         for (int a = 0; a < 10; a++) {
-            level.items.addElement(devices[a]);
+            level.items.add(devices[a]);
         }
 
     }

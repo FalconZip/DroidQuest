@@ -20,19 +20,19 @@ class ROTutF extends Level {
         super(rd);
 
         // Material 0, Blank
-        materials.addElement(new Material(true, false));
+        materials.add(new Material(true, false));
         // Material 1, LightBlue Wall
-        materials.addElement(new Material(new Color(192, 192, 255), false, true));
+        materials.add(new Material(new Color(192, 192, 255), false, true));
         // Material 2, Green Wall
-        materials.addElement(new Material(new Color(0, 255, 0), false, true));
+        materials.add(new Material(new Color(0, 255, 0), false, true));
         // Material 3, Orange Wall
-        materials.addElement(new Material(new Color(255, 128, 0), false, true));
+        materials.add(new Material(new Color(255, 128, 0), false, true));
         // Material 4, LightOrange Wall
-        materials.addElement(new Material(new Color(255, 224, 192), false, true));
+        materials.add(new Material(new Color(255, 224, 192), false, true));
         // Material 5, Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 255), false, true));
+        materials.add(new Material(new Color(0, 0, 255), false, true));
         // Material 6, Dark Blue Wall
-        materials.addElement(new Material(new Color(0, 0, 128), false, true));
+        materials.add(new Material(new Color(0, 0, 128), false, true));
         // Material 7, Switch
         int[][] matprogram = {
                 {Switch.WAIT4CONTACT},
@@ -46,24 +46,24 @@ class ROTutF extends Level {
                 {Switch.REPLACE, 11, 1, 5, 11, 7, 0},
                 {Switch.SETVALUELOW}
         };
-        materials.addElement(new Switch(Switch.ROT_UP, matprogram));
+        materials.add(new Switch(Switch.ROT_UP, matprogram));
         // Material 8, Switch, another
-        materials.addElement(new Switch(Switch.ROT_UP, matprogram));
+        materials.add(new Switch(Switch.ROT_UP, matprogram));
         // Material 9, Portal to next Tutorial
-        materials.addElement(new Portal("ROTut3.lvl", false, true));
+        materials.add(new Portal("ROTut3.lvl", false, true));
         // Material 10, Portal to Main Menu
-        materials.addElement(new Portal("MainMenu.lvl", false, true));
+        materials.add(new Portal("MainMenu.lvl", false, true));
         // Material 11, Panic Button #1
-        materials.addElement(new PanicButton(1));
+        materials.add(new PanicButton(1));
         // Material 12, Panic Button #2
-        materials.addElement(new PanicButton(2));
+        materials.add(new PanicButton(2));
 
         for (int a = 0; a < 22; a++) {
-            rooms.addElement(new Room());
+            rooms.add(new Room());
         }
 
         { // Room 0, Help Screen
-            Room room = rooms.elementAt(0);
+            Room room = rooms.get(0);
             room.SetMaterialOutline(0, 0, 19, 11, 2);
             room.AddTextBox("If your circuit doesn't work, check the state of the flipflops. If the robot doesn't go at all, check the Remote Control, thruster switch, and battery.",
                     2 * 28, 2 * 32, 450);
@@ -71,7 +71,7 @@ class ROTutF extends Level {
                     4 * 28, 10 * 32, 500);
         }
         { // Room 1, Title Screen
-            Room room = rooms.elementAt(1);
+            Room room = rooms.get(1);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(19, 7, 19, 9, 0);
             room.SetMaterial(0, 10, 0);
@@ -80,10 +80,10 @@ class ROTutF extends Level {
                     2 * 28, 4 * 32, 500);
             room.AddArrow(559, 8 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             toolbox = new ToolBox(3 * 28, 7 * 32, room);
-            items.addElement(toolbox);
+            items.add(toolbox);
         }
         { // Room 2, Sparky & Checkers
-            Room room = rooms.elementAt(2);
+            Room room = rooms.get(2);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 7, 0, 9, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -100,11 +100,11 @@ class ROTutF extends Level {
                     17 * 28, 10 * 32, 500);
             room.AddArrow(559, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             room.AddArrow(15 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
-            items.addElement(new OrangeRobot(11 * 28, 8 * 32, room));
-            items.addElement(new WhiteRobot(14 * 28, 8 * 32, room));
+            items.add(new OrangeRobot(11 * 28, 8 * 32, room));
+            items.add(new WhiteRobot(14 * 28, 8 * 32, room));
         }
         { // Room 3, Puzzle
-            Room room = rooms.elementAt(3);
+            Room room = rooms.get(3);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(11, 0, 19, 4, 5);
             room.SetMaterialOutline(11, 0, 11, 6, 5);
@@ -117,11 +117,11 @@ class ROTutF extends Level {
                     9 * 28, 3 * 32, 200);
             int[] pace = {3 * 28, 2 * 32, 3 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 20 * 28, 12 * 32, 0, 9 * 32};
-            items.addElement(new Sentry(0, 0, room, pace, program, true));
-            items.addElement(new Crystal(17 * 28, 2 * 32, room, 100000));
+            items.add(new Sentry(0, 0, room, pace, program, true));
+            items.add(new Crystal(17 * 28, 2 * 32, room, 100000));
         }
         { // Room 4, Divide the tasks
-            Room room = rooms.elementAt(4);
+            Room room = rooms.get(4);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(13, 0, 17, 0, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -140,7 +140,7 @@ class ROTutF extends Level {
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 5, Assigning tasks
-            Room room = rooms.elementAt(5);
+            Room room = rooms.get(5);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
             room.SetMaterialOutline(19, 4, 19, 6, 0);
@@ -151,7 +151,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 5 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 6, Sparky goes right
-            Room room = rooms.elementAt(6);
+            Room room = rooms.get(6);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 4, 0, 6, 0);
             room.SetMaterialOutline(15, 11, 18, 11, 0);
@@ -162,7 +162,7 @@ class ROTutF extends Level {
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 7, Sparky cont.
-            Room room = rooms.elementAt(7);
+            Room room = rooms.get(7);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(15, 0, 18, 11, 0);
             room.AddTextBox("Next you want Sparky to do two things when it hits the right wall. It should stop going right, and it should go up. Use a node.",
@@ -174,7 +174,7 @@ class ROTutF extends Level {
             room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 8, Try Sparky right & up
-            Room room = rooms.elementAt(8);
+            Room room = rooms.get(8);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(16, 6, 19, 6, 6);
             room.SetMaterialOutline(15, 0, 18, 0, 0);
@@ -186,7 +186,7 @@ class ROTutF extends Level {
             room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 9, Sparky comes back
-            Room room = rooms.elementAt(9);
+            Room room = rooms.get(9);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -197,7 +197,7 @@ class ROTutF extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 10, Sparky goes left & down
-            Room room = rooms.elementAt(10);
+            Room room = rooms.get(10);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(19, 3, 19, 5, 0);
@@ -208,7 +208,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 11, Test antenna
-            Room room = rooms.elementAt(11);
+            Room room = rooms.get(11);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialOutline(0, 3, 19, 5, 0);
             room.AddTextBox("To test the new circuit, touch Sparky's antenna INPUT with the hot cursor. (Remote Control must be on.)",
@@ -222,7 +222,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 12, Checkers task
-            Room room = rooms.elementAt(12);
+            Room room = rooms.get(12);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 3, 0, 5, 0);
             room.SetMaterialOutline(19, 5, 19, 7, 0);
@@ -233,7 +233,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 13, How to go right & left?
-            Room room = rooms.elementAt(13);
+            Room room = rooms.get(13);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 5, 19, 7, 0);
             room.AddTextBox("Here is one way to move Checkers to the crystal. Connect a wire from the left thruster to the hot side of a flipflop. Checkers will move right.",
@@ -243,7 +243,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 14, Use the grabber output
-            Room room = rooms.elementAt(14);
+            Room room = rooms.get(14);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 5, 0, 7, 0);
             room.SetMaterialOutline(19, 6, 19, 8, 0);
@@ -254,7 +254,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 15, Test grabber
-            Room room = rooms.elementAt(15);
+            Room room = rooms.get(15);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 6, 19, 8, 0);
             room.AddTextBox("Connect a wire from the grabber OUTPUT to the cold flipflop input. Connect another wire from the cold flipflop OUTPUT to the right thruster. When Checkers grabs the crystal, the flipflop will flip and and Checkers will move left.",
@@ -262,10 +262,10 @@ class ROTutF extends Level {
             room.AddTextBox("Test your circuit by letting Checkers grab this crystal. Then restore the original circuit.",
                     2 * 28, 9 * 32, 500);
             room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            items.addElement(new Crystal(9 * 28, 6 * 32, room, 100000));
+            items.add(new Crystal(9 * 28, 6 * 32, room, 100000));
         }
         { // Room 16, Checkers signals Sparky
-            Room room = rooms.elementAt(16);
+            Room room = rooms.get(16);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(0, 6, 0, 9, 0);
             room.SetMaterialOutline(1, 11, 4, 11, 0);
@@ -276,7 +276,7 @@ class ROTutF extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 17, Big test
-            Room room = rooms.elementAt(17);
+            Room room = rooms.get(17);
             room.SetMaterialOutline(0, 0, 19, 11, 6);
             room.SetMaterialOutline(1, 0, 4, 11, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -292,7 +292,7 @@ class ROTutF extends Level {
             room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 18, Puzzle again
-            Room room = rooms.elementAt(18);
+            Room room = rooms.get(18);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(11, 0, 19, 4, 5);
             room.SetMaterialOutline(11, 0, 11, 6, 5);
@@ -307,11 +307,11 @@ class ROTutF extends Level {
                     4 * 28, 2 * 32, 200);
             int[] pace = {3 * 28, 2 * 32, 3 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 20 * 28, 12 * 32, 0, 9 * 32};
-            items.addElement(new Sentry(0, 0, room, pace, program, true));
-            items.addElement(new Crystal(17 * 28, 2 * 32, room, 100000));
+            items.add(new Sentry(0, 0, room, pace, program, true));
+            items.add(new Crystal(17 * 28, 2 * 32, room, 100000));
         }
         { // Room 19, End
-            Room room = rooms.elementAt(19);
+            Room room = rooms.get(19);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(1, 0, 4, 0, 0);
             room.SetMaterialOutline(19, 8, 19, 10, 0);
@@ -322,7 +322,7 @@ class ROTutF extends Level {
             room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 20, Portals
-            Room room = rooms.elementAt(20);
+            Room room = rooms.get(20);
             room.SetMaterialOutline(0, 0, 19, 11, 5);
             room.SetMaterialOutline(0, 8, 0, 10, 0);
             room.SetMaterial(19, 10, 0);
@@ -334,7 +334,7 @@ class ROTutF extends Level {
                     5 * 28, 6 * 32, 500);
         }
         { // Room 21, Shortcut
-            Room room = rooms.elementAt(21);
+            Room room = rooms.get(21);
             room.SetMaterialOutline(0, 0, 19, 9, 5);
             room.SetMaterialOutline(0, 11, 19, 11, 5);
             room.SetMaterial(0, 10, 0);
@@ -358,14 +358,14 @@ class ROTutF extends Level {
         LinkRoomsLeftRight(17, 18);
         LinkRoomsUpDown(17, 19);
 
-        gameCursor = new LabCursor(16 * 28 + 14, 9 * 32 + 16, rooms.elementAt(1));
-        helpCam = new HelpCam(rooms.elementAt(0));
+        gameCursor = new LabCursor(16 * 28 + 14, 9 * 32 + 16, rooms.get(1));
+        helpCam = new HelpCam(rooms.get(0));
         solderingPen = new SolderingPen();
         remote = new Remote();
-        items.addElement(gameCursor);
-        items.addElement(helpCam);
-        items.addElement(solderingPen);
-        items.addElement(remote);
+        items.add(gameCursor);
+        items.add(helpCam);
+        items.add(solderingPen);
+        items.add(remote);
         player = gameCursor;
         currentViewer = player;
 

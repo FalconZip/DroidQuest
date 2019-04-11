@@ -72,7 +72,7 @@ public class Antenna extends Device {
         if (robot == null) {
             if (ports[0].value && level.electricity) {
                 Dimension d = GetXY();
-                level.sparks.addElement(new Spark(d.width + 26, d.height + 4,
+                level.sparks.add(new Spark(d.width + 26, d.height + 4,
                         level.random.nextInt(9) - 4,
                         level.random.nextInt(9) - 4,
                         room));

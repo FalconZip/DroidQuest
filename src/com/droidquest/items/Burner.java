@@ -73,7 +73,7 @@ public class Burner extends Item {
         // Find the SmallChip and Erase it
         Item sc = null;
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item.getClass().toString().endsWith("SmallChip")) {
                 if (((SmallChip) item).inBurner) {
                     sc = item;
@@ -88,7 +88,7 @@ public class Burner extends Item {
         // Find the PrototypeChip
         Item pc = null;
         for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+            Item item = level.items.get(a);
             if (item.getClass().toString().endsWith("PrototypeChip")) {
                 if (((PrototypeChip) item).inBurner) {
                     pc = item;
