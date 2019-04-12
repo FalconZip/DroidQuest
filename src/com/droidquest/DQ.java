@@ -16,7 +16,8 @@ import java.util.Observer;
 import java.util.Set;
 
 public class DQ extends JFrame implements ActionListener, Observer {
-    private RoomDisplay myRoom;
+	private static final DQ _instance = new DQ();
+    private final RoomDisplay myRoom;
 
     private final JCheckBoxMenuItem menuToggleHot;
     private final JMenuItem menuItemCursor;
@@ -30,6 +31,10 @@ public class DQ extends JFrame implements ActionListener, Observer {
     private final JMenuItem menuLoadChip;
 
     private final JMenuItem menuFlipDevice;
+    
+    public static DQ instance() {
+    	return _instance;
+    }
 
     private DQ() {
         // Constructor
@@ -180,8 +185,9 @@ public class DQ extends JFrame implements ActionListener, Observer {
         menuFlipDevice.setEnabled(state.canFlipDevice());
     }
 
+    
     public static void main(String[] args) {
-        DQ dq = new DQ();
+        DQ dq = DQ.instance();
         GameState gameState = GameState.instance();
 		gameState.addObserver(dq);
         dq.run();
@@ -322,7 +328,27 @@ public class DQ extends JFrame implements ActionListener, Observer {
 		myRoom.level.Init();
 		GameState.instance().reset();
 	}
+	
+	public String selectFileForWrite(String directory, String prompt) {
+		return selectFile(directory, prompt, FileDialog.SAVE);
+	}
+	
+	public String selectFileForRead(String directory, String prompt) {
+		return selectFile(directory, prompt, FileDialog.LOAD);
+	}
 
+	private String selectFile(String directory, String prompt, int mode) {
+		FileDialog fd = new FileDialog(this, prompt, mode);
+		fd.setDirectory(directory);
+		fd.setVisible(true);
+		String filePath = null;
+		if(fd.getFile() != null) {
+			filePath = fd.getDirectory() + fd.getFile();
+		}
+		System.out.println("Dialog returned with "
+		        + filePath);
+		return filePath;
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
