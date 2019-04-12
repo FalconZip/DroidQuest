@@ -1,5 +1,6 @@
 package com.droidquest.avatars;
 
+import com.droidquest.DQ;
 import com.droidquest.devices.Device;
 import com.droidquest.devices.GenericChip;
 import com.droidquest.devices.SmallChip;
@@ -128,22 +129,18 @@ public class Player extends Item implements Avatar {
     public boolean handleLoadSmallChip() {
         if (carrying != null) {
             if (carrying instanceof SmallChip) {
-                FileDialog fd = new FileDialog(level.roomdisplay.dq, "Load Chip", FileDialog.LOAD);
-                fd.setDirectory("chips");
-                fd.show();
-                System.out.println("Dialog returned with "
-                        + fd.getDirectory()
-                        + fd.getFile());
-                if (fd.getFile() != null) {
+            	String filePath = DQ.instance().selectFileForRead("chips", "Load Chip");
+                if (filePath != null) {
                     ((SmallChip) carrying).Empty();
-                    ((SmallChip) carrying).LoadChip(fd.getDirectory() + fd.getFile(), false);
-                    //((SmallChip) carrying).LoadChip(fd.getFile(), false);
+                    ((SmallChip) carrying).LoadChip(filePath);
                 }
                 return true;
             }
         }
         return false;
     }
+
+
 
     protected boolean handleTrain() {
         return false;

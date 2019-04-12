@@ -1,5 +1,6 @@
 package com.droidquest.avatars;
 
+import com.droidquest.DQ;
 import com.droidquest.Room;
 import com.droidquest.devices.SmallChip;
 import com.droidquest.items.GenericRobot;
@@ -68,20 +69,17 @@ public class LabCursor extends Player {
     protected boolean handleSaveSmallChip() {
         if (carrying != null) {
             if (carrying instanceof SmallChip) {
-                FileDialog fd = new FileDialog(level.roomdisplay.dq, "Save Chip", FileDialog.SAVE);
-                fd.setDirectory("chips");
-                fd.show();
-                System.out.println("Dialog returned with "
-                        + fd.getDirectory()
-                        + fd.getFile());
-                if (fd.getFile() != null) {
-                    ((SmallChip) carrying).SaveChip(fd.getDirectory() + fd.getFile());
+            	String filePath = DQ.instance().selectFileForWrite("chips", "Save Chip");
+                if (filePath != null) {
+                    ((SmallChip) carrying).SaveChip(filePath);
                 }
                 return true;
             }
         }
         return false;
     }
+
+
 
 
     @Override
