@@ -58,32 +58,7 @@ public class RoomDisplay extends JPanel {
         });
 
         // Key Released Functions
-        addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent e) {
-                // Event Handler for KeyReleased here
-                if (level.player.KeyUp(e)) {
-                    repaint();
-                }
-
-                if (e.getKeyCode() == e.VK_Q) {
-                    if (timerspeed > 1) {
-                        timerspeed /= 2;
-                    }
-                    timer.setDelay(timerspeed);
-                }
-
-                if (e.getKeyCode() == e.VK_W) {
-                    if (timerspeed < 128) {
-                        timerspeed *= 2;
-                    }
-                    if ((timerspeed >= 128) && (level.player instanceof LabCursor)) {
-                        timerspeed *= 2;
-                    }
-                    timer.setDelay(timerspeed);
-                }
-
-            }
-        });
+        addKeyListener(speedAdjustListener());
 
         // Key Pressed Functions
         addKeyListener(new KeyAdapter() {
@@ -131,14 +106,40 @@ public class RoomDisplay extends JPanel {
         }
     }
 
+	private KeyAdapter speedAdjustListener() {
+		return new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+                // Event Handler for KeyReleased here
+                if (level.player.KeyUp(e)) {
+                    repaint();
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_Q) {
+                    if (timerspeed > 1) {
+                        timerspeed /= 2;
+                    }
+                    timer.setDelay(timerspeed);
+                }
+
+                if (e.getKeyCode() == KeyEvent.VK_W) {
+                    if (timerspeed < 128) {
+                        timerspeed *= 2;
+                    }
+                    if ((timerspeed >= 128) && (level.player instanceof LabCursor)) {
+                        timerspeed *= 2;
+                    }
+                    timer.setDelay(timerspeed);
+                }
+
+            }
+        };
+	}
+
 	private Timer newTimer() {
 		return new Timer(timerspeed, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (level.portal != null) {
-                    String filename = level.portal.levelName;
                     boolean bringStuff = level.portal.bringStuff;
-                    boolean initLevel = level.portal.initLevel;
-
                     level.PlaySound(level.currentViewer.room, Level.TELEPORTSOUND);
                     boolean tempsound = SoundPlayer.useSounds;
                     SoundPlayer.useSounds = false;
@@ -147,65 +148,11 @@ public class RoomDisplay extends JPanel {
                         level.WriteInventory();
                     }
 
-                    FileInputStream f;
-                    try {
-                        f = new FileInputStream(filename);
-                        try {
-                            f.close();
-                        }
-                        catch (IOException ie) {
-                        }
-                    }
-                    catch (FileNotFoundException ie) {
-                        // filename does not exist
-                        rd = level.roomdisplay;
-                        String classname = "com.droidquest.levels." + filename.substring(0, filename.length() - 4);
-                        Constructor constructor = null;
-                        try {
-                            Class newlevel = Class.forName(classname);
-                            Class[] arglist = {Class.forName("com.droidquest.RoomDisplay")};
-                            constructor = newlevel.getConstructor(arglist);
-                            constructor.setAccessible(true);
-                        }
-                        catch (ClassNotFoundException ce) {
-                            ce.printStackTrace();
-                        }
-                        catch (NoSuchMethodException ne) {
-                            ne.printStackTrace();
-                        }
-                        try {
-                            Object[] args = {rd};
-                            level = (Level) constructor.newInstance(args);
-                            rd.SaveLevel();
-                        }
-                        catch (InstantiationException ie2) {
-                            System.out.println("Instantiation");
-                            System.exit(0);
-                        }
-                        catch (IllegalAccessException ie2) {
-                            System.out.println("Illegal Access");
-                            System.exit(0);
-                        }
-                        catch (IllegalArgumentException ie2) {
-                            System.out.println("Illegal Argument");
-                            System.exit(0);
-                        }
-                        catch (InvocationTargetException ie2) {
-                            System.out.println("Invocation Target");
-                            Throwable t = ie2.getTargetException();
-                            ie2.printStackTrace();
-                            System.out.println(t.getClass());
-                            System.exit(0);
-                        }
-                    }
-                    //		       {
-                    //		         look for a class that matches the name "filename" without the ".lvl"
-                    //		         if found, create it and save it, then load the file.
-                    //		       }
-
+                    String filename = level.portal.levelName;
+                    createLevelWhenNessasary(filename);
                     System.out.println("Loading level " + filename);
                     LoadLevel(filename);
-                    if (initLevel) {
+                    if (level.portal.initLevel) {
                         System.out.println("Initializing Level");
                         level.Init();
                     }
@@ -230,28 +177,43 @@ public class RoomDisplay extends JPanel {
                     gameState.useCursor();
                 }
                 Electricity();
-                for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.get(a);
-                    item.Animate();
-                    if (item.room == level.currentViewer.room) {
-                        item.Decorate();
-                    }
-                }
-                for (int a = 0; a < level.materials.size(); a++) {
-                    level.materials.get(a).Animate();
-                }
-                for (int a = 0; a < level.rooms.size(); a++) {
-                    Room room = level.rooms.get(a);
-                    for (int b = 0; b < room.graphix.size(); b++) {
-                        Graphix graphix = room.graphix.get(b);
-                        graphix.Animate();
-                    }
-                }
-
+                level.items.forEach(item -> {
+                	item.Animate();
+                	if (item.room == level.currentViewer.room) {
+                		item.Decorate();
+                	}
+                });
+                level.materials.forEach(x -> x.Animate());
+                level.rooms.forEach(room ->
+                	room.graphix.forEach(g -> g.Animate())
+                );
                 repaint();
                 level.sparks.forEach(x -> x.Age());
                 level.sparks.removeIf(x -> x.age >6);
             }
+
+			private void createLevelWhenNessasary(String filename) {
+				if(!new File(filename).exists()) {
+				    // filename does not exist
+				    RoomDisplay rd = level.roomdisplay;
+				    String basename = filename.replaceAll("\\..*", "");
+				    String classname = DQ.class.getPackage() + ".levels." + basename;
+				    Constructor<? extends Level> constructor = null;
+				    try {
+				        @SuppressWarnings("unchecked")
+						Class<? extends Level> levelClass = (Class<? extends Level>)Class.forName(classname);
+				        Class<?>[] argTypes = {RoomDisplay.class};
+				        constructor = levelClass.getConstructor(argTypes);
+				        constructor.setAccessible(true);
+				        Object[] args = {rd};
+				        level = constructor.newInstance(args);
+				        rd.SaveLevel();
+				    }
+				    catch (Exception ex) {
+				        throw new RuntimeException(ex);
+				    }
+				}
+			}
         });
 	}
 
@@ -413,65 +375,31 @@ public class RoomDisplay extends JPanel {
     }
 
     void SaveLevel() {
-        String temp = level.getClass().toString();
-        System.out.println("Class name is " + temp);
-        String[] path = temp.split("\\.");
-        for (int a = 0; a < path.length; a++) {
-            System.out.println(a + " = " + path[a]);
-        }
-        //	String filename = temp.substring(6);
-        String filename = path[path.length - 1];
-        SaveLevel(filename + ".lvl");
+        SaveLevel(level.getClass().getSimpleName() + ".lvl");
     }
 
     public void SaveLevel(String filename) {
         System.out.println("Saving level " + filename);
-        String[] filenames = filename.split("/");
-        if (filenames.length > 1) {
-			filename = filenames[filenames.length - 1];
-		}
-        try {
-            FileOutputStream out = new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/Saves/" + filename);
-            ObjectOutputStream s = new ObjectOutputStream(out);
+        try (ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/Saves/" + filename))){
             level.writeObject(s);
             s.flush();
-            s.close();
-            out.close();
-        }
-		catch (FileNotFoundException e) {
-            System.out.println("File Not Found" + filename);
-            return;
         }
         catch (IOException e) {
-            System.out.println("IO Exception");
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
-
-	public void SaveLevelAuto(String filename) {
-        System.out.println("Saving level " + filename);
-        String[] filenames = filename.split("/");
-        if (filenames.length > 1) {
-			filename = filenames[filenames.length - 1];
-		}
-        try {
-			File file = new File(System.getProperty("user.home") + "/.DroidQuest/" + filename);
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-            FileOutputStream out = new FileOutputStream(file);
-            ObjectOutputStream s = new ObjectOutputStream(out);
-            level.writeObject(s);
-            s.flush();
-            s.close();
-            out.close();
-        }
-        catch (IOException e) {
-            System.out.println("IO Exception");
-            System.out.println(e.getMessage());
-        }
+// FZ - TODO check on CM's SaveLevelAuto. I preserved it but, need to figure out where it's called
+// FZ -- ...maybe roll both save functions together
+public void SaveLevel(String filename) {
+    System.out.println("Saving level " + filename);
+    try (ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/" + filename))){
+        level.writeObject(s);
+        s.flush();
     }
-
+    catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}
     void LoadLevel(String filename) {
         timer.stop();
         level.Empty();
@@ -488,22 +416,11 @@ public class RoomDisplay extends JPanel {
         System.out.println("Loading level " + filename);
 
         // Add flags for loading Object inventories or running Init()
-        try {
-            FileInputStream in = new FileInputStream(filename);
-            ObjectInputStream s = new ObjectInputStream(in);
+        try (ObjectInputStream s = new ObjectInputStream(new FileInputStream(filename))){
             level.readObject(s);
-            s.close();
-            in.close();
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("File Not Found" + filename);
-            return;
         }
         catch (IOException e) {
-            System.out.println("IO Exception");
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            return;
+        	throw new RuntimeException(e);
         }
 
         if (level.remote != null) {
@@ -520,7 +437,7 @@ public class RoomDisplay extends JPanel {
             }
         }
 
-        timer.start();
+        start();
     }
 
 }
