@@ -1,5 +1,6 @@
 package com.droidquest.items;
 
+import com.droidquest.GameState;
 import com.droidquest.Room;
 import com.droidquest.Wire;
 import com.droidquest.devices.Device;
@@ -20,6 +21,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Item implements Serializable, Cloneable {
+	protected final GameState gameState = GameState.instance();
     public transient static Level level;
     public transient Item carrying; // What this item is carrying.
     public transient Item carriedBy; // What is carrying this item.

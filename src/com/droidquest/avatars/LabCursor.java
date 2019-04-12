@@ -94,8 +94,7 @@ public class LabCursor extends Player {
             currentIcon = icons[0].getImage();
         }
 
-        this.room.level.roomdisplay.dq.setHotCursorSelected(hot);
-
+        gameState.setUsingHotCursor(hot);
         return true;
     }
 
@@ -117,8 +116,7 @@ public class LabCursor extends Player {
         level.player = level.paintbrush;
         handleRemote();
 
-        level.roomdisplay.dq.selectPaintBrush();
-
+        gameState.usePaintBrush();
         return true;
     }
 
