@@ -704,7 +704,7 @@ public class Level implements ImageObserver, Serializable {
     }
 
     public void LoadInventory() {
-        roomdisplay.timer.stop();
+        roomdisplay.pause();
         String filename = "temp.inv";
         System.out.println("Loading Inventory ");
         int orgNumRooms = rooms.size();
@@ -859,7 +859,7 @@ public class Level implements ImageObserver, Serializable {
         }
         catch (FileNotFoundException e) {
             System.out.println("File Not Found");
-            roomdisplay.timer.start();
+            roomdisplay.resume();
             return;
         }
         catch (IOException e) {
@@ -868,7 +868,7 @@ public class Level implements ImageObserver, Serializable {
             e.printStackTrace();
             return;
         }
-        roomdisplay.timer.start();
+        roomdisplay.resume();
 
         // Remove all unnecessary Materials
         for (int a = 0; a < materials.size() - 1; a++) {
