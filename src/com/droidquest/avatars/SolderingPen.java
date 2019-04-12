@@ -431,7 +431,7 @@ public class SolderingPen extends Device implements Avatar {
 
         CheckPort();
 
-        level.roomdisplay.dq.selectCursor();
+        gameState.useCursor();
         return true;
     }
 
@@ -457,14 +457,14 @@ public class SolderingPen extends Device implements Avatar {
             level.remote.room = level.player.room;
             level.electricity = true;
 
-            level.roomdisplay.dq.setRadioSelected(true);
+            gameState.setUsingRemote(true);
         }
         else { // Hide Remote
             level.remote.carriedBy = null;
             level.remote.room = null;
             level.electricity = false;
 
-            level.roomdisplay.dq.setRadioSelected(false);
+            gameState.setUsingRemote(false);
         }
         return true;
     }
@@ -504,7 +504,7 @@ public class SolderingPen extends Device implements Avatar {
         }
         level.player = level.paintbrush;
 
-        level.roomdisplay.dq.selectPaintBrush();
+        gameState.usePaintBrush();
 
         handleRemote();
 

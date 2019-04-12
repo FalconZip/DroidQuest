@@ -5,27 +5,31 @@ package com.droidquest;
 import com.droidquest.avatars.Avatar;
 import com.droidquest.avatars.LabCursor;
 import com.droidquest.levels.MainMenu;
+import com.droidquest.sound.Sound;
+import com.droidquest.sound.SoundPlayer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 
-public class DQ extends JFrame implements ActionListener {
+public class DQ extends JFrame implements ActionListener, Observer {
     private RoomDisplay myRoom;
 
-    private JCheckBoxMenuItem menuToggleHot = null;
-    private JMenuItem menuItemCursor = null;
-    private JMenuItem menuItemSolderpen = null;
-    private JMenuItem menuItemPaintbrush = null;
-    private JCheckBoxMenuItem menuItemRadio = null;
-    private JMenuItem menuItemToolbox = null;
+    private final JCheckBoxMenuItem menuToggleHot;
+    private final JMenuItem menuItemCursor;
+    private final JMenuItem menuItemSolderpen;
+    private final JMenuItem menuItemPaintbrush;
+    private final JCheckBoxMenuItem menuItemRadio;
+    private final JMenuItem menuItemToolbox;
 
-    private JMenuItem menuRotateRight = null;
-    private JMenuItem menuRotateLeft = null;
-    private JMenuItem menuLoadChip = null;
+    private final JMenuItem menuRotateRight;
+    private final JMenuItem menuRotateLeft;
+    private final JMenuItem menuLoadChip;
 
-    private JMenuItem menuFlipDevice = null;
+    private final JMenuItem menuFlipDevice;
 
     public static Boolean cheatmode = false;
 
@@ -96,12 +100,11 @@ public class DQ extends JFrame implements ActionListener {
 
         menuItemSolderpen = new JRadioButtonMenuItem("Solderpen");
         avatarMenu.add(menuItemSolderpen);
-        menuItemSolderpen.setEnabled(false);
+
         menuItemSolderpen.addActionListener(this);
 
         menuItemPaintbrush = new JRadioButtonMenuItem("Paintbrush");
         avatarMenu.add(menuItemPaintbrush);
-        menuItemPaintbrush.setEnabled(false);
         menuItemPaintbrush.addActionListener(this);
 
         ButtonGroup menuItemAvatarButtonGroup = new ButtonGroup();
@@ -121,29 +124,23 @@ public class DQ extends JFrame implements ActionListener {
 
         menuItemRadio = new JCheckBoxMenuItem("Radio");
         controlMenu.add(menuItemRadio);
-        menuItemRadio.setSelected(false);
-        menuItemRadio.setEnabled(false);
         menuItemRadio.addActionListener(this);
 
         menuRotateRight = new JMenuItem("Rotate Part Clockwise");
         controlMenu.add(menuRotateRight);
-        menuRotateRight.setEnabled(false);
         menuRotateRight.addActionListener(this);
 
         menuRotateLeft = new JMenuItem("Rotate Part Counter-clockwise");
         controlMenu.add(menuRotateLeft);
-        menuRotateLeft.setEnabled(false);
         menuRotateLeft.addActionListener(this);
 
         menuToggleHot = new JCheckBoxMenuItem("Hot Cursor", false);
-        menuToggleHot.setEnabled(false);
         controlMenu.add(menuToggleHot);
         menuToggleHot.addActionListener(this);
 
 
         menuLoadChip = new JMenuItem("Load Chip");
         controlMenu.add(menuLoadChip);
-        menuLoadChip.setEnabled(false);
         menuLoadChip.addActionListener(this);
 
 
@@ -157,7 +154,6 @@ public class DQ extends JFrame implements ActionListener {
 
         menuFlipDevice = new JMenuItem("Flip Device/Wire");
         controlMenu.add(menuFlipDevice);
-        menuFlipDevice.setEnabled(false);
         menuFlipDevice.addActionListener(this);
 
         menuBar.add(Box.createHorizontalGlue());
@@ -169,12 +165,21 @@ public class DQ extends JFrame implements ActionListener {
         JMenuItem helpInfo = new JMenuItem("Help");
         helpMenu.add(helpInfo);
         helpInfo.addActionListener(this);
+    }
 
-        try {
-            System.setErr(System.out);
-        }
-        catch (SecurityException e) {
-        }
+    @Override
+    public void update(Observable observable, Object object) {
+    	GameState state = (GameState)observable;
+    	menuItemSolderpen.setEnabled(state.canUseSolderPen());
+        menuItemPaintbrush.setEnabled(state.canUsePaintBrunsh());
+        menuItemToolbox.setEnabled(state.canUseToolbox());
+        menuItemRadio.setSelected(state.isUsingRemote());
+        menuItemRadio.setEnabled(state.canSwitchRemote());
+        menuRotateLeft.setEnabled(state.canRotate());
+        menuRotateRight.setEnabled(state.canRotate());
+        menuToggleHot.setEnabled(state.changeHotCursor());
+        menuLoadChip.setEnabled(state.canLoadChip());
+        menuFlipDevice.setEnabled(state.canFlipDevice());
     }
 
     public static void main(String[] args) {
@@ -185,106 +190,18 @@ public class DQ extends JFrame implements ActionListener {
             }
         }
         DQ dq = new DQ();
-        GraphicsConfiguration gc = dq.getGraphicsConfiguration();
+        GameState gameState = GameState.instance();
+	    	gameState.addObserver(dq);
+        dq.run();
+    }
+
+	private void run() {
+		GraphicsConfiguration gc = getGraphicsConfiguration();
         Rectangle bounds = gc.getBounds();
-        dq.setLocation(bounds.x + (bounds.width - 568) / 2,
+        setLocation(bounds.x + (bounds.width - 568) / 2,
                 bounds.y + (bounds.height - 435) / 2);
-        dq.setVisible(true);
-        //Primative? requires the first parameter be "debug"... Not sure how java handles this.
-
-    }
-
-    public void setHotCursorSelected(boolean selected) {
-        if (null != this.menuToggleHot) {
-            this.menuToggleHot.setSelected(selected);
-        }
-    }
-
-    public void setHotCursorEnabled(boolean enabled) {
-        if (null != this.menuToggleHot) {
-            this.menuToggleHot.setEnabled(enabled);
-        }
-    }
-
-    public void setRotateEnabled(boolean enabled) {
-        if (null != this.menuRotateRight && null != this.menuRotateLeft) {
-            this.menuRotateRight.setEnabled(enabled);
-            this.menuRotateLeft.setEnabled(enabled);
-        }
-    }
-
-    public void setLoadChipEnabled(boolean enabled) {
-        if (null != this.menuLoadChip) {
-            this.menuLoadChip.setEnabled(enabled);
-        }
-    }
-
-    public void setFlipDeviceEnabled(boolean enabled) {
-        if(null != this.menuFlipDevice) {
-            this.menuFlipDevice.setEnabled(enabled);
-        }
-    }
-
-    public void setToolboxEnabled(boolean enabled) {
-        if (null != this.menuItemToolbox) {
-            this.menuItemToolbox.setEnabled(enabled);
-        }
-    }
-
-
-    public void selectCursor() {
-        if (null != this.menuItemCursor) {
-            this.menuItemCursor.setSelected(true);
-            if (null != myRoom && null != myRoom.level && myRoom.level.gameCursor instanceof LabCursor) {
-                setHotCursorEnabled(true);
-            }
-            setToolboxEnabled(true);
-        }
-    }
-
-    public void setSolderPenEnabled(boolean enabled) {
-        if (null != this.menuItemSolderpen) {
-            this.menuItemSolderpen.setEnabled(enabled);
-        }
-    }
-
-    public void selectSolderpen() {
-        if (null != this.menuItemSolderpen) {
-            this.menuItemSolderpen.setSelected(true);
-            this.setHotCursorEnabled(false);
-            setToolboxEnabled(false);
-            setFlipDeviceEnabled(true);
-        }
-    }
-
-    public void setPaintbrushEnabled(boolean enabled) {
-        if (null != this.menuItemPaintbrush) {
-            this.menuItemPaintbrush.setEnabled(enabled);
-            setFlipDeviceEnabled(false);
-        }
-    }
-
-    public void selectPaintBrush() {
-        if (null != this.menuItemPaintbrush) {
-            this.menuItemPaintbrush.setSelected(true);
-            this.setHotCursorEnabled(false);
-            this.setToolboxEnabled(false);
-        }
-    }
-
-
-    public void setRadioEnabled(boolean enabled) {
-        if (null != this.menuItemRadio) {
-            this.menuItemRadio.setEnabled(enabled);
-        }
-    }
-
-    public void setRadioSelected(boolean selected) {
-        if (null != this.menuItemRadio) {
-            this.menuItemRadio.setSelected(selected);
-        }
-    }
-
+        setVisible(true);
+	}
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Save Level")) {
@@ -384,30 +301,17 @@ public class DQ extends JFrame implements ActionListener {
             int n = JOptionPane.showConfirmDialog(this, "Do you want to quit this level?",
                     "return to Main Menu", JOptionPane.YES_NO_OPTION);
             if (n == 0) {
-                myRoom.level.Empty();
-                myRoom.level = new MainMenu(myRoom);
-                myRoom.level.Init();
-                setHotCursorEnabled(false);
-                setHotCursorSelected(false);
-                setRotateEnabled(false);
-                setLoadChipEnabled(false);
-                setPaintbrushEnabled(false);
-                setFlipDeviceEnabled(false);
-                setToolboxEnabled(false);
-                setSolderPenEnabled(false);
-                setRadioSelected(false);
-                setRadioEnabled(false);
-                selectCursor();
+                goHome();
             }
         }
 
         if (e.getActionCommand().equals("Sound")) {
-            myRoom.useSounds = ((JCheckBoxMenuItem) e.getSource()).getState();
-            if (!myRoom.useSounds) {
+            SoundPlayer.useSounds = ((JCheckBoxMenuItem) e.getSource()).getState();
+            if (!SoundPlayer.useSounds) {
                 Set<String> keys = myRoom.level.sounds.keySet();
                 for (String soundFile : keys) {
-                    SoundClip soundClip = myRoom.level.sounds.get(soundFile);
-                    soundClip.audioClip.stop();
+                    Sound sound = myRoom.level.sounds.get(soundFile);
+                    SoundPlayer.play(sound);
                 }
             }
         }
@@ -419,6 +323,13 @@ public class DQ extends JFrame implements ActionListener {
         }
 
     }
+
+	private void goHome() {
+		myRoom.level.Empty();
+		myRoom.level = new MainMenu(myRoom);
+		myRoom.level.Init();
+		GameState.instance().reset();
+	}
 
 }
 
@@ -494,16 +405,16 @@ public class DQ extends JFrame implements ActionListener {
 //            dev.level.items.removeElement(dev);
 //            break;
 //    case 2: // Re-summon Device
-//            
+//
 //            break;
 //    case 3: // Move Device
-//            
+//
 //            break;
 //    case 4: // Delete Wire
-//            
+//
 //            break;
 //    case 5: // Remake Wire
-//            
+//
 //            break;
 //  }
 //  type=TYPE_BLANK;
@@ -522,7 +433,7 @@ public class DQ extends JFrame implements ActionListener {
 //
 //Hot cursor makes input port true, but it doesn't show graphically.
 //Add some way to show how much of a charge a Crystal has.
-//Add {CENTER}, {LEFT}, & {RIGHT} to TextBoxes 
+//Add {CENTER}, {LEFT}, & {RIGHT} to TextBoxes
 //Give Rooms an array of Materials that's used instead of the RoomArray matrix.
 //Make burners & tester put chips on even pixels
 //
@@ -533,7 +444,7 @@ public class DQ extends JFrame implements ActionListener {
 //Bus
 //Clock Chip
 //Delay
-//One Shot Chip 
+//One Shot Chip
 //RS
 //6 bit Counter
 //Full Adder
@@ -551,7 +462,7 @@ public class DQ extends JFrame implements ActionListener {
 //
 //
 //JAR file created with this command:
-//% jar cmf0 manifest.txt DQ.jar *.class 
+//% jar cmf0 manifest.txt DQ.jar *.class
 //
 //ZIP file created with these files:
 //DQ.jar
@@ -559,8 +470,3 @@ public class DQ extends JFrame implements ActionListener {
 //Readme.txt
 //
 //
-
-
-
-
-

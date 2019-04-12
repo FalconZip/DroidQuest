@@ -9,6 +9,7 @@ import com.droidquest.items.Item;
 import com.droidquest.levels.Level;
 import com.droidquest.levels.MainMenu;
 import com.droidquest.materials.Material;
+import com.droidquest.sound.SoundPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,10 +22,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class RoomDisplay extends JPanel {
     public final DQ dq;
+    private final GameState gameState = GameState.instance();
     Level level;
     public Timer timer;
     private int timerspeed = 128;
-    public boolean useSounds = true;
     private AffineTransform at = new AffineTransform();
 
     public Font bigFont;
@@ -113,8 +114,8 @@ public class RoomDisplay extends JPanel {
                     boolean initLevel = level.portal.initLevel;
 
                     level.PlaySound(level.currentViewer.room, Level.TELEPORTSOUND);
-                    boolean tempsound = level.roomdisplay.useSounds;
-                    level.roomdisplay.useSounds = false;
+                    boolean tempsound = SoundPlayer.useSounds;
+                    SoundPlayer.useSounds = false;
                     if (bringStuff) {
                         System.out.println("Saving carried items.");
                         level.WriteInventory();
@@ -187,47 +188,20 @@ public class RoomDisplay extends JPanel {
                         level.LoadInventory();
                     }
 
-                    level.roomdisplay.useSounds = tempsound;
+                    SoundPlayer.useSounds = tempsound;
                     level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
 
-
-                    // Handle menu item initialization
-                    if (level.gameCursor instanceof LabCursor) {
-                        dq.setHotCursorSelected(false);
-                        dq.setHotCursorEnabled(true);
+                    gameState.setInLab(level.gameCursor instanceof LabCursor);
+                    
+                    if(level.solderingPen != null) {
+                    	gameState.useSolderPen();
                     }
-                    else {
-                        dq.setHotCursorSelected(false);
-                        dq.setHotCursorEnabled(false);
+                    if(level.paintbrush != null) {
+                    	gameState.usePaintBrush();
                     }
-
-                    if(null == level.solderingPen) {
-                        dq.setSolderPenEnabled(false);
-                    }
-                    else {
-                        dq.setSolderPenEnabled(true);
-                    }
-
-                    if(null == level.paintbrush) {
-                        dq.setPaintbrushEnabled(false);
-                    }
-                    else {
-                        dq.setPaintbrushEnabled(true);
-                    }
-
-                    if(null == level.remote) {
-                        dq.setRadioEnabled(false);
-                        dq.setRadioSelected(false);
-                    }
-                    else {
-                        dq.setRadioEnabled(true);
-                        dq.setRadioSelected(true);
-                    }
-
-                    // Always start with cursor
-                    dq.selectCursor();
-
-
+                    gameState.setCanUseRemote(level.remote != null);
+                    gameState.setUsingRemote(level.remote != null);
+                    gameState.useCursor();
                 }
                 Electricity();
                 for (int a = 0; a < level.items.size(); a++) {
