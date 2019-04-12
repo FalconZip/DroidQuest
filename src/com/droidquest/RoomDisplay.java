@@ -21,7 +21,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class RoomDisplay extends JPanel {
-    public final DQ dq;
     private final GameState gameState = GameState.instance();
     Level level;
     public Timer timer;
@@ -38,7 +37,6 @@ public class RoomDisplay extends JPanel {
     }
 
     public RoomDisplay(final DQ dq) {
-        this.dq = dq;
         setSize(new Dimension(560, 384));
         level = new MainMenu(this);
         level.Init();
