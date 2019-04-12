@@ -209,14 +209,15 @@ public class DQ extends JFrame implements ActionListener, Observer {
 		DQ dq = DQ.instance();
 		GameState gameState = GameState.instance();
 		gameState.addObserver(dq);
-		dq.run();
+		dq.start();
 	}
 
-	private void run() {
+	private void start() {
 		GraphicsConfiguration gc = getGraphicsConfiguration();
 		Rectangle bounds = gc.getBounds();
 		setLocation(bounds.x + (bounds.width - 568) / 2, bounds.y + (bounds.height - 435) / 2);
 		setVisible(true);
+		myRoom.start();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -250,7 +251,7 @@ public class DQ extends JFrame implements ActionListener, Observer {
 
 	private void toggleSound() {
 		SoundPlayer.useSounds = !SoundPlayer.useSounds;
-		if (!SoundPlayer.useSounds) {
+		if (SoundPlayer.useSounds) {
 			Set<String> keys = myRoom.level.sounds.keySet();
 			for (String soundFile : keys) {
 				Sound sound = myRoom.level.sounds.get(soundFile);

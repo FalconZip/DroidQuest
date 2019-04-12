@@ -23,7 +23,7 @@ import java.lang.reflect.InvocationTargetException;
 public class RoomDisplay extends JPanel {
     private final GameState gameState = GameState.instance();
     Level level;
-    public Timer timer;
+    private final Timer timer;
     private int timerspeed = 128;
     private AffineTransform at = new AffineTransform();
 
@@ -32,13 +32,13 @@ public class RoomDisplay extends JPanel {
 
     public boolean isFocusable() {
         // Necessary to get the keyboard focus to work with
-        // the ScrenDisplay class.
+        // the ScreenDisplay class.
         return (true);
     }
 
     public RoomDisplay rd;
 
-    public RoomDisplay(final DQ dq) {
+    RoomDisplay(final DQ dq) {
         setSize(new Dimension(560, 384));
         level = new MainMenu(this);
         level.Init();
@@ -106,7 +106,33 @@ public class RoomDisplay extends JPanel {
             }
         });
 
-        timer = new Timer(timerspeed, new ActionListener() {
+        timer = newTimer();
+
+        Image tempImage = new BufferedImage(200, 200, BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics g = tempImage.getGraphics();
+        ImageIcon tempImageIcon;
+
+        for (int a = 0; a < level.materials.size(); a++) {
+            Material mat = level.materials.get(a);
+            tempImageIcon = mat.icon;
+            if (tempImageIcon != null) {
+                g.drawImage(tempImageIcon.getImage(), 0, 0, this);
+            }
+        }
+
+        for (int a = 0; a < level.items.size(); a++) {
+            Item itm = level.items.get(a);
+            for (int b = 0; b < itm.icons.length; b++) {
+                tempImageIcon = itm.icons[b];
+                if (tempImageIcon != null) {
+                    g.drawImage(tempImageIcon.getImage(), 0, 0, this);
+                }
+            }
+        }
+    }
+
+	private Timer newTimer() {
+		return new Timer(timerspeed, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (level.portal != null) {
                     String filename = level.portal.levelName;
@@ -227,32 +253,20 @@ public class RoomDisplay extends JPanel {
                 level.sparks.removeIf(x -> x.age >6);
             }
         });
+	}
 
-        Image tempImage = new BufferedImage(200, 200, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics g = tempImage.getGraphics();
-        ImageIcon tempImageIcon;
-
-        for (int a = 0; a < level.materials.size(); a++) {
-            Material mat = level.materials.get(a);
-            tempImageIcon = mat.icon;
-            if (tempImageIcon != null) {
-                g.drawImage(tempImageIcon.getImage(), 0, 0, this);
-            }
-        }
-
-        for (int a = 0; a < level.items.size(); a++) {
-            Item itm = level.items.get(a);
-            for (int b = 0; b < itm.icons.length; b++) {
-                tempImageIcon = itm.icons[b];
-                if (tempImageIcon != null) {
-                    g.drawImage(tempImageIcon.getImage(), 0, 0, this);
-                }
-            }
-        }
-
-        timer.start();
+	public void start() {
+		timer.start();
         level.PlaySound(level.player.room, Level.STARTMUSICSOUND);
-    }
+	}
+
+	public void pause() {
+		timer.stop();
+	}
+
+	public void resume() {
+		timer.start();
+	}
 
     public void paintComponent(Graphics g) {
         super.paintComponents(g); // Paint background
