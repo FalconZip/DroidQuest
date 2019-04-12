@@ -1,24 +1,21 @@
-package com.droidquest;
+package com.droidquest.sound;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SoundClip {
-    public AudioClip audioClip;
-    private String filename;
+public class Sound {
+    final AudioClip audioClip;
 
-    public SoundClip(String f) {
-        filename = f;
+    public Sound(String filename) {
         try {
             URL baseURL = new URL("file:" + System.getProperty("user.dir") + "/sounds/");
-            URL soundURL;
-            soundURL = new URL(baseURL, filename);
+            URL soundURL = new URL(baseURL, filename);
             audioClip = Applet.newAudioClip(soundURL);
         }
         catch (MalformedURLException e) {
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 }

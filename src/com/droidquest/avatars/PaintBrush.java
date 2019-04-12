@@ -202,7 +202,7 @@ public class PaintBrush extends Player {
 
         handleRemote();
 
-        level.roomdisplay.dq.selectCursor();
+        gameState.useCursor();
 
         return true;
     }
