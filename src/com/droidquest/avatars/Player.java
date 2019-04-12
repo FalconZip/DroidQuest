@@ -52,7 +52,7 @@ public class Player extends Item implements Avatar {
 
         handleRemote();
 
-        level.roomdisplay.dq.selectSolderpen();
+        gameState.useSolderPen();
 
         return true;
     }
@@ -68,14 +68,14 @@ public class Player extends Item implements Avatar {
             level.remote.room = level.player.room;
             level.electricity = true;
 
-            level.roomdisplay.dq.setRadioSelected(true);
+            gameState.setUsingRemote(true);
         }
         else { // Hide Remote
             level.remote.carriedBy = null;
             level.remote.room = null;
             level.electricity = false;
 
-            level.roomdisplay.dq.setRadioSelected(false);
+            gameState.setUsingRemote(false);
         }
         return true;
     }
@@ -153,28 +153,21 @@ public class Player extends Item implements Avatar {
     public void PicksUp(Item item) {
         super.PicksUp(item);
         if (carrying instanceof SmallChip) {
-            level.roomdisplay.dq.setLoadChipEnabled(true);
+        	gameState.setCanLoadChip(true);
         }
         else {
-            level.roomdisplay.dq.setLoadChipEnabled(false);
-
-            if (carrying.isDevice()) {
-                level.roomdisplay.dq.setRotateEnabled(true);
-                level.roomdisplay.dq.setFlipDeviceEnabled(true);
-            }
-            else {
-                level.roomdisplay.dq.setRotateEnabled(false);
-                level.roomdisplay.dq.setFlipDeviceEnabled(false);
-            }
+        	gameState.setCanLoadChip(false);
+        	gameState.setCanRotate(carrying.isDevice());
+        	gameState.setCanFlipDevice(carrying.isDevice());
         }
     }
 
     @Override
     public void Drops() {
         super.Drops();
-        level.roomdisplay.dq.setRotateEnabled(false);
-        level.roomdisplay.dq.setLoadChipEnabled(false);
-        level.roomdisplay.dq.setFlipDeviceEnabled(false);
+        gameState.setCanRotate(false);
+        gameState.setCanLoadChip(false);
+        gameState.setCanFlipDevice(false);
     }
 
     public boolean handlePickupDrop() {

@@ -17,7 +17,6 @@ import java.util.Random;
 
 import com.droidquest.Room;
 import com.droidquest.RoomDisplay;
-import com.droidquest.SoundClip;
 import com.droidquest.Wire;
 import com.droidquest.chipstuff.Port;
 import com.droidquest.decorations.Spark;
@@ -28,6 +27,8 @@ import com.droidquest.items.Item;
 import com.droidquest.items.ToolBox;
 import com.droidquest.materials.Material;
 import com.droidquest.materials.Portal;
+import com.droidquest.sound.Sound;
+import com.droidquest.sound.SoundPlayer;
 
 public class Level implements ImageObserver, Serializable {
     public Item player;
@@ -54,7 +55,7 @@ public class Level implements ImageObserver, Serializable {
     private transient List<Item> invItems = new ArrayList<Item>();
     private transient List<Integer> invItemIndexes = new ArrayList<Integer>();
 
-    public transient HashMap<String, SoundClip> sounds = new HashMap<String, SoundClip>();
+    public transient HashMap<String, Sound> sounds = new HashMap<String, Sound>();
 
     public transient Random random = new Random();
     public transient static String ATTACHSOUND = "attach.WAV";
@@ -910,12 +911,12 @@ public class Level implements ImageObserver, Serializable {
 
     void InitSounds() {
         for (String soundFile : soundFiles) {
-            sounds.put(soundFile, new SoundClip(soundFile));
+            sounds.put(soundFile, new Sound(soundFile));
         }
     }
 
     public void PlaySound(Room room, String soundname) {
-        if (!roomdisplay.useSounds) {
+        if (!SoundPlayer.useSounds) {
             return;
         }
 
@@ -928,9 +929,9 @@ public class Level implements ImageObserver, Serializable {
 
         if (flag) {
             System.out.println("Playing sound " + soundname);
-            SoundClip soundClip = sounds.get(soundname);
-            if (soundClip != null) {
-                soundClip.audioClip.play();
+            Sound sound = sounds.get(soundname);
+            if (sound != null) {
+                SoundPlayer.play(sound);
             }
             System.out.println("Done");
         }
