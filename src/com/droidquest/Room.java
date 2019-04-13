@@ -15,6 +15,8 @@ import com.droidquest.decorations.Graphix;
 import com.droidquest.decorations.TextBox;
 import com.droidquest.items.Item;
 import com.droidquest.materials.Material;
+import com.droidquest.sound.Sound;
+import com.droidquest.sound.SoundPlayer;
 
 public class Room implements Serializable, Cloneable, InLevel {
     public transient Room upRoom;
@@ -148,6 +150,14 @@ public class Room implements Serializable, Cloneable, InLevel {
                 MaterialArray[Y][X] = r.MaterialArray[Y][X];
             }
         }
+    }
+    
+    public void playSound(Sound sound) {
+    	Item currentViewer = level().currentViewer;
+    	if(currentViewer != null && currentViewer.room!= this) {
+    		return;
+    	}
+    	SoundPlayer.play(sound);
     }
 
     public void AddTextBox(String t, int X, int Y, int W) {

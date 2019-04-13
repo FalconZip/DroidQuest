@@ -1,18 +1,22 @@
 package com.droidquest.devices;
 
-import com.droidquest.Room;
-import com.droidquest.chipstuff.Port;
-import com.droidquest.items.Item;
-import com.droidquest.levels.Level;
-import com.droidquest.materials.ChipTrash;
-import com.droidquest.materials.Material;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.ImageIcon;
+
+import com.droidquest.Room;
+import com.droidquest.chipstuff.Port;
+import com.droidquest.items.Item;
+import com.droidquest.materials.ChipTrash;
+import com.droidquest.materials.Material;
+import com.droidquest.sound.Sounds;
 
 public class Prototype32Chip extends GenericChip {
     private transient PortDevice[] portdevices;
@@ -297,7 +301,7 @@ public class Prototype32Chip extends GenericChip {
                 if (level.materials.get(room.RoomArray[a][b]) instanceof ChipTrash) {
                     SetRoom(null);
                     level.items.remove(this);
-                    level.PlaySound(room, Level.DISCHARGESOUND);
+                    room.playSound(Sounds.DISCHARGE);
                     return;
                 }
             }

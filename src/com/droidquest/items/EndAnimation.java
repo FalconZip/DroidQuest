@@ -1,7 +1,7 @@
 package com.droidquest.items;
 
 import com.droidquest.Room;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class EndAnimation extends HiddenCamera {
 
@@ -14,7 +14,7 @@ public class EndAnimation extends HiddenCamera {
 
     public void Animate() {
         if (!playsong) {
-            level.PlaySound(room, Level.ENDMUSICSOUND);
+            room.playSound(Sounds.ENDMUSIC);
             playsong = true;
         }
 
