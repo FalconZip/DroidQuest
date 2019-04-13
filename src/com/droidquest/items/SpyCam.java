@@ -18,24 +18,24 @@ public class SpyCam extends Item implements Avatar {
         grabbable = false;
     }
 
-    public void Draw(Graphics g, JPanel jp) {
+    public void draw(Graphics g, JPanel jp) {
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            SetRoom(room.rightRoom);
+            setRoom(room.rightRoom);
             return true;
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            SetRoom(room.leftRoom);
+            setRoom(room.leftRoom);
             return true;
         }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            SetRoom(room.upRoom);
+            setRoom(room.upRoom);
             return true;
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            SetRoom(room.downRoom);
+            setRoom(room.downRoom);
             return true;
         }
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {

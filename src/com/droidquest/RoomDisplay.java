@@ -79,7 +79,7 @@ public class RoomDisplay extends JPanel {
         // Key Pressed Functions
         addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
-                if (level.player.KeyDown(e)) {
+                if (level.player.keyDown(e)) {
                     repaint();
                 }
             }
@@ -93,7 +93,7 @@ public class RoomDisplay extends JPanel {
                 int deltaX = newX - e.getX();
                 int deltaY = newY - e.getY();
                 e.translatePoint(deltaX, deltaY);
-                level.player.MouseClick(e);
+                level.player.mouseClick(e);
             }
         });
 
@@ -126,7 +126,7 @@ public class RoomDisplay extends JPanel {
 		return new KeyAdapter() {
             public void keyReleased(KeyEvent e) {
                 // Event Handler for KeyReleased here
-                if (level.player.KeyUp(e)) {
+                if (level.player.keyUp(e)) {
                     repaint();
                 }
 
@@ -162,20 +162,20 @@ public class RoomDisplay extends JPanel {
                     soundPlayer.setUseSounds(false);
                     if (bringStuff) {
                         System.out.println("Saving carried items.");
-                        level.WriteInventory();
+                        level.writeInventory();
                     }
 
                     String filename = level.portal.levelName;
                     createLevelWhenNessasary(filename);
                     System.out.println("Loading level " + filename);
-                    LoadLevel(filename);
+                    loadLevel(filename);
                     if (level.portal != null && level.portal.initLevel) {
                         System.out.println("Initializing Level");
                         level.Init();
                     }
                     if (bringStuff) {
                         System.out.println("Loading carried items.");
-                        level.LoadInventory();
+                        level.loadInventory();
                     }
 
                     soundPlayer.setUseSounds(usingSound);
@@ -193,19 +193,19 @@ public class RoomDisplay extends JPanel {
                     gameState.setUsingRemote(level.remote != null);
                     gameState.useCursor();
                 }
-                Electricity();
+                electricity();
                 level.items.forEach(item -> {
-                	item.Animate();
+                	item.animate();
                 	if (item.room == level.currentViewer.room) {
-                		item.Decorate();
+                		item.decorate();
                 	}
                 });
-                level.materials.forEach(x -> x.Animate());
+                level.materials.forEach(x -> x.animate());
                 level.rooms.forEach(room ->
-                	room.graphix.forEach(g -> g.Animate())
+                	room.graphix.forEach(g -> g.animate())
                 );
                 repaint();
-                level.sparks.forEach(x -> x.Age());
+                level.sparks.forEach(x -> x.age());
                 level.sparks.removeIf(x -> x.age >6);
             }
 
@@ -228,7 +228,7 @@ public class RoomDisplay extends JPanel {
 	}
 
 	void reset() {
-		level.Empty();
+		level.empty();
 		level = new MainMenu(this);
 		gameState.setLevel(level);
 		level.Init();
@@ -241,40 +241,40 @@ public class RoomDisplay extends JPanel {
 
         // Paint Materials
         if (level.currentViewer.room.MaterialArray == null) {
-            level.currentViewer.room.GenerateArray();
+            level.currentViewer.room.generateArray();
         }
         for (int y = 0; y < 12; y++) {
             for (int x = 0; x < 20; x++) {
-                level.currentViewer.room.MaterialArray[y][x].Draw(g2, this, x, y);
+                level.currentViewer.room.MaterialArray[y][x].draw(g2, this, x, y);
             }
         }
 
         // Paint Texts
-        level.currentViewer.room.DrawTextBoxes(g2, this);
+        level.currentViewer.room.drawTextBoxes(g2, this);
 
         // Paint Graphix
-        level.currentViewer.room.DrawGraphix(g2, this);
+        level.currentViewer.room.drawGraphix(g2, this);
 
         // Paint Arrows
-        level.currentViewer.room.DrawArrows(g2);
+        level.currentViewer.room.drawArrows(g2);
 
         // Paint Items
         for (int a = 0; a < level.items.size(); a++) {
             if (level.currentViewer.room == level.items.get(a).room) {
-                level.items.get(a).Draw(g2, this);
+                level.items.get(a).draw(g2, this);
             }
         }
 
         // Paint Wires
         for (int a = 0; a < level.currentViewer.room.wires.size(); a++) {
-            level.currentViewer.room.wires.get(a).Draw(g2);
+            level.currentViewer.room.wires.get(a).draw(g2);
         }
 
         // Paint Sparks
         for (int a = 0; a < level.sparks.size(); a++) {
             Spark spark = level.sparks.get(a);
             if (spark.room == level.currentViewer.room) {
-                spark.Draw(g2);
+                spark.draw(g2);
             }
         }
 
@@ -287,7 +287,7 @@ public class RoomDisplay extends JPanel {
 
     }
 
-    void Electricity() {
+    void electricity() {
         if (!level.electricity) {
             return;
         }
@@ -327,7 +327,7 @@ public class RoomDisplay extends JPanel {
             Item item = level.items.get(a);
             if (item.isDevice()) {
                 Device device = (Device) item;
-                device.Function();
+                device.function();
             }
         }
 
@@ -365,7 +365,7 @@ public class RoomDisplay extends JPanel {
                         }
                     }
                     if (device.isNode()) {
-                        if (device.Function()) {
+                        if (device.function()) {
                             nodeChanged = true;
                         }
 
@@ -382,7 +382,7 @@ public class RoomDisplay extends JPanel {
 		if(!new File(filename).exists()) {
 		    // filename does not exist
 		    createLevel(filename);
-		    SaveLevel();
+		    saveLevel();
 		}
 	}
 
@@ -403,11 +403,11 @@ public class RoomDisplay extends JPanel {
 		    throw new RuntimeException(ex);
 		}
 	}
-    private void SaveLevel() {
-        SaveLevel(level.getClass().getSimpleName() + ".lvl");
+    private void saveLevel() {
+        saveLevel(level.getClass().getSimpleName() + ".lvl");
     }
 
-    public void SaveLevel(String filename) {
+    public void saveLevel(String filename) {
         System.out.println("Saving level " + filename);
         try (ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/Saves/" + filename))){
             level.writeObject(s);
@@ -419,7 +419,7 @@ public class RoomDisplay extends JPanel {
     }
 // FZ - TODO check on CM's SaveLevelAuto. I preserved it but, need to figure out where it's called
 // FZ -- ...maybe roll both save functions together
-public void SaveLevel(String filename) {
+public void saveLevelAuto(String filename) {
     System.out.println("Saving level " + filename);
     try (ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/" + filename))){
         level.writeObject(s);
@@ -429,9 +429,9 @@ public void SaveLevel(String filename) {
         throw new RuntimeException(e);
     }
 }
-    void LoadLevel(String filename) {
+    void loadLevel(String filename) {
         timer.stop();
-        level.Empty();
+        level.empty();
         level = new Level(this);
 
 		String[] split = filename.split("/");

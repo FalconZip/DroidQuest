@@ -29,10 +29,10 @@ public class ContactSensor extends Device {
         d2.height = 28 + target.getHeight();
         width = d1.width;
         height = d1.height;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (ports == null) {
             ports = new Port[1];
             ports[0] = new Port(width - 2, height / 2 - 2, Port.TYPE_OUTPUT, 24, Port.ROT_UP, this);
@@ -52,11 +52,11 @@ public class ContactSensor extends Device {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(d2.width, d2.height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(d1.width, d1.height, BufferedImage.TYPE_4BYTE_ABGR));
-        target.GenerateIcons();
+        target.generateIcons();
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         ports[0].value = false;
         if (room.portalItem == null) {
             // Contact Sensor is not inside robot.
@@ -65,7 +65,7 @@ public class ContactSensor extends Device {
                 if (item.room == room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {
-                            if (Overlaps(item)) {
+                            if (overlaps(item)) {
                                 ports[0].value = true;
                                 a = level().items.size();
                             }
@@ -81,7 +81,7 @@ public class ContactSensor extends Device {
                 if (item.room == room.portalItem.room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {
-                            if (room.portalItem.Overlaps(item)) {
+                            if (room.portalItem.overlaps(item)) {
                                 ports[0].value = true;
                                 a = level().items.size();
                             }
@@ -93,8 +93,8 @@ public class ContactSensor extends Device {
         return false;
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         switch (rotation) {
             case Port.ROT_UP:
                 g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 28, level());
@@ -151,8 +151,8 @@ public class ContactSensor extends Device {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         target = null;
     }
 

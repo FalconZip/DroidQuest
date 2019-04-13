@@ -16,10 +16,10 @@ public class SkyGuard extends Item {
         width = 28;
         height = 32;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[5];
         for (int a = 0; a < 5; a++) {
             icons[a] = new ImageIcon(getClass().getResource("/images/skyguard" + a + ".gif"));
@@ -27,7 +27,7 @@ public class SkyGuard extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         animationState = 1 - animationState;
 
         if (speed > 0) {

@@ -16,7 +16,7 @@ public class RobotBlocker extends Material {
         detectable = false;
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         if (level().gameCursor.getClass().toString().endsWith("GameCursor")) {
             GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == robot) {

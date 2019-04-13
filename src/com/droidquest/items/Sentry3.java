@@ -21,7 +21,7 @@ public class Sentry3 extends Sentry {
         super(X, Y, r);
     }
 
-    public void Animate() {
+    public void animate() {
         if (behavior < 3) {
             animation++;
         }
@@ -114,13 +114,13 @@ public class Sentry3 extends Sentry {
                     moveDown(dy);
                 }
                 if (dx == 0 && dy == 0) {
-                    PicksUp(level().player);
+                    picksUp(level().player);
                     behavior = 3;
                 }
                 break;
             case 3:
                 if (y >= 320) {
-                    Drops();
+                    drops();
                     behavior = previousBehavior;
                     break;
                 }

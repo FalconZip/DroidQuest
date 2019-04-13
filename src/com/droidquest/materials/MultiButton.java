@@ -21,7 +21,7 @@ public class MultiButton extends Material {
         states[number] = s;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[3];
         for (int a = 0; a < 3; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -54,7 +54,7 @@ public class MultiButton extends Material {
         icon = images[0];
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (room == null) {
             room = item.room;
         }
@@ -85,7 +85,7 @@ public class MultiButton extends Material {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         icon = images[states[number]];
 
         if (number != 0) {
@@ -109,7 +109,7 @@ public class MultiButton extends Material {
         if (flag) {
             Portal ptl = new Portal("ROEndGame.lvl", true, true);
             level().materials.add(ptl);
-            room.SetMaterial(10, 9, ptl);
+            room.setMaterial(10, 9, ptl);
         }
 
         if (states[0] == 2) {

@@ -81,10 +81,10 @@ public class Port implements Serializable, InLevel {
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
-        myDevice = level().FindItem(s.readInt());
+        myDevice = level().findItem(s.readInt());
         if (myDevice != null) {
             if (myDevice.room != null) {
-                myWire = myDevice.room.FindWire(s.readInt());
+                myWire = myDevice.room.findWire(s.readInt());
             }
         }
     }

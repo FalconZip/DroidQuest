@@ -83,11 +83,11 @@ public class Item implements Serializable, Cloneable, InLevel {
 
     public void readRef(ObjectInputStream s) throws IOException {
     	Level level = level();
-        carrying = level().FindItem(s.readInt());
-        carriedBy = level().FindItem(s.readInt());
-        room = level().FindRoom(s.readInt());
-        InternalRoom = level().FindRoom(s.readInt());
-        GenerateIcons();
+        carrying = level().findItem(s.readInt());
+        carriedBy = level().findItem(s.readInt());
+        room = level().findRoom(s.readInt());
+        InternalRoom = level().findRoom(s.readInt());
+        generateIcons();
     }
 
     public Image getIcon() {
@@ -114,10 +114,10 @@ public class Item implements Serializable, Cloneable, InLevel {
         return room;
     }
 
-    public void PicksUp(Item item) {
+    public void picksUp(Item item) {
         // This picks up an item
         if (carrying == null) {
-            if (item.CanBePickedUp(this) && item.carriedBy == null) {
+            if (item.canBePickedUp(this) && item.carriedBy == null) {
                 carrying = item;
                 item.carriedBy = this;
                 item.x -= x;
@@ -128,12 +128,12 @@ public class Item implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void Drops() {
+    public void drops() {
         // This drops the carried item
         if (carrying != null) {
             Item item = carrying;
             carrying.carriedBy = null;
-            Dimension d = GetXY();
+            Dimension d = getXY();
             carrying.x += d.width;
             carrying.y += d.height;
             if (carrying.x < 0) {
@@ -154,12 +154,12 @@ public class Item implements Serializable, Cloneable, InLevel {
             }
             carrying = null;
             outline = new Color(128, 128, 128);
-            item.IsDropped();
+            item.isDropped();
             room.playSound(Sounds.DROP);
         }
     }
 
-    protected void IsDropped() {
+    protected void isDropped() {
         if (!editable) {
             return;
         }
@@ -179,7 +179,7 @@ public class Item implements Serializable, Cloneable, InLevel {
         for (int a = bigYt; a <= bigYb; a++) {
             for (int b = bigXl; b <= bigXr; b++) {
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
-                    SetRoom(null); // Cheap way to remove the wires;
+                    setRoom(null); // Cheap way to remove the wires;
                     level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
@@ -189,7 +189,7 @@ public class Item implements Serializable, Cloneable, InLevel {
 
     }
 
-    public void SetRoom(Room r) {
+    public void setRoom(Room r) {
         // Goes through recursively from Item to carried item to carried
         // item.... Puts all items in the same room.
         Room cr = r;
@@ -199,7 +199,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 for (int a = 0; a < device.ports.length; a++) {
                     if (device.ports[a].myWire != null) {
                         Wire wire = device.ports[a].myWire;
-                        wire.Remove();
+                        wire.remove();
                     }
                 }
             }
@@ -225,17 +225,17 @@ public class Item implements Serializable, Cloneable, InLevel {
         room = cr;
         automove = 0;
         if (carrying != null) {
-            carrying.SetRoom(cr);
+            carrying.setRoom(cr);
         }
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         // Handles keybord input.
         // Return TRUE if repaint is needed (usually for movement)
         return false;
     }
 
-    public boolean KeyDown(KeyEvent e) {
+    public boolean keyDown(KeyEvent e) {
         // Handles keybord input.
         // Return TRUE if repaint is needed (usually for movement)
         return false;
@@ -259,7 +259,7 @@ public class Item implements Serializable, Cloneable, InLevel {
         // By default, no fine positioning
     }
 
-    public void MouseClick(MouseEvent e) {
+    public void mouseClick(MouseEvent e) {
         int button = 0;
         if ((e.getModifiers() & InputEvent.BUTTON1_MASK) == InputEvent.BUTTON1_MASK) {
             button = 1;
@@ -316,7 +316,7 @@ public class Item implements Serializable, Cloneable, InLevel {
             KeyEvent k = new KeyEvent(e.getComponent(), e.getID(),
                     e.getWhen(), 0,
                     KeyEvent.VK_SPACE, ' ');
-            KeyUp(k);
+            keyUp(k);
         }
 
     }
@@ -326,24 +326,24 @@ public class Item implements Serializable, Cloneable, InLevel {
         int bigXl = x / 28;
         int bigXr = (x + getWidth() - 1) / 28;
         int bigY = (y - dist) / 32;
-        if ((!level().materialAt(bigXl, bigY, room).Passable(this))
-                || (!level().materialAt(bigXr, bigY, room).Passable(this))) {
+        if ((!level().materialAt(bigXl, bigY, room).passable(this))
+                || (!level().materialAt(bigXr, bigY, room).passable(this))) {
             automove = 0;
             y = (bigY + 1) * 32;
-            ItemEffectsMaterials();
+            itemEffectsMaterials();
             return;
         }
         y = y - dist;
         if (y < 0) {
             if (room.getUpRoom(this) != null) { // change Rooms
                 y = y + 384;
-                SetRoom(room.getUpRoom(this));
+                setRoom(room.getUpRoom(this));
             }
             else if (this == level().player && room.portalItem != null) { // Exit item, Player only
-                Dimension d = room.portalItem.GetXY();
+                Dimension d = room.portalItem.getXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
-                SetRoom(room.portalItem.room);
+                setRoom(room.portalItem.room);
                 moveUp(dist);
             }
             else { // stop at top
@@ -351,7 +351,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 automove = 0;
             }
         }
-        ItemEffectsMaterials();
+        itemEffectsMaterials();
     }
 
     protected void moveDown(int dist) {
@@ -359,25 +359,25 @@ public class Item implements Serializable, Cloneable, InLevel {
         int bigXl = x / 28;
         int bigXr = (x + getWidth() - 1) / 28;
         int bigY = (y + getHeight() - 1 + dist) / 32;
-        if ((!level().materialAt(bigXl, bigY, room).Passable(this))
-                || (!level().materialAt(bigXr, bigY, room).Passable(this))) {
+        if ((!level().materialAt(bigXl, bigY, room).passable(this))
+                || (!level().materialAt(bigXr, bigY, room).passable(this))) {
             automove = 0;
             int newDist = bigY * 32 - getHeight() - y;
             y += newDist;
-            ItemEffectsMaterials();
+            itemEffectsMaterials();
             return;
         }
         y = y + dist;
         if (y > 383) {
             if (room.getDownRoom(this) != null) { // change Rooms
                 y = y - 384;
-                SetRoom(room.getDownRoom(this));
+                setRoom(room.getDownRoom(this));
             }
             else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
-                Dimension d = room.portalItem.GetXY();
+                Dimension d = room.portalItem.getXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
-                SetRoom(room.portalItem.room);
+                setRoom(room.portalItem.room);
                 moveDown(dist);
             }
             else { // stop at bottom
@@ -385,7 +385,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 automove = 0;
             }
         }
-        ItemEffectsMaterials();
+        itemEffectsMaterials();
     }
 
     protected void moveLeft(int dist) {
@@ -393,24 +393,24 @@ public class Item implements Serializable, Cloneable, InLevel {
         int bigX = (x - dist) / 28;
         int bigYt = y / 32;
         int bigYb = (y + getHeight() - 1) / 32;
-        if ((!level().materialAt(bigX, bigYt, room).Passable(this))
-                || (!level().materialAt(bigX, bigYb, room).Passable(this))) {
+        if ((!level().materialAt(bigX, bigYt, room).passable(this))
+                || (!level().materialAt(bigX, bigYb, room).passable(this))) {
             automove = 0;
             x = (bigX + 1) * 28;
-            ItemEffectsMaterials();
+            itemEffectsMaterials();
             return;
         }
         x = x - dist;
         if (x < 0) {
             if (room.getLeftRoom(this) != null) { // change Rooms
                 x = x + 560;
-                SetRoom(room.getLeftRoom(this));
+                setRoom(room.getLeftRoom(this));
             }
             else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
-                Dimension d = room.portalItem.GetXY();
+                Dimension d = room.portalItem.getXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
-                SetRoom(room.portalItem.room);
+                setRoom(room.portalItem.room);
                 moveLeft(dist);
             }
             else { // stop at Left
@@ -418,7 +418,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 automove = 0;
             }
         }
-        ItemEffectsMaterials();
+        itemEffectsMaterials();
     }
 
     protected void moveRight(int dist) {
@@ -427,25 +427,25 @@ public class Item implements Serializable, Cloneable, InLevel {
         int bigYt = y / 32;
         int bigYb = (y + getHeight() - 1) / 32;
         //	if (bigX<20 && bigYb<20 && bigYt>=0)
-        if ((!level().materialAt(bigX, bigYt, room).Passable(this))
-                || (!level().materialAt(bigX, bigYb, room).Passable(this))) {
+        if ((!level().materialAt(bigX, bigYt, room).passable(this))
+                || (!level().materialAt(bigX, bigYb, room).passable(this))) {
             automove = 0;
             int newDist = bigX * 28 - getWidth() - x;
             x += newDist;
-            ItemEffectsMaterials();
+            itemEffectsMaterials();
             return;
         }
         x = x + dist;
         if (x > 559) {
             if (room.getRightRoom(this) != null) { // change Rooms
                 x = x - 560;
-                SetRoom(room.getRightRoom(this));
+                setRoom(room.getRightRoom(this));
             }
             else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
-                Dimension d = room.portalItem.GetXY();
+                Dimension d = room.portalItem.getXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
-                SetRoom(room.portalItem.room);
+                setRoom(room.portalItem.room);
                 moveRight(dist);
             }
             else { // stop at Right
@@ -453,7 +453,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 automove = 0;
             }
         }
-        ItemEffectsMaterials();
+        itemEffectsMaterials();
     }
 
     protected void moveUp(boolean nudge) {
@@ -492,7 +492,7 @@ public class Item implements Serializable, Cloneable, InLevel {
 
     }
 
-    public void Animate() {
+    public void animate() {
         if (automove == 1 && room == null) {
             automove = 0;
         }
@@ -563,22 +563,22 @@ public class Item implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         // This is where the icons[] array is filled with ImageIcons, and
         // the ImageIcons are painted. Depending on the Item, this can be
         // done either once during initialization, or once per Animation
         // phase.
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         // Returns True if THIS Item can be picked up by Item i.
         return grabbable;
     }
 
-    private void ItemEffectsMaterials() {
+    private void itemEffectsMaterials() {
         // called after every Move() function
         //
         // Checks the materials touched by this item, and calls their
@@ -588,7 +588,7 @@ public class Item implements Serializable, Cloneable, InLevel {
             return;
         }
 
-        Dimension d = GetXY();
+        Dimension d = getXY();
 
         int bigXl = (d.width) / 28;
         int bigXr = (d.width + width - 1) / 28;
@@ -605,24 +605,24 @@ public class Item implements Serializable, Cloneable, InLevel {
         for (int a = bigYt; a <= bigYb; a++) {
             for (int b = bigXl; b <= bigXr; b++) {
                 if (a >= 0 && a < 12 && b >= 0 && b < 20) {
-                    room.MaterialArray[a][b].TouchedByItem(this);
+                    room.MaterialArray[a][b].touchedByItem(this);
                 }
             }
         }
 
         if (carrying != null) {
-            carrying.ItemEffectsMaterials();
+            carrying.itemEffectsMaterials();
         }
 
 
     }
 
-    public Dimension GetXY() {
+    public Dimension getXY() {
         // Recursively goes up the carrying tree to figure out the XY
         // coordinates of an item.
 
         if (carriedBy != null) {
-            Dimension d = carriedBy.GetXY();
+            Dimension d = carriedBy.getXY();
             d.width += x;
             d.height += y;
             return d;
@@ -632,8 +632,8 @@ public class Item implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void Draw(Graphics g, JPanel jp) {
-        Dimension d = GetXY();
+    public void draw(Graphics g, JPanel jp) {
+        Dimension d = getXY();
         if (currentIcon != null) {
             g.drawImage(currentIcon, d.width - orgX, d.height - orgY, jp);
         }
@@ -648,16 +648,16 @@ public class Item implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void Draw(Graphics g, int X, int Y, JPanel jp) {
+    public void draw(Graphics g, int X, int Y, JPanel jp) {
         g.drawImage(currentIcon, X - orgX, Y - orgY, jp);
     }
 
-    public boolean Overlaps(Item testItem) {
+    public boolean overlaps(Item testItem) {
         boolean overlap = false;
         if (this != testItem && this.room == testItem.room) {
             overlap = true;
-            Dimension d1 = GetXY();
-            Dimension d2 = testItem.GetXY();
+            Dimension d1 = getXY();
+            Dimension d2 = testItem.getXY();
             if (this.carrying == testItem) {
                 overlap = false;
             }
@@ -680,7 +680,7 @@ public class Item implements Serializable, Cloneable, InLevel {
         return overlap;
     }
 
-    public boolean RightEnterOverlap(Item item) {
+    public boolean rightEnterOverlap(Item item) {
         boolean result = true;
         if (leftPortal != null) {
             if (item.x < x + leftPortal.x) {
@@ -699,13 +699,13 @@ public class Item implements Serializable, Cloneable, InLevel {
         else {
             result = false;
         }
-        if (OverWall()) {
+        if (overWall()) {
             result = false;
         }
         return result;
     }
 
-    public boolean DownEnterOverlap(Item item) {
+    public boolean downEnterOverlap(Item item) {
         boolean result = true;
         if (upPortal != null) {
             if (item.x < x + upPortal.x) {
@@ -724,13 +724,13 @@ public class Item implements Serializable, Cloneable, InLevel {
         else {
             result = false;
         }
-        if (OverWall()) {
+        if (overWall()) {
             result = false;
         }
         return result;
     }
 
-    public boolean LeftEnterOverlap(Item item) {
+    public boolean leftEnterOverlap(Item item) {
         boolean result = true;
         if (leftPortal != null) {
             if (item.x < x + rightPortal.x) {
@@ -749,13 +749,13 @@ public class Item implements Serializable, Cloneable, InLevel {
         else {
             result = false;
         }
-        if (OverWall()) {
+        if (overWall()) {
             result = false;
         }
         return result;
     }
 
-    public boolean UpEnterOverlap(Item item) {
+    public boolean upEnterOverlap(Item item) {
         boolean result = true;
         if (downPortal != null) {
             if (item.x < x + downPortal.x) {
@@ -774,7 +774,7 @@ public class Item implements Serializable, Cloneable, InLevel {
         else {
             result = false;
         }
-        if (OverWall()) {
+        if (overWall()) {
             result = false;
         }
         return result;
@@ -800,7 +800,7 @@ public class Item implements Serializable, Cloneable, InLevel {
         return newObject;
     }
 
-    public void Erase() {
+    public void erase() {
         carrying = null;
         carriedBy = null;
         room = null;
@@ -809,8 +809,8 @@ public class Item implements Serializable, Cloneable, InLevel {
         InternalRoom = null;
     }
 
-    public boolean OverWall() {
-        Dimension d = GetXY();
+    public boolean overWall() {
+        Dimension d = getXY();
         int bigXL = (d.width + width / 2 - 14) / 28;
         int bigXR = (d.width + width / 2 + 14) / 28;
         int bigYT = (d.height + height / 2 - 16) / 32;

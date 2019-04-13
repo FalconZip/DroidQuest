@@ -216,7 +216,7 @@ public class GameState extends Observable{
 			return;
 		}
 		if(this.level != null) {
-			this.level.Empty();
+			this.level.empty();
 		}
 		this.level = level;
 	}

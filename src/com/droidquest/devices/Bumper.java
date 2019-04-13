@@ -30,7 +30,7 @@ public class Bumper extends Device {
         rotation = direction;
         color = col;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
@@ -40,10 +40,10 @@ public class Bumper extends Device {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level().FindItem(s.readInt());
+        robot = (GenericRobot) level().findItem(s.readInt());
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         robot = (GenericRobot) room.portalItem;
         if (ports == null) {
             ports = new Port[1];
@@ -108,8 +108,8 @@ public class Bumper extends Device {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         currentIcon = icons[0].getImage();
         try {
             g = currentIcon.getGraphics();
@@ -161,11 +161,11 @@ public class Bumper extends Device {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         // Check the walls on the sides of the GenericRobot and set the
         // Port outputs and the bumper variables
 
-        Dimension d = robot.GetXY();
+        Dimension d = robot.getXY();
         int X = d.width;
         int Y = d.height;
 
@@ -177,7 +177,7 @@ public class Bumper extends Device {
                 int bigY = (Y - 3) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (level().materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level().materialAt(a, bigY, robot.room).detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -192,7 +192,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (level().materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level().materialAt(bigX, a, robot.room).detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -207,7 +207,7 @@ public class Bumper extends Device {
                 int bigY = (Y + 44) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (level().materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level().materialAt(a, bigY, robot.room).detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -222,7 +222,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (level().materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level().materialAt(bigX, a, robot.room).detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -235,8 +235,8 @@ public class Bumper extends Device {
         return false;
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         robot = null;
     }
 

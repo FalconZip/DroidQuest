@@ -44,7 +44,7 @@ public class Player extends Item implements Avatar {
                 // skip solder pen
                 return true;
             }
-            Drops();
+            drops();
         }
         level().solderingPen.x = x;
         level().solderingPen.y = y;
@@ -90,7 +90,7 @@ public class Player extends Item implements Avatar {
     	Level level = level();
         if (carrying != null) {
             if (carrying instanceof GenericChip) {
-                ((GenericChip) carrying).ShowText(true);
+                ((GenericChip) carrying).showText(true);
                 return false;
             }
         }
@@ -106,12 +106,12 @@ public class Player extends Item implements Avatar {
     	Level level = level();
         if (level().toolbox == null) {
             if (carrying != null) {
-                Drops();
+                drops();
             }
             level().toolbox = new ToolBox(x, y + 8, room);
             level().items.add(level().toolbox);
             ((ToolBox) level().toolbox).Toggle();
-            PicksUp(level().toolbox);
+            picksUp(level().toolbox);
         }
         if (level().toolbox.room != room) {
             // Summon Toolbox
@@ -124,7 +124,7 @@ public class Player extends Item implements Avatar {
             level().toolbox.room = room;
             level().toolbox.x = x + 28;
             level().toolbox.y = y + 6;
-            PicksUp(level().toolbox);
+            picksUp(level().toolbox);
         }
         else {
             ((ToolBox) level().toolbox).Toggle();
@@ -154,9 +154,9 @@ public class Player extends Item implements Avatar {
     }
 
     @Override
-    public void PicksUp(Item item) {
+    public void picksUp(Item item) {
     	GameState gameState = gameState();
-        super.PicksUp(item);
+        super.picksUp(item);
         if (carrying instanceof SmallChip) {
         	gameState.setCanLoadChip(true);
         }
@@ -168,8 +168,8 @@ public class Player extends Item implements Avatar {
     }
 
     @Override
-    public void Drops() {
-        super.Drops();
+    public void drops() {
+        super.drops();
         gameState().setCanRotate(false);
         gameState().setCanLoadChip(false);
         gameState().setCanFlipDevice(false);
@@ -181,13 +181,13 @@ public class Player extends Item implements Avatar {
             return false;
         }
         if (carrying != null) {
-            Drops();
+            drops();
         }
         else {
-            Item item = level().FindNearestItem(level().gameCursor);
+            Item item = level().findNearestItem(level().gameCursor);
             if (item != null) {
-                if (item.CanBePickedUp(level().gameCursor)) {
-                    PicksUp(item);
+                if (item.canBePickedUp(level().gameCursor)) {
+                    picksUp(item);
                 }
             }
         }
@@ -210,16 +210,16 @@ public class Player extends Item implements Avatar {
     }
 
     public boolean handleEnterRoom() {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (Overlaps(item)) {
-                    if (!item.OverWall()) {
+                if (overlaps(item)) {
+                    if (!item.overWall()) {
                         int newX = 280; // 10 * 28
                         int newY = 176; // 5.5 * 32
                         x = newX;
                         y = newY;
-                        SetRoom(item.InternalRoom);
+                        setRoom(item.InternalRoom);
                         return true;
                     }
                 }
@@ -230,7 +230,7 @@ public class Player extends Item implements Avatar {
 
     public boolean handleExitRoom() {
         if (room != null && room.portalItem != null) {
-            Dimension d = room.portalItem.GetXY();
+            Dimension d = room.portalItem.getXY();
             int newX = d.width
                     + room.portalItem.getWidth() / 2
                     - width / 2;
@@ -239,7 +239,7 @@ public class Player extends Item implements Avatar {
                     - height / 2;
             x = newX;
             y = newY;
-            SetRoom(room.portalItem.room);
+            setRoom(room.portalItem.room);
             level().currentViewer = level().player;
             return true;
         }
@@ -275,7 +275,7 @@ public class Player extends Item implements Avatar {
     public boolean handleMoveDown(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
             if (isShiftDown && room != null && room.downRoom != null) {
-                SetRoom(room.downRoom);
+                setRoom(room.downRoom);
             }
         }
         if (carriedBy == null) {
@@ -288,7 +288,7 @@ public class Player extends Item implements Avatar {
     public boolean handleMoveUp(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
             if (isShiftDown && room != null && room.upRoom != null) {
-                SetRoom(room.upRoom);
+                setRoom(room.upRoom);
             }
         }
         if (carriedBy == null) {
@@ -301,7 +301,7 @@ public class Player extends Item implements Avatar {
     public boolean handleMoveLeft(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
             if (isShiftDown && room != null && room.leftRoom != null) {
-                SetRoom(room.leftRoom);
+                setRoom(room.leftRoom);
             }
         }
         if (carriedBy == null) {
@@ -314,7 +314,7 @@ public class Player extends Item implements Avatar {
     public boolean handleMoveRight(boolean isShiftDown, boolean isControlDown) {
         if (isCheatMode()) {
             if (isShiftDown && room != null && room.rightRoom != null) {
-                SetRoom(room.rightRoom);
+                setRoom(room.rightRoom);
             }
         }
         if (carriedBy == null) {
@@ -337,7 +337,7 @@ public class Player extends Item implements Avatar {
         return false;
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_L && handleLoadSmallChip()) {
             return false;
         }
@@ -453,7 +453,7 @@ public class Player extends Item implements Avatar {
         return false;
     }
 
-    public boolean KeyDown(KeyEvent e) {
+    public boolean keyDown(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             if (handleRepeatRight((e.getModifiers() & shortcut_modifier) > 0)) {
                 return true;
@@ -493,15 +493,15 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveRight(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.RightEnterOverlap(this)) {
+                if (item.rightEnterOverlap(this)) {
                     int newX = 0; // 0 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -510,15 +510,15 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveLeft(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.LeftEnterOverlap(this)) {
+                if (item.leftEnterOverlap(this)) {
                     int newX = 532; // 19 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -527,15 +527,15 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveDown(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.DownEnterOverlap(this)) {
+                if (item.downEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 0; //  0 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -544,15 +544,15 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveUp(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.UpEnterOverlap(this)) {
+                if (item.upEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 320; // 10 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }

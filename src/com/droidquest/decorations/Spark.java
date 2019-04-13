@@ -23,7 +23,7 @@ public class Spark implements Serializable {
         age = 0;
     }
 
-    public void Age() {
+    public void age() {
         x += dx;
         y += dy;
         if (x < 0 || x > 560 || y < 0 || y > 384) {
@@ -32,7 +32,7 @@ public class Spark implements Serializable {
         age++;
     }
 
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         if (age < 2) {
             g.setColor(Color.white);
         }

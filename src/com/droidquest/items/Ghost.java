@@ -26,10 +26,10 @@ public class Ghost extends Item {
         width = 28;
         height = 32;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         robot = new Item[4];
         icons = new ImageIcon[4];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -78,7 +78,7 @@ public class Ghost extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         // Positions: There are 4x3=12 "nodes" where the ghost travels to
         // and from. Every time the ghost reaches a node position, it looks
         // around for any robots in the area. If it sees a robot it then
@@ -109,7 +109,7 @@ public class Ghost extends Item {
             for (Item aRobot : robot) {
                 if (aRobot != null) {
                     if (aRobot.room == room) {
-                        Dimension d = aRobot.GetXY();
+                        Dimension d = aRobot.getXY();
                         if (d.width < 14 * 28) {
                             int dx = (d.width + aRobot.width / 2) - (x + width / 2);
                             int dy = (d.height + aRobot.height / 2) - (y + height / 2);
@@ -180,7 +180,7 @@ public class Ghost extends Item {
 
         for (int a = 0; a < 4; a++) {
             if (robot[a] != null) {
-                if (Overlaps(robot[a])) {
+                if (overlaps(robot[a])) {
                     robot[a].charge = 0;
                     room.playSound(Sounds.DISCHARGE);
                     robot[a].x = 16 * 28 + 14;

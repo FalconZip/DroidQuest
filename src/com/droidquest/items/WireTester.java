@@ -24,10 +24,10 @@ public class WireTester extends Item {
         width = 28;
         height = 26;
         myPortDevice = pd;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -72,17 +72,17 @@ public class WireTester extends Item {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        myPortDevice = (PortDevice) level().FindItem(s.readInt());
+        myPortDevice = (PortDevice) level().findItem(s.readInt());
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         if (myPortDevice.ports[0].type == Port.TYPE_OUTPUT) {
             myPortDevice.ports[0].value = !myPortDevice.ports[0].value;
         }
         return false;
     }
 
-    public void Decorate() {
+    public void decorate() {
         if (myPortDevice != null) {
             if (myPortDevice.ports[0].value) {
                 currentIcon = icons[1].getImage();
@@ -96,8 +96,8 @@ public class WireTester extends Item {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         myPortDevice = null;
     }
 

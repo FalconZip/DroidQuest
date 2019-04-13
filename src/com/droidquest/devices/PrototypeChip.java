@@ -28,7 +28,7 @@ public class PrototypeChip extends GenericChip {
         width = 104;
         height = 64;
 
-        GenerateIcons();
+        generateIcons();
 
         InternalRoom = new Room();
         InternalRoom.RoomArray = new int[][]{
@@ -55,7 +55,7 @@ public class PrototypeChip extends GenericChip {
                 }
             }
         }
-        InternalRoom.GenerateArray();
+        InternalRoom.generateArray();
         InternalRoom.portalItem = this;
         level().rooms.add(InternalRoom);
         InternalRoom.upRoom = null;
@@ -90,7 +90,7 @@ public class PrototypeChip extends GenericChip {
         }
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
 //	super.GenerateIcons();
         if (ports == null) {
             ports = new Port[8];
@@ -130,7 +130,7 @@ public class PrototypeChip extends GenericChip {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         try {
             g = currentIcon.getGraphics();
         }
@@ -158,7 +158,7 @@ public class PrototypeChip extends GenericChip {
         }
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
@@ -172,13 +172,13 @@ public class PrototypeChip extends GenericChip {
         super.readRef(s);
         portdevices = new PortDevice[8];
         for (int a = 0; a < ports.length; a++) {
-            Item item = level().FindItem(s.readInt());
+            Item item = level().findItem(s.readInt());
             portdevices[a] = (PortDevice) item;
         }
-        GenerateIcons();
+        generateIcons();
     }
 
-    public boolean Function() {
+    public boolean function() {
         // Transfer values bewteen the ports and the portdevices.
         boolean changed = false;
         for (int a = 0; a < 8; a++) {
@@ -229,7 +229,7 @@ public class PrototypeChip extends GenericChip {
         return changed;
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         inBurner = false;
         inTester = false;
         int bigXl = (x) / 28;
@@ -268,8 +268,8 @@ public class PrototypeChip extends GenericChip {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         for (int a = 0; a < portdevices.length; a++) {
             portdevices[a] = null;
         }

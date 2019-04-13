@@ -9,7 +9,7 @@ public class MazeCreator extends Button {
         super(X, Y, r, Color.blue);
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         Room mazeEntrance = null;
         for (int a = 0; a < level().rooms.size(); a++) {
             Room r = level().rooms.get(a);
@@ -39,11 +39,11 @@ public class MazeCreator extends Button {
             for (int X = 0; X < MazeControl.mazeWidth; X++) {
                 Room newRoom = new Room();
                 newRoom.editable = true;
-                newRoom.GenerateArray();
+                newRoom.generateArray();
                 level().rooms.add(newRoom);
                 if (Y == 0) {
                     for (int a = 0; a < 20; a++) {
-                        newRoom.SetMaterial(a, 0, 3);
+                        newRoom.setMaterial(a, 0, 3);
                     }
                 }
                 else {
@@ -53,13 +53,13 @@ public class MazeCreator extends Button {
                 }
                 if (Y == MazeControl.mazeHeight - 1) {
                     for (int a = 0; a < 20; a++) {
-                        newRoom.SetMaterial(a, 11, 3);
+                        newRoom.setMaterial(a, 11, 3);
                     }
                 }
 
                 if (X == 0) {
                     for (int a = 0; a < 12; a++) {
-                        newRoom.SetMaterial(0, a, 3);
+                        newRoom.setMaterial(0, a, 3);
                     }
                 }
                 else {
@@ -69,7 +69,7 @@ public class MazeCreator extends Button {
                 }
                 if (X == MazeControl.mazeWidth - 1) {
                     for (int a = 0; a < 12; a++) {
-                        newRoom.SetMaterial(19, a, 3);
+                        newRoom.setMaterial(19, a, 3);
                     }
                 }
 
@@ -78,7 +78,7 @@ public class MazeCreator extends Button {
                         mazeEntrance.downRoom = newRoom;
                     }
                     newRoom.upRoom = mazeEntrance;
-                    newRoom.SetMaterial(1, 0, 0);
+                    newRoom.setMaterial(1, 0, 0);
                 }
             }
         }

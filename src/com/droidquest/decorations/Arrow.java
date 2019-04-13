@@ -26,7 +26,7 @@ public class Arrow implements Serializable {
         color = c;
     }
 
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(color);
         switch (direction) {
             case 0:

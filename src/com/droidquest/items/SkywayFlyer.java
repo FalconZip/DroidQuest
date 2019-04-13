@@ -22,7 +22,7 @@ public class SkywayFlyer extends Item {
         grabbable = false;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[filenames.length];
         for (int a = 0; a < filenames.length; a++) {
             icons[a] = new ImageIcon(getClass().getResource("/images/" + filenames[a]));
@@ -44,7 +44,7 @@ public class SkywayFlyer extends Item {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         animationState++;
         if (animationState == filenames.length) {
             animationState = 0;
@@ -58,11 +58,11 @@ public class SkywayFlyer extends Item {
             moveDown(speed);
         }
 
-        if (Overlaps(level().player)) {
+        if (overlaps(level().player)) {
             room.playSound(Sounds.DISCHARGE);
             level().player.x = 2 * 28;
             level().player.y = 8 * 32;
-            level().player.SetRoom(room.downRoom);
+            level().player.setRoom(room.downRoom);
         }
     }
 

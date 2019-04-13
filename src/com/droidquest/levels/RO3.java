@@ -69,13 +69,13 @@ class RO3 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Explore the Town!", 164, 2 * 32, 560);
-            room.AddTextBox("HINTS: Weather the magnetic storm with a shield in a 'bot. (Turn it on.)",
+            room.addTextBox("Explore the Town!", 164, 2 * 32, 560);
+            room.addTextBox("HINTS: Weather the magnetic storm with a shield in a 'bot. (Turn it on.)",
                     2 * 28, 4 * 32, 500);
-            room.AddTextBox("Chips 5 & 6 are blank.", 2 * 28, 6 * 32, 500);
-            room.AddTextBox("Sometimes junk can open doors...", 2 * 28, 7 * 32, 560);
-            room.AddTextBox("A Form-12 is your ticket to the Master Control Room.", 2 * 28, 8 * 32, 560);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 500);
+            room.addTextBox("Chips 5 & 6 are blank.", 2 * 28, 6 * 32, 500);
+            room.addTextBox("Sometimes junk can open doors...", 2 * 28, 7 * 32, 560);
+            room.addTextBox("A Form-12 is your ticket to the Master Control Room.", 2 * 28, 8 * 32, 560);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 500);
         }
         {// Room 1  : Intro Maze 1 
             Room room = rooms.get(1);
@@ -93,11 +93,11 @@ class RO3 extends Level {
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2}
             };
-            room.AddTextBox("EXIT", 9 * 28 + 6, 196, 100);
-            room.AddArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
-            room.AddArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
-            room.AddArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("EXIT", 9 * 28 + 6, 196, 100);
+            room.addArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
+            room.addArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
+            room.addArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 2  : Intro Maze 2 
             Room room = rooms.get(2);
@@ -115,11 +115,11 @@ class RO3 extends Level {
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2}
             };
-            room.AddTextBox("EXIT", 9 * 28 + 6, 196, 100);
-            room.AddArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
-            room.AddArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
-            room.AddArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("EXIT", 9 * 28 + 6, 196, 100);
+            room.addArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
+            room.addArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
+            room.addArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 3  : Intro Maze 3 
             Room room = rooms.get(3);
@@ -137,11 +137,11 @@ class RO3 extends Level {
                     {2, 2, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 2, 2},
                     {2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2, 2}
             };
-            room.AddTextBox("EXIT", 9 * 28 + 6, 196, 100);
-            room.AddArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
-            room.AddArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
-            room.AddArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("EXIT", 9 * 28 + 6, 196, 100);
+            room.addArrow(280, 4 * 32, Arrow.DIR_UP, 32, Color.white);
+            room.addArrow(280, 8 * 32, Arrow.DIR_DOWN, 32, Color.white);
+            room.addArrow(7 * 28, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(13 * 28, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 4  : Sensor Editor Room, Magnetic Shield here 
             Room room = rooms.get(4);
@@ -159,8 +159,8 @@ class RO3 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Sensor Editor", 64, 56, 560);
-            room.AddTextBox("Magnetic Storm Shield (For Robots Only)", 60, 346, 560);
+            room.addTextBox("Sensor Editor", 64, 56, 560);
+            room.addTextBox("Magnetic Storm Shield (For Robots Only)", 60, 346, 560);
             items.add(new StormShield(3 * 28, 8 * 32, room));
         }
         {// Room 5  : Street Maze 
@@ -256,9 +256,9 @@ class RO3 extends Level {
                     {7, 7, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
-            room.AddTextBox("ELEVATOR", 9 * 28, 152, 560);
-            room.AddTextBox("The things robots throw away...", 0, 6 * 32, 200);
-            room.AddArrow(14 * 28, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("ELEVATOR", 9 * 28, 152, 560);
+            room.addTextBox("The things robots throw away...", 0, 6 * 32, 200);
+            room.addArrow(14 * 28, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new ElevatorKey(1 * 28, 9 * 32, room));
             String[] filelist = {"trash0.gif", "trash1.gif", "trash2.gif", "trash3.gif"};
             room.graphix.add(new Graphix(filelist, 28, 8 * 32));
@@ -279,7 +279,7 @@ class RO3 extends Level {
                     {7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7}
             };
-            room.AddTextBox("Use elevator.", 8 * 28, 10 * 32, 560);
+            room.addTextBox("Use elevator.", 8 * 28, 10 * 32, 560);
             int[] pace = {6 * 28, 2 * 32, 6 * 28, 8 * 32};
             int[] pounce = {5 * 28, 3 * 32, 14 * 28, 5 * 32, 12 * 28, 0,
                     5 * 28, 6 * 32, 14 * 28, 8 * 32, 9 * 28, 11 * 32};
@@ -319,12 +319,12 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7}
             };
-            room.AddTextBox("..........................................", 28, 274, 560);
-            room.AddTextBox("1) Insert Token ", 112, 6 * 32, 560);
-            room.AddTextBox("2) Pull ", 308, 96, 560);
-            room.AddTextBox("VENDING MACHINE", 48, 50, 560);
-            room.AddArrow(3 * 28, 5 * 32, Arrow.DIR_UP, 32, Color.white);
-            room.AddArrow(11 * 28 + 22, 4 * 32 + 4, Arrow.DIR_DOWN, 30, Color.white);
+            room.addTextBox("..........................................", 28, 274, 560);
+            room.addTextBox("1) Insert Token ", 112, 6 * 32, 560);
+            room.addTextBox("2) Pull ", 308, 96, 560);
+            room.addTextBox("VENDING MACHINE", 48, 50, 560);
+            room.addArrow(3 * 28, 5 * 32, Arrow.DIR_UP, 32, Color.white);
+            room.addArrow(11 * 28 + 22, 4 * 32 + 4, Arrow.DIR_DOWN, 30, Color.white);
             items.add(new VendingHandle(11 * 28, 4 * 32 + 10, room));
             items.add(new F12Form(3 * 28, 2 * 32, room));
         }
@@ -529,7 +529,7 @@ class RO3 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 17, 0, 0, 0, 0, 0, 0, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
-            room.AddTextBox("Two buttons a day keep the sentry away.", 148, 5 * 32, 250);
+            room.addTextBox("Two buttons a day keep the sentry away.", 148, 5 * 32, 250);
             int[] pace = {3 * 28, 4 * 32, 3 * 28, 9 * 32};
             int[] protect = {4 * 28, 1 * 32, 6 * 28, 3 * 32, 0, 2 * 32,
                     4 * 28, 3 * 32, 6 * 28, 9 * 32, 0, 6 * 32,
@@ -552,8 +552,8 @@ class RO3 extends Level {
                     {7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 18, 7},
                     {7, 7, 7, 7, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
-            room.AddTextBox("Look into the next room.", 14 * 28, 9 * 32 + 16, 150);
-            room.AddArrow(17 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Look into the next room.", 14 * 28, 9 * 32 + 16, 150);
+            room.addArrow(17 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 25 : Blue Maze 
             Room room = rooms.get(25);
@@ -639,9 +639,9 @@ class RO3 extends Level {
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 7, 7},
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 7, 7}
             };
-            room.AddTextBox("Submit a Form-12, please.", 3 * 28, 3 * 32, 150);
-            room.AddTextBox(" OFFICIAL GATEKEEPER", 112, 9 * 32, 200);
-            room.AddGraphix("trashcan.gif", 2 * 28, 8 * 32);
+            room.addTextBox("Submit a Form-12, please.", 3 * 28, 3 * 32, 150);
+            room.addTextBox(" OFFICIAL GATEKEEPER", 112, 9 * 32, 200);
+            room.addGraphix("trashcan.gif", 2 * 28, 8 * 32);
             items.add(new GateKeeper(7 * 28, 4 * 32, room));
             items.add(new DirectionalSensor(16 * 28, 5 * 32, room,
                     new Button(0, 0, null, Color.white)));
@@ -731,7 +731,7 @@ class RO3 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3}
             };
-            room.AddTextBox("I never could hang onto money...", 3 * 28, 152, 560);
+            room.addTextBox("I never could hang onto money...", 3 * 28, 152, 560);
             items.add(new SlipperyToken(3 * 28, 3 * 32, room));
             items.add(new StormCloud(10 * 28, 6 * 32, room));
             items.add(new StormCloud(10 * 28, 6 * 32, room));
@@ -753,11 +753,11 @@ class RO3 extends Level {
                     {12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddArrow(10 * 28 - 2, 66, Arrow.DIR_UP, 28, Color.green);
-            room.AddArrow(10 * 28 - 1, 66, Arrow.DIR_UP, 28, Color.green);
-            room.AddArrow(10 * 28, 66, Arrow.DIR_UP, 28, Color.green);
-            room.AddArrow(10 * 28 + 1, 66, Arrow.DIR_UP, 28, Color.green);
-            room.AddArrow(10 * 28 + 2, 66, Arrow.DIR_UP, 28, Color.green);
+            room.addArrow(10 * 28 - 2, 66, Arrow.DIR_UP, 28, Color.green);
+            room.addArrow(10 * 28 - 1, 66, Arrow.DIR_UP, 28, Color.green);
+            room.addArrow(10 * 28, 66, Arrow.DIR_UP, 28, Color.green);
+            room.addArrow(10 * 28 + 1, 66, Arrow.DIR_UP, 28, Color.green);
+            room.addArrow(10 * 28 + 2, 66, Arrow.DIR_UP, 28, Color.green);
         }
 
         {// Room 36 : Secret room 
@@ -776,9 +776,9 @@ class RO3 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Good work! You Found me again!",
+            room.addTextBox("Good work! You Found me again!",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("You may find this hard to swallow, but there is no key to Secret #4. Just ride a robot through one of the challanges.",
+            room.addTextBox("You may find this hard to swallow, but there is no key to Secret #4. Just ride a robot through one of the challanges.",
                     2 * 28, 4 * 32, 500);
             String[] helperlist = {
                     "helper0.gif", "helper0.gif", "helper0.gif", "helper0.gif",
@@ -799,31 +799,31 @@ class RO3 extends Level {
         }
 
         // Intro Maze
-        LinkRoomsUpDown(1, 2);
-        LinkRoomsUpDown(2, 3);
-        LinkRoomsUpDown(3, 1);
-        LinkRoomsLeftRight(1, 3);
-        LinkRoomsLeftRight(3, 1);
+        linkRoomsUpDown(1, 2);
+        linkRoomsUpDown(2, 3);
+        linkRoomsUpDown(3, 1);
+        linkRoomsLeftRight(1, 3);
+        linkRoomsLeftRight(3, 1);
 
         // Exit from Intro Maze
         int[] roomlist1 = {4, 2, 33, 6};
-        LinkRoomsHorizontally(roomlist1);
+        linkRoomsHorizontally(roomlist1);
 
         // Main Street
         int[] roomlist2 = {5, 6, 16, 17, 7, 18, 34, 5};
-        LinkRoomsVertically(roomlist2);
+        linkRoomsVertically(roomlist2);
 
         // Entrance to lower Elevator
-        LinkRoomsLeftRight(5, 8);
-        LinkRoomsLeftRight(8, 9);
+        linkRoomsLeftRight(5, 8);
+        linkRoomsLeftRight(8, 9);
 
         // Stairs to vending machine
         int[] roomlist3 = {12, 11, 10, 9};
-        LinkRoomsVertically(roomlist3);
+        linkRoomsVertically(roomlist3);
 
         // Tunnel through Street Maze
-        LinkRoomsLeftRight(16, 19);
-        LinkRoomsLeftRight(19, 17);
+        linkRoomsLeftRight(16, 19);
+        linkRoomsLeftRight(19, 17);
 
         // Blue Maze
         int[][] roomgrid = {
@@ -832,11 +832,11 @@ class RO3 extends Level {
                 {32, 25, 26, 15, 27, 32},
                 {30, 20, 21, 14, 22, 30}
         };
-        LinkRoomsGrid(roomgrid);
+        linkRoomsGrid(roomgrid);
 
         // Tunnel to Blue Maze
-        LinkRoomsLeftRight(7, 28);
-        LinkRoomsLeftRight(28, 31);
+        linkRoomsLeftRight(7, 28);
+        linkRoomsLeftRight(28, 31);
 
         gameCursor = new GameCursor(10 * 28, 6 * 32, rooms.get(1));
         helpCam = new HelpCam(rooms.get(0));

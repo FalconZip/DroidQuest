@@ -41,7 +41,7 @@ class ROEndGame2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
             };
-            room.AddTextBox("No help here. Press Return.",
+            room.addTextBox("No help here. Press Return.",
                     118, 5 * 32, 450);
         }
 
@@ -62,11 +62,11 @@ class ROEndGame2 extends Level {
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
 
-            room.AddTextBox("{BIG} {255,000,000} CONGRATULATIONS!", 64, 64, 500);
-            room.AddTextBox("You are one of the rare and elite", 82, 4 * 32, 560);
-            room.AddTextBox("Robot Lords.", 214, 5 * 32 + 20, 560);
-            room.AddTextBox("Return to the Main Menu", 2 * 28, 10 * 32 + 24, 500);
-            room.AddArrow(360, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("{BIG} {255,000,000} CONGRATULATIONS!", 64, 64, 500);
+            room.addTextBox("You are one of the rare and elite", 82, 4 * 32, 560);
+            room.addTextBox("Robot Lords.", 214, 5 * 32 + 20, 560);
+            room.addTextBox("Return to the Main Menu", 2 * 28, 10 * 32 + 24, 500);
+            room.addArrow(360, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new EndAnimation(room));
         }
 

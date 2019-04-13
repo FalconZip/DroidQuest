@@ -38,10 +38,10 @@ public class Device extends Item {
         for (Port port : ports) {
             port.readRef(s);
         }
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         goesInToolbox = false;
         if (ports != null) {
             for (Port port : ports) {
@@ -60,7 +60,7 @@ public class Device extends Item {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         // Performs the function of the device, such as calculating the
         // output based upon inputs, or handling external functions such as
         // thrusting, touching walls, grabbing objects, antenna, etc...
@@ -72,7 +72,7 @@ public class Device extends Item {
         return false;
     }
 
-    public void Decorate() {
+    public void decorate() {
         currentIcon = icons[rotation % 2].getImage();
         try {
             g = currentIcon.getGraphics();
@@ -136,16 +136,16 @@ public class Device extends Item {
         }
     }
 
-    public void IsDropped() {
-        super.IsDropped();
+    public void isDropped() {
+        super.isDropped();
         if (goesInToolbox) {
             if (level().toolbox != null) {
                 if (((ToolBox) level().toolbox).open) {
-                    if (Overlaps(level().toolbox)) {
+                    if (overlaps(level().toolbox)) {
                         // Remove all wires and delete device
                         for (Port port : ports) {
                             if (port.myWire != null) {
-                                port.myWire.Remove();
+                                port.myWire.remove();
                             }
                         }
                         level().items.remove(this);
@@ -155,12 +155,12 @@ public class Device extends Item {
         }
     }
 
-    public boolean CanBePickedUp(Item item) {
-        return !item.getClass().toString().endsWith("Robot") && super.CanBePickedUp(item);
+    public boolean canBePickedUp(Item item) {
+        return !item.getClass().toString().endsWith("Robot") && super.canBePickedUp(item);
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         g = null;
         for (Port port : ports) {
             port.myDevice = null;
@@ -178,7 +178,7 @@ public class Device extends Item {
         Device newDevice;
         newDevice = (Device) super.clone();
         newDevice.ports = null;
-        newDevice.GenerateIcons();
+        newDevice.generateIcons();
         return newDevice;
     }
 

@@ -12,7 +12,7 @@ public class FFButton extends Button {
         grabbable = false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (robots == null) {
             robots = new GenericRobot[3];
             int rcount = 0;
@@ -27,17 +27,17 @@ public class FFButton extends Button {
         else {
             for (int a = 0; a < 3; a++) {
                 if (robots[a] != null) {
-                    if (Overlaps(robots[a])) {
-                        room.SetMaterial(0, 4, 0);
-                        room.SetMaterial(0, 5, 0);
-                        room.SetMaterial(0, 6, 0);
-                        room.SetMaterial(19, 4, 0);
-                        room.SetMaterial(19, 5, 0);
-                        room.SetMaterial(19, 6, 0);
+                    if (overlaps(robots[a])) {
+                        room.setMaterial(0, 4, 0);
+                        room.setMaterial(0, 5, 0);
+                        room.setMaterial(0, 6, 0);
+                        room.setMaterial(19, 4, 0);
+                        room.setMaterial(19, 5, 0);
+                        room.setMaterial(19, 6, 0);
                         room = room.leftRoom;
-                        room.SetMaterial(19, 4, 0);
-                        room.SetMaterial(19, 5, 0);
-                        room.SetMaterial(19, 6, 0);
+                        room.setMaterial(19, 4, 0);
+                        room.setMaterial(19, 5, 0);
+                        room.setMaterial(19, 6, 0);
                         room = null;
                         level().items.remove(this);
                     }

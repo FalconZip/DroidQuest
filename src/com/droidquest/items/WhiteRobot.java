@@ -15,7 +15,7 @@ public class WhiteRobot extends GenericRobot {
     public WhiteRobot(int X, int Y, Room r) {
         super(X, Y, r, Color.white);
         checker = 0;
-        Animate();
+        animate();
         devices[0] = new Thruster(176, 16, InternalRoom, Port.ROT_UP, Color.blue);
         devices[1] = new Thruster(476, 128, InternalRoom, Port.ROT_RIGHT, Color.blue);
         devices[2] = new Thruster(356, 336, InternalRoom, Port.ROT_DOWN, Color.blue);
@@ -32,8 +32,8 @@ public class WhiteRobot extends GenericRobot {
 
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         checker = 1 - checker;
         Graphics g;
         int cx, cy;
