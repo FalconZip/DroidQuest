@@ -4,7 +4,6 @@ import com.droidquest.Room;
 import com.droidquest.decorations.Arrow;
 import com.droidquest.items.Item;
 import com.droidquest.materials.ElevatorOutPortal;
-import com.droidquest.materials.Material;
 
 public class ElevatorSwitch extends Switch {
     private int animationState = 0;
@@ -14,7 +13,8 @@ public class ElevatorSwitch extends Switch {
 // 3=switch arrow, switch outRoom
 // 4=opening
 // 5=opening
-    private transient static Room room;
+    private transient Room room;
+    private transient final ElevatorOutPortal outPortal = new ElevatorOutPortal();
 
     public ElevatorSwitch() {
         super(Switch.ROT_LEFT);
@@ -46,13 +46,13 @@ public class ElevatorSwitch extends Switch {
                 animationState++;
                 break;
             case 3:
-                if (ElevatorOutPortal.outRoom == Material.level.rooms.get(11)) {
+                if (outPortal.outRoom == level.rooms.get(11)) {
                     for (int a = 0; a < room.arrows.size(); a++) {
                         Arrow arrow = room.arrows.get(a);
                         arrow.direction = Arrow.DIR_UP;
                         arrow.y = 66;
                     }
-                    ElevatorOutPortal.SetOutRoom(9);
+                    outPortal.SetOutRoom(9);
                 }
                 else {
                     for (int a = 0; a < room.arrows.size(); a++) {
@@ -60,7 +60,7 @@ public class ElevatorSwitch extends Switch {
                         arrow.direction = Arrow.DIR_DOWN;
                         arrow.y = 94;
                     }
-                    ElevatorOutPortal.SetOutRoom(11);
+                    outPortal.SetOutRoom(11);
                 }
                 animationState++;
                 break;

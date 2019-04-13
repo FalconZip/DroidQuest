@@ -157,7 +157,7 @@ public class Room implements Serializable, Cloneable, InLevel {
     	if(currentViewer != null && currentViewer.room!= this) {
     		return;
     	}
-    	SoundPlayer.play(sound);
+    	SoundPlayer.instance().play(sound);
     }
 
     public void AddTextBox(String t, int X, int Y, int W) {

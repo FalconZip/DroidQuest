@@ -13,15 +13,15 @@ public class MazeLock extends Switch {
 
     public void TouchedByItem(Item item) {
         if (paintbrush == null) {
-            paintbrush = Material.level.paintbrush;
+            paintbrush = level.paintbrush;
         }
 
         if (!value) {
-            Material.level.paintbrush = null;
+            level.paintbrush = null;
             value = true;
         }
         else {
-            Material.level.paintbrush = paintbrush;
+            level.paintbrush = paintbrush;
             value = false;
         }
     }
