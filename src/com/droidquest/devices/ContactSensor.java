@@ -60,14 +60,14 @@ public class ContactSensor extends Device {
         ports[0].value = false;
         if (room.portalItem == null) {
             // Contact Sensor is not inside robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {
                             if (Overlaps(item)) {
                                 ports[0].value = true;
-                                a = level.items.size();
+                                a = level().items.size();
                             }
                         }
                     }
@@ -76,14 +76,14 @@ public class ContactSensor extends Device {
         }
         else {
             // Contact Sensor is inside Robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room.portalItem.room) {
                     if (target.getClass().isInstance(item)) {
                         if (item.carriedBy == null) {
                             if (room.portalItem.Overlaps(item)) {
                                 ports[0].value = true;
-                                a = level.items.size();
+                                a = level().items.size();
                             }
                         }
                     }
@@ -97,16 +97,16 @@ public class ContactSensor extends Device {
         super.Decorate();
         switch (rotation) {
             case Port.ROT_UP:
-                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 28, level);
+                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 28, level());
                 break;
             case Port.ROT_RIGHT:
-                g.drawImage(target.currentIcon, 0, height / 2 - target.getHeight() / 2, level);
+                g.drawImage(target.currentIcon, 0, height / 2 - target.getHeight() / 2, level());
                 break;
             case Port.ROT_DOWN:
-                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 0, level);
+                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 0, level());
                 break;
             case Port.ROT_LEFT:
-                g.drawImage(target.currentIcon, 28, height / 2 - target.getHeight() / 2, level);
+                g.drawImage(target.currentIcon, 28, height / 2 - target.getHeight() / 2, level());
                 break;
         }
     }

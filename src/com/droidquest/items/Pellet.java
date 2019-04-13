@@ -24,8 +24,8 @@ public class Pellet extends Item {
 
     public void GenerateIcons() {
         if (!counted) {
-            int index = level.items.indexOf(this);
-            if (!(level.items.get(index - 1) instanceof Pellet)) {
+            int index = level().items.indexOf(this);
+            if (!(level().items.get(index - 1) instanceof Pellet)) {
                 pelletCount = 0;
             }
             counted = true;
@@ -52,7 +52,7 @@ public class Pellet extends Item {
 
     public boolean CanBePickedUp(Item item) {
         if (item instanceof GenericRobot) {
-            level.items.remove(this);
+            level().items.remove(this);
             pelletCount--;
             if (pelletCount == 0) {
                 room.SetMaterial(15, 1, 0);
@@ -61,7 +61,7 @@ public class Pellet extends Item {
                 room.SetMaterial(15, 6, 0);
                 room.SetMaterial(15, 9, 0);
                 room.SetMaterial(15, 10, 0);
-                level.items.removeIf(i -> i instanceof Ghost);
+                level().items.removeIf(i -> i instanceof Ghost);
             }
         }
         return false;

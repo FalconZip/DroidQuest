@@ -53,8 +53,8 @@ public class NotAButton extends Item {
 
     public void Animate() {
         if (eb == null) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item instanceof EnergyButton) {
                     eb = (EnergyButton) item;
                     eb.nb = this;
@@ -64,8 +64,8 @@ public class NotAButton extends Item {
 
         if (animationState < 51) {
             animationState++;
-            int dx = level.random.nextInt(11) - 5;
-            int dy = level.random.nextInt(11) - 5;
+            int dx = level().random.nextInt(11) - 5;
+            int dy = level().random.nextInt(11) - 5;
             if (x + dx > 28 && x + dx < (19 * 28)) {
                 x += dx;
             }

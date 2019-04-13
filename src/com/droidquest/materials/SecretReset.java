@@ -27,8 +27,8 @@ public class SecretReset extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player) {
-            level.LinkRoomsUpDown(8, 7);
+        if (item == level().player) {
+            level().LinkRoomsUpDown(8, 7);
         }
     }
 }

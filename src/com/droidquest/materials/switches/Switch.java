@@ -139,7 +139,7 @@ public class Switch extends Material {
 
         if (program[switchState][0] == -12) // == WAIT4PLAYERCONTACT
         {
-            if (item == level.player) {
+            if (item == level().player) {
                 trigger = item;
                 room = item.room;
                 currentRoom = room;

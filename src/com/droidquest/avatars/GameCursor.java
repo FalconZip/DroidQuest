@@ -305,7 +305,7 @@ public class GameCursor extends Player {
 
     @Override
     protected boolean handleTrain() {
-        Item item = level.FindNearestItem(level.gameCursor);
+        Item item = level().FindNearestItem(level().gameCursor);
         if (item != null) {
             if (item instanceof Train) {
                 item.CanBePickedUp(this);
@@ -322,7 +322,7 @@ public class GameCursor extends Player {
 
     @Override
     protected boolean isCheatMode() {
-        return level.roomdisplay.dq.cheatmode;
+        return level().cheatmode;
     }
 
 
@@ -374,9 +374,9 @@ public class GameCursor extends Player {
 
     public GenericRobot PlayerInRobot(GenericRobot robot) {
         if (robot == null) {
-            if (level.player.room.portalItem != null) {
-                if (level.player.room.portalItem instanceof GenericRobot) {
-                    return (PlayerInRobot((GenericRobot) level.player.room.portalItem));
+            if (level().player.room.portalItem != null) {
+                if (level().player.room.portalItem instanceof GenericRobot) {
+                    return (PlayerInRobot((GenericRobot) level().player.room.portalItem));
                 }
                 else {
                     return (null);

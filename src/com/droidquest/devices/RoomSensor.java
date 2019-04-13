@@ -64,24 +64,24 @@ public class RoomSensor extends Device {
         ports[0].value = false;
         if (room.portalItem == null) {
             // Room Sensor is not inside robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         ports[0].value = true;
-                        a = level.items.size();
+                        a = level().items.size();
                     }
                 }
             }
         }
         else {
             // Room Sensor is inside Robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room.portalItem.room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         ports[0].value = true;
-                        a = level.items.size();
+                        a = level().items.size();
                     }
                 }
             }
@@ -96,22 +96,22 @@ public class RoomSensor extends Device {
             case Port.ROT_UP:
                 g.drawRect(0, 24, width, height - 24);
                 g.drawRect(1, 25, width - 2, height - 26);
-                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 28, level);
+                g.drawImage(target.currentIcon, width / 2 - target.getWidth() / 2, 28, level());
                 break;
             case Port.ROT_RIGHT:
                 g.drawRect(0, 0, width - 24, height);
                 g.drawRect(1, 1, width - 26, height - 2);
-                g.drawImage(target.currentIcon, 4, 4, level);
+                g.drawImage(target.currentIcon, 4, 4, level());
                 break;
             case Port.ROT_DOWN:
                 g.drawRect(0, 0, width, height - 24);
                 g.drawRect(1, 1, width - 2, height - 26);
-                g.drawImage(target.currentIcon, 4, 4, level);
+                g.drawImage(target.currentIcon, 4, 4, level());
                 break;
             case Port.ROT_LEFT:
                 g.drawRect(24, 0, width - 24, height);
                 g.drawRect(25, 1, width - 26, height - 2);
-                g.drawImage(target.currentIcon, 28, height / 2 - target.getHeight() / 2, level);
+                g.drawImage(target.currentIcon, 28, height / 2 - target.getHeight() / 2, level());
                 break;
         }
     }

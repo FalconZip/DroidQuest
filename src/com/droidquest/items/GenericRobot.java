@@ -67,15 +67,15 @@ public class GenericRobot extends Item {
         };
 
         Material mat1 = Material.FindSimiliar(new Material(color, false, true));
-        int mat1Index = level.materials.indexOf(mat1);
+        int mat1Index = level().materials.indexOf(mat1);
         Material perUp = Material.FindSimiliar(new PeriscopeUp());
-        int perUpIndex = level.materials.indexOf(perUp);
+        int perUpIndex = level().materials.indexOf(perUp);
         Material perDown = Material.FindSimiliar(new PeriscopeDown());
-        int perDownIndex = level.materials.indexOf(perDown);
+        int perDownIndex = level().materials.indexOf(perDown);
         Material battIn = Material.FindSimiliar(new BatteryIn());
-        int battInIndex = level.materials.indexOf(battIn);
+        int battInIndex = level().materials.indexOf(battIn);
         Material battOut = Material.FindSimiliar(new BatteryOut());
-        int battOutIndex = level.materials.indexOf(battOut);
+        int battOutIndex = level().materials.indexOf(battOut);
         ((BatteryIn) battIn).robot = this;
         ((BatteryOut) battOut).robot = this;
 
@@ -92,7 +92,7 @@ public class GenericRobot extends Item {
         InternalRoom.RoomArray[9][2] = battOutIndex;
         InternalRoom.RoomArray[9][3] = battInIndex;
         InternalRoom.portalItem = this;
-        level.rooms.add(InternalRoom);
+        level().rooms.add(InternalRoom);
         InternalRoom.upRoom = null;
         InternalRoom.downRoom = null;
         InternalRoom.leftRoom = null;
@@ -107,7 +107,7 @@ public class GenericRobot extends Item {
         upPortal = new Rectangle(10, -30, 12, 18);
         downPortal = new Rectangle(10, 24, 12, 18);
 
-        level.items.add(new PowerSwitch(17 * 28 - 4, 9 * 32 - 4, InternalRoom));
+        level().items.add(new PowerSwitch(17 * 28 - 4, 9 * 32 - 4, InternalRoom));
 
         GenerateIcons();
         Animate();
@@ -124,8 +124,8 @@ public class GenericRobot extends Item {
 //	icons[0]= new ImageIcon(new BufferedImage(122,92,BufferedImage.TYPE_4BYTE_ABGR));
         icons[0] = new ImageIcon(new BufferedImage(84, 84, BufferedImage.TYPE_4BYTE_ABGR));
         currentIcon = icons[0].getImage();
-        ((BatteryIn) level.materials.get(InternalRoom.RoomArray[9][3])).robot = this;
-        ((BatteryOut) level.materials.get(InternalRoom.RoomArray[9][2])).robot = this;
+        ((BatteryIn) level().materials.get(InternalRoom.RoomArray[9][3])).robot = this;
+        ((BatteryOut) level().materials.get(InternalRoom.RoomArray[9][2])).robot = this;
         images = new ImageIcon[10];
         for (int a = 0; a < 10; a++) {
 //	     images[a] = new ImageIcon( new BufferedImage(122,92,BufferedImage.TYPE_4BYTE_ABGR));
@@ -289,7 +289,7 @@ public class GenericRobot extends Item {
 
     public void Animate() {
         // Do Thrusting
-        if (charge > 0 && level.electricity && (carriedBy == null) && thrusterPower) {
+        if (charge > 0 && level().electricity && (carriedBy == null) && thrusterPower) {
             if (topThruster) {
                 moveDown(8);
             }
@@ -304,28 +304,28 @@ public class GenericRobot extends Item {
             }
         }
 
-        if (charge > 0 && level.electricity && thrusterPower) {
+        if (charge > 0 && level().electricity && thrusterPower) {
             Dimension d = GetXY();
             int X = d.width;
             int Y = d.height;
             if (topThruster) {
-                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
-                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 24, 0, -4, room));
+                level().sparks.add(new Spark(X - orgX + 32 + level().random.nextInt(24), Y - orgY + 24, 0, -4, room));
+                level().sparks.add(new Spark(X - orgX + 32 + level().random.nextInt(24), Y - orgY + 24, 0, -4, room));
                 charge -= 2;
             }
             if (rightThruster) {
-                level.sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
-                level.sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level.random.nextInt(20), 4, 0, room));
+                level().sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level().random.nextInt(20), 4, 0, room));
+                level().sparks.add(new Spark(X - orgX + 74, Y - orgY + 36 + level().random.nextInt(20), 4, 0, room));
                 charge -= 2;
             }
             if (bottomThruster) {
-                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
-                level.sparks.add(new Spark(X - orgX + 32 + level.random.nextInt(24), Y - orgY + 64, 0, 4, room));
+                level().sparks.add(new Spark(X - orgX + 32 + level().random.nextInt(24), Y - orgY + 64, 0, 4, room));
+                level().sparks.add(new Spark(X - orgX + 32 + level().random.nextInt(24), Y - orgY + 64, 0, 4, room));
                 charge -= 2;
             }
             if (leftThruster) {
-                level.sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
-                level.sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level.random.nextInt(20), -4, 0, room));
+                level().sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level().random.nextInt(20), -4, 0, room));
+                level().sparks.add(new Spark(X - orgX + 14, Y - orgY + 36 + level().random.nextInt(20), -4, 0, room));
                 charge -= 2;
             }
             charge--;
@@ -335,11 +335,11 @@ public class GenericRobot extends Item {
         }
 
         // Draw Antenna sparks around Broadcasting Antenna
-        if (broadcasting && level.electricity) {
+        if (broadcasting && level().electricity) {
             Dimension d = GetXY();
-            level.sparks.add(new Spark(d.width - orgX + 34, d.height - orgY + 10,
-                    level.random.nextInt(9) - 4,
-                    level.random.nextInt(9) - 4,
+            level().sparks.add(new Spark(d.width - orgX + 34, d.height - orgY + 10,
+                    level().random.nextInt(9) - 4,
+                    level().random.nextInt(9) - 4,
                     room));
         }
 
@@ -356,7 +356,7 @@ public class GenericRobot extends Item {
         if (leftBumper && !oldLeftBumper) {
         	room.playSound(Sounds.BUMP);
         }
-        if (broadcasting && level.electricity) {
+        if (broadcasting && level().electricity) {
         	room.playSound(Sounds.BEEP);
         }
         oldTopBumper = topBumper;
@@ -367,6 +367,7 @@ public class GenericRobot extends Item {
     }
 
     public void Decorate() {
+    	final Level level = level();
         // Paint background
         Graphics g;
         try {
@@ -444,7 +445,7 @@ public class GenericRobot extends Item {
 
         // Draw Periscope
 //	if (periscope)
-        if (level.currentViewer == this) {
+        if (level().currentViewer == this) {
             periscopeAnimation++;
             if (periscopeAnimation == 32) {
                 periscopeAnimation = 0;

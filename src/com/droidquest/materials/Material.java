@@ -12,12 +12,11 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Material implements Serializable, Cloneable, InLevel {
-	protected final Level level = level();
     public transient ImageIcon icon;
     private String file;
     public boolean passable;
     boolean detectable;
-    Color color;
+    protected Color color;
 
     Material() {
     }

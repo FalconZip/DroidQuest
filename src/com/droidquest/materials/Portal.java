@@ -39,9 +39,9 @@ public class Portal extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player && level.player.carriedBy == null) {
+        if (item == level().player && level().player.carriedBy == null) {
             if (item.x % 28 == 0 && item.y % 32 == 0) {
-                level.portal = this;
+                level().portal = this;
             }
         }
     }

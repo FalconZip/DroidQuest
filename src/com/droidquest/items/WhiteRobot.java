@@ -27,7 +27,7 @@ public class WhiteRobot extends GenericRobot {
         devices[8] = new Antenna(64, 70, InternalRoom, Color.blue);
         devices[9] = new Grabber(126, 44, InternalRoom, Color.blue);
         for (int a = 0; a < 10; a++) {
-            level.items.add(devices[a]);
+            level().items.add(devices[a]);
         }
 
     }
@@ -55,12 +55,12 @@ public class WhiteRobot extends GenericRobot {
         }
 
         // Generate Random positions for Orange & Blue Block
-        cx = level.random.nextInt(3);
-        cy = level.random.nextInt(5);
+        cx = level().random.nextInt(3);
+        cy = level().random.nextInt(5);
         g.setColor(new Color(255, 128, 0));
         g.fillRect(cx * 8 + 31, cy * 4 + 36, 8, 4);
-        cx = level.random.nextInt(3);
-        cy = level.random.nextInt(5);
+        cx = level().random.nextInt(3);
+        cy = level().random.nextInt(5);
         g.setColor(Color.blue);
         g.fillRect(cx * 8 + 31, cy * 4 + 36, 8, 4);
 

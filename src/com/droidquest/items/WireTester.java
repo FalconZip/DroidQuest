@@ -67,12 +67,12 @@ public class WireTester extends Item {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.items.indexOf(myPortDevice));
+        s.writeInt(level().items.indexOf(myPortDevice));
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        myPortDevice = (PortDevice) level.FindItem(s.readInt());
+        myPortDevice = (PortDevice) level().FindItem(s.readInt());
     }
 
     public boolean CanBePickedUp(Item i) {

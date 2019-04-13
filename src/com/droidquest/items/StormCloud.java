@@ -73,14 +73,14 @@ public class StormCloud extends Item {
         }
         currentIcon = icons[0].getImage();
         do {
-            xDirection = level.random.nextInt(maxspeed * 2 + 1) - maxspeed;
+            xDirection = level().random.nextInt(maxspeed * 2 + 1) - maxspeed;
         }
         while (xDirection == 0);
         do {
-            yDirection = level.random.nextInt(maxspeed * 2 + 1) - maxspeed;
+            yDirection = level().random.nextInt(maxspeed * 2 + 1) - maxspeed;
         }
         while (yDirection == 0);
-        moveTimer = level.random.nextInt(50) + 1;
+        moveTimer = level().random.nextInt(50) + 1;
     }
 
     public void Animate() {
@@ -106,7 +106,7 @@ public class StormCloud extends Item {
             g2.setBackground(transparent);
             g2.clearRect(0, 0, 4 * 28, 3 * 32);
             for (int b = 0; b < 50; b++) {
-                switch (level.random.nextInt(7)) {
+                switch (level().random.nextInt(7)) {
                     case 0:
                         g2.setColor(Color.white);
                         break;
@@ -132,8 +132,8 @@ public class StormCloud extends Item {
                 int x1, y1, d;
                 int d2 = (3 * 32 / 2) * (3 * 32 / 2);
                 do {
-                    x1 = level.random.nextInt(3 * 32) + 4 * 28 / 2 - 3 * 32 / 2;
-                    y1 = level.random.nextInt(3 * 32);
+                    x1 = level().random.nextInt(3 * 32) + 4 * 28 / 2 - 3 * 32 / 2;
+                    y1 = level().random.nextInt(3 * 32);
                     int xd = (x1 - 4 * 28 / 2);
                     int yd = (y1 - 3 * 32 / 2);
                     d = xd * xd + yd * yd;
@@ -146,18 +146,18 @@ public class StormCloud extends Item {
         moveTimer--;
         if (moveTimer == 0) {
             do {
-                xDirection = level.random.nextInt(maxspeed * 2 + 1) - maxspeed;
+                xDirection = level().random.nextInt(maxspeed * 2 + 1) - maxspeed;
             }
             while (xDirection == 0);
             do {
-                yDirection = level.random.nextInt(maxspeed * 2 + 1) - maxspeed;
+                yDirection = level().random.nextInt(maxspeed * 2 + 1) - maxspeed;
             }
             while (yDirection == 0);
-            moveTimer = level.random.nextInt(50) + 1;
+            moveTimer = level().random.nextInt(50) + 1;
         }
         if (brobot == null) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.getClass().toString().endsWith("BlueRobot")) {
                     brobot = (BlueRobot) item;
                 }
@@ -242,7 +242,7 @@ public class StormCloud extends Item {
     public void moveRight(int dist) {
         int newX = x + dist;
         if (newX > 559 - 4 * 28 / 2) {
-            xDirection = -(level.random.nextInt(maxspeed) + 1);
+            xDirection = -(level().random.nextInt(maxspeed) + 1);
             newX = x + xDirection;
         }
         x = newX;
@@ -251,7 +251,7 @@ public class StormCloud extends Item {
     public void moveLeft(int dist) {
         int newX = x - dist;
         if (newX < 0) {
-            xDirection = level.random.nextInt(maxspeed) + 1;
+            xDirection = level().random.nextInt(maxspeed) + 1;
             newX = x + xDirection;
         }
         x = newX;

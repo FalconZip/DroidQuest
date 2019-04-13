@@ -78,8 +78,8 @@ public class AutoWire extends Item {
         // Find the Item that has inTester set true;
         chip = null;
         int pdcount = 0;
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.get(a);
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item = level().items.get(a);
             if (item instanceof PrototypeChip) {
                 PrototypeChip pc = (PrototypeChip) item;
                 if (pc.inTester) {

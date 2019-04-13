@@ -25,7 +25,7 @@ public class OrangeRobot extends GenericRobot {
         devices[8] = new Antenna(64, 70, InternalRoom, Color.white);
         devices[9] = new Grabber(126, 44, InternalRoom, Color.white);
         for (int a = 0; a < 10; a++) {
-            level.items.add(devices[a]);
+            level().items.add(devices[a]);
         }
 
     }
@@ -46,9 +46,9 @@ public class OrangeRobot extends GenericRobot {
         g.fillRect(22, 36, 42, 20);
 
         for (int a = 0; a < 20; a++) {
-            cx = level.random.nextInt(41) + 22;
-            cy = level.random.nextInt(19) + 36;
-            cc = level.random.nextInt(7);
+            cx = level().random.nextInt(41) + 22;
+            cy = level().random.nextInt(19) + 36;
+            cc = level().random.nextInt(7);
             switch (cc) {
                 case 0:
                     g.setColor(Color.white);

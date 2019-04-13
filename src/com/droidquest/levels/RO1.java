@@ -865,39 +865,43 @@ class RO1Init extends Initializer {
         // The Magnet and the Energy Crystal go into (one or the other)
         // X=10*28, Y=9*32, Room=21
         // X=16*28, Y=5*32, Room-22
-        Item magnet = level.FindItem("Magnet");
+
+        Item magnet = level().FindItem("Magnet");
         Item crystal = null;
         //Manual implementation of "find item" since we need to distinguish the black crystal from the crystal.
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+        // FZ - not sure if I patched this loop right for ML's SrrayList conversion
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item = level().items.get(a);
             if (item.getClass().toString().endsWith("Crystal") && item.charge > 0) {
                 crystal = item;
+                // FZ - should it be 'item.charge >= 0'? for discharged crystals
                 // this should always succed. If it doesn't, that's a bug, crash with a null pointer assignment...
             }
         }
-        if (level.random.nextInt(2) == 1) {
+        if (level().random.nextInt(2) == 1) {
+
             magnet.x = 10 * 28;
             magnet.y = 9 * 32;
-            magnet.room = level.rooms.get(21);
+            magnet.room = level().rooms.get(21);
             crystal.x = 16 * 28;
             crystal.y = 5 * 32;
-            crystal.room = level.rooms.get(22);
+            crystal.room = level().rooms.get(22);
         }
         else {
             crystal.x = 10 * 28;
             crystal.y = 9 * 32;
-            crystal.room = level.rooms.get(21);
+            crystal.room = level().rooms.get(21);
             magnet.x = 16 * 28;
             magnet.y = 5 * 32;
-            magnet.room = level.rooms.get(22);
+            magnet.room = level().rooms.get(22);
         }
 
         // The Blue Key goes inside one of the Robots.
-        Item robot1 = level.FindItem("BlueRobot");
-        Item robot2 = level.FindItem("WhiteRobot");
-        Item robot3 = level.FindItem("OrangeRobot");
-        Item key = level.FindItem("Key");
-        switch (level.random.nextInt(3)) {
+        Item robot1 = level().FindItem("BlueRobot");
+        Item robot2 = level().FindItem("WhiteRobot");
+        Item robot3 = level().FindItem("OrangeRobot");
+        Item key = level().FindItem("Key");
+        switch (level().random.nextInt(3)) {
             case 0:
                 key.room = robot1.InternalRoom;
                 break;
@@ -921,8 +925,8 @@ class RO1Init extends Initializer {
 
         Item bcrystal = null;
         //Manual implementation of "find item" since we need to distinguish the black crystal from the crystal.
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.elementAt(a);
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item = level().items.get(a);
             System.out.println(item.getClass().toString());
             System.out.println(item.charge);
 
@@ -931,46 +935,47 @@ class RO1Init extends Initializer {
                 // this should always succeed. If it doesn't, that's a bug, crash with a null pointer assignment...
             }
         }
-        switch (level.random.nextInt(8)) {
+        switch (level().random.nextInt(8)) {
+
             case 0:
                 bcrystal.x = 2 * 28;
                 bcrystal.y = 7 * 32;
-                bcrystal.room = level.rooms.get(3);
+                bcrystal.room = level().rooms.get(3);
                 break;
             case 1:
                 bcrystal.x = 4 * 28;
                 bcrystal.y = 1 * 32;
-                bcrystal.room = level.rooms.get(4);
+                bcrystal.room = level().rooms.get(4);
                 break;
             case 2:
                 bcrystal.x = 14 * 28;
                 bcrystal.y = 4 * 32;
-                bcrystal.room = level.rooms.get(5);
+                bcrystal.room = level().rooms.get(5);
                 break;
             case 3:
                 bcrystal.x = 6 * 28;
                 bcrystal.y = 6 * 32;
-                bcrystal.room = level.rooms.get(6);
+                bcrystal.room = level().rooms.get(6);
                 break;
             case 4:
                 bcrystal.x = 4 * 28;
                 bcrystal.y = 4 * 32;
-                bcrystal.room = level.rooms.get(7);
+                bcrystal.room = level().rooms.get(7);
                 break;
             case 5:
                 bcrystal.x = 16 * 28;
                 bcrystal.y = 5 * 32;
-                bcrystal.room = level.rooms.get(8);
+                bcrystal.room = level().rooms.get(8);
                 break;
             case 6:
                 bcrystal.x = 4 * 28;
                 bcrystal.y = 3 * 32;
-                bcrystal.room = level.rooms.get(9);
+                bcrystal.room = level().rooms.get(9);
                 break;
             case 7:
                 bcrystal.x = 6 * 28;
                 bcrystal.y = 8 * 32;
-                bcrystal.room = level.rooms.get(10);
+                bcrystal.room = level().rooms.get(10);
                 break;
         }
 
@@ -983,8 +988,8 @@ class RO1Init extends Initializer {
         // Room=9  13,7
         // Room=10 5,1
         Item chip = null;
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.get(a);
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item = level().items.get(a);
             if (item.getClass().toString().endsWith("SmallChip")) {
                 if (((GenericChip) item).label.endsWith("1")) {
                     chip = item;
@@ -994,46 +999,46 @@ class RO1Init extends Initializer {
         if (chip == null) {
             return;
         }
-        switch (level.random.nextInt(8)) {
+        switch (level().random.nextInt(8)) {
             case 0:
                 chip.x = 17 * 28;
                 chip.y = 10 * 32;
-                chip.room = level.rooms.get(3);
+                chip.room = level().rooms.get(3);
                 break;
             case 1:
                 chip.x = 5 * 28;
                 chip.y = 2 * 32;
-                chip.room = level.rooms.get(4);
+                chip.room = level().rooms.get(4);
                 break;
             case 2:
                 chip.x = 2 * 28;
                 chip.y = 9 * 32;
-                chip.room = level.rooms.get(5);
+                chip.room = level().rooms.get(5);
                 break;
             case 3:
                 chip.x = 17 * 28;
                 chip.y = 9 * 32;
-                chip.room = level.rooms.get(6);
+                chip.room = level().rooms.get(6);
                 break;
             case 4:
                 chip.x = 8 * 28;
                 chip.y = 5 * 32;
-                chip.room = level.rooms.get(7);
+                chip.room = level().rooms.get(7);
                 break;
             case 5:
                 chip.x = 7 * 28;
                 chip.y = 9 * 32;
-                chip.room = level.rooms.get(8);
+                chip.room = level().rooms.get(8);
                 break;
             case 6:
                 chip.x = 13 * 28;
                 chip.y = 7 * 32;
-                chip.room = level.rooms.get(9);
+                chip.room = level().rooms.get(9);
                 break;
             case 7:
                 chip.x = 5 * 28;
                 chip.y = 1 * 32;
-                chip.room = level.rooms.get(10);
+                chip.room = level().rooms.get(10);
                 break;
         }
     }

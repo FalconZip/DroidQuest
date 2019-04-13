@@ -172,7 +172,7 @@ public class SmallChip extends GenericChip {
                 }
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
-                    level.items.remove(this);
+                    level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
                 }

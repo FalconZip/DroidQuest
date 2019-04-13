@@ -15,21 +15,21 @@ public class AntiPlayer extends Material {
 
     public void TouchedByItem(Item item) {
         boolean trigger = false;
-        if (item == level.player) {
+        if (item == level().player) {
             trigger = true;
         }
         else if (item instanceof GenericRobot) {
-            GameCursor gc = (GameCursor) level.gameCursor;
+            GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == item) {
                 trigger = true;
             }
         }
 
         if (trigger) {
-            level.player.room = level.rooms.get(40);
-            level.player.x = 10 * 28;
-            level.player.y = 5 * 32;
-            level.currentViewer = level.player;
+            level().player.room = level().rooms.get(40);
+            level().player.x = 10 * 28;
+            level().player.y = 5 * 32;
+            level().currentViewer = level().player;
         }
     }
 

@@ -101,8 +101,8 @@ public class BlueGridSwitch extends Material {
                 value = true;
                 room.SetMaterial(2, 0, 0);
                 room.upRoom.SetMaterial(2, 11, 0);
-                for (int a = 0; a < level.materials.size(); a++) {
-                    Material mat = level.materials.get(a);
+                for (int a = 0; a < level().materials.size(); a++) {
+                    Material mat = level().materials.get(a);
                     if (mat instanceof HotWires) {
                         HotWires hw = (HotWires) mat;
                         if (hw.wall == 0) {
@@ -143,8 +143,8 @@ public class BlueGridSwitch extends Material {
                 room.SetMaterial(5, 0, 9);
                 room.upRoom.SetMaterial(5, 11, 9);
                 value = false;
-                for (int a = 0; a < level.materials.size(); a++) {
-                    Material mat = level.materials.get(a);
+                for (int a = 0; a < level().materials.size(); a++) {
+                    Material mat = level().materials.get(a);
                     if (mat instanceof HotWires) {
                         HotWires hw = (HotWires) mat;
                         if (hw.wall == 0) {
