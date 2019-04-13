@@ -44,20 +44,18 @@ public class Level implements ImageObserver, Serializable {
     public transient Portal portal;
     public boolean electricity;
 
-    public List<Room> rooms = new ArrayList<Room>();
-    public List<Material> materials = new ArrayList<Material>();
-    public List<Item> items = new ArrayList<Item>();
-    public List<Spark> sparks = new ArrayList<Spark>();
+    public final List<Room> rooms = new ArrayList<Room>();
+    public final List<Material> materials = new ArrayList<Material>();
+    public final List<Item> items = new ArrayList<Item>();
+    public final List<Spark> sparks = new ArrayList<Spark>();
 
     private transient final RoomDisplay roomdisplay;
-    private transient List<Room> invRooms = new ArrayList<Room>();
-    private transient List<Integer> invRoomIndexes = new ArrayList<Integer>();
-    private transient List<Material> invMaterials = new ArrayList<Material>();
-    private transient List<Integer> invMaterialIndexes = new ArrayList<Integer>();
-    private transient List<Item> invItems = new ArrayList<Item>();
-    private transient List<Integer> invItemIndexes = new ArrayList<Integer>();
-
-//    public transient HashMap<String, Sound> sounds = new HashMap<String, Sound>();
+    private transient final List<Room> invRooms = new ArrayList<Room>();
+    private transient final List<Integer> invRoomIndexes = new ArrayList<Integer>();
+    private transient final List<Material> invMaterials = new ArrayList<Material>();
+    private transient final List<Integer> invMaterialIndexes = new ArrayList<Integer>();
+    private transient final List<Item> invItems = new ArrayList<Item>();
+    private transient final List<Integer> invItemIndexes = new ArrayList<Integer>();
 
     public transient Random random = new Random();
 //    public transient static String ATTACHSOUND = "attach.WAV";
@@ -81,19 +79,10 @@ public class Level implements ImageObserver, Serializable {
 //    };
 //   moved into room by MountLion
 
-//    Level() {
-//        Item.level = this;
-//        Room.level = this;
-//        Material.level = this;
-//        InitSounds();
-//    }
-
     public Level(RoomDisplay rd) {
         roomdisplay = rd;
         gameState.setLevel(this);
-        Material.level = this;
         random.setSeed(System.currentTimeMillis());
-//        InitSounds();
     }
 
     public void LinkRoomsLeftRight(int L, int R) {
@@ -241,10 +230,8 @@ public class Level implements ImageObserver, Serializable {
     }
 
     public void readObject(ObjectInputStream s) throws IOException {
-        int a;
         int numRooms = s.readInt();
-        rooms = new ArrayList<Room>();
-        for (a = 0; a < numRooms; a++) {
+        for (int a = 0; a < numRooms; a++) {
             try {
                 Room r = (Room) s.readObject();
                 rooms.add(r);
@@ -254,8 +241,7 @@ public class Level implements ImageObserver, Serializable {
         }
 
         int numMaterials = s.readInt();
-        materials = new ArrayList<Material>();
-        for (a = 0; a < numMaterials; a++) {
+        for (int a = 0; a < numMaterials; a++) {
             try {
                 Material m = (Material) s.readObject();
                 materials.add(m);
@@ -265,8 +251,7 @@ public class Level implements ImageObserver, Serializable {
         }
 
         int numItems = s.readInt();
-        items = new ArrayList<Item>();
-        for (a = 0; a < numItems; a++) {
+        for (int a = 0; a < numItems; a++) {
             try {
                 Item i = (Item) s.readObject();
                 items.add(i);
@@ -286,17 +271,17 @@ public class Level implements ImageObserver, Serializable {
         paintbrush = FindItem(s.readInt());
 
         // Read Room References (UDLRrooms, PortalItem, Wires)
-        for (a = 0; a < numRooms; a++) {
+        for (int a = 0; a < numRooms; a++) {
             rooms.get(a).readRef(s);
         }
 
         // Read Item References
-        for (a = 0; a < numItems; a++) {
+        for (int a = 0; a < numItems; a++) {
             items.get(a).readRef(s);
         }
 
         // Generate Material Icons
-        for (a = 0; a < numMaterials; a++) {
+        for (int a = 0; a < numMaterials; a++) {
             materials.get(a).GenerateIcons();
         }
 
@@ -342,11 +327,9 @@ public class Level implements ImageObserver, Serializable {
             item.Erase();
         }
         items.clear();
-        items = null;
 
         // Remove all Materials
         materials.clear();
-        materials = null;
 
         // Remove all Rooms
         for (a = 0; a < rooms.size(); a++) {
@@ -354,7 +337,6 @@ public class Level implements ImageObserver, Serializable {
             room.Erase();
         }
         rooms.clear();
-        rooms = null;
 
         // Remove all Local References
         player = null;
@@ -906,30 +888,6 @@ public class Level implements ImageObserver, Serializable {
 
 
     }
-
-//    void InitSounds() {
-//        for (String soundFile : soundFiles) {
-//            sounds.put(soundFile, new Sound(soundFile));
-//        }
-//    }
-//
-//    public void PlaySound(Room room, String soundname) {
-//        if (!SoundPlayer.useSounds) {
-//            return;
-//        }
-//
-//        if (currentViewer != null) {
-//            if (room != currentViewer.room) {
-//                return;
-//            }
-//        }
-//
-//        System.out.println("Playing sound " + soundname);
-//        Sound sound = sounds.get(soundname);
-//        if (sound != null) {
-//            SoundPlayer.play(sound);
-//        }
-//    }
 
     public void Init() {
         // Generate all Room Material Arrays

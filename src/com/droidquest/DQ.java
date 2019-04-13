@@ -248,10 +248,8 @@ public class DQ extends JFrame implements ActionListener, Observer {
 	}
 
 	private void toggleSound() {
-		SoundPlayer.useSounds = !SoundPlayer.useSounds;
-		if (!SoundPlayer.useSounds) {
-			SoundPlayer.stopAll();
-		}
+		SoundPlayer soundPlayer = SoundPlayer.instance();
+		soundPlayer.setUseSounds(!soundPlayer.isUseSounds());
 	}
 
 	private void exit() {

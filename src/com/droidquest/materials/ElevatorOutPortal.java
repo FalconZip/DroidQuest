@@ -4,7 +4,7 @@ import com.droidquest.Room;
 import com.droidquest.items.Item;
 
 public class ElevatorOutPortal extends Material {
-    transient static public Room outRoom;
+    public transient Room outRoom;
 
     public ElevatorOutPortal() {
         super(true, false);
@@ -29,7 +29,7 @@ public class ElevatorOutPortal extends Material {
         }
     }
 
-    static public void SetOutRoom(int roomNum) {
+    public void SetOutRoom(int roomNum) {
         outRoom = level.rooms.get(roomNum);
     }
 

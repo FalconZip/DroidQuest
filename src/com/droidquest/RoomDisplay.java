@@ -157,8 +157,9 @@ public class RoomDisplay extends JPanel {
                 if (level.portal != null) {
                     boolean bringStuff = level.portal.bringStuff;
                     level.currentViewer.room.playSound(Sounds.TELEPORT);
-                    boolean tempsound = SoundPlayer.useSounds;
-                    SoundPlayer.useSounds = false;
+                    SoundPlayer soundPlayer = SoundPlayer.instance();
+					boolean usingSound = soundPlayer.isUseSounds();
+                    soundPlayer.setUseSounds(false);
                     if (bringStuff) {
                         System.out.println("Saving carried items.");
                         level.WriteInventory();
@@ -177,7 +178,7 @@ public class RoomDisplay extends JPanel {
                         level.LoadInventory();
                     }
 
-                    SoundPlayer.useSounds = tempsound;
+                    soundPlayer.setUseSounds(usingSound);
                     level.currentViewer.room.playSound(Sounds.TRANSPORT);
 
                     gameState.setInLab(level.gameCursor instanceof LabCursor);
@@ -414,7 +415,6 @@ public class RoomDisplay extends JPanel {
         timer.stop();
         level.Empty();
         level = new Level(this);
-        Material.level = level;
 
         // Add flags for loading Object inventories or running Init()
         try (ObjectInputStream s = new ObjectInputStream(new FileInputStream(filename))){
