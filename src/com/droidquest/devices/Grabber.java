@@ -1,16 +1,17 @@
 package com.droidquest.devices;
 
-import com.droidquest.Room;
-import com.droidquest.chipstuff.Port;
-import com.droidquest.items.GenericRobot;
-import com.droidquest.items.Item;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.ImageIcon;
+
+import com.droidquest.Room;
+import com.droidquest.chipstuff.Port;
+import com.droidquest.items.GenericRobot;
+import com.droidquest.items.Item;
 
 public class Grabber extends Device {
     private Color color;
@@ -95,7 +96,7 @@ public class Grabber extends Device {
         else { // Input High
             if (robot.carrying == null) {
                 // Try and pick up something
-                Item item = robot.level.FindNearestItem(robot);
+                Item item = level.FindNearestItem(robot);
                 if (item != null) {
                     if (item.CanBePickedUp(robot) && item.carriedBy == null) {
                         int CX = item.x + item.getWidth() / 2;

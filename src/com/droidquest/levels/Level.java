@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import com.droidquest.GameState;
 import com.droidquest.Room;
 import com.droidquest.RoomDisplay;
 import com.droidquest.Wire;
@@ -31,6 +32,7 @@ import com.droidquest.sound.Sound;
 import com.droidquest.sound.SoundPlayer;
 
 public class Level implements ImageObserver, Serializable {
+	protected final GameState gameState = GameState.instance();
     public Item player;
     public Item gameCursor;
     public Item solderingPen;
@@ -47,7 +49,7 @@ public class Level implements ImageObserver, Serializable {
     public List<Item> items = new ArrayList<Item>();
     public List<Spark> sparks = new ArrayList<Spark>();
 
-    public transient RoomDisplay roomdisplay;
+    private transient final RoomDisplay roomdisplay;
     private transient List<Room> invRooms = new ArrayList<Room>();
     private transient List<Integer> invRoomIndexes = new ArrayList<Integer>();
     private transient List<Material> invMaterials = new ArrayList<Material>();
@@ -77,18 +79,17 @@ public class Level implements ImageObserver, Serializable {
             BURNSOUND, ENDMUSICSOUND, STARTMUSICSOUND,
             TELEPORTSOUND, TRANSPORTSOUND
     };
-    
-    Level() {
-        Item.level = this;
-        Room.level = this;
-        Material.level = this;
-        InitSounds();
-    }
+
+//    Level() {
+//        Item.level = this;
+//        Room.level = this;
+//        Material.level = this;
+//        InitSounds();
+//    }
 
     public Level(RoomDisplay rd) {
         roomdisplay = rd;
-        Item.level = this;
-        Room.level = this;
+        gameState.setLevel(this);
         Material.level = this;
         random.setSeed(System.currentTimeMillis());
         InitSounds();
@@ -334,10 +335,6 @@ public class Level implements ImageObserver, Serializable {
         // references to everything.
 
         int a;
-
-        Room.level = null;
-        Item.level = null;
-
         // Remove all Items
         for (a = 0; a < items.size(); a++) {
             Item item = items.get(a);
@@ -954,10 +951,9 @@ public class Level implements ImageObserver, Serializable {
             }
         }
     }
-    
+
     protected <T> T lastOf(List<T> list) {
     	return list.get(list.size() - 1);
     }
 
 }
-

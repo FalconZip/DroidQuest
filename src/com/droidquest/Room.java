@@ -14,11 +14,9 @@ import com.droidquest.decorations.Arrow;
 import com.droidquest.decorations.Graphix;
 import com.droidquest.decorations.TextBox;
 import com.droidquest.items.Item;
-import com.droidquest.levels.Level;
 import com.droidquest.materials.Material;
 
-public class Room implements Serializable, Cloneable {
-    public transient static Level level;
+public class Room implements Serializable, Cloneable, InLevel {
     public transient Room upRoom;
     public transient Room downRoom;
     public transient Room rightRoom;
@@ -55,11 +53,11 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
-        s.writeInt(level.rooms.indexOf(upRoom));
-        s.writeInt(level.rooms.indexOf(downRoom));
-        s.writeInt(level.rooms.indexOf(rightRoom));
-        s.writeInt(level.rooms.indexOf(leftRoom));
-        s.writeInt(level.items.indexOf(portalItem));
+        s.writeInt(level().rooms.indexOf(upRoom));
+        s.writeInt(level().rooms.indexOf(downRoom));
+        s.writeInt(level().rooms.indexOf(rightRoom));
+        s.writeInt(level().rooms.indexOf(leftRoom));
+        s.writeInt(level().items.indexOf(portalItem));
         s.writeInt(wires.size());
         for (int a = 0; a < wires.size(); a++) {
             wires.get(a).writeRef(s);
@@ -67,18 +65,18 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
-        upRoom = level.FindRoom(s.readInt());
-        downRoom = level.FindRoom(s.readInt());
-        rightRoom = level.FindRoom(s.readInt());
-        leftRoom = level.FindRoom(s.readInt());
-        portalItem = level.FindItem(s.readInt());
+        upRoom = level().FindRoom(s.readInt());
+        downRoom = level().FindRoom(s.readInt());
+        rightRoom = level().FindRoom(s.readInt());
+        leftRoom = level().FindRoom(s.readInt());
+        portalItem = level().FindItem(s.readInt());
 
         int numWires = s.readInt();
         wires = new ArrayList<Wire>();
         for (int a = 0; a < numWires; a++) {
             Wire wire = new Wire();
             wires.add(wire);
-            wire.readRef(s, level);
+            wire.readRef(s, level());
         }
 
         for (int a = 0; a < graphix.size(); a++) {
@@ -92,13 +90,13 @@ public class Room implements Serializable, Cloneable {
         MaterialArray = new Material[12][20];
         for (int y = 0; y < 12; y++) {
             for (int x = 0; x < 20; x++) {
-                MaterialArray[y][x] = level.materials.get(RoomArray[y][x]);
+                MaterialArray[y][x] = level().materials.get(RoomArray[y][x]);
             }
         }
     }
 
     public void SetMaterial(int X, int Y, int index) {
-        Material mat = level.materials.get(index);
+        Material mat = level().materials.get(index);
         if (mat != null) {
             RoomArray[Y][X] = index;
             MaterialArray[Y][X] = mat;
@@ -106,13 +104,13 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterial(int X, int Y, Material mat) {
-        int index = level.materials.indexOf(mat);
+        int index = level().materials.indexOf(mat);
         RoomArray[Y][X] = index;
         MaterialArray[Y][X] = mat;
     }
 
     public void SetMaterialFill(int X1, int Y1, int X2, int Y2, int index) {
-        Material mat = level.materials.get(index);
+        Material mat = level().materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
                 for (int X = X1; X <= X2; X++) {
@@ -124,7 +122,7 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterialOutline(int X1, int Y1, int X2, int Y2, int index) {
-        Material mat = level.materials.get(index);
+        Material mat = level().materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
                 RoomArray[Y][X1] = index;
@@ -143,7 +141,7 @@ public class Room implements Serializable, Cloneable {
     }
 
     public void SetMaterialFromRoom(int roomIndex) {
-        Room r = level.rooms.get(roomIndex);
+        Room r = level().rooms.get(roomIndex);
         for (int Y = 0; Y < 12; Y++) {
             for (int X = 0; X < 20; X++) {
                 RoomArray[Y][X] = r.RoomArray[Y][X];
@@ -176,7 +174,7 @@ public class Room implements Serializable, Cloneable {
         for (int a = 0; a < textBoxes.size(); a++) {
             TextBox textBox = textBoxes.get(a);
             g.setColor(Color.white);
-            g.setFont(rd.smallFont);
+            g.setFont(rd.SMALL_FONT);
 
             int cursX = textBox.x;
             int cursY = textBox.y;
@@ -203,11 +201,11 @@ public class Room implements Serializable, Cloneable {
                 }
 
                 if (nextWord.startsWith("{BIG}")) {
-                    g.setFont(rd.bigFont);
+                    g.setFont(rd.BIG_FONT);
                 }
 
                 else if (nextWord.startsWith("{SML}")) {
-                    g.setFont(rd.smallFont);
+                    g.setFont(rd.SMALL_FONT);
                 }
 
                 else if (nextWord.startsWith("{BSP}")) {

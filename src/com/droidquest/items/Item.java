@@ -1,6 +1,7 @@
 package com.droidquest.items;
 
 import com.droidquest.GameState;
+import com.droidquest.InLevel;
 import com.droidquest.Room;
 import com.droidquest.Wire;
 import com.droidquest.devices.Device;
@@ -20,9 +21,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item implements Serializable, Cloneable {
-	protected final GameState gameState = GameState.instance();
-    public transient static Level level;
+public class Item implements Serializable, Cloneable, InLevel {
+	protected final transient GameState gameState = GameState.instance();
+    protected final transient Level level = level();
     public transient Item carrying; // What this item is carrying.
     public transient Item carriedBy; // What is carrying this item.
     public transient Image currentIcon; // Current image of this item.
@@ -38,7 +39,7 @@ public class Item implements Serializable, Cloneable {
     protected int repeating = 0; // Keyboard repeat.
     public int charge = 0; // Battery Charge of this item, if any.
     public boolean grabbable = true; // Can this item be picked up?
-    public int x, y; // Position X,Y
+    public int x=0, y=0; // Position X,Y
     int orgX;
     int orgY; // origin, within graphics
     protected int width, height; // width & height of object from origin
@@ -49,11 +50,11 @@ public class Item implements Serializable, Cloneable {
     public boolean editable = false;
 
     protected Item() {
-        x = 0;
-        y = 0;
+
     }
 
     public Item(String filename, int X, int Y, Room r) {
+    	this();
         x = X;
         y = Y;
         room = r;

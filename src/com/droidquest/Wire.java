@@ -1,16 +1,18 @@
 package com.droidquest;
 
-import com.droidquest.chipstuff.Port;
-import com.droidquest.devices.Device;
-import com.droidquest.levels.Level;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Wire implements Serializable {
+import com.droidquest.chipstuff.Port;
+import com.droidquest.devices.Device;
+import com.droidquest.levels.Level;
+
+public class Wire implements Serializable, InLevel {
     public transient Port fromPort; // Connected First
     public transient Port toPort;   // Connected 2nd
     public transient Port inPort;   // Connected to Input
@@ -20,10 +22,10 @@ public class Wire implements Serializable {
     public Wire() {
     }
 
-    public Wire(Port f, Port t) {
-        if (f.myDevice != null) {
-            if (f.myDevice.room != null) {
-                if (f.myDevice.room.wires == null) {
+    public Wire(Port from, Port to) {
+        if (from.myDevice != null) {
+            if (from.myDevice.room != null) {
+                if (from.myDevice.room.wires == null) {
                     System.out.println("f.myDevice.room.wires is null");
                 }
             }
@@ -35,93 +37,92 @@ public class Wire implements Serializable {
             System.out.println("f.myDevice is null");
         }
 
-        f.myDevice.room.wires.add(this);
-        f.myDevice.level.PlaySound(f.myDevice.room, Level.ATTACHSOUND);
+        from.myDevice.room.wires.add(this);
+        level().PlaySound(from.myDevice.room, Level.ATTACHSOUND);
 
-        if (f.type == Port.TYPE_INPUT) {
-            if (t.type == Port.TYPE_INPUT) {
+        if (from.type == Port.TYPE_INPUT) {
+            if (to.type == Port.TYPE_INPUT) {
                 Remove();
                 return;
             }
-            if (t.type == Port.TYPE_OUTPUT) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+            if (to.type == Port.TYPE_OUTPUT) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 inPort = fromPort;
                 outPort = toPort;
                 return;
             }
-            if (t.type == Port.TYPE_UNDEFINED) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+            if (to.type == Port.TYPE_UNDEFINED) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 inPort = fromPort;
                 outPort = toPort;
-                t.type = Port.TYPE_OUTPUT;
+                to.type = Port.TYPE_OUTPUT;
                 return;
             }
         }
-        if (f.type == Port.TYPE_OUTPUT) {
-            if (t.type == Port.TYPE_INPUT) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+        if (from.type == Port.TYPE_OUTPUT) {
+            if (to.type == Port.TYPE_INPUT) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 outPort = fromPort;
                 inPort = toPort;
                 return;
             }
-            if (t.type == Port.TYPE_OUTPUT) {
+            if (to.type == Port.TYPE_OUTPUT) {
                 Remove();
                 return;
             }
-            if (t.type == Port.TYPE_UNDEFINED) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+            if (to.type == Port.TYPE_UNDEFINED) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 outPort = fromPort;
                 inPort = toPort;
-                t.type = Port.TYPE_INPUT;
+                to.type = Port.TYPE_INPUT;
                 return;
             }
         }
-        if (f.type == Port.TYPE_UNDEFINED) {
-            if (t.type == Port.TYPE_INPUT) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+        if (from.type == Port.TYPE_UNDEFINED) {
+            if (to.type == Port.TYPE_INPUT) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 outPort = fromPort;
                 inPort = toPort;
-                f.type = Port.TYPE_OUTPUT;
+                from.type = Port.TYPE_OUTPUT;
                 return;
             }
-            if (t.type == Port.TYPE_OUTPUT) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+            if (to.type == Port.TYPE_OUTPUT) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
                 inPort = fromPort;
                 outPort = toPort;
-                f.type = Port.TYPE_INPUT;
+                from.type = Port.TYPE_INPUT;
                 return;
             }
-            if (t.type == Port.TYPE_UNDEFINED) {
-                fromPort = f;
-                toPort = t;
-                f.myWire = this;
-                t.myWire = this;
+            if (to.type == Port.TYPE_UNDEFINED) {
+                fromPort = from;
+                toPort = to;
+                from.myWire = this;
+                to.myWire = this;
             }
         }
     }
 
     void writeRef(ObjectOutputStream s) throws IOException {
-        Level level = fromPort.myDevice.level;
         int a;
-
+        Level level = level();
         s.writeInt(level.items.indexOf(fromPort.myDevice)); // Index of fromport device
         a = 0;
         while (((Device) fromPort.myDevice).ports[a] != fromPort) {
@@ -164,9 +165,9 @@ public class Wire implements Serializable {
     }
 
     public void ConnectTo(Port t) {
-        fromPort.myDevice.level.PlaySound(fromPort.myDevice.room, Level.DETATCHSOUND);
+        level().PlaySound(fromPort.myDevice.room, Level.DETATCHSOUND);
 
-        if (toPort.myDevice == toPort.myDevice.level.solderingPen) {
+        if (toPort.myDevice == level().solderingPen) {
             toPort.value = false;
             toPort.type = Port.TYPE_UNDEFINED;
             toPort.myWire = null;
@@ -312,7 +313,7 @@ public class Wire implements Serializable {
     public void Remove() {
         Room room = fromPort.myDevice.room;
 
-        room.level.PlaySound(room, Level.DETATCHSOUND);
+        level().PlaySound(room, Level.DETATCHSOUND);
 
         fromPort.myWire = null;
         toPort.myWire = null;
