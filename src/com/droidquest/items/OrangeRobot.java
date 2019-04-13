@@ -13,7 +13,7 @@ import com.droidquest.devices.Thruster;
 public class OrangeRobot extends GenericRobot {
     public OrangeRobot(int X, int Y, Room r) {
         super(X, Y, r, new Color(255, 128, 0));
-        Animate();
+        animate();
         devices[0] = new Thruster(176, 16, InternalRoom, Port.ROT_UP, Color.white);
         devices[1] = new Thruster(476, 128, InternalRoom, Port.ROT_RIGHT, Color.white);
         devices[2] = new Thruster(356, 336, InternalRoom, Port.ROT_DOWN, Color.white);
@@ -30,8 +30,8 @@ public class OrangeRobot extends GenericRobot {
 
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         Graphics g;
         int cx, cy, cc;
         try {

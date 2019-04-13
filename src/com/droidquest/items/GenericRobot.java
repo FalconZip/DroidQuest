@@ -66,15 +66,15 @@ public class GenericRobot extends Item {
                 {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0}
         };
 
-        Material mat1 = Material.FindSimiliar(new Material(color, false, true));
+        Material mat1 = Material.findSimiliar(new Material(color, false, true));
         int mat1Index = level().materials.indexOf(mat1);
-        Material perUp = Material.FindSimiliar(new PeriscopeUp());
+        Material perUp = Material.findSimiliar(new PeriscopeUp());
         int perUpIndex = level().materials.indexOf(perUp);
-        Material perDown = Material.FindSimiliar(new PeriscopeDown());
+        Material perDown = Material.findSimiliar(new PeriscopeDown());
         int perDownIndex = level().materials.indexOf(perDown);
-        Material battIn = Material.FindSimiliar(new BatteryIn());
+        Material battIn = Material.findSimiliar(new BatteryIn());
         int battInIndex = level().materials.indexOf(battIn);
-        Material battOut = Material.FindSimiliar(new BatteryOut());
+        Material battOut = Material.findSimiliar(new BatteryOut());
         int battOutIndex = level().materials.indexOf(battOut);
         ((BatteryIn) battIn).robot = this;
         ((BatteryOut) battOut).robot = this;
@@ -109,11 +109,11 @@ public class GenericRobot extends Item {
 
         level().items.add(new PowerSwitch(17 * 28 - 4, 9 * 32 - 4, InternalRoom));
 
-        GenerateIcons();
-        Animate();
+        generateIcons();
+        animate();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
 //	orgX = 14; orgY = 24;
 //	width = 56; height = 42;
         orgX = 14;
@@ -287,7 +287,7 @@ public class GenericRobot extends Item {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         // Do Thrusting
         if (charge > 0 && level().electricity && (carriedBy == null) && thrusterPower) {
             if (topThruster) {
@@ -305,7 +305,7 @@ public class GenericRobot extends Item {
         }
 
         if (charge > 0 && level().electricity && thrusterPower) {
-            Dimension d = GetXY();
+            Dimension d = getXY();
             int X = d.width;
             int Y = d.height;
             if (topThruster) {
@@ -336,7 +336,7 @@ public class GenericRobot extends Item {
 
         // Draw Antenna sparks around Broadcasting Antenna
         if (broadcasting && level().electricity) {
-            Dimension d = GetXY();
+            Dimension d = getXY();
             level().sparks.add(new Spark(d.width - orgX + 34, d.height - orgY + 10,
                     level().random.nextInt(9) - 4,
                     level().random.nextInt(9) - 4,
@@ -366,7 +366,7 @@ public class GenericRobot extends Item {
 
     }
 
-    public void Decorate() {
+    public void decorate() {
     	final Level level = level();
         // Paint background
         Graphics g;
@@ -466,12 +466,12 @@ public class GenericRobot extends Item {
 
     }
 
-    public boolean CanBePickedUp(Item item) {
-        return !item.getClass().toString().endsWith("Robot") && super.CanBePickedUp(item);
+    public boolean canBePickedUp(Item item) {
+        return !item.getClass().toString().endsWith("Robot") && super.canBePickedUp(item);
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         devices = null;
     }
 

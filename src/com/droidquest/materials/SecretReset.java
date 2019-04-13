@@ -26,9 +26,9 @@ public class SecretReset extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
-            level().LinkRoomsUpDown(8, 7);
+            level().linkRoomsUpDown(8, 7);
         }
     }
 }

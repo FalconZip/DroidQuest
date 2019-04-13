@@ -26,10 +26,10 @@ public class DirectionalSensor extends Device {
         ports[1] = new Port(width - 5, height / 2 - 4, Port.TYPE_OUTPUT, 24, Port.ROT_RIGHT, this);
         ports[2] = new Port(width / 2 - 1, height - 4, Port.TYPE_OUTPUT, 24, Port.ROT_DOWN, this);
         ports[3] = new Port(0, height / 2 - 1, Port.TYPE_OUTPUT, 24, Port.ROT_LEFT, this);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (ports == null) {
             ports = new Port[4];
             ports[0] = new Port(width / 2 - 4, 0, Port.TYPE_OUTPUT, 24, Port.ROT_UP, this);
@@ -39,11 +39,11 @@ public class DirectionalSensor extends Device {
         }
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
-        target.GenerateIcons();
+        target.generateIcons();
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         ports[0].value = false;
         ports[1].value = false;
         ports[2].value = false;
@@ -54,7 +54,7 @@ public class DirectionalSensor extends Device {
                 Item item = level().items.get(a);
                 if (item.room == room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
-                        Dimension d = GetXY();
+                        Dimension d = getXY();
                         int X = d.width;
                         int Y = d.height;
                         if (item.y < Y) {
@@ -83,7 +83,7 @@ public class DirectionalSensor extends Device {
                 Item item = level().items.get(a);
                 if (item.room == room.portalItem.room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
-                        Dimension d = room.portalItem.GetXY();
+                        Dimension d = room.portalItem.getXY();
                         int X = d.width;
                         int Y = d.height;
                         if (item.y < Y) {
@@ -109,8 +109,8 @@ public class DirectionalSensor extends Device {
         return false;
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         g.setColor(Color.white);
         g.drawRect(24, 24, target.getWidth() + 12, target.getHeight() + 12);
         g.drawRect(25, 25, target.getWidth() + 10, target.getHeight() + 10);
@@ -121,8 +121,8 @@ public class DirectionalSensor extends Device {
         // Does not Rotate!
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         target = null;
     }
 

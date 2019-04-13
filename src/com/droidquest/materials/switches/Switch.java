@@ -59,18 +59,18 @@ public class Switch extends Material {
     protected Switch(int rot) {
         super(true, false);
         program = new int[][]{{0}};
-        GenerateIcons();
+        generateIcons();
         rotation = rot;
     }
 
     public Switch(int rot, int[][] p) {
         super(true, false);
         program = p;
-        GenerateIcons();
+        generateIcons();
         rotation = rot;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[2];
         for (int a = 0; a < 2; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -125,7 +125,7 @@ public class Switch extends Material {
         return false;
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (switchState == program.length) {
             switchState = 0;
         }
@@ -148,7 +148,7 @@ public class Switch extends Material {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         if (switchState == program.length) {
             switchState = 0;
         }
@@ -162,7 +162,7 @@ public class Switch extends Material {
 
         switch (program[switchState][0]) {
             case WAIT4REMOVAL: {
-                Dimension d = trigger.GetXY();
+                Dimension d = trigger.getXY();
                 int bigXL = d.width / 28;
                 int bigXR = (d.width + trigger.getWidth()) / 28;
                 int bigYT = d.height / 32;
@@ -208,7 +208,7 @@ public class Switch extends Material {
                     currentRoom = trigger.room;
                 }
                 for (int a = 0; a < (program[switchState].length - 1) / 3; a++) {
-                    currentRoom.SetMaterial(program[switchState][a * 3 + 1],
+                    currentRoom.setMaterial(program[switchState][a * 3 + 1],
                             program[switchState][a * 3 + 2],
                             program[switchState][a * 3 + 3]);
                 }

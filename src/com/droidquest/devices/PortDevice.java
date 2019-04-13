@@ -21,7 +21,7 @@ public class PortDevice extends Device {
         width = 20;
         height = size + 20;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
         try {
             g = icons[0].getImage().getGraphics();
         }
@@ -30,8 +30,8 @@ public class PortDevice extends Device {
         }
     }
 
-    public void GenerateIcons() {
-        super.GenerateIcons();
+    public void generateIcons() {
+        super.generateIcons();
         if (ports == null) {
             ports = new Port[1];
             ports[0] = new Port(8, 8, type, size, Port.ROT_UP, this);
@@ -39,7 +39,7 @@ public class PortDevice extends Device {
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         if (value && ports[0].type == Port.TYPE_OUTPUT) {
             ports[0].value = true;
         }

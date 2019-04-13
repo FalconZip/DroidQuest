@@ -10,7 +10,7 @@ public class Switch4C extends Switch {
         super(Switch.ROT_DOWN);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (sw == null) {
             for (int a = 0; a < level().materials.size(); a++) {
                 Material mat = level().materials.get(a);

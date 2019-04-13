@@ -9,7 +9,7 @@ public class BlueWall extends Material {
         super(new Color(0, 0, 255), false, true);
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         return item.getClass().toString().endsWith("Sentry3") || passable;
     }
 }

@@ -37,7 +37,7 @@ public class Suitcase extends Item {
 
         InternalRoom.portalItem = this;
         level().rooms.add(InternalRoom);
-        Material mat1 = Material.FindSimiliar(new Material(Color.blue, false, true));
+        Material mat1 = Material.findSimiliar(new Material(Color.blue, false, true));
         int mat1Index = level().materials.indexOf(mat1);
 
         for (int rY = 0; rY < 12; rY++) {
@@ -48,10 +48,10 @@ public class Suitcase extends Item {
             }
         }
 
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;

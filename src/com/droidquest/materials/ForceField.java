@@ -17,10 +17,10 @@ public class ForceField extends Material {
         super(true, false);
         robotClassName = rc;
         color = c;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -38,7 +38,7 @@ public class ForceField extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         if (item == level().player) {
             return false;
         }

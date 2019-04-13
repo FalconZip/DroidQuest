@@ -28,7 +28,7 @@ public class PeriscopeDown extends Material {
     }
 
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
 
         if (item == level().player) {
             if (item.x < 462 || item.y > 80) {

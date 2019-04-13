@@ -21,12 +21,12 @@ public class Factory extends Item {
         target = t;
         width = 28;
         height = 26;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
-        target.GenerateIcons();
-        target.Decorate();
+    public void generateIcons() {
+        target.generateIcons();
+        target.decorate();
         width = Math.max(((BufferedImage) target.currentIcon).getWidth() + 8, 18);
         height = Math.max(((BufferedImage) target.currentIcon).getHeight() + 8, 18);
         icons = new ImageIcon[1];
@@ -53,7 +53,7 @@ public class Factory extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         Item item;
         if (target instanceof PrototypeChip) {
             item = new PrototypeChip(0, 0, null);
@@ -61,7 +61,7 @@ public class Factory extends Item {
         else {
             item = (Item) target.clone();
         }
-        item.GenerateIcons();
+        item.generateIcons();
         item.x = (560 - item.width) / 2;
         item.y = (384 - item.height) / 2;
         item.room = room;

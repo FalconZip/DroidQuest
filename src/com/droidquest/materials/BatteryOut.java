@@ -13,12 +13,12 @@ public class BatteryOut extends Material {
 
     public BatteryOut() {
         passable = true;
-        GenerateIcons();
+        generateIcons();
     }
 
     public transient Item robot;
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         icon = new ImageIcon(bi);
         Graphics g;
@@ -39,7 +39,7 @@ public class BatteryOut extends Material {
         g.fillRect(0, 20, 4, 4);
     }
 
-    public void Animate() {
+    public void animate() {
         Graphics g;
         try {
             g = icon.getImage().getGraphics();

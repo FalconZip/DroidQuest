@@ -10,7 +10,7 @@ public class ElevatorOutPortal extends Material {
         super(true, false);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
             if (outRoom == null) {
                 outRoom = level().rooms.get(9);
@@ -18,12 +18,12 @@ public class ElevatorOutPortal extends Material {
             if (outRoom == level().rooms.get(9)) {
                 item.x = 15 * 28;
                 item.y = 5 * 32;
-                item.SetRoom(outRoom);
+                item.setRoom(outRoom);
             }
             else {
                 item.x = 13 * 28;
                 item.y = 5 * 32;
-                item.SetRoom(outRoom);
+                item.setRoom(outRoom);
             }
 
         }

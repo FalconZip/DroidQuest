@@ -13,10 +13,10 @@ public class BinaryKey extends Item {
         room = r;
         width = 26;
         height = 28;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;

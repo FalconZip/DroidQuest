@@ -42,10 +42,10 @@ public class SonicLock extends Item {
         height = 30;
         grabbable = false;
         currentRoom = room;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -85,7 +85,7 @@ public class SonicLock extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         if (doorState == program.length) {
             doorState = 0;
         }
@@ -101,7 +101,7 @@ public class SonicLock extends Item {
         switch (program[doorState][0]) {
             case MODIFY: {
                 for (int a = 0; a < program[doorState].length / 3; a++) {
-                    currentRoom.SetMaterial(program[doorState][a * 3 + 1],
+                    currentRoom.setMaterial(program[doorState][a * 3 + 1],
                             program[doorState][a * 3 + 2],
                             program[doorState][a * 3 + 3]);
                 }

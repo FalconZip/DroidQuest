@@ -46,7 +46,7 @@ public class ChipText extends JDialog {
             public void mouseReleased(MouseEvent e) {
                 myChip.description = textarea.getText();
                 myChip.label = textfield.getText();
-                myChip.GenerateIcons();
+                myChip.generateIcons();
             }
         });
 

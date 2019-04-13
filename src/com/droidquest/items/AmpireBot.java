@@ -28,11 +28,11 @@ public class AmpireBot extends Item {
         grabbable = false;
         width = 26;
         height = 32;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[6];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -215,7 +215,7 @@ public class AmpireBot extends Item {
         currentIcon = icons[frame].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         animationState++;
         if (animationState == 4) {
             animationState = 0;
@@ -322,11 +322,11 @@ public class AmpireBot extends Item {
                     if (target.room != room) {
                         behaviorState = previousBehavior;
                     }
-                    if (Overlaps(target)) {
+                    if (overlaps(target)) {
                         behaviorState = 7;
                         break;
                     }
-                    Dimension d = target.GetXY();
+                    Dimension d = target.getXY();
                     if (d.width < x) {
                         moveLeft(false);
                     }
@@ -345,7 +345,7 @@ public class AmpireBot extends Item {
                         behaviorState = previousBehavior;
                         break;
                     }
-                    if (target.charge > 0 && Overlaps(target)) {
+                    if (target.charge > 0 && overlaps(target)) {
                         if (target.getClass().toString().endsWith("BlackCrystal")) {
                             alive = false;
                         }
@@ -365,8 +365,8 @@ public class AmpireBot extends Item {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         target = null;
     }
 

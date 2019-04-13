@@ -21,7 +21,7 @@ public class AutoRunner extends Material {
         direction = d;
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
             switch (direction) {
                 case UP:

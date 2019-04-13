@@ -80,15 +80,15 @@ class ROLab extends Level {
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddTextBox("Use the Innovation Lab to design and test circuits in robots and the large prototype chip.",
+            room.addTextBox("Use the Innovation Lab to design and test circuits in robots and the large prototype chip.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Burn a small chip from your prototype chip in the burn room.",
+            room.addTextBox("Burn a small chip from your prototype chip in the burn room.",
                     2 * 28, 5 * 32, 500);
-            room.AddTextBox("Change maze walls with the paint brush. Change sensor bodies and maze objects in the Shape Editor.",
+            room.addTextBox("Change maze walls with the paint brush. Change sensor bodies and maze objects in the Shape Editor.",
                     2 * 28, 7 * 32, 500);
-            room.AddTextBox("For help, see Tutorials.",
+            room.addTextBox("For help, see Tutorials.",
                     2 * 28, 10 * 32, 500);
-            room.AddTextBox("(To go to Lab, press Return.)",
+            room.addTextBox("(To go to Lab, press Return.)",
                     4 * 28, 11 * 32, 500);
         }
         {  // Room 1, Chip Testing Room 
@@ -107,7 +107,7 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("{000,000,000} Chip Tester", (560 - (11 * 12)) / 2, 32 + 24, 500);
+            room.addTextBox("{000,000,000} Chip Tester", (560 - (11 * 12)) / 2, 32 + 24, 500);
             PortDevice[] portdevices = new PortDevice[8];
             portdevices[0] = new PortDevice(6 * 28 + 4, 3 * 32 + 4, room, 28, Port.TYPE_UNDEFINED);
             portdevices[1] = new PortDevice(6 * 28 + 4, 4 * 32 + 4, room, 28, Port.TYPE_UNDEFINED);
@@ -137,8 +137,8 @@ class ROLab extends Level {
             items.add(new WireTester(14 * 28 + 2, 5 * 32, room, portdevices[5]));
             items.add(new WireTester(14 * 28 + 2, 4 * 32, room, portdevices[6]));
             items.add(new WireTester(14 * 28 + 2, 3 * 32, room, portdevices[7]));
-            room.AddArrow(3 * 28, 10 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddTextBox("Autowirer", 4 * 28, 11 * 32 - 8, 200);
+            room.addArrow(3 * 28, 10 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Autowirer", 4 * 28, 11 * 32 - 8, 200);
         }
         {  // Room 2, Storage Space 1 
             Room room = rooms.get(2);
@@ -156,7 +156,7 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Storage Space", 2 * 28, 2 * 32, 500);
+            room.addTextBox("Storage Space", 2 * 28, 2 * 32, 500);
         }
         {  // Room 3, Storage Space 2 
             Room room = rooms.get(3);
@@ -191,8 +191,8 @@ class ROLab extends Level {
                     {2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Burner Room", 2 * 28, 2 * 32, 200);
-            room.AddTextBox("1x", 15 * 28 - 14, 11 * 32 - 8, 100);
+            room.addTextBox("Burner Room", 2 * 28, 2 * 32, 200);
+            room.addTextBox("1x", 15 * 28 - 14, 11 * 32 - 8, 100);
             items.add(new SpeedControl(15 * 28, 7 * 32, room, SpeedControl.DIR_UP));
             items.add(new SpeedControl(15 * 28, 9 * 32, room, SpeedControl.DIR_DOWN));
             items.add(new SmallChip(12 * 28, 1 * 32 + 16, room, "1"));
@@ -205,8 +205,8 @@ class ROLab extends Level {
             items.add(new SmallChip(18 * 28, 3 * 32, room, "8"));
             items.add(new Burner(18 * 28, 10 * 32 + 2, room));
             items.add(new UnBurner(2 * 28, 10 * 32 + 2, room));
-            room.AddTextBox("{000,000,000} Unburner", 1 * 28, 12 * 32 - 8, 200);
-            room.AddTextBox("{000,000,000} Burner", 17 * 28, 12 * 32 - 8, 200);
+            room.addTextBox("{000,000,000} Unburner", 1 * 28, 12 * 32 - 8, 200);
+            room.addTextBox("{000,000,000} Burner", 17 * 28, 12 * 32 - 8, 200);
         }
         {  // Room 5, Title Room  
             Room room = rooms.get(5);
@@ -224,7 +224,7 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
             };
-            room.AddTextBox("{BIG} Innovation Lab", 3 * 28, 2 * 32, 600);
+            room.addTextBox("{BIG} Innovation Lab", 3 * 28, 2 * 32, 600);
             items.add(new PrototypeChip(8 * 28, 4 * 32, room));
             items.add(new BlueRobot(4 * 28, 8 * 32, room));
             items.add(new WhiteRobot(9 * 28, 8 * 32, room));
@@ -246,18 +246,18 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 12, 12, 12, 12, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Chip Factory", 2 * 28, 2 * 32, 500);
-            room.AddTextBox("Press for Prototype", 5 * 28, 9 * 32 + 18, 500);
-            room.AddTextBox("Press for Small Chip", 5 * 28, 10 * 32 + 18, 500);
-            room.AddTextBox("TRASH", 16 * 28 - 2, 9 * 32, 500);
-            room.AddArrow(3 * 28 + 14, 9 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddArrow(3 * 28 + 14, 10 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Chip Factory", 2 * 28, 2 * 32, 500);
+            room.addTextBox("Press for Prototype", 5 * 28, 9 * 32 + 18, 500);
+            room.addTextBox("Press for Small Chip", 5 * 28, 10 * 32 + 18, 500);
+            room.addTextBox("TRASH", 16 * 28 - 2, 9 * 32, 500);
+            room.addArrow(3 * 28 + 14, 9 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(3 * 28 + 14, 10 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
             items.add(new PCButton(2 * 28, 9 * 32, room));
             items.add(new Factory(2 * 28, 10 * 32, room, new SmallChip(0, 0, null, "X")));
             items.add(new PC16Button(18 * 28, 1 * 32, room));
             items.add(new PC32Button(18 * 28, 2 * 32, room));
-            room.AddTextBox("16 Pin", 15 * 28, 1 * 32 + 14, 500);
-            room.AddTextBox("32 Pin", 15 * 28, 2 * 32 + 14, 500);
+            room.addTextBox("16 Pin", 15 * 28, 1 * 32 + 14, 500);
+            room.addTextBox("32 Pin", 15 * 28, 2 * 32 + 14, 500);
         }
         {  // Room 7, Sensor & Object Factory  
             Room room = rooms.get(7);
@@ -285,9 +285,9 @@ class ROLab extends Level {
             items.add(new Factory(12 * 28, 3 * 32, room,
                     new DirectionalSensor(0, 0, null, t)));
 
-            room.AddTextBox("Sensor & Object Factory", 142, 2 * 32 - 8, 500);
-            room.AddTextBox("Shape Editor Icons", 228, 8 * 32, 400);
-            room.AddTextBox("TRASH", 40, 9 * 32, 400);
+            room.addTextBox("Sensor & Object Factory", 142, 2 * 32 - 8, 500);
+            room.addTextBox("Shape Editor Icons", 228, 8 * 32, 400);
+            room.addTextBox("TRASH", 40, 9 * 32, 400);
 
 //	     items.add(new Crystal(2*28,10*32,room,100000));
 //	     items.add(new Crystal(5*28,10*32,room,100000));
@@ -321,9 +321,9 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 14},
                     {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("To Maze", 2 * 28, 11 * 32, 200);
-            room.AddArrow(28 + 14, 12 * 32 - 1, Arrow.DIR_DOWN, 32, Color.white);
-            room.AddArrow(28 + 14, 12 * 32 - 1, Arrow.DIR_DOWN, 32, Color.white);
+            room.addTextBox("To Maze", 2 * 28, 11 * 32, 200);
+            room.addArrow(28 + 14, 12 * 32 - 1, Arrow.DIR_DOWN, 32, Color.white);
+            room.addArrow(28 + 14, 12 * 32 - 1, Arrow.DIR_DOWN, 32, Color.white);
             items.add(new Key(15 * 28 + 16, 10 * 32 + 12, room, Color.white));
         }
         {  // Room 9, Maze Control Room  
@@ -342,17 +342,17 @@ class ROLab extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Maze Control Room", 178, 2 * 32, 300);
-            room.AddTextBox("4x2", 262, 5 * 32 + 24, 500);
+            room.addTextBox("Maze Control Room", 178, 2 * 32, 300);
+            room.addTextBox("4x2", 262, 5 * 32 + 24, 500);
             items.add(new MazeControl(9 * 28 + 14, 3 * 32 + 6, room, MazeControl.DIR_UP));
             items.add(new MazeControl(9 * 28 + 14, 7 * 32, room, MazeControl.DIR_DOWN));
             items.add(new MazeControl(7 * 28 + 2, 5 * 32 + 4, room, MazeControl.DIR_LEFT));
             items.add(new MazeControl(12 * 28, 5 * 32 + 4, room, MazeControl.DIR_RIGHT));
             items.add(new MazeCreator(2 * 28, 10 * 32, room));
-            room.AddArrow(3 * 28 + 14, 10 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddTextBox("Press to resize Maze", 5 * 28, 10 * 32 + 18, 500);
-            room.AddArrow(18 * 28, 10 * 32, Arrow.DIR_DOWN, 28, Color.white);
-            room.AddTextBox("Lock", 17 * 28 + 14, 9 * 32, 100);
+            room.addArrow(3 * 28 + 14, 10 * 32 + 12, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Press to resize Maze", 5 * 28, 10 * 32 + 18, 500);
+            room.addArrow(18 * 28, 10 * 32, Arrow.DIR_DOWN, 28, Color.white);
+            room.addTextBox("Lock", 17 * 28 + 14, 9 * 32, 100);
         }
         {  // Room 10, Maze Top Far Left 
             Room room = rooms.get(10);
@@ -521,17 +521,17 @@ class ROLab extends Level {
                 {4, 5, 6},
                 {7, 8, 9}
         };
-        LinkRoomsGrid(roomgrid1);
+        linkRoomsGrid(roomgrid1);
 
-        LinkRoomsLeftRight(6, 4);
+        linkRoomsLeftRight(6, 4);
 
         int[][] roomgrid2 = {
                 {10, 11, 12, 13},
                 {14, 15, 16, 17}
         };
-        LinkRoomsGrid(roomgrid2);
+        linkRoomsGrid(roomgrid2);
 
-        LinkRoomsUpDown(8, 10);
+        linkRoomsUpDown(8, 10);
 
         gameCursor = new LabCursor(9 * 28 + 14, 9 * 32 + 16, rooms.get(5));
         solderingPen = new SolderingPen();

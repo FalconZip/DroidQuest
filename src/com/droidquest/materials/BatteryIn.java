@@ -15,12 +15,12 @@ public class BatteryIn extends Material {
 
     public BatteryIn() {
         passable = true;
-        GenerateIcons();
+        generateIcons();
     }
 
     public transient Item robot;
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         icon = new ImageIcon(bi);
         Graphics g;
@@ -46,7 +46,7 @@ public class BatteryIn extends Material {
         passable = true;
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item.charge > 0) {
             // Check to see if it's a pure Crystal, not a Black Crystal
             if (item instanceof Crystal) {

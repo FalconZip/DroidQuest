@@ -33,10 +33,10 @@ public class RoomSensor extends Device {
         ports = new Port[1];
         ports[0] = new Port(width - 2, height / 2, Port.TYPE_OUTPUT, 24, Port.ROT_UP, this);
         icons = new ImageIcon[2];
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (ports == null) {
             ports = new Port[1];
             ports[0] = new Port(width - 2, height / 2, Port.TYPE_OUTPUT, 24, Port.ROT_UP, this);
@@ -56,11 +56,11 @@ public class RoomSensor extends Device {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(d2.width, d2.height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(d1.width, d1.height, BufferedImage.TYPE_4BYTE_ABGR));
-        target.GenerateIcons();
+        target.generateIcons();
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         ports[0].value = false;
         if (room.portalItem == null) {
             // Room Sensor is not inside robot.
@@ -89,8 +89,8 @@ public class RoomSensor extends Device {
         return false;
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         g.setColor(Color.white);
         switch (rotation) {
             case Port.ROT_UP:
@@ -156,8 +156,8 @@ public class RoomSensor extends Device {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         target = null;
     }
 

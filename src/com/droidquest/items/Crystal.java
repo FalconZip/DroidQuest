@@ -20,11 +20,11 @@ public class Crystal extends Item {
         width = 28;
         height = 24;
         editable = true;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -102,7 +102,7 @@ public class Crystal extends Item {
         }
     }
 
-    public void Decorate() {
+    public void decorate() {
         if (charge > 0) {
             color = 1 - color;
             currentIcon = icons[color].getImage();

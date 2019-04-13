@@ -11,7 +11,7 @@ public class MazeLock extends Switch {
         super(Switch.ROT_DOWN);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (paintbrush == null) {
             paintbrush = level().paintbrush;
         }

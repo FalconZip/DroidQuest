@@ -71,10 +71,10 @@ public class BinaryLock extends Material {
         super(true, false);
         color = lc;
         program = prg;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -108,7 +108,7 @@ public class BinaryLock extends Material {
         return false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (doorState == program.length) {
             doorState = 0;
         }
@@ -120,7 +120,7 @@ public class BinaryLock extends Material {
 
         if (program[doorState].length > 1) {
             for (int a = 0; a < program[doorState].length / 3; a++) {
-                currentRoom.SetMaterial(program[doorState][a * 3],
+                currentRoom.setMaterial(program[doorState][a * 3],
                         program[doorState][a * 3 + 1],
                         program[doorState][a * 3 + 2]);
             }
@@ -129,7 +129,7 @@ public class BinaryLock extends Material {
         else {
             if (program[doorState][0] == REMOVE) {
                 currentRoom = room;
-                Dimension d = latchKey.GetXY();
+                Dimension d = latchKey.getXY();
                 int bigXL = d.width / 28;
                 int bigXR = (d.width + latchKey.getWidth()) / 28;
                 int bigYT = d.height / 32;
@@ -190,7 +190,7 @@ public class BinaryLock extends Material {
         }
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item instanceof BinaryKey) {
             latchKey = (BinaryKey) item;
             room = latchKey.room;
@@ -207,7 +207,7 @@ public class BinaryLock extends Material {
         if (program[doorState].length == 1) {
             if (program[doorState][0] == NARROW) {
                 currentRoom = room;
-                Dimension d = latchKey.GetXY();
+                Dimension d = latchKey.getXY();
                 int X = d.width % 28;
                 int Y = d.height % 32;
                 if (X >= 10 && X <= 14

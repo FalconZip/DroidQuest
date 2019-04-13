@@ -28,11 +28,11 @@ public class SentryT1 extends Item {
         height = 18;
         orgY = 30;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height + orgY, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height + orgY, BufferedImage.TYPE_4BYTE_ABGR));
@@ -148,7 +148,7 @@ public class SentryT1 extends Item {
 
     }
 
-    public void Animate() {
+    public void animate() {
         if (behavior < 3) {
             animation++;
         }

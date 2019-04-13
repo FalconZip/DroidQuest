@@ -23,10 +23,10 @@ public class GameCursor extends Player {
         room = r;
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         // Executed once during initialization
         icons = new ImageIcon[8];
         icons[0] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -298,17 +298,17 @@ public class GameCursor extends Player {
         }
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         return !i.getClass().toString().endsWith("Robot");
     }
 
 
     @Override
     protected boolean handleTrain() {
-        Item item = level().FindNearestItem(level().gameCursor);
+        Item item = level().findNearestItem(level().gameCursor);
         if (item != null) {
             if (item instanceof Train) {
-                item.CanBePickedUp(this);
+                item.canBePickedUp(this);
                 return true;
             }
         }

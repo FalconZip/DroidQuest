@@ -67,11 +67,11 @@ public class Room implements Serializable, Cloneable, InLevel {
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
-        upRoom = level().FindRoom(s.readInt());
-        downRoom = level().FindRoom(s.readInt());
-        rightRoom = level().FindRoom(s.readInt());
-        leftRoom = level().FindRoom(s.readInt());
-        portalItem = level().FindItem(s.readInt());
+        upRoom = level().findRoom(s.readInt());
+        downRoom = level().findRoom(s.readInt());
+        rightRoom = level().findRoom(s.readInt());
+        leftRoom = level().findRoom(s.readInt());
+        portalItem = level().findItem(s.readInt());
 
         int numWires = s.readInt();
         wires = new ArrayList<Wire>();
@@ -82,13 +82,13 @@ public class Room implements Serializable, Cloneable, InLevel {
         }
 
         for (int a = 0; a < graphix.size(); a++) {
-            graphix.get(a).GenerateIcons();
+            graphix.get(a).generateIcons();
         }
 
-        GenerateArray();
+        generateArray();
     }
 
-    public void GenerateArray() {
+    public void generateArray() {
         MaterialArray = new Material[12][20];
         for (int y = 0; y < 12; y++) {
             for (int x = 0; x < 20; x++) {
@@ -97,7 +97,7 @@ public class Room implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void SetMaterial(int X, int Y, int index) {
+    public void setMaterial(int X, int Y, int index) {
         Material mat = level().materials.get(index);
         if (mat != null) {
             RoomArray[Y][X] = index;
@@ -105,13 +105,13 @@ public class Room implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void SetMaterial(int X, int Y, Material mat) {
+    public void setMaterial(int X, int Y, Material mat) {
         int index = level().materials.indexOf(mat);
         RoomArray[Y][X] = index;
         MaterialArray[Y][X] = mat;
     }
 
-    public void SetMaterialFill(int X1, int Y1, int X2, int Y2, int index) {
+    public void setMaterialFill(int X1, int Y1, int X2, int Y2, int index) {
         Material mat = level().materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
@@ -123,7 +123,7 @@ public class Room implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void SetMaterialOutline(int X1, int Y1, int X2, int Y2, int index) {
+    public void setMaterialOutline(int X1, int Y1, int X2, int Y2, int index) {
         Material mat = level().materials.get(index);
         if (mat != null) {
             for (int Y = Y1; Y <= Y2; Y++) {
@@ -160,27 +160,27 @@ public class Room implements Serializable, Cloneable, InLevel {
     	SoundPlayer.instance().play(sound);
     }
 
-    public void AddTextBox(String t, int X, int Y, int W) {
+    public void addTextBox(String t, int X, int Y, int W) {
         TextBox newText = new TextBox(t, X, Y, W);
         textBoxes.add(newText);
     }
 
-    public void AddArrow(int X, int Y, int dir, int len, Color col) {
+    public void addArrow(int X, int Y, int dir, int len, Color col) {
         Arrow newArrow = new Arrow(X, Y, dir, len, col);
         arrows.add(newArrow);
     }
 
-    public void AddGraphix(String t, int X, int Y) {
+    public void addGraphix(String t, int X, int Y) {
         Graphix newGraphix = new Graphix(t, X, Y);
         graphix.add(newGraphix);
     }
 
-    public void AddGraphix(String[] t, int X, int Y) {
+    public void addGraphix(String[] t, int X, int Y) {
         Graphix newGraphix = new Graphix(t, X, Y);
         graphix.add(newGraphix);
     }
 
-    public void DrawTextBoxes(Graphics g, RoomDisplay rd) {
+    public void drawTextBoxes(Graphics g, RoomDisplay rd) {
         for (int a = 0; a < textBoxes.size(); a++) {
             TextBox textBox = textBoxes.get(a);
             g.setColor(Color.white);
@@ -261,16 +261,16 @@ public class Room implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void DrawGraphix(Graphics g, RoomDisplay rd) {
+    public void drawGraphix(Graphics g, RoomDisplay rd) {
         for (int a = 0; a < graphix.size(); a++) {
             Graphix grx = graphix.get(a);
-            grx.Draw(g, rd);
+            grx.draw(g, rd);
         }
     }
 
-    public void DrawArrows(Graphics g) {
+    public void drawArrows(Graphics g) {
         for (int a = 0; a < arrows.size(); a++) {
-            arrows.get(a).Draw(g);
+            arrows.get(a).draw(g);
         }
     }
 
@@ -290,7 +290,7 @@ public class Room implements Serializable, Cloneable, InLevel {
         return rightRoom;
     }
 
-    public Wire FindWire(int wireIndex) {
+    public Wire findWire(int wireIndex) {
         if (wireIndex == -1) {
             return null;
         }
@@ -310,7 +310,7 @@ public class Room implements Serializable, Cloneable, InLevel {
         return newObject;
     }
 
-    public void Erase() {
+    public void erase() {
         upRoom = null;
         downRoom = null;
         rightRoom = null;

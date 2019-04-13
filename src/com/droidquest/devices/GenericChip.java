@@ -14,7 +14,7 @@ public class GenericChip extends Device {
         // Does not Rotate!
     }
 
-    public void ShowText(boolean editable) {
+    public void showText(boolean editable) {
         if (chiptext == null) {
             chiptext = new ChipText(this);
             chiptext.setTitle("Pinout for Chip " + label);

@@ -20,12 +20,12 @@ public class Sweeper extends Item {
         width = 48;
         height = 32;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
         animationState = 1;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -156,14 +156,14 @@ public class Sweeper extends Item {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         for (int a = 0; a < level().items.size(); a++) {
             Item testItem = level().items.get(a);
             if (testItem.carriedBy == null) {
-                if (Overlaps(testItem)) {
+                if (overlaps(testItem)) {
                     testItem.x = 280;
                     testItem.y = 192;
-                    testItem.SetRoom(level().rooms.get(1));
+                    testItem.setRoom(level().rooms.get(1));
                 }
             }
         }

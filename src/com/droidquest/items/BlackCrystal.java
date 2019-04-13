@@ -14,7 +14,7 @@ public class BlackCrystal extends Crystal {
         super(X, Y, r, 10);
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -44,7 +44,7 @@ public class BlackCrystal extends Crystal {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
 }

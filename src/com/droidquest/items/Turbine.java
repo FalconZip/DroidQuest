@@ -33,10 +33,10 @@ public class Turbine extends Item {
         width = 28;
         height = 64;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[4];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -79,7 +79,7 @@ public class Turbine extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         boolean flag = false;
         for (int a = 0; a < level().sparks.size(); a++) {
             Spark spark = level().sparks.get(a);
@@ -99,7 +99,7 @@ public class Turbine extends Item {
             }
             int cell = cellCounter / 8;
             if (cell < cells.length / 4) {
-                room.SetMaterial(cells[4 * cell],
+                room.setMaterial(cells[4 * cell],
                         cells[4 * cell + 1],
                         cells[4 * cell + 2]);
             }
@@ -110,7 +110,7 @@ public class Turbine extends Item {
             }
             int cell = cellCounter / 8;
             if (cell < cells.length / 4) {
-                room.SetMaterial(cells[4 * cell],
+                room.setMaterial(cells[4 * cell],
                         cells[4 * cell + 1],
                         cells[4 * cell + 3]);
             }

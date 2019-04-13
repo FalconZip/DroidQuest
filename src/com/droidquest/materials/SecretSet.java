@@ -26,10 +26,10 @@ public class SecretSet extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
-            level().LinkRoomsUpDown(2, 7);
-            level().LinkRoomsUpDown(8, 2);
+            level().linkRoomsUpDown(2, 7);
+            level().linkRoomsUpDown(8, 2);
         }
     }
 }

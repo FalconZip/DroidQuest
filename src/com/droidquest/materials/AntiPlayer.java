@@ -13,7 +13,7 @@ public class AntiPlayer extends Material {
         super(Color.black, true, false);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         boolean trigger = false;
         if (item == level().player) {
             trigger = true;

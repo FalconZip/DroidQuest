@@ -21,10 +21,10 @@ public class Key extends Item {
         color = c;
         width = 26;
         height = 8;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;

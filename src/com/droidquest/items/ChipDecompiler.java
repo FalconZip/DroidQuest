@@ -27,7 +27,7 @@ class ChipDecompiler extends Thread {
         // Remove all wires and devices from Prototype Chip, expect for PortDevices
         for (int a = pc.InternalRoom.wires.size() - 1; a >= 0; a--) {
             Wire wire = pc.InternalRoom.wires.get(a);
-            wire.Remove();
+            wire.remove();
         }
 
         for (int a = 0; a < 8; a++) {

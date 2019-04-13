@@ -21,7 +21,7 @@ public class MultiSwitch extends Material {
         states[number] = s;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[3];
         for (int a = 0; a < 3; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -53,7 +53,7 @@ public class MultiSwitch extends Material {
         icon = images[0];
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (room == null) {
             room = item.room;
         }
@@ -91,7 +91,7 @@ public class MultiSwitch extends Material {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         icon = images[states[number]];
 
         if (number != 0) {

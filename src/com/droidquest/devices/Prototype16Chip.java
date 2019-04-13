@@ -28,7 +28,7 @@ public class Prototype16Chip extends GenericChip {
         width = 40;
         height = 40;
 
-        GenerateIcons();
+        generateIcons();
 
         InternalRoom = new Room();
         InternalRoom.RoomArray = new int[][]{
@@ -55,7 +55,7 @@ public class Prototype16Chip extends GenericChip {
                 }
             }
         }
-        InternalRoom.GenerateArray();
+        InternalRoom.generateArray();
         InternalRoom.portalItem = this;
         level().rooms.add(InternalRoom);
 
@@ -98,7 +98,7 @@ public class Prototype16Chip extends GenericChip {
         }
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (ports == null) {
             ports = new Port[16];
             ports[0] = new Port(1, 8, Port.TYPE_UNDEFINED, 0, Port.ROT_LEFT, this);
@@ -160,7 +160,7 @@ public class Prototype16Chip extends GenericChip {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
@@ -174,13 +174,13 @@ public class Prototype16Chip extends GenericChip {
         super.readRef(s);
         portdevices = new PortDevice[16];
         for (int a = 0; a < ports.length; a++) {
-            Item item = level().FindItem(s.readInt());
+            Item item = level().findItem(s.readInt());
             portdevices[a] = (PortDevice) item;
         }
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         inBurner = false;
         inTester = false;
         int bigXl = (x) / 28;
@@ -198,7 +198,7 @@ public class Prototype16Chip extends GenericChip {
         for (int a = bigYt; a <= bigYb; a++) {
             for (int b = bigXl; b <= bigXr; b++) {
                 if (level().materials.get(room.RoomArray[a][b]) instanceof ChipTrash) {
-                    SetRoom(null);
+                    setRoom(null);
                     level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
@@ -207,7 +207,7 @@ public class Prototype16Chip extends GenericChip {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         // Transfer values between the ports and the portdevices.
         boolean changed = false;
         for (int a = 0; a < 16; a++) {
@@ -258,8 +258,8 @@ public class Prototype16Chip extends GenericChip {
         return changed;
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         for (int a = 0; a < portdevices.length; a++) {
             portdevices[a] = null;
         }

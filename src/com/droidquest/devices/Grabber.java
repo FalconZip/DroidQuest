@@ -30,7 +30,7 @@ public class Grabber extends Device {
                 robot = (GenericRobot) room.portalItem;
             }
         }
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
@@ -41,10 +41,10 @@ public class Grabber extends Device {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level().FindItem(s.readInt());
+        robot = (GenericRobot) level().findItem(s.readInt());
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         robot = (GenericRobot) room.portalItem;
         if (ports == null) {
             ports = new Port[2];
@@ -61,8 +61,8 @@ public class Grabber extends Device {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         try {
             g = currentIcon.getGraphics();
         }
@@ -85,20 +85,20 @@ public class Grabber extends Device {
         g.fillRect(0, 8, 4, 4);
     }
 
-    public boolean Function() {
+    public boolean function() {
         ports[1].value = robot.carrying != null;
 
         if (!ports[0].value) { // Input Low
             if (robot.carrying != null) {
-                robot.Drops();
+                robot.drops();
             }
         }
         else { // Input High
             if (robot.carrying == null) {
                 // Try and pick up something
-                Item item = level().FindNearestItem(robot);
+                Item item = level().findNearestItem(robot);
                 if (item != null) {
-                    if (item.CanBePickedUp(robot) && item.carriedBy == null) {
+                    if (item.canBePickedUp(robot) && item.carriedBy == null) {
                         int CX = item.x + item.getWidth() / 2;
                         int CY = item.y + item.getHeight() / 2;
                         if (CX >= 28 + robot.x && CY < 21 + robot.y) {
@@ -106,7 +106,7 @@ public class Grabber extends Device {
                             item.x = robot.x + 60 - item.getWidth() / 2;
                             item.y = robot.y - 9 - item.getHeight() / 2;
                             robot.grabber = Port.ROT_UP;
-                            robot.PicksUp(item);
+                            robot.picksUp(item);
                         }
 
                         if (CX >= 28 + robot.x && CY >= 21 + robot.y) {
@@ -114,7 +114,7 @@ public class Grabber extends Device {
                             item.x = robot.x + 66 - item.getWidth() / 2;
                             item.y = robot.y + 41 - item.getHeight() / 2;
                             robot.grabber = Port.ROT_RIGHT;
-                            robot.PicksUp(item);
+                            robot.picksUp(item);
                         }
 
                         if (CX < 28 + robot.x && CY >= 21 + robot.y) {
@@ -122,7 +122,7 @@ public class Grabber extends Device {
                             item.x = robot.x + 5 - item.getWidth() / 2;
                             item.y = robot.y + 52 - item.getHeight() / 2;
                             robot.grabber = Port.ROT_DOWN;
-                            robot.PicksUp(item);
+                            robot.picksUp(item);
                         }
 
                         if (CX < 28 + robot.x && CY < 21 + robot.y) {
@@ -130,7 +130,7 @@ public class Grabber extends Device {
                             item.x = robot.x - 5 - item.getWidth() / 2;
                             item.y = robot.y + 3 - item.getHeight() / 2;
                             robot.grabber = Port.ROT_LEFT;
-                            robot.PicksUp(item);
+                            robot.picksUp(item);
                         }
 
                     }
@@ -141,8 +141,8 @@ public class Grabber extends Device {
         return false;
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         robot = null;
     }
 

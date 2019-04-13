@@ -30,7 +30,7 @@ public class HotWires extends Material {
         value = v;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[2];
         for (int a = 0; a < 2; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -71,7 +71,7 @@ public class HotWires extends Material {
         }
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (value) {
             if (item.charge > 0) {
                 item.charge = 0;
@@ -80,7 +80,7 @@ public class HotWires extends Material {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         icon = images[0];
         if (value) {
             icon = images[1];

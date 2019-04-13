@@ -18,7 +18,7 @@ public class ElevatorDoor extends Material {
         super(Color.black, true, false);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item.carriedBy != null) {
             return;
         }
@@ -59,77 +59,77 @@ public class ElevatorDoor extends Material {
             int X = item.x / 28;
             switch (X) {
                 case 3:
-                    item.room.SetMaterial(11, 1, 0);
-                    item.room.SetMaterial(11, 2, 0);
-                    item.room.SetMaterial(11, 3, 0);
-                    item.room.SetMaterial(11, 4, 0);
-                    item.room.SetMaterial(11, 5, 0);
-                    item.room.SetMaterial(11, 6, 0);
-                    item.room.SetMaterial(11, 7, 0);
-                    item.room.SetMaterial(11, 8, 0);
-                    item.room.SetMaterial(11, 9, 0);
-                    item.room.SetMaterial(11, 10, 0);
+                    item.room.setMaterial(11, 1, 0);
+                    item.room.setMaterial(11, 2, 0);
+                    item.room.setMaterial(11, 3, 0);
+                    item.room.setMaterial(11, 4, 0);
+                    item.room.setMaterial(11, 5, 0);
+                    item.room.setMaterial(11, 6, 0);
+                    item.room.setMaterial(11, 7, 0);
+                    item.room.setMaterial(11, 8, 0);
+                    item.room.setMaterial(11, 9, 0);
+                    item.room.setMaterial(11, 10, 0);
                     break;
                 case 4:
-                    item.room.SetMaterial(11, 1, 2);
-                    item.room.SetMaterial(11, 2, 0);
-                    item.room.SetMaterial(11, 3, 0);
-                    item.room.SetMaterial(11, 4, 0);
-                    item.room.SetMaterial(11, 5, 0);
-                    item.room.SetMaterial(11, 6, 0);
-                    item.room.SetMaterial(11, 7, 0);
-                    item.room.SetMaterial(11, 8, 0);
-                    item.room.SetMaterial(11, 9, 0);
-                    item.room.SetMaterial(11, 10, 2);
+                    item.room.setMaterial(11, 1, 2);
+                    item.room.setMaterial(11, 2, 0);
+                    item.room.setMaterial(11, 3, 0);
+                    item.room.setMaterial(11, 4, 0);
+                    item.room.setMaterial(11, 5, 0);
+                    item.room.setMaterial(11, 6, 0);
+                    item.room.setMaterial(11, 7, 0);
+                    item.room.setMaterial(11, 8, 0);
+                    item.room.setMaterial(11, 9, 0);
+                    item.room.setMaterial(11, 10, 2);
                     break;
                 case 5:
-                    item.room.SetMaterial(11, 1, 2);
-                    item.room.SetMaterial(11, 2, 2);
-                    item.room.SetMaterial(11, 3, 0);
-                    item.room.SetMaterial(11, 4, 0);
-                    item.room.SetMaterial(11, 5, 0);
-                    item.room.SetMaterial(11, 6, 0);
-                    item.room.SetMaterial(11, 7, 0);
-                    item.room.SetMaterial(11, 8, 0);
-                    item.room.SetMaterial(11, 9, 2);
-                    item.room.SetMaterial(11, 10, 2);
+                    item.room.setMaterial(11, 1, 2);
+                    item.room.setMaterial(11, 2, 2);
+                    item.room.setMaterial(11, 3, 0);
+                    item.room.setMaterial(11, 4, 0);
+                    item.room.setMaterial(11, 5, 0);
+                    item.room.setMaterial(11, 6, 0);
+                    item.room.setMaterial(11, 7, 0);
+                    item.room.setMaterial(11, 8, 0);
+                    item.room.setMaterial(11, 9, 2);
+                    item.room.setMaterial(11, 10, 2);
                     break;
                 case 6:
-                    item.room.SetMaterial(11, 1, 2);
-                    item.room.SetMaterial(11, 2, 2);
-                    item.room.SetMaterial(11, 3, 2);
-                    item.room.SetMaterial(11, 4, 0);
-                    item.room.SetMaterial(11, 5, 0);
-                    item.room.SetMaterial(11, 6, 0);
-                    item.room.SetMaterial(11, 7, 0);
-                    item.room.SetMaterial(11, 8, 2);
-                    item.room.SetMaterial(11, 9, 2);
-                    item.room.SetMaterial(11, 10, 2);
+                    item.room.setMaterial(11, 1, 2);
+                    item.room.setMaterial(11, 2, 2);
+                    item.room.setMaterial(11, 3, 2);
+                    item.room.setMaterial(11, 4, 0);
+                    item.room.setMaterial(11, 5, 0);
+                    item.room.setMaterial(11, 6, 0);
+                    item.room.setMaterial(11, 7, 0);
+                    item.room.setMaterial(11, 8, 2);
+                    item.room.setMaterial(11, 9, 2);
+                    item.room.setMaterial(11, 10, 2);
                     break;
                 case 7:
-                    item.room.SetMaterial(11, 1, 2);
-                    item.room.SetMaterial(11, 2, 2);
-                    item.room.SetMaterial(11, 3, 2);
-                    item.room.SetMaterial(11, 4, 2);
-                    item.room.SetMaterial(11, 5, 0);
-                    item.room.SetMaterial(11, 6, 0);
-                    item.room.SetMaterial(11, 7, 2);
-                    item.room.SetMaterial(11, 8, 2);
-                    item.room.SetMaterial(11, 9, 2);
-                    item.room.SetMaterial(11, 10, 2);
+                    item.room.setMaterial(11, 1, 2);
+                    item.room.setMaterial(11, 2, 2);
+                    item.room.setMaterial(11, 3, 2);
+                    item.room.setMaterial(11, 4, 2);
+                    item.room.setMaterial(11, 5, 0);
+                    item.room.setMaterial(11, 6, 0);
+                    item.room.setMaterial(11, 7, 2);
+                    item.room.setMaterial(11, 8, 2);
+                    item.room.setMaterial(11, 9, 2);
+                    item.room.setMaterial(11, 10, 2);
                     item.room.textBoxes.get(1).textString = "\"Hold please!\"";
                     break;
                 case 8:
-                    item.room.SetMaterial(11, 1, 2);
-                    item.room.SetMaterial(11, 2, 2);
-                    item.room.SetMaterial(11, 3, 2);
-                    item.room.SetMaterial(11, 4, 2);
-                    item.room.SetMaterial(11, 5, 2);
-                    item.room.SetMaterial(11, 6, 2);
-                    item.room.SetMaterial(11, 7, 2);
-                    item.room.SetMaterial(11, 8, 2);
-                    item.room.SetMaterial(11, 9, 2);
-                    item.room.SetMaterial(11, 10, 2);
+                    item.room.setMaterial(11, 1, 2);
+                    item.room.setMaterial(11, 2, 2);
+                    item.room.setMaterial(11, 3, 2);
+                    item.room.setMaterial(11, 4, 2);
+                    item.room.setMaterial(11, 5, 2);
+                    item.room.setMaterial(11, 6, 2);
+                    item.room.setMaterial(11, 7, 2);
+                    item.room.setMaterial(11, 8, 2);
+                    item.room.setMaterial(11, 9, 2);
+                    item.room.setMaterial(11, 10, 2);
                     item.room.textBoxes.get(1).textString = "\"Going up!\"";
                     break;
             }
