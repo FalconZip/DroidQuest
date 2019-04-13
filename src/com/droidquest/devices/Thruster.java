@@ -34,12 +34,12 @@ public class Thruster extends Device {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.items.indexOf(robot));
+        s.writeInt(level().items.indexOf(robot));
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level.FindItem(s.readInt());
+        robot = (GenericRobot) level().FindItem(s.readInt());
     }
 
     public void GenerateIcons() {
@@ -148,35 +148,35 @@ public class Thruster extends Device {
             Dimension d = GetXY();
             switch (rotation) {
                 case Port.ROT_UP:
-                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
+                    level().sparks.add(new Spark(d.width + level().random.nextInt(30),
                             d.height + 0,
                             0, -4, room));
-                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
+                    level().sparks.add(new Spark(d.width + level().random.nextInt(30),
                             d.height + 0,
                             0, -4, room));
                     break;
                 case Port.ROT_RIGHT:
-                    level.sparks.add(new Spark(d.width + 54,
-                            d.height + level.random.nextInt(20),
+                    level().sparks.add(new Spark(d.width + 54,
+                            d.height + level().random.nextInt(20),
                             4, 0, room));
-                    level.sparks.add(new Spark(d.width + 54,
-                            d.height + level.random.nextInt(20),
+                    level().sparks.add(new Spark(d.width + 54,
+                            d.height + level().random.nextInt(20),
                             4, 0, room));
                     break;
                 case Port.ROT_DOWN:
-                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
+                    level().sparks.add(new Spark(d.width + level().random.nextInt(30),
                             d.height + 26,
                             0, 4, room));
-                    level.sparks.add(new Spark(d.width + level.random.nextInt(30),
+                    level().sparks.add(new Spark(d.width + level().random.nextInt(30),
                             d.height + 26,
                             0, 4, room));
                     break;
                 case Port.ROT_LEFT:
-                    level.sparks.add(new Spark(d.width + 44,
-                            d.height + level.random.nextInt(20),
+                    level().sparks.add(new Spark(d.width + 44,
+                            d.height + level().random.nextInt(20),
                             -4, 0, room));
-                    level.sparks.add(new Spark(d.width + 44,
-                            d.height + level.random.nextInt(20),
+                    level().sparks.add(new Spark(d.width + 44,
+                            d.height + level().random.nextInt(20),
                             -4, 0, room));
                     break;
             }

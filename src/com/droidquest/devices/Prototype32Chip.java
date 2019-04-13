@@ -46,8 +46,8 @@ public class Prototype32Chip extends GenericChip {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
         Material mat1 = new Material(Color.blue, false, true);
-        level.materials.add(mat1);
-        int mat1Index = level.materials.size() - 1;
+        level().materials.add(mat1);
+        int mat1Index = level().materials.size() - 1;
         for (int rY = 0; rY < 12; rY++) {
             for (int rX = 0; rX < 20; rX++) {
                 if (InternalRoom.RoomArray[rY][rX] == 1) {
@@ -57,7 +57,7 @@ public class Prototype32Chip extends GenericChip {
         }
         InternalRoom.GenerateArray();
         InternalRoom.portalItem = this;
-        level.rooms.add(InternalRoom);
+        level().rooms.add(InternalRoom);
 
         portdevices = new PortDevice[32];
         portdevices[0] = new PortDevice(16, 2 * 32, InternalRoom, 28, Port.TYPE_UNDEFINED);
@@ -104,7 +104,7 @@ public class Prototype32Chip extends GenericChip {
         }
 
         for (int a = 0; a < 32; a++) {
-            level.items.add(portdevices[a]);
+            level().items.add(portdevices[a]);
         }
     }
 
@@ -216,7 +216,7 @@ public class Prototype32Chip extends GenericChip {
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
         for (int a = 0; a < 32; a++) {
-            s.writeInt(level.items.indexOf(portdevices[a]));
+            s.writeInt(level().items.indexOf(portdevices[a]));
         }
     }
 
@@ -224,7 +224,7 @@ public class Prototype32Chip extends GenericChip {
         super.readRef(s);
         portdevices = new PortDevice[32];
         for (int a = 0; a < ports.length; a++) {
-            Item item = level.FindItem(s.readInt());
+            Item item = level().FindItem(s.readInt());
             portdevices[a] = (PortDevice) item;
         }
         GenerateIcons();
@@ -298,9 +298,9 @@ public class Prototype32Chip extends GenericChip {
 
         for (int a = bigYt; a <= bigYb; a++) {
             for (int b = bigXl; b <= bigXr; b++) {
-                if (level.materials.get(room.RoomArray[a][b]) instanceof ChipTrash) {
+                if (level().materials.get(room.RoomArray[a][b]) instanceof ChipTrash) {
                     SetRoom(null);
-                    level.items.remove(this);
+                    level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
                 }

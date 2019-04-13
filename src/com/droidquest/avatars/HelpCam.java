@@ -27,8 +27,8 @@ public class HelpCam extends Item implements Avatar {
 
     public boolean KeyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            level.player = level.gameCursor;
-            level.currentViewer = level.gameCursor;
+            level().player = level().gameCursor;
+            level().currentViewer = level().gameCursor;
         }
         return false;
     }

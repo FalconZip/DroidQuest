@@ -11,7 +11,7 @@ import com.droidquest.Room;
 import com.droidquest.decorations.Spark;
 
 public class Turbine extends Item {
-    // Turbines are wind-powered locks. They watch the level.sparks vector
+    // Turbines are wind-powered locks. They watch the level().sparks vector
     // for sparks that intersect them. When Sparks intersect the turbines
     // they animate and change materials in the cells array. When the sparks
     // stop, the animation stops and the cells are slowly replaced. The
@@ -81,8 +81,8 @@ public class Turbine extends Item {
 
     public void Animate() {
         boolean flag = false;
-        for (int a = 0; a < level.sparks.size(); a++) {
-            Spark spark = level.sparks.get(a);
+        for (int a = 0; a < level().sparks.size(); a++) {
+            Spark spark = level().sparks.get(a);
             if (spark.room == room) {
                 if (spark.y >= y && spark.y <= y + height) {
                     if (spark.x >= x && spark.x <= x + width) {

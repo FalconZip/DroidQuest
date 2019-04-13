@@ -23,7 +23,7 @@ public class GameState extends Observable{
 	private boolean canUseToolbox;
 	private boolean isInLab;
 	
-	private Level level;
+	private volatile Level level;
 	
 	public static GameState instance() {
 		return _instance;
@@ -211,6 +211,7 @@ public class GameState extends Observable{
 	}
 
 	public void setLevel(Level level) {
+		System.out.println("Set level " + level);
 		if(this.level == level) {
 			return;
 		}

@@ -23,7 +23,7 @@ public class Disk extends Item {
         width = 28;
         height = 24;
         grabbable = true;
-        helpRoom = level.rooms.get(hr);
+        helpRoom = level().rooms.get(hr);
         GenerateIcons();
     }
 
@@ -52,12 +52,12 @@ public class Disk extends Item {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.rooms.indexOf(helpRoom));
+        s.writeInt(level().rooms.indexOf(helpRoom));
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        helpRoom = level.FindRoom(s.readInt());
+        helpRoom = level().FindRoom(s.readInt());
     }
 
     public void IsDropped() {
@@ -66,18 +66,18 @@ public class Disk extends Item {
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
         if (mat.getClass().toString().endsWith("Monitor")) {
-            helpCamRoom = level.helpCam.room; // Temporary storage
-            level.helpCam.room = helpRoom;
-            level.currentViewer = level.helpCam;
-            level.player = level.helpCam;
+            helpCamRoom = level().helpCam.room; // Temporary storage
+            level().helpCam.room = helpRoom;
+            level().currentViewer = level().helpCam;
+            level().player = level().helpCam;
         }
     }
 
     public boolean CanBePickedUp(Item item) {
-        if (level.helpCam.room == room) {
-            level.helpCam.room = helpCamRoom;
+        if (level().helpCam.room == room) {
+            level().helpCam.room = helpCamRoom;
         }
-        level.currentViewer = level.player;
+        level().currentViewer = level().player;
         return true;
     }
 

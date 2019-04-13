@@ -52,8 +52,8 @@ public class ElevatorKey extends Item {
         }
 
         if (jumping) {
-            x = level.random.nextInt(8 * 28) + 28;
-            y = level.random.nextInt(2 * 32) + (8 * 32);
+            x = level().random.nextInt(8 * 28) + 28;
+            y = level().random.nextInt(2 * 32) + (8 * 32);
         }
     }
 

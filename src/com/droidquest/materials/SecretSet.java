@@ -27,9 +27,9 @@ public class SecretSet extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player) {
-            level.LinkRoomsUpDown(2, 7);
-            level.LinkRoomsUpDown(8, 2);
+        if (item == level().player) {
+            level().LinkRoomsUpDown(2, 7);
+            level().LinkRoomsUpDown(8, 2);
         }
     }
 }

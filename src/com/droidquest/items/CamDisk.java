@@ -15,8 +15,8 @@ public class CamDisk extends Disk {
 
     public void IsDropped() {
         if (spycam == null) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.getClass().toString().endsWith("SpyCam")) {
                     spycam = (SpyCam) item;
                 }
@@ -26,11 +26,11 @@ public class CamDisk extends Disk {
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
         if (mat.getClass().toString().endsWith("Monitor")) {
-            level.currentViewer = spycam;
-            level.player = spycam;
+            level().currentViewer = spycam;
+            level().player = spycam;
             spycam.room = room;
             for (int a = 5; a < 60; a++) {
-                Room r = level.rooms.get(a);
+                Room r = level().rooms.get(a);
                 TextBox tb = r.textBoxes.get(0);
                 tb.y -= 500;
             }

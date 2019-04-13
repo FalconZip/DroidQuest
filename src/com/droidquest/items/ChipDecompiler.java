@@ -36,7 +36,7 @@ class ChipDecompiler extends Thread {
             pc.ports[a].value = false;
         }
 
-        pc.level.items.removeIf(item -> 
+        pc.level().items.removeIf(item -> 
 		        item.room == pc.InternalRoom
 		        && item instanceof Device
 		        && !(item instanceof PortDevice)
@@ -58,33 +58,33 @@ class ChipDecompiler extends Thread {
             if (gate.type.equalsIgnoreCase("AND")) {
                 ANDGate andGate = new ANDGate(10 * 28, 6 * 32, pc.InternalRoom);
                 deviceList.add(andGate);
-                pc.level.items.add(andGate);
+                pc.level().items.add(andGate);
             }
             if (gate.type.equalsIgnoreCase("OR")) {
                 ORGate orGate = new ORGate(10 * 28, 6 * 32, pc.InternalRoom);
                 deviceList.add(orGate);
-                pc.level.items.add(orGate);
+                pc.level().items.add(orGate);
             }
             if (gate.type.equalsIgnoreCase("NOT")) {
                 NOTGate notGate = new NOTGate(10 * 28, 6 * 32, pc.InternalRoom);
                 deviceList.add(notGate);
-                pc.level.items.add(notGate);
+                pc.level().items.add(notGate);
             }
             if (gate.type.equalsIgnoreCase("XOR")) {
                 XORGate xorGate = new XORGate(10 * 28, 6 * 32, pc.InternalRoom);
                 deviceList.add(xorGate);
-                pc.level.items.add(xorGate);
+                pc.level().items.add(xorGate);
             }
             if (gate.type.equalsIgnoreCase("FF")) {
                 FlipFlop flipflop = new FlipFlop(10 * 28, 6 * 32, pc.InternalRoom);
                 deviceList.add(flipflop);
-                pc.level.items.add(flipflop);
+                pc.level().items.add(flipflop);
                 flipflop.state = gate.state;
             }
             if (gate.type.equalsIgnoreCase("Chip")) {
                 SmallChip smallchip = new SmallChip(10 * 28, 6 * 32, pc.InternalRoom, "X");
                 deviceList.add(smallchip);
-                pc.level.items.add(smallchip);
+                pc.level().items.add(smallchip);
                 smallchip.speed = gate.speed;
 
                 for (int b = 0; b < gate.mySignals.size(); b++) {
@@ -166,7 +166,7 @@ class ChipDecompiler extends Thread {
                     Port port2 = FindPort(sig, 2, pc, sc, deviceList);
                     Port port3 = FindPort(sig, 3, pc, sc, deviceList);
                     Node node = new Node(10 * 28, 6 * 32, pc.InternalRoom, Node.TYPE_STRAIGHT);
-                    pc.level.items.add(node);
+                    pc.level().items.add(node);
                     deviceList.add(node);
                     if (port1.type == Port.TYPE_OUTPUT) {
                         Wire dummy1 = new Wire(port1, node.ports[0]);
@@ -207,7 +207,7 @@ class ChipDecompiler extends Thread {
                     Port port3 = FindPort(sig, 3, pc, sc, deviceList);
                     Port port4 = FindPort(sig, 4, pc, sc, deviceList);
                     Node node = new Node(10 * 28, 6 * 32, pc.InternalRoom, Node.TYPE_THREE);
-                    pc.level.items.add(node);
+                    pc.level().items.add(node);
                     deviceList.add(node);
                     if (port1.type == Port.TYPE_OUTPUT) {
                         Wire dummy1 = new Wire(port1, node.ports[0]);
@@ -269,7 +269,7 @@ class ChipDecompiler extends Thread {
                     Node[] nodes = new Node[numConnections - 2];
                     for (int b = 0; b < numConnections - 2; b++) {
                         nodes[b] = new Node(10 * 28, 6 * 32, pc.InternalRoom, Node.TYPE_STRAIGHT);
-                        pc.level.items.add(nodes[b]);
+                        pc.level().items.add(nodes[b]);
                         deviceList.add(nodes[b]);
                     }
 

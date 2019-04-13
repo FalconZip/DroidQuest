@@ -42,11 +42,11 @@ public class Handle extends Item {
     }
 
     public boolean CanBePickedUp(Item item) {
-        if (item != level.player) {
+        if (item != level().player) {
             return false;
         }
         PicksUp(item);
-        level.player = this;
+        level().player = this;
         return false;
     }
 
@@ -68,7 +68,7 @@ public class Handle extends Item {
         }
 
         if (e.getKeyCode() == e.VK_SPACE) {
-            level.player = carrying;
+            level().player = carrying;
             Drops();
             room.SetMaterial(1, 4, 8);
             room.SetMaterial(2, 4, 8);

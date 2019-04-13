@@ -124,28 +124,28 @@ public class Wire implements Serializable, InLevel {
     void writeRef(ObjectOutputStream s) throws IOException {
         int a;
         Level level = level();
-        s.writeInt(level.items.indexOf(fromPort.myDevice)); // Index of fromport device
+        s.writeInt(level().items.indexOf(fromPort.myDevice)); // Index of fromport device
         a = 0;
         while (((Device) fromPort.myDevice).ports[a] != fromPort) {
             a++;
         }
         s.writeInt(a); // Index of fromport (as device.ports[?]
 
-        s.writeInt(level.items.indexOf(toPort.myDevice)); // Index of toPort device
+        s.writeInt(level().items.indexOf(toPort.myDevice)); // Index of toPort device
         a = 0;
         while (((Device) toPort.myDevice).ports[a] != toPort) {
             a++;
         }
         s.writeInt(a); // Index of toPort (as device.ports[?]
 
-        s.writeInt(level.items.indexOf(inPort.myDevice)); // Index of inPort device
+        s.writeInt(level().items.indexOf(inPort.myDevice)); // Index of inPort device
         a = 0;
         while (((Device) inPort.myDevice).ports[a] != inPort) {
             a++;
         }
         s.writeInt(a); // Index of inPort (as device.ports[?]
 
-        s.writeInt(level.items.indexOf(outPort.myDevice)); // Index of outPort device
+        s.writeInt(level().items.indexOf(outPort.myDevice)); // Index of outPort device
         a = 0;
         while (((Device) outPort.myDevice).ports[a] != outPort) {
             a++;
@@ -155,13 +155,13 @@ public class Wire implements Serializable, InLevel {
 
     void readRef(ObjectInputStream s, Level level) throws IOException {
         Device tempDevice;
-        tempDevice = (Device) level.FindItem(s.readInt());
+        tempDevice = (Device) level().FindItem(s.readInt());
         fromPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level.FindItem(s.readInt());
+        tempDevice = (Device) level().FindItem(s.readInt());
         toPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level.FindItem(s.readInt());
+        tempDevice = (Device) level().FindItem(s.readInt());
         inPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level.FindItem(s.readInt());
+        tempDevice = (Device) level().FindItem(s.readInt());
         outPort = tempDevice.ports[s.readInt()];
     }
 

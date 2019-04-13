@@ -113,8 +113,8 @@ public class Lock extends Material {
 
         if (latchKey == null) {
             if (program[doorState][0] == Lock.REMOVE) {
-                for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.get(a);
+                for (int a = 0; a < level().items.size(); a++) {
+                    Item item = level().items.get(a);
                     if (item instanceof Key) {
                         Key testKey = (Key) item;
                         if (testKey.color.equals(keyColor)) {

@@ -24,8 +24,8 @@ public class ElevatorDoor extends Material {
         }
 
         if (!checkedForMagnet) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item i = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item i = level().items.get(a);
                 if (i instanceof Magnet) {
                     magnet = i;
                     checkedForMagnet = true;
@@ -35,11 +35,11 @@ public class ElevatorDoor extends Material {
 
         boolean test = false;
 
-        if (item == level.player) {
+        if (item == level().player) {
             test = true;
         }
         else if (item instanceof GenericRobot) {
-            GameCursor gc = (GameCursor) level.gameCursor;
+            GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == item) {
                 test = true;
             }

@@ -5,6 +5,7 @@ import com.droidquest.Wire;
 import com.droidquest.chipstuff.Port;
 import com.droidquest.devices.Device;
 import com.droidquest.items.Item;
+import com.droidquest.levels.Level;
 import com.droidquest.pathfinder.Node;
 
 import javax.swing.*;
@@ -101,10 +102,11 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     void CheckPort() {
+    	Level level = level();
         hot = false;
         currentPort = null;
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item = level.items.get(a);
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item = level().items.get(a);
             if (!item.isDevice() || !Overlaps(item) || item == this) {
                 item = null;
             }
@@ -130,7 +132,7 @@ public class SolderingPen extends Device implements Avatar {
                             currentIcon = icons[2].getImage();
                         }
                         b = device.ports.length;
-                        a = level.items.size();
+                        a = level().items.size();
                     }
                     else {
                         currentIcon = icons[0].getImage();
@@ -144,8 +146,9 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     public void moveUp(boolean nudge) {
+    	Level level = level();
         Room tempRoom = room;
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.UpEnterOverlap(this)) {
@@ -166,8 +169,9 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     public void moveDown(boolean nudge) {
+    	Level level = level();
         Room tempRoom = room;
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.DownEnterOverlap(this)) {
@@ -187,8 +191,9 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     public void moveLeft(boolean nudge) {
+    	Level level = level();
         Room tempRoom = room;
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.LeftEnterOverlap(this)) {
@@ -208,8 +213,9 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     public void moveRight(boolean nudge) {
+    	Level level = level();
         Room tempRoom = room;
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.RightEnterOverlap(this)) {
@@ -412,26 +418,27 @@ public class SolderingPen extends Device implements Avatar {
 
     @Override
     public boolean handleGameCursor() {
+    	Level level = level();
         if (ports[0].myWire != null) {
             ports[0].myWire.Remove();
         }
-        level.gameCursor.x = x;
-        level.gameCursor.y = y;
-        level.gameCursor.room = room;
+        level().gameCursor.x = x;
+        level().gameCursor.y = y;
+        level().gameCursor.room = room;
         room = null;
-        if (level.currentViewer == level.player) {
-            level.currentViewer = level.gameCursor;
+        if (level().currentViewer == level().player) {
+            level().currentViewer = level().gameCursor;
         }
-        level.player = level.gameCursor;
-        if (level.remote != null) {
-            if (level.remote.carriedBy != null) {
-                level.remote.carriedBy = level.player;
+        level().player = level().gameCursor;
+        if (level().remote != null) {
+            if (level().remote.carriedBy != null) {
+                level().remote.carriedBy = level().player;
             }
         }
 
         CheckPort();
 
-        gameState.useCursor();
+        gameState().useCursor();
         return true;
     }
 
@@ -447,24 +454,25 @@ public class SolderingPen extends Device implements Avatar {
 
     @Override
     public boolean handleRadio() {
-        if (level.remote == null) {
+    	Level level = level();
+        if (level().remote == null) {
             return false;
         }
-        if (level.remote.carriedBy == null) { // Summon Remote
-            level.remote.x = 28;
-            level.remote.y = -20;
-            level.remote.carriedBy = level.player;
-            level.remote.room = level.player.room;
-            level.electricity = true;
+        if (level().remote.carriedBy == null) { // Summon Remote
+            level().remote.x = 28;
+            level().remote.y = -20;
+            level().remote.carriedBy = level().player;
+            level().remote.room = level().player.room;
+            level().electricity = true;
 
-            gameState.setUsingRemote(true);
+            gameState().setUsingRemote(true);
         }
         else { // Hide Remote
-            level.remote.carriedBy = null;
-            level.remote.room = null;
-            level.electricity = false;
+            level().remote.carriedBy = null;
+            level().remote.room = null;
+            level().electricity = false;
 
-            gameState.setUsingRemote(false);
+            gameState().setUsingRemote(false);
         }
         return true;
     }
@@ -480,31 +488,33 @@ public class SolderingPen extends Device implements Avatar {
     }
 
     public void handleRemote() {
-        if (level.remote != null) {
-            if (level.remote.carriedBy != null) {
-                level.remote.carriedBy = level.player;
+    	Level level = level();
+        if (level().remote != null) {
+            if (level().remote.carriedBy != null) {
+                level().remote.carriedBy = level().player;
             }
         }
     }
 
     @Override
     public boolean handlePaintbrush() {
-        if (level.paintbrush == null) {
+    	Level level = level();
+        if (level().paintbrush == null) {
             return false;
         }
         if (ports[0].myWire != null) {
             ports[0].myWire.Remove();
         }
-        level.paintbrush.x = x;
-        level.paintbrush.y = y;
-        level.paintbrush.room = room;
+        level().paintbrush.x = x;
+        level().paintbrush.y = y;
+        level().paintbrush.room = room;
         room = null;
-        if (level.currentViewer == level.player) {
-            level.currentViewer = level.paintbrush;
+        if (level().currentViewer == level().player) {
+            level().currentViewer = level().paintbrush;
         }
-        level.player = level.paintbrush;
+        level().player = level().paintbrush;
 
-        gameState.usePaintBrush();
+        gameState().usePaintBrush();
 
         handleRemote();
 
@@ -520,20 +530,22 @@ public class SolderingPen extends Device implements Avatar {
 
     @Override
     public boolean handleHelp() {
-        if (level.helpCam == null) {
+    	Level level = level();
+        if (level().helpCam == null) {
             return false;
         }
         // First switch to game cursor
         handleGameCursor();
 
-        level.player = level.helpCam;
-        level.currentViewer = level.helpCam;
+        level().player = level().helpCam;
+        level().currentViewer = level().helpCam;
         return true;
     }
 
     @Override
     public boolean handleEnterRoom() {
-        Item item = level.FindNearestItem(this);
+    	Level level = level();
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (Overlaps(item)) {
@@ -564,7 +576,7 @@ public class SolderingPen extends Device implements Avatar {
             x = newX;
             y = newY;
             SetRoom(room.portalItem.room);
-            level.currentViewer = level.player;
+            level().currentViewer = level().player;
             return true;
         }
         return false;

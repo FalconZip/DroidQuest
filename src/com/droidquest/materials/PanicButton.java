@@ -63,10 +63,10 @@ public class PanicButton extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player && level.player.carriedBy == null) {
+        if (item == level().player && level().player.carriedBy == null) {
             if (sentry == null) {
-                for (int a = 0; a < level.items.size(); a++) {
-                    Item i = level.items.get(a);
+                for (int a = 0; a < level().items.size(); a++) {
+                    Item i = level().items.get(a);
                     if (i instanceof Sentry && i.room == item.room) {
                         sentry = (Sentry) i;
                     }

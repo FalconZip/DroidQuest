@@ -22,50 +22,50 @@ public class AutoRunner extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player) {
+        if (item == level().player) {
             switch (direction) {
                 case UP:
-                    level.player.autoX = level.player.x;
-                    level.player.autoY = level.player.y - 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x;
+                    level().player.autoY = level().player.y - 32;
+                    level().player.automove = 1;
                     break;
                 case RIGHTUP:
-                    level.player.autoX = level.player.x + 28;
-                    level.player.autoY = level.player.y - 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x + 28;
+                    level().player.autoY = level().player.y - 32;
+                    level().player.automove = 1;
                     break;
                 case RIGHT:
-                    level.player.autoX = level.player.x + 28;
-                    level.player.autoY = level.player.y;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x + 28;
+                    level().player.autoY = level().player.y;
+                    level().player.automove = 1;
                     break;
                 case RIGHTDOWN:
-                    level.player.autoX = level.player.x + 28;
-                    level.player.autoY = level.player.y + 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x + 28;
+                    level().player.autoY = level().player.y + 32;
+                    level().player.automove = 1;
                     break;
                 case DOWN:
-                    level.player.autoX = level.player.x;
-                    level.player.autoY = level.player.y + 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x;
+                    level().player.autoY = level().player.y + 32;
+                    level().player.automove = 1;
                     break;
                 case LEFTDOWN:
-                    level.player.autoX = level.player.x - 28;
-                    level.player.autoY = level.player.y + 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x - 28;
+                    level().player.autoY = level().player.y + 32;
+                    level().player.automove = 1;
                     break;
                 case LEFT:
-                    level.player.autoX = level.player.x - 28;
-                    level.player.autoY = level.player.y;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x - 28;
+                    level().player.autoY = level().player.y;
+                    level().player.automove = 1;
                     break;
                 case LEFTUP:
-                    level.player.autoX = level.player.x - 28;
-                    level.player.autoY = level.player.y - 32;
-                    level.player.automove = 1;
+                    level().player.autoX = level().player.x - 28;
+                    level().player.autoY = level().player.y - 32;
+                    level().player.automove = 1;
                     break;
                 case STOP:
-                    level.player.automove = 0;
+                    level().player.automove = 0;
                     break;
             }
         }

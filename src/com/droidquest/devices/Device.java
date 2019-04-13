@@ -139,16 +139,16 @@ public class Device extends Item {
     public void IsDropped() {
         super.IsDropped();
         if (goesInToolbox) {
-            if (level.toolbox != null) {
-                if (((ToolBox) level.toolbox).open) {
-                    if (Overlaps(level.toolbox)) {
+            if (level().toolbox != null) {
+                if (((ToolBox) level().toolbox).open) {
+                    if (Overlaps(level().toolbox)) {
                         // Remove all wires and delete device
                         for (Port port : ports) {
                             if (port.myWire != null) {
                                 port.myWire.Remove();
                             }
                         }
-                        level.items.remove(this);
+                        level().items.remove(this);
                     }
                 }
             }

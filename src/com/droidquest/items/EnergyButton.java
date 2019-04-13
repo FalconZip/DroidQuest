@@ -16,8 +16,8 @@ public class EnergyButton extends Button {
     public void Animate() {
         if (animationState == 0) {
             if (room != null) {
-                for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.get(a);
+                for (int a = 0; a < level().items.size(); a++) {
+                    Item item = level().items.get(a);
                     if (Overlaps(item)) {
                         animationState = 1;
                         nb.animationState = 51;

@@ -50,7 +50,7 @@ public class WallHandle extends Item {
     }
 
     public boolean CanBePickedUp(Item item) {
-        return item != level.player;
+        return item != level().player;
     }
 
     public void IsDropped() {

@@ -35,12 +35,12 @@ public class Bumper extends Device {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.items.indexOf(robot));
+        s.writeInt(level().items.indexOf(robot));
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level.FindItem(s.readInt());
+        robot = (GenericRobot) level().FindItem(s.readInt());
     }
 
     public void GenerateIcons() {
@@ -177,7 +177,7 @@ public class Bumper extends Device {
                 int bigY = (Y - 3) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (level.materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level().materialAt(a, bigY, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -192,7 +192,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (level.materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level().materialAt(bigX, a, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -207,7 +207,7 @@ public class Bumper extends Device {
                 int bigY = (Y + 44) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (level.materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level().materialAt(a, bigY, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -222,7 +222,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (level.materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level().materialAt(bigX, a, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }

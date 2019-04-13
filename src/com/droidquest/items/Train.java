@@ -55,10 +55,10 @@ public class Train extends Item implements Avatar {
     }
 
     public boolean CanBePickedUp(Item item) {
-        if (item == level.player) {
-            PicksUp(level.player);
-            level.player = this;
-            Material mat = level.materials.get(8);
+        if (item == level().player) {
+            PicksUp(level().player);
+            level().player = this;
+            Material mat = level().materials.get(8);
             mat.passable = true;
         }
         return false;
@@ -66,7 +66,7 @@ public class Train extends Item implements Avatar {
 
     public boolean KeyUp(KeyEvent e) {
         if (e.getKeyCode() == e.VK_SPACE) {
-            if (level.rooms.indexOf(room) == 14) {
+            if (level().rooms.indexOf(room) == 14) {
                 room.SetMaterial(8, 0, 0);
                 room.SetMaterial(9, 0, 0);
                 room.SetMaterial(10, 0, 0);
@@ -74,10 +74,10 @@ public class Train extends Item implements Avatar {
                 room.SetMaterial(18, 8, 0);
                 room.SetMaterial(18, 9, 0);
             }
-            level.player = carrying;
+            level().player = carrying;
             Drops();
             room = null;
-            Material mat = level.materials.get(8);
+            Material mat = level().materials.get(8);
             mat.passable = false;
         }
         return false;

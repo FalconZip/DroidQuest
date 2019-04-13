@@ -24,7 +24,7 @@ public class MineField extends Material {
             hit--;
         }
         if (hit >= 2) {
-            target.room = level.rooms.get(58);
+            target.room = level().rooms.get(58);
             target.charge = 0;
             if (target.InternalRoom != null) {
                 Room room = target.InternalRoom;

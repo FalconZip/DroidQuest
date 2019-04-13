@@ -54,7 +54,7 @@ public class Polarizer extends Item {
 
     public void Animate() {
         if (!searched) {
-            for(Item item : level.items) {
+            for(Item item : level().items) {
                 searched = true;
                 if(item != null && item instanceof StormCloud) {
                     found = true;
@@ -65,12 +65,12 @@ public class Polarizer extends Item {
 
         if (found) {
             if (room.upRoom == room) {
-                for(Iterator<Item> it= level.items.iterator(); it.hasNext(); ) {
+                for(Iterator<Item> it= level().items.iterator(); it.hasNext(); ) {
                 	Item item = it.next();
                     if (item != null && item instanceof StormCloud) {
                         if (Overlaps(item)) {
                             room.playSound(Sounds.DISCHARGE);
-                            level.LinkRoomsUpDown(36, 4);
+                            level().LinkRoomsUpDown(36, 4);
                             room.SetMaterial(8, 0, 0);
                             room.SetMaterial(9, 0, 0);
                             room.SetMaterial(10, 0, 0);

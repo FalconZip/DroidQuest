@@ -84,18 +84,18 @@ public class GateKeeper extends Item {
             }
             else {
                 behavior = 0;
-                level.items.remove(carrying);
+                level().items.remove(carrying);
                 carrying = null;
                 StormShield ss = null;
-                for (int a = 0; a < level.items.size(); a++) {
-                    Item item = level.items.get(a);
+                for (int a = 0; a < level().items.size(); a++) {
+                    Item item = level().items.get(a);
                     if (item.getClass().toString().endsWith("StormShield")) {
                         ss = (StormShield) item;
                     }
                 }
                 if (ss != null) {
                     ss.SetRoom(null); // Removes wires
-                    level.items.remove(ss);
+                    level().items.remove(ss);
                 }
                 room.SetMaterial(7, 7, 21);
             }

@@ -16,14 +16,14 @@ public class SwitchB extends Switch {
 
     public void TouchedByItem(Item item) {
         value = true;
-        for (int a = 0; a < level.materials.size(); a++) {
-            Material mat = level.materials.get(a);
+        for (int a = 0; a < level().materials.size(); a++) {
+            Material mat = level().materials.get(a);
             if (mat.getClass().toString().endsWith("SwitchA")) {
                 switchA = (SwitchA) mat;
             }
         }
-        for (int a = 0; a < level.items.size(); a++) {
-            Item item2 = level.items.get(a);
+        for (int a = 0; a < level().items.size(); a++) {
+            Item item2 = level().items.get(a);
             if (item2.room == item.room) {
                 if (item2.getClass().toString().endsWith("Sentry")) {
                     sentry = (Sentry) item2;
@@ -43,7 +43,7 @@ public class SwitchB extends Switch {
                         textbox.textString = "KLAATA BARADA NIKTO!";
                         textbox.y = 6 * 32;
                         textbox.width = 400;
-                        level.items.remove(sentry);
+                        level().items.remove(sentry);
                     }
                 }
             }
