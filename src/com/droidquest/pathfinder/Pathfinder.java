@@ -1,5 +1,6 @@
 package com.droidquest.pathfinder;
 
+import com.droidquest.InLevel;
 import com.droidquest.Room;
 import com.droidquest.items.Item;
 
@@ -9,7 +10,7 @@ import java.util.Collections;
 /**
  * Finds a path between two places on the map, using the A* algorithm
  */
-public class Pathfinder {
+public class Pathfinder implements InLevel{
     private ArrayList<ArrayList<Node>> nodeList = new ArrayList<ArrayList<Node>>();
 
     private ArrayList<Node> openList = new ArrayList<Node>();
@@ -165,7 +166,7 @@ public class Pathfinder {
         for(int y = 0; y < room.RoomArray.length;y++) {
             nodeList.add(new ArrayList<Node>());
             for(int x=0;x<room.RoomArray[y].length;x++) {
-                nodeList.get(y).add(new Node(x, y, Room.level.materialAt(x, y, room)));
+                nodeList.get(y).add(new Node(x, y, level().materialAt(x, y, room)));
             }
         }
     }

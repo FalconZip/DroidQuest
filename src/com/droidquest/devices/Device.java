@@ -36,7 +36,7 @@ public class Device extends Item {
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
         for (Port port : ports) {
-            port.readRef(s, level);
+            port.readRef(s);
         }
         GenerateIcons();
     }

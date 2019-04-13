@@ -1,15 +1,17 @@
 package com.droidquest.devices;
 
-import com.droidquest.Room;
-import com.droidquest.chipstuff.Port;
-import com.droidquest.items.GenericRobot;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.ImageIcon;
+
+import com.droidquest.Room;
+import com.droidquest.chipstuff.Port;
+import com.droidquest.items.GenericRobot;
 
 public class Bumper extends Device {
     private int rotation;
@@ -175,7 +177,7 @@ public class Bumper extends Device {
                 int bigY = (Y - 3) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (robot.level.materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level.materialAt(a, bigY, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -190,7 +192,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (robot.level.materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level.materialAt(bigX, a, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -205,7 +207,7 @@ public class Bumper extends Device {
                 int bigY = (Y + 44) / 32;
                 boolean collide = false;
                 for (int a = bigXl; a <= bigXr; a++) {
-                    if (robot.level.materialAt(a, bigY, robot.room).Detectable(robot)) {
+                    if (level.materialAt(a, bigY, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }
@@ -220,7 +222,7 @@ public class Bumper extends Device {
                 int bigYb = (Y + 36) / 32;
                 boolean collide = false;
                 for (int a = bigYt; a <= bigYb; a++) {
-                    if (robot.level.materialAt(bigX, a, robot.room).Detectable(robot)) {
+                    if (level.materialAt(bigX, a, robot.room).Detectable(robot)) {
                         collide = true;
                     }
                 }

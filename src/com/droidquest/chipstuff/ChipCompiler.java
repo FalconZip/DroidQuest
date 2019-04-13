@@ -2,6 +2,7 @@ package com.droidquest.chipstuff;
 
 import java.util.Iterator;
 
+import com.droidquest.InLevel;
 import com.droidquest.Wire;
 import com.droidquest.devices.Device;
 import com.droidquest.devices.FlipFlop;
@@ -9,7 +10,7 @@ import com.droidquest.devices.PrototypeChip;
 import com.droidquest.devices.SmallChip;
 import com.droidquest.items.Item;
 
-public class ChipCompiler extends Thread {
+public class ChipCompiler extends Thread implements InLevel {
     public static int chipSpeed = 1;
 
     public ChipCompiler(PrototypeChip pc, SmallChip sc) {
@@ -36,8 +37,7 @@ public class ChipCompiler extends Thread {
             sc.portSignals[a].type = pc.ports[a].type;
         }
 
-        for (int a = 0; a < pc.level.items.size(); a++) {
-            Item item = pc.level.items.get(a);
+        for (Item item: level().items) {
             if (item.room == pc.InternalRoom) {
                 if (item.isDevice()) {
                     Device device = (Device) item;
