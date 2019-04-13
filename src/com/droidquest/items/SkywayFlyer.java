@@ -3,7 +3,7 @@ package com.droidquest.items;
 import javax.swing.ImageIcon;
 
 import com.droidquest.Room;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class SkywayFlyer extends Item {
     private int speed;
@@ -59,7 +59,7 @@ public class SkywayFlyer extends Item {
         }
 
         if (Overlaps(level.player)) {
-            level.PlaySound(room, Level.DISCHARGESOUND);
+            room.playSound(Sounds.DISCHARGE);
             level.player.x = 2 * 28;
             level.player.y = 8 * 32;
             level.player.SetRoom(room.downRoom);

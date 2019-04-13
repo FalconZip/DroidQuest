@@ -9,7 +9,7 @@ import java.util.Iterator;
 import javax.swing.ImageIcon;
 
 import com.droidquest.Room;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class Polarizer extends Item {
     private transient boolean searched = false;
@@ -69,7 +69,7 @@ public class Polarizer extends Item {
                 	Item item = it.next();
                     if (item != null && item instanceof StormCloud) {
                         if (Overlaps(item)) {
-                            level.PlaySound(room, Level.DISCHARGESOUND);
+                            room.playSound(Sounds.DISCHARGE);
                             level.LinkRoomsUpDown(36, 4);
                             room.SetMaterial(8, 0, 0);
                             room.SetMaterial(9, 0, 0);

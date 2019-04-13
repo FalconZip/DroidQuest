@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 import com.droidquest.Room;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class Ghost extends Item {
     private int animationState = 0; // 0=Right, 1=Down,  2=Left, 3=Up
@@ -182,7 +182,7 @@ public class Ghost extends Item {
             if (robot[a] != null) {
                 if (Overlaps(robot[a])) {
                     robot[a].charge = 0;
-                    level.PlaySound(room, Level.DISCHARGESOUND);
+                    room.playSound(Sounds.DISCHARGE);
                     robot[a].x = 16 * 28 + 14;
                     robot[a].y = 32;
                 }

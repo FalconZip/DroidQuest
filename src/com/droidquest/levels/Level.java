@@ -57,28 +57,28 @@ public class Level implements ImageObserver, Serializable {
     private transient List<Item> invItems = new ArrayList<Item>();
     private transient List<Integer> invItemIndexes = new ArrayList<Integer>();
 
-    public transient HashMap<String, Sound> sounds = new HashMap<String, Sound>();
+//    public transient HashMap<String, Sound> sounds = new HashMap<String, Sound>();
 
     public transient Random random = new Random();
-    public transient static String ATTACHSOUND = "attach.WAV";
-    public transient static String DETATCHSOUND = "detatch.WAV";
-    public transient static String PICKUPSOUND = "pickup.WAV";
-    public transient static String DROPSOUND = "drop.WAV";
-    public transient static String BEEPSOUND = "beep.WAV";
-    public transient static String BUMPSOUND = "bump.WAV";
-    public transient static String CHARGESOUND = "charge.WAV";
-    public transient static String DISCHARGESOUND = "discharge.WAV";
-    public transient static String BURNSOUND = "burn.WAV";
-    public transient static String ENDMUSICSOUND = "liberty.mid";
-    public transient static String STARTMUSICSOUND = "sp001.wav";
-    public transient static String TELEPORTSOUND = "teleport.WAV";
-    public transient static String TRANSPORTSOUND = "transport.WAV";
-    private String[] soundFiles = {
-            ATTACHSOUND, DETATCHSOUND, PICKUPSOUND, DROPSOUND,
-            BEEPSOUND, BUMPSOUND, CHARGESOUND, DISCHARGESOUND,
-            BURNSOUND, ENDMUSICSOUND, STARTMUSICSOUND,
-            TELEPORTSOUND, TRANSPORTSOUND
-    };
+//    public transient static String ATTACHSOUND = "attach.WAV";
+//    public transient static String DETATCHSOUND = "detatch.WAV";
+//    public transient static String PICKUPSOUND = "pickup.WAV";
+//    public transient static String DROPSOUND = "drop.WAV";
+//    public transient static String BEEPSOUND = "beep.WAV";
+//    public transient static String BUMPSOUND = "bump.WAV";
+//    public transient static String CHARGESOUND = "charge.WAV";
+//    public transient static String DISCHARGESOUND = "discharge.WAV";
+//    public transient static String BURNSOUND = "burn.WAV";
+//    public transient static String ENDMUSICSOUND = "liberty.mid";
+//    public transient static String STARTMUSICSOUND = "sp001.wav";
+//    public transient static String TELEPORTSOUND = "teleport.WAV";
+//    public transient static String TRANSPORTSOUND = "transport.WAV";
+//    private String[] soundFiles = {
+//            ATTACHSOUND, DETATCHSOUND, PICKUPSOUND, DROPSOUND,
+//            BEEPSOUND, BUMPSOUND, CHARGESOUND, DISCHARGESOUND,
+//            BURNSOUND, ENDMUSICSOUND, STARTMUSICSOUND,
+//            TELEPORTSOUND, TRANSPORTSOUND
+//    };
     public transient boolean cheatmode = true;
 
 //    Level() {
@@ -93,7 +93,7 @@ public class Level implements ImageObserver, Serializable {
         gameState.setLevel(this);
         Material.level = this;
         random.setSeed(System.currentTimeMillis());
-        InitSounds();
+//        InitSounds();
     }
 
     public void LinkRoomsLeftRight(int L, int R) {
@@ -907,33 +907,29 @@ public class Level implements ImageObserver, Serializable {
 
     }
 
-    void InitSounds() {
-        for (String soundFile : soundFiles) {
-            sounds.put(soundFile, new Sound(soundFile));
-        }
-    }
-
-    public void PlaySound(Room room, String soundname) {
-        if (!SoundPlayer.useSounds) {
-            return;
-        }
-
-        boolean flag = true;
-        if (currentViewer != null) {
-            if (room != currentViewer.room) {
-                flag = false;
-            }
-        }
-
-        if (flag) {
-            System.out.println("Playing sound " + soundname);
-            Sound sound = sounds.get(soundname);
-            if (sound != null) {
-                SoundPlayer.play(sound);
-            }
-            System.out.println("Done");
-        }
-    }
+//    void InitSounds() {
+//        for (String soundFile : soundFiles) {
+//            sounds.put(soundFile, new Sound(soundFile));
+//        }
+//    }
+//
+//    public void PlaySound(Room room, String soundname) {
+//        if (!SoundPlayer.useSounds) {
+//            return;
+//        }
+//
+//        if (currentViewer != null) {
+//            if (room != currentViewer.room) {
+//                return;
+//            }
+//        }
+//
+//        System.out.println("Playing sound " + soundname);
+//        Sound sound = sounds.get(soundname);
+//        if (sound != null) {
+//            SoundPlayer.play(sound);
+//        }
+//    }
 
     public void Init() {
         // Generate all Room Material Arrays

@@ -6,6 +6,7 @@ import com.droidquest.decorations.Spark;
 import com.droidquest.devices.Device;
 import com.droidquest.levels.Level;
 import com.droidquest.materials.*;
+import com.droidquest.sound.Sounds;
 
 import javax.swing.*;
 import java.awt.*;
@@ -333,7 +334,6 @@ public class GenericRobot extends Item {
             }
         }
 
-
         // Draw Antenna sparks around Broadcasting Antenna
         if (broadcasting && level.electricity) {
             Dimension d = GetXY();
@@ -345,19 +345,19 @@ public class GenericRobot extends Item {
 
         // Make sounds
         if (topBumper && !oldTopBumper) {
-            level.PlaySound(room, Level.BUMPSOUND);
+        	room.playSound(Sounds.BUMP);
         }
         if (bottomBumper && !oldBottomBumper) {
-            level.PlaySound(room, Level.BUMPSOUND);
+        	room.playSound(Sounds.BUMP);
         }
         if (rightBumper && !oldRightBumper) {
-            level.PlaySound(room, Level.BUMPSOUND);
+        	room.playSound(Sounds.BUMP);
         }
         if (leftBumper && !oldLeftBumper) {
-            level.PlaySound(room, Level.BUMPSOUND);
+        	room.playSound(Sounds.BUMP);
         }
         if (broadcasting && level.electricity) {
-            level.PlaySound(room, Level.BEEPSOUND);
+        	room.playSound(Sounds.BEEP);
         }
         oldTopBumper = topBumper;
         oldBottomBumper = bottomBumper;

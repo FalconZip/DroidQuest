@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 import com.droidquest.Room;
 import com.droidquest.devices.PrototypeChip;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class Factory extends Item {
     private Item target;
@@ -66,7 +66,7 @@ public class Factory extends Item {
         item.y = (384 - item.height) / 2;
         item.room = room;
         level.items.add(item);
-        level.PlaySound(room, Level.CHARGESOUND);
+        room.playSound(Sounds.CHARGE);
         return false;
     }
 

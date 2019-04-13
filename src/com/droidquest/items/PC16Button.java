@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 import com.droidquest.Room;
 import com.droidquest.devices.Prototype16Chip;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class PC16Button extends Item {
     public PC16Button(int X, int Y, Room r) {
@@ -52,7 +52,7 @@ public class PC16Button extends Item {
     public boolean CanBePickedUp(Item i) {
         Prototype16Chip newPC = new Prototype16Chip(228, 160, room);
         level.items.add(newPC);
-        level.PlaySound(room, Level.CHARGESOUND);
+        room.playSound(Sounds.CHARGE);
         return false;
     }
 

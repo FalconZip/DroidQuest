@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import com.droidquest.items.Item;
 import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class CrystalRecharger extends Material {
     // Charges a Crystal when one is passed over it.
@@ -44,7 +45,7 @@ public class CrystalRecharger extends Material {
         // Check to see if it's a pure Crystal, not a Black Crystal
         if (item.getClass().toString().endsWith("Crystal")) {
             item.charge = 100000;
-            level.PlaySound(item.room, Level.CHARGESOUND);
+            item.room.playSound(Sounds.CHARGE);
         }
     }
 
