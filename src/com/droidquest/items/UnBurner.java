@@ -21,10 +21,10 @@ public class UnBurner extends Item {
         room = r;
         width = 28;
         height = 30;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -69,7 +69,7 @@ public class UnBurner extends Item {
 
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         // Find the SmallChip and Erase it
         Item sc = null;
         for (int a = 0; a < level().items.size(); a++) {
@@ -107,7 +107,7 @@ public class UnBurner extends Item {
         return false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (burning > 0) {
             animation = 1 - animation;
             currentIcon = icons[animation].getImage();

@@ -14,7 +14,7 @@ public class SwitchB extends Switch {
         super(ROT_LEFT);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         value = true;
         for (int a = 0; a < level().materials.size(); a++) {
             Material mat = level().materials.get(a);
@@ -32,8 +32,8 @@ public class SwitchB extends Switch {
         }
     }
 
-    public void Animate() {
-        super.Animate();
+    public void animate() {
+        super.animate();
         if (!flipped) {
             if (value) {
                 if (switchA != null) {

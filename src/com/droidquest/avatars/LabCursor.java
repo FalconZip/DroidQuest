@@ -23,14 +23,14 @@ public class LabCursor extends Player {
         room = r;
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
 
         // Lab cursor has a longer key repeat rate than the game cursor
         setKeyRepeatRate(10);
 
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -61,7 +61,7 @@ public class LabCursor extends Player {
         }
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         return !(i instanceof GenericRobot);
     }
 
@@ -104,7 +104,7 @@ public class LabCursor extends Player {
             return false;
         }
         if (carrying != null) {
-            Drops();
+            drops();
         }
         level().paintbrush.x = (x / 28) * 28;
         level().paintbrush.y = (y / 32) * 32;
@@ -137,7 +137,7 @@ public class LabCursor extends Player {
             level().toolbox.room = room;
             level().toolbox.x = x + 28;
             level().toolbox.y = y + 6;
-            PicksUp(level().toolbox);
+            picksUp(level().toolbox);
         }
         else {
             ((ToolBox) level().toolbox).Toggle();

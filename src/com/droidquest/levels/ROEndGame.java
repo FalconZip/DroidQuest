@@ -95,7 +95,7 @@ class ROEndGame extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
             };
-            room.AddTextBox("No help here. Press Return.",
+            room.addTextBox("No help here. Press Return.",
                     118, 5 * 32, 450);
         }
 
@@ -116,11 +116,11 @@ class ROEndGame extends Level {
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
 
-            room.AddTextBox("{BIG} {255,000,000} CONGRATULATIONS!", 64, 64, 500);
-            room.AddTextBox("You are one of the few, true", 112, 4 * 32, 560);
-            room.AddTextBox("Robot Masters.", 196, 4 * 32 + 20, 560);
-            room.AddTextBox("Return to the Main Menu", 2 * 28, 10 * 32 + 24, 500);
-            room.AddArrow(360, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("{BIG} {255,000,000} CONGRATULATIONS!", 64, 64, 500);
+            room.addTextBox("You are one of the few, true", 112, 4 * 32, 560);
+            room.addTextBox("Robot Masters.", 196, 4 * 32 + 20, 560);
+            room.addTextBox("Return to the Main Menu", 2 * 28, 10 * 32 + 24, 500);
+            room.addArrow(360, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new EndAnimation(room));
         }
 
@@ -140,10 +140,10 @@ class ROEndGame extends Level {
                     {0, 0, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("You may want to take the keys with you...", 24, 24, 560);
+            room.addTextBox("You may want to take the keys with you...", 24, 24, 560);
         }
 
-        LinkRoomsLeftRight(1, 2);
+        linkRoomsLeftRight(1, 2);
 
         gameCursor = new GameCursor(10 * 28, 8 * 32, rooms.get(1));
         helpCam = new HelpCam(rooms.get(0));

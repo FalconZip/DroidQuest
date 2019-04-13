@@ -9,10 +9,10 @@ import javax.swing.ImageIcon;
 public class CoinSlot extends Material {
     public CoinSlot() {
         super(true, false);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {

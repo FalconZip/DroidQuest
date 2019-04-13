@@ -60,16 +60,16 @@ class ROTut2 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Special Keys", 6 * 28, 2 * 32, 500);
-            room.AddTextBox("R Become the Remote Control. SPACEBAR toggles on/off.",
+            room.addTextBox("Special Keys", 6 * 28, 2 * 32, 500);
+            room.addTextBox("R Become the Remote Control. SPACEBAR toggles on/off.",
                     2 * 28, 3 * 32, 500);
-            room.AddTextBox("S Become the Solderpen. SPACEBAR toggles on/off.",
+            room.addTextBox("S Become the Solderpen. SPACEBAR toggles on/off.",
                     2 * 28, 5 * 32, 500);
-            room.AddTextBox("C Become the Cursor. SPACEBAR toggles on/off.",
+            room.addTextBox("C Become the Cursor. SPACEBAR toggles on/off.",
                     2 * 28, 7 * 32, 500);
-            room.AddTextBox("T Summons Toolkit to your room. Open/close Toolkit in room.",
+            room.addTextBox("T Summons Toolkit to your room. Open/close Toolkit in room.",
                     2 * 28, 9 * 32, 500);
-            room.AddTextBox("To continue, press RETURN.", 4 * 28, 11 * 32, 500);
+            room.addTextBox("To continue, press RETURN.", 4 * 28, 11 * 32, 500);
         }
         {  // Room 1, Title Screen 
             Room room = rooms.get(1);
@@ -87,15 +87,15 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("{BIG} TOOLKIT", 6 * 28, 2 * 32, 500);
-            room.AddTextBox("Here you will learn to use the",
+            room.addTextBox("{BIG} TOOLKIT", 6 * 28, 2 * 32, 500);
+            room.addTextBox("Here you will learn to use the",
                     2 * 28, 3 * 32, 500);
-            room.AddTextBox("- Remote Control", 6 * 28, 5 * 32, 500);
-            room.AddTextBox("- Solderpen", 6 * 28, 6 * 32, 500);
-            room.AddTextBox("- Toolkit", 6 * 28, 7 * 32, 500);
-            room.AddTextBox("If you don't know about ROBOT ANATOMY, return to the Main Menu by using the menubar.",
+            room.addTextBox("- Remote Control", 6 * 28, 5 * 32, 500);
+            room.addTextBox("- Solderpen", 6 * 28, 6 * 32, 500);
+            room.addTextBox("- Toolkit", 6 * 28, 7 * 32, 500);
+            room.addTextBox("If you don't know about ROBOT ANATOMY, return to the Main Menu by using the menubar.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 2, Remote 
             Room room = rooms.get(2);
@@ -113,11 +113,11 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("This is the REMOTE CONTROL. It 'freezes' the flow of electricity.",
+            room.addTextBox("This is the REMOTE CONTROL. It 'freezes' the flow of electricity.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Press R to become the Remote Control.",
+            room.addTextBox("Press R to become the Remote Control.",
                     2 * 28, 6 * 32, 300);
-            room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             Remote remote = new Remote();
             remote.x = 17 * 28 + 14;
             remote.y = 48;
@@ -140,11 +140,11 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Press SPACEBAR to 'freeze' the electricity. The Remote Control turns white.",
+            room.addTextBox("Press SPACEBAR to 'freeze' the electricity. The Remote Control turns white.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Press SPACEBAR again to let electricity flow. The Remote Control turns orange.",
+            room.addTextBox("Press SPACEBAR again to let electricity flow. The Remote Control turns orange.",
                     2 * 28, 10 * 32, 500);
-            room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             Node node = new Node(10 * 28, 4 * 32, room, Node.TYPE_STRAIGHT);
             NOTGate notgate = new NOTGate(15 * 28, 6 * 32, room);
             items.add(node);
@@ -168,13 +168,13 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 3}
             };
-            room.AddTextBox("Freeze the electricity to stop the robot.",
+            room.addTextBox("Freeze the electricity to stop the robot.",
                     9 * 28, 2 * 32, 300);
-            room.AddTextBox("Turn on the elec- tricity and the robot moves.",
+            room.addTextBox("Turn on the elec- tricity and the robot moves.",
                     9 * 28, 5 * 32, 300);
-            room.AddTextBox("When the Remote Control is on, it drains electricity from the Robot's battery.",
+            room.addTextBox("When the Remote Control is on, it drains electricity from the Robot's battery.",
                     9 * 28, 8 * 32, 300);
-            room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new Crystal(3 * 28, 10 * 32, room, 100000));
             OrangeRobot robot = new OrangeRobot(28, 32, room);
             items.add(robot);
@@ -206,15 +206,15 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Freeze the electricity again. Press C to become the cursor. Pick up the sensor and move it around the crystal.",
+            room.addTextBox("Freeze the electricity again. Press C to become the cursor. Pick up the sensor and move it around the crystal.",
                     2 * 28, 2 * 32, 450);
-            room.AddTextBox("Did the outputs change color?",
+            room.addTextBox("Did the outputs change color?",
                     2 * 28, 5 * 32, 200);
-            room.AddTextBox("Sensors don't work when the remote control is off.",
+            room.addTextBox("Sensors don't work when the remote control is off.",
                     2 * 28, 8 * 32, 350);
-            room.AddTextBox("Turn the remote contol on.",
+            room.addTextBox("Turn the remote contol on.",
                     2 * 28, 11 * 32, 500);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new Crystal(12 * 28, 4 * 32, room, 100000));
             items.add(new DirectionalSensor(15 * 28, 6 * 32, room,
                     new Crystal(0, 0, null, 0)));
@@ -235,14 +235,14 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3}
             };
-            room.AddTextBox("The SOLDERPEN is used to wire OUTPUTS to INPUTS.",
+            room.addTextBox("The SOLDERPEN is used to wire OUTPUTS to INPUTS.",
                     2 * 28, 2 * 32, 350);
-            room.AddTextBox("Press S to become the Solderpen.",
+            room.addTextBox("Press S to become the Solderpen.",
                     2 * 28, 5 * 32, 400);
-            room.AddTextBox("Tip",
+            room.addTextBox("Tip",
                     14 * 28 + 8, 3 * 32 - 12, 50);
-            room.AddArrow(16 * 28 + 24, 2 * 32 + 14, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(16 * 28 + 24, 2 * 32 + 14, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             SolderingPen sp = new SolderingPen();
             items.add(sp);
             sp.x = 17 * 28;
@@ -265,11 +265,11 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0}
             };
-            room.AddTextBox("Move the Solderpen to the INPUT (circle) until the Solderpen tip glows orange. Press SPACEBAR.",
+            room.addTextBox("Move the Solderpen to the INPUT (circle) until the Solderpen tip glows orange. Press SPACEBAR.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Move the Solderpen to the OUTPUT (arrow). When the tip glows orange, press SPACEBAR. The INPUT is now wired to the OUTPUT and electricity flows between them.",
+            room.addTextBox("Move the Solderpen to the OUTPUT (arrow). When the tip glows orange, press SPACEBAR. The INPUT is now wired to the OUTPUT and electricity flows between them.",
                     2 * 28, 7 * 32, 400);
-            room.AddArrow(0, 5 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 5 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             items.add(new Thruster(17 * 28, 9 * 32, room, Port.ROT_RIGHT, Color.white));
             PortDevice pd = new PortDevice(15 * 28, 10 * 32, room, 28, Port.TYPE_OUTPUT);
             pd.value = true;
@@ -291,9 +291,9 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0}
             };
-            room.AddTextBox("To disconnect the wire, move near the INPUT or OUTPUT. Press the SPACEBAR when the tip glows green.",
+            room.addTextBox("To disconnect the wire, move near the INPUT or OUTPUT. Press the SPACEBAR when the tip glows green.",
                     2 * 28, 2 * 32, 400);
-            room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             Thruster thruster = new Thruster(17 * 28, 9 * 32, room, Port.ROT_RIGHT, Color.white);
             items.add(thruster);
             PortDevice pd = new PortDevice(15 * 28, 10 * 32, room, 28, Port.TYPE_OUTPUT);
@@ -317,13 +317,13 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("When you connect inputs to outputs, you create CIRCUITS.",
+            room.addTextBox("When you connect inputs to outputs, you create CIRCUITS.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Change to the cursor and pick up part of this circuit.",
+            room.addTextBox("Change to the cursor and pick up part of this circuit.",
                     2 * 28, 4 * 32, 500);
-            room.AddTextBox("The wire will stretch as you move, but break if you leave the room.",
+            room.addTextBox("The wire will stretch as you move, but break if you leave the room.",
                     2 * 28, 6 * 32, 500);
-            room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             NOTGate ng = new NOTGate(15 * 28, 7 * 32, room);
             ORGate og = new ORGate(10 * 28, 7 * 32, room);
             og.rotate(1);
@@ -349,13 +349,13 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Practice wiring circuits in the orange robot above. (Don't forget to come back!)",
+            room.addTextBox("Practice wiring circuits in the orange robot above. (Don't forget to come back!)",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Go inside the robot and rewire the bumpers to the thrusters in any way you like.",
+            room.addTextBox("Go inside the robot and rewire the bumpers to the thrusters in any way you like.",
                     2 * 28, 5 * 32, 400);
-            room.AddTextBox("To start the robot moving, put it against a wall.",
+            room.addTextBox("To start the robot moving, put it against a wall.",
                     2 * 28, 8 * 32, 400);
-            room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         {  // Room 11, Toolkit is here 
             Room room = rooms.get(11);
@@ -373,13 +373,13 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("This is the TOOLKIT. Inside are parts you need to wire circuits.",
+            room.addTextBox("This is the TOOLKIT. Inside are parts you need to wire circuits.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Press C to become the cursor and pick up the Toolkit.",
+            room.addTextBox("Press C to become the cursor and pick up the Toolkit.",
                     2 * 28, 5 * 32, 400);
-            room.AddTextBox("Carry it into the next room.",
+            room.addTextBox("Carry it into the next room.",
                     2 * 28, 8 * 32, 400);
-            room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             toolbox = new ToolBox(15 * 28, 2 * 32, room);
             items.add(toolbox);
         }
@@ -399,14 +399,14 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Drop Toolkit here.",
+            room.addTextBox("Drop Toolkit here.",
                     4 * 28, 4 * 32, 100);
-            room.AddTextBox("You can open and close the Toolkit by pressing T. Try it a few times.",
+            room.addTextBox("You can open and close the Toolkit by pressing T. Try it a few times.",
                     2 * 28, 7 * 32, 300);
-            room.AddTextBox("Leave the Toolkit here.",
+            room.addTextBox("Leave the Toolkit here.",
                     2 * 28, 10 * 32, 400);
-            room.AddArrow(9 * 28, 5 * 32, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(9 * 28, 5 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 13, Toolkit Sentry 
             Room room = rooms.get(13);
@@ -424,9 +424,9 @@ class ROTut2 extends Level {
                     {0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("NO TOOLKITS ALLOWED!",
+            room.addTextBox("NO TOOLKITS ALLOWED!",
                     2 * 28, 2 * 32, 150);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new SentryT2(2 * 28, 2 * 32, room));
         }
         {  // Room 14, Summon Toolkit 
@@ -445,9 +445,9 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Do you want the Toolkit? Press T to summon it. Drop the Toolkit and press T to open and close it.",
+            room.addTextBox("Do you want the Toolkit? Press T to summon it. Drop the Toolkit and press T to open and close it.",
                     2 * 28, 2 * 32, 500);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 15, Objects in Toolkit 
             Room room = rooms.get(15);
@@ -465,14 +465,14 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("You can take parts in and out of the Toolkit with the cursor.",
+            room.addTextBox("You can take parts in and out of the Toolkit with the cursor.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("To take a part out, move on top of it and press the SPACEBAR. To put it back, drop it anywhere in the Toolkit.",
+            room.addTextBox("To take a part out, move on top of it and press the SPACEBAR. To put it back, drop it anywhere in the Toolkit.",
                     2 * 28, 5 * 32, 500);
-            room.AddTextBox("Open Toolkit here.",
+            room.addTextBox("Open Toolkit here.",
                     3 * 28, 9 * 32, 100);
-            room.AddArrow(7 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(7 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 16, Rotating Objects 
             Room room = rooms.get(16);
@@ -490,14 +490,14 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("You can rotate parts left and right by holding a part and pressing the [ and ] keys.",
+            room.addTextBox("You can rotate parts left and right by holding a part and pressing the [ and ] keys.",
                     2 * 28, 2 * 32, 450);
-            room.AddTextBox("There is no limit to the number of parts you can take out of the Toolkit.",
+            room.addTextBox("There is no limit to the number of parts you can take out of the Toolkit.",
                     2 * 28, 5 * 32, 450);
-            room.AddTextBox("Open Toolkit here.",
+            room.addTextBox("Open Toolkit here.",
                     3 * 28, 9 * 32, 100);
-            room.AddArrow(7 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(7 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 17, Hot Cursor 
             Room room = rooms.get(17);
@@ -515,13 +515,13 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("You can make the cursor HOT with elctricity. Press H.",
+            room.addTextBox("You can make the cursor HOT with elctricity. Press H.",
                     6 * 28, 2 * 32, 300);
-            room.AddTextBox("Pass the hot cursor over the antenna INPUT to turn the antenna on.",
+            room.addTextBox("Pass the hot cursor over the antenna INPUT to turn the antenna on.",
                     6 * 28, 5 * 32, 300);
-            room.AddTextBox("Press H again to make the cursor cold.",
+            room.addTextBox("Press H again to make the cursor cold.",
                     6 * 28, 8 * 32, 300);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new Antenna(2 * 28, 2 * 32, room, Color.white));
         }
         {  // Room 18 Crossroads 
@@ -540,22 +540,22 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                     {4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddTextBox("{BIG} CROSSROADS",
+            room.addTextBox("{BIG} CROSSROADS",
                     3 * 28, 4 * 32, 500);
-            room.AddTextBox("(Turn the Remote Control on.)",
+            room.addTextBox("(Turn the Remote Control on.)",
                     4 * 28, 5 * 32, 250);
-            room.AddTextBox("NODES",
+            room.addTextBox("NODES",
                     2 * 28, 32 + 16, 300);
-            room.AddTextBox("FLIPFLOPS",
+            room.addTextBox("FLIPFLOPS",
                     15 * 28, 32 + 16, 300);
-            room.AddTextBox("LOGIC GATES",
+            room.addTextBox("LOGIC GATES",
                     16 * 28, 6 * 32, 100);
-            room.AddTextBox("When you have learned all about the Toolkit, go this way.",
+            room.addTextBox("When you have learned all about the Toolkit, go this way.",
                     4 * 28, 9 * 32, 300);
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
-            room.AddArrow(17 * 28, 0, Arrow.DIR_UP, 28, Color.white);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(10 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(17 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(10 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         {  // Room 19, Paths to Nodes & FlipFlops 
             Room room = rooms.get(19);
@@ -573,8 +573,8 @@ class ROTut2 extends Level {
                     {4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4},
                     {4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 4}
             };
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
-            room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         {  // Room 20, Nodes Intro 
             Room room = rooms.get(20);
@@ -592,11 +592,11 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Nodes make electricity branch to two or three places.",
+            room.addTextBox("Nodes make electricity branch to two or three places.",
                     2 * 28, 2 * 32, 350);
-            room.AddTextBox("Take a node from the Toolkit and carry it to the next room.",
+            room.addTextBox("Take a node from the Toolkit and carry it to the next room.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 6 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
             items.add(new Node(13 * 28, 32 + 16, room, Node.TYPE_STRAIGHT));
             items.add(new Node(15 * 28, 32 + 16, room, Node.TYPE_RIGHT));
             items.add(new Node(17 * 28, 32 + 16, room, Node.TYPE_THREE));
@@ -617,9 +617,9 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Wire the INPUT (circle) of the node to the OUTPUT of the CONTACT sensor. Wire the node outputs to the thrusters.",
+            room.addTextBox("Wire the INPUT (circle) of the node to the OUTPUT of the CONTACT sensor. Wire the node outputs to the thrusters.",
                     2 * 28, 2 * 32, 275);
-            room.AddTextBox("Drop the blue key so that it touches the sensor. Electricity flows to both thrusters.",
+            room.addTextBox("Drop the blue key so that it touches the sensor. Electricity flows to both thrusters.",
                     2 * 28, 9 * 32, 500);
             items.add(new Key(11 * 28, 2 * 32, room, Color.white));
             items.add(new ContactSensor(11 * 28, 4 * 32, room, new Key(0, 0, null, Color.white)));
@@ -642,12 +642,12 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("A flipflop is like a light switch. It 'flips' electricity from one output to the other.",
+            room.addTextBox("A flipflop is like a light switch. It 'flips' electricity from one output to the other.",
                     5 * 28, 2 * 32, 300);
-            room.AddTextBox("Take a flipflop from the Toolkit. Put the hot cursor on one input at a time to make the electricity 'flip' or 'flop'.",
+            room.addTextBox("Take a flipflop from the Toolkit. Put the hot cursor on one input at a time to make the electricity 'flip' or 'flop'.",
                     5 * 28, 6 * 32, 300);
             items.add(new FlipFlop(17 * 28 + 7, 32 + 16, room));
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         {  // Room 23, Flipflop workshop 
             Room room = rooms.get(23);
@@ -665,7 +665,7 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Go inside the robot and wire the orange OUTPUT of the flipflop to the thruster on the right. Sit on the eye to see what you did.",
+            room.addTextBox("Go inside the robot and wire the orange OUTPUT of the flipflop to the thruster on the right. Sit on the eye to see what you did.",
                     5 * 28, 8 * 32, 420);
             BlueRobot robot = new BlueRobot(9 * 28, 4 * 32, room);
             items.add(robot);
@@ -692,21 +692,21 @@ class ROTut2 extends Level {
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddTextBox("Crossroads",
+            room.addTextBox("Crossroads",
                     2 * 28, 6 * 32 + 8, 500);
-            room.AddTextBox("NOT-gate",
+            room.addTextBox("NOT-gate",
                     2 * 28, 32 + 16, 500);
-            room.AddTextBox("AND-gate",
+            room.addTextBox("AND-gate",
                     15 * 28, 2 * 32 + 16, 500);
-            room.AddTextBox("XOR-gate",
+            room.addTextBox("XOR-gate",
                     15 * 28, 10 * 32, 500);
-            room.AddTextBox("OR-gate",
+            room.addTextBox("OR-gate",
                     2 * 28, 10 * 32 + 16, 500);
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
-            room.AddArrow(559, 2 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
-            room.AddArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(559, 2 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
         }
         {  // Room 25, NOT gate intro 
             Room room = rooms.get(25);
@@ -724,12 +724,12 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("A NOT-gate inverts electricity flow. It turns on when its INPUT is NOT on.",
+            room.addTextBox("A NOT-gate inverts electricity flow. It turns on when its INPUT is NOT on.",
                     5 * 28, 2 * 32, 300);
-            room.AddTextBox("Take a NOT-gate from the Toolkit and use the hot cursor to see how it works.",
+            room.addTextBox("Take a NOT-gate from the Toolkit and use the hot cursor to see how it works.",
                     5 * 28, 6 * 32, 400);
             items.add(new NOTGate(17 * 28 + 10, 32 + 12, room));
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         {  // Room 26, NOT gate workshop 
             Room room = rooms.get(26);
@@ -747,9 +747,9 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Wire the NOT-gate output to the Antenna INPUT.",
+            room.addTextBox("Wire the NOT-gate output to the Antenna INPUT.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("The antenna beeps when the crystal is NOT touching the CONTACT sensor.",
+            room.addTextBox("The antenna beeps when the crystal is NOT touching the CONTACT sensor.",
                     5 * 28, 8 * 32, 400);
             items.add(new Crystal(3 * 28, 7 * 32, room, 100000));
             ContactSensor sensor = new ContactSensor(2 * 28, 6 * 32, room, new Crystal(0, 0, null, 0));
@@ -775,12 +775,12 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2}
             };
-            room.AddTextBox("An OR-gate turns on when one OR the other INPUT is on, or both.",
+            room.addTextBox("An OR-gate turns on when one OR the other INPUT is on, or both.",
                     5 * 28, 2 * 32, 300);
-            room.AddTextBox("Take an OR-gate from the Toolkit and use the hot cursor to see how it works.",
+            room.addTextBox("Take an OR-gate from the Toolkit and use the hot cursor to see how it works.",
                     2 * 28, 8 * 32, 400);
             items.add(new ORGate(17 * 28 + 10, 32 + 12, room));
-            room.AddArrow(17 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(17 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
         }
         {  // Room 28, OR workshop 
             Room room = rooms.get(28);
@@ -798,9 +798,9 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Wire the OR-gate output to the Antenna INPUT.",
+            room.addTextBox("Wire the OR-gate output to the Antenna INPUT.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("The antenna beeps when the key is above OR left of the sensor.",
+            room.addTextBox("The antenna beeps when the key is above OR left of the sensor.",
                     5 * 28, 10 * 32, 400);
             items.add(new Key(3 * 28, 7 * 32, room, Color.blue));
             DirectionalSensor sensor = new DirectionalSensor(8 * 28, 6 * 32, room,
@@ -828,8 +828,8 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
                     {4, 4, 4, 0, 0, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddArrow(9 * 28, 0, Arrow.DIR_UP, 28, Color.white);
-            room.AddArrow(5 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(9 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(5 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
         }
         {  // Room 30, AND gate intro 
             Room room = rooms.get(30);
@@ -847,12 +847,12 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("An AND-gate turns on when its left AND right INPUTS are on.",
+            room.addTextBox("An AND-gate turns on when its left AND right INPUTS are on.",
                     5 * 28, 2 * 32, 300);
-            room.AddTextBox("Take a AND-gate from the Toolkit and test it with the hot cursor.",
+            room.addTextBox("Take a AND-gate from the Toolkit and test it with the hot cursor.",
                     5 * 28, 6 * 32, 400);
             items.add(new ANDGate(17 * 28 + 10, 32 + 12, room));
-            room.AddArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
+            room.addArrow(3 * 28, 0, Arrow.DIR_UP, 28, Color.white);
         }
         {  // Room 31, AND gate workshop 
             Room room = rooms.get(31);
@@ -870,9 +870,9 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Wire the AND-gate output to the Antenna INPUT.",
+            room.addTextBox("Wire the AND-gate output to the Antenna INPUT.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("The antenna beeps when the key is left AND up from this DIRECTIONAL sensor.",
+            room.addTextBox("The antenna beeps when the key is left AND up from this DIRECTIONAL sensor.",
                     5 * 28, 9 * 32, 400);
             items.add(new Key(3 * 28, 7 * 32, room, Color.blue));
             DirectionalSensor sensor = new DirectionalSensor(5 * 28, 6 * 32, room,
@@ -900,12 +900,12 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2}
             };
-            room.AddTextBox("An EXCLUSIVE-OR- gate (XOR-gate) turns on when one OR the other INPUT is on, NOT both.",
+            room.addTextBox("An EXCLUSIVE-OR- gate (XOR-gate) turns on when one OR the other INPUT is on, NOT both.",
                     7 * 28, 2 * 32, 250);
-            room.AddTextBox("Take an XOR-gate from the Toolkit and test it with the hot cursor.",
+            room.addTextBox("Take an XOR-gate from the Toolkit and test it with the hot cursor.",
                     2 * 28, 9 * 32, 400);
             items.add(new XORGate(17 * 28 + 10, 32 + 12, room));
-            room.AddArrow(17 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(17 * 28, 0, Arrow.DIR_DOWN, 28, Color.white);
         }
         {  // Room 33, XOR workshop 
             Room room = rooms.get(33);
@@ -923,9 +923,9 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Wire the XOR-gate output to the Antenna INPUT.",
+            room.addTextBox("Wire the XOR-gate output to the Antenna INPUT.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("The antenna beeps when either the key or the crystal is in the room, but not both.",
+            room.addTextBox("The antenna beeps when either the key or the crystal is in the room, but not both.",
                     5 * 28, 9 * 32, 400);
             items.add(new Key(2 * 28, 9 * 32, room, Color.blue));
             items.add(new Crystal(2 * 28, 7 * 32, room, 100000));
@@ -959,21 +959,21 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Try these robot circuits in the robot below.",
+            room.addTextBox("Try these robot circuits in the robot below.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("LEFT WALL CRAWLER",
+            room.addTextBox("LEFT WALL CRAWLER",
                     3 * 28, 4 * 32, 500);
-            room.AddTextBox("Rewire the NOT gate to the thruster on the right.",
+            room.addTextBox("Rewire the NOT gate to the thruster on the right.",
                     4 * 28, 4 * 32 + 16, 400);
-            room.AddTextBox("PING-PONG",
+            room.addTextBox("PING-PONG",
                     3 * 28, 7 * 32, 500);
-            room.AddTextBox("Unwire the NOT-gate. Use a second flipflop wired the same way as the robot in the flipflop example above.",
+            room.addTextBox("Unwire the NOT-gate. Use a second flipflop wired the same way as the robot in the flipflop example above.",
                     4 * 28, 7 * 32 + 16, 400);
-            room.AddTextBox("MORE CIRCUIT IDEAS",
+            room.addTextBox("MORE CIRCUIT IDEAS",
                     0, 9 * 32, 100);
-            room.AddTextBox("ROBOT",
+            room.addTextBox("ROBOT",
                     9 * 28, 11 * 32, 400);
-            room.AddArrow(10 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(10 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         {  // Room 35, Circuit Ideas II 
             Room room = rooms.get(35);
@@ -991,17 +991,17 @@ class ROTut2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("KEY-PHOBE",
+            room.addTextBox("KEY-PHOBE",
                     2 * 28, 2 * 32, 450);
-            room.AddTextBox("Wire a key DIRECTIONAL sensor's outputs to the thrusters they point toward.",
+            room.addTextBox("Wire a key DIRECTIONAL sensor's outputs to the thrusters they point toward.",
                     3 * 28, 2 * 32 + 16, 450);
-            room.AddTextBox("NON-KEY-GRABBER",
+            room.addTextBox("NON-KEY-GRABBER",
                     2 * 28, 5 * 32, 450);
-            room.AddTextBox("Wire a key CONTACT sensor to a NOT-gate. Wire the NOT-gate to the grabber input.",
+            room.addTextBox("Wire a key CONTACT sensor to a NOT-gate. Wire the NOT-gate to the grabber input.",
                     3 * 28, 5 * 32 + 16, 450);
-            room.AddTextBox("CRYSTAL-SIGNALER",
+            room.addTextBox("CRYSTAL-SIGNALER",
                     2 * 28, 8 * 32, 450);
-            room.AddTextBox("Wire the crystal IN-SAME-ROOM sensor to the antenna.",
+            room.addTextBox("Wire the crystal IN-SAME-ROOM sensor to the antenna.",
                     3 * 28, 8 * 32 + 16, 450);
         }
         {  // Room 36, Robot Play area 1 
@@ -1092,15 +1092,15 @@ class ROTut2 extends Level {
                     {2, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2},
                     {2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Now you know how to use the Solderpen, Remote Control, and Toolkit.",
+            room.addTextBox("Now you know how to use the Solderpen, Remote Control, and Toolkit.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("You also know how nodes, flipflops, and logic gates work.",
+            room.addTextBox("You also know how nodes, flipflops, and logic gates work.",
                     2 * 28, 3 * 32 + 16, 500);
-            room.AddTextBox("You can use these to design and build robots in ROBOTROPOLIS and the INNOVATION LAB.",
+            room.addTextBox("You can use these to design and build robots in ROBOTROPOLIS and the INNOVATION LAB.",
                     2 * 28, 6 * 32, 500);
-            room.AddTextBox("Go to CHIP DESIGN.",
+            room.addTextBox("Go to CHIP DESIGN.",
                     6 * 28, 9 * 32, 500);
-            room.AddTextBox("Return to MAIN MENU.",
+            room.addTextBox("Return to MAIN MENU.",
                     6 * 28, 11 * 32, 500);
         }
         {  // Room 40, Wire Flipping 
@@ -1119,11 +1119,11 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Wires are normally drawn as a horizontal line and a vertical line attached to the 1st and 2nd ports. But these can be 'flipped' without having to remove the wire.",
+            room.addTextBox("Wires are normally drawn as a horizontal line and a vertical line attached to the 1st and 2nd ports. But these can be 'flipped' without having to remove the wire.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Become the Soldering Pen and move the tip over any wired port until the tip turns green and then press F.",
+            room.addTextBox("Become the Soldering Pen and move the tip over any wired port until the tip turns green and then press F.",
                     2 * 28, 6 * 32, 500);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             NOTGate ng1 = new NOTGate(6 * 28, 10 * 32, room);
             items.add(ng1);
             ng1.rotate(1);
@@ -1147,11 +1147,11 @@ class ROTut2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("AND, OR, XOR, and FlipFlops can also be flipped so their inputs (and outputs) can switch connections without having to rewire them.",
+            room.addTextBox("AND, OR, XOR, and FlipFlops can also be flipped so their inputs (and outputs) can switch connections without having to rewire them.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Become the cursor and pick up a gate, and then press F.",
+            room.addTextBox("Become the cursor and pick up a gate, and then press F.",
                     2 * 28, 5 * 32, 500);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             NOTGate ng1 = new NOTGate(4 * 28, 10 * 32, room);
             ng1.rotate(1);
             items.add(ng1);
@@ -1187,25 +1187,25 @@ class ROTut2 extends Level {
 
 
         int[] list1 = {1, 2, 3, 4, 5, 6};
-        LinkRoomsHorizontally(list1);
+        linkRoomsHorizontally(list1);
         int[] list2 = {11, 10, 9, 8, 7};
-        LinkRoomsHorizontally(list2);
+        linkRoomsHorizontally(list2);
         int[] list3 = {12, 13, 14, 15, 16, 40, 41, 17, 18, 24, 29};
-        LinkRoomsHorizontally(list3);
+        linkRoomsHorizontally(list3);
         int[] list4 = {23, 22, 19, 18, 34, 36, 39, 1};
-        LinkRoomsVertically(list4);
+        linkRoomsVertically(list4);
         int[] list5 = {26, 25, 24, 27, 28};
-        LinkRoomsVertically(list5);
+        linkRoomsVertically(list5);
         int[] list6 = {31, 30, 29, 32, 33};
-        LinkRoomsVertically(list6);
-        LinkRoomsLeftRight(21, 20);
-        LinkRoomsLeftRight(20, 19);
-        LinkRoomsLeftRight(35, 34);
-        LinkRoomsLeftRight(37, 36);
-        LinkRoomsUpDown(4, 10);
-        LinkRoomsUpDown(6, 7);
-        LinkRoomsUpDown(11, 12);
-        LinkRoomsUpDown(37, 38);
+        linkRoomsVertically(list6);
+        linkRoomsLeftRight(21, 20);
+        linkRoomsLeftRight(20, 19);
+        linkRoomsLeftRight(35, 34);
+        linkRoomsLeftRight(37, 36);
+        linkRoomsUpDown(4, 10);
+        linkRoomsUpDown(6, 7);
+        linkRoomsUpDown(11, 12);
+        linkRoomsUpDown(37, 38);
 
         gameCursor = new LabCursor(16 * 28 + 14, 5 * 32 + 16, rooms.get(1));
         helpCam = new HelpCam(rooms.get(0));

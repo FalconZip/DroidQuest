@@ -12,10 +12,10 @@ import com.droidquest.items.Item;
 public class ElevatorInPortal extends Material {
     public ElevatorInPortal() {
         super(true, false);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -39,12 +39,12 @@ public class ElevatorInPortal extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
             Room elevatorRoom = level().rooms.get(35);
             item.x = 28;
             item.y = 10 * 32;
-            item.SetRoom(elevatorRoom);
+            item.setRoom(elevatorRoom);
         }
     }
 

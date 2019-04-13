@@ -13,13 +13,13 @@ public class MineField extends Material {
         super(Color.black, false, false);
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         hit += 2;
         target = item;
         return false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (hit > 0) {
             hit--;
         }
@@ -30,7 +30,7 @@ public class MineField extends Material {
                 Room room = target.InternalRoom;
                 if (room.wires.size() > 0) {
                     for (int a = 0; a < room.wires.size(); a++) {
-                        room.wires.get(0).Remove();
+                        room.wires.get(0).remove();
                     }
                 }
             }

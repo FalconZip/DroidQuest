@@ -13,16 +13,16 @@ public class EnergyButton extends Button {
         grabbable = false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (animationState == 0) {
             if (room != null) {
                 for (int a = 0; a < level().items.size(); a++) {
                     Item item = level().items.get(a);
-                    if (Overlaps(item)) {
+                    if (overlaps(item)) {
                         animationState = 1;
                         nb.animationState = 51;
                         for (int b = 1; b < 19; b++) {
-                            room.downRoom.SetMaterial(b, 4, 0);
+                            room.downRoom.setMaterial(b, 4, 0);
                         }
                         TextBox line = room.downRoom.textBoxes.get(1);
                         line.textString = " ";

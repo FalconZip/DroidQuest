@@ -14,10 +14,10 @@ public class Remote extends Item implements Avatar {
         width = 4;
         height = 20;
         level().electricity = true;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
 
@@ -39,20 +39,20 @@ public class Remote extends Item implements Avatar {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         if (carriedBy != null) {
             if (carriedBy.room != room) {
                 room = carriedBy.room;
             }
         }
-        super.Animate();
+        super.animate();
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         return false;
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_S) {
             if (level().solderingPen == null) {
                 return false;
@@ -132,7 +132,7 @@ public class Remote extends Item implements Avatar {
         return false;
     }
 
-    public boolean KeyDown(KeyEvent e) {
+    public boolean keyDown(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             repeating++;
             if (repeating > 10) {
@@ -169,15 +169,15 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveUp(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.UpEnterOverlap(this)) {
+                if (item.upEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 320; // 10 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -185,15 +185,15 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveDown(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.DownEnterOverlap(this)) {
+                if (item.downEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 0; //  0 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -201,15 +201,15 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveLeft(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.LeftEnterOverlap(this)) {
+                if (item.leftEnterOverlap(this)) {
                     int newX = 532; // 19 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
@@ -217,15 +217,15 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveRight(boolean nudge) {
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.RightEnterOverlap(this)) {
+                if (item.rightEnterOverlap(this)) {
                     int newX = 0; // 0 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }

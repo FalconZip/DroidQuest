@@ -43,7 +43,7 @@ public class Wire implements Serializable, InLevel {
 
         if (from.type == Port.TYPE_INPUT) {
             if (to.type == Port.TYPE_INPUT) {
-                Remove();
+                remove();
                 return;
             }
             if (to.type == Port.TYPE_OUTPUT) {
@@ -77,7 +77,7 @@ public class Wire implements Serializable, InLevel {
                 return;
             }
             if (to.type == Port.TYPE_OUTPUT) {
-                Remove();
+                remove();
                 return;
             }
             if (to.type == Port.TYPE_UNDEFINED) {
@@ -155,17 +155,17 @@ public class Wire implements Serializable, InLevel {
 
     void readRef(ObjectInputStream s, Level level) throws IOException {
         Device tempDevice;
-        tempDevice = (Device) level().FindItem(s.readInt());
+        tempDevice = (Device) level().findItem(s.readInt());
         fromPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level().FindItem(s.readInt());
+        tempDevice = (Device) level().findItem(s.readInt());
         toPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level().FindItem(s.readInt());
+        tempDevice = (Device) level().findItem(s.readInt());
         inPort = tempDevice.ports[s.readInt()];
-        tempDevice = (Device) level().FindItem(s.readInt());
+        tempDevice = (Device) level().findItem(s.readInt());
         outPort = tempDevice.ports[s.readInt()];
     }
 
-    public void ConnectTo(Port t) {
+    public void connectTo(Port t) {
         fromPort.myDevice.room.playSound(Sounds.DETATCH);
 
         if (toPort.myDevice == level().solderingPen) {
@@ -175,7 +175,7 @@ public class Wire implements Serializable, InLevel {
 
             if (fromPort.type == Port.TYPE_INPUT) {
                 if (t.type == Port.TYPE_INPUT) {
-                    Remove();
+                    remove();
                     return;
                 }
                 if (t.type == Port.TYPE_OUTPUT) {
@@ -203,7 +203,7 @@ public class Wire implements Serializable, InLevel {
                     return;
                 }
                 if (t.type == Port.TYPE_OUTPUT) {
-                    Remove();
+                    remove();
                     return;
                 }
                 if (t.type == Port.TYPE_UNDEFINED) {
@@ -245,7 +245,7 @@ public class Wire implements Serializable, InLevel {
 
             if (toPort.type == Port.TYPE_INPUT) {
                 if (t.type == Port.TYPE_INPUT) {
-                    Remove();
+                    remove();
                     return;
                 }
                 if (t.type == Port.TYPE_OUTPUT) {
@@ -273,7 +273,7 @@ public class Wire implements Serializable, InLevel {
                     return;
                 }
                 if (t.type == Port.TYPE_OUTPUT) {
-                    Remove();
+                    remove();
                     return;
                 }
                 if (t.type == Port.TYPE_UNDEFINED) {
@@ -311,7 +311,7 @@ public class Wire implements Serializable, InLevel {
 
     }
 
-    public void Remove() {
+    public void remove() {
         Room room = fromPort.myDevice.room;
 
         room.playSound(Sounds.DETATCH);
@@ -326,7 +326,7 @@ public class Wire implements Serializable, InLevel {
 
     }
 
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(Color.white);
         value = false;
         if (fromPort.type == Port.TYPE_OUTPUT && fromPort.value) {
@@ -340,8 +340,8 @@ public class Wire implements Serializable, InLevel {
 
         Dimension d1, d2;
         int x1, y1, x2, y2;
-        d1 = fromPort.myDevice.GetXY();
-        d2 = toPort.myDevice.GetXY();
+        d1 = fromPort.myDevice.getXY();
+        d2 = toPort.myDevice.getXY();
         x1 = d1.width + fromPort.x;
         y1 = d1.height + fromPort.y;
         x2 = d2.width + toPort.x;

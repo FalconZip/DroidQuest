@@ -15,10 +15,10 @@ public class Train extends Item implements Avatar {
         room = null;
         width = 56;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -54,9 +54,9 @@ public class Train extends Item implements Avatar {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         if (item == level().player) {
-            PicksUp(level().player);
+            picksUp(level().player);
             level().player = this;
             Material mat = level().materials.get(8);
             mat.passable = true;
@@ -64,18 +64,18 @@ public class Train extends Item implements Avatar {
         return false;
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == e.VK_SPACE) {
             if (level().rooms.indexOf(room) == 14) {
-                room.SetMaterial(8, 0, 0);
-                room.SetMaterial(9, 0, 0);
-                room.SetMaterial(10, 0, 0);
-                room.SetMaterial(11, 0, 0);
-                room.SetMaterial(18, 8, 0);
-                room.SetMaterial(18, 9, 0);
+                room.setMaterial(8, 0, 0);
+                room.setMaterial(9, 0, 0);
+                room.setMaterial(10, 0, 0);
+                room.setMaterial(11, 0, 0);
+                room.setMaterial(18, 8, 0);
+                room.setMaterial(18, 9, 0);
             }
             level().player = carrying;
-            Drops();
+            drops();
             room = null;
             Material mat = level().materials.get(8);
             mat.passable = false;
@@ -83,7 +83,7 @@ public class Train extends Item implements Avatar {
         return false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (room != null) {
             if (carrying != null) {
                 moveRight(8);

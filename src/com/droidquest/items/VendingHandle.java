@@ -25,10 +25,10 @@ public class VendingHandle extends Item {
         startY = Y;
         width = 28;
         height = 12;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -50,31 +50,31 @@ public class VendingHandle extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         return item != level().player;
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         x = startX;
         y = startY;
-        room.SetMaterial(1, 4, 14);
-        room.SetMaterial(2, 4, 14);
-        room.SetMaterial(3, 4, 14);
-        room.SetMaterial(4, 4, 14);
-        room.SetMaterial(5, 4, 14);
-        room.SetMaterial(6, 4, 14);
-        room.SetMaterial(7, 4, 14);
-        room.SetMaterial(8, 4, 14);
-        room.SetMaterial(9, 4, 14);
-        room.SetMaterial(10, 4, 7);
-        room.SetMaterial(11, 4, 0);
-        room.SetMaterial(12, 4, 0);
-        room.SetMaterial(13, 4, 0);
-        room.SetMaterial(14, 4, 0);
+        room.setMaterial(1, 4, 14);
+        room.setMaterial(2, 4, 14);
+        room.setMaterial(3, 4, 14);
+        room.setMaterial(4, 4, 14);
+        room.setMaterial(5, 4, 14);
+        room.setMaterial(6, 4, 14);
+        room.setMaterial(7, 4, 14);
+        room.setMaterial(8, 4, 14);
+        room.setMaterial(9, 4, 14);
+        room.setMaterial(10, 4, 7);
+        room.setMaterial(11, 4, 0);
+        room.setMaterial(12, 4, 0);
+        room.setMaterial(13, 4, 0);
+        room.setMaterial(14, 4, 0);
         paid = false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (carriedBy != null) {
             int maxPull;
             if (paid) {
@@ -83,7 +83,7 @@ public class VendingHandle extends Item {
             else {
                 maxPull = 0;
             }
-            Dimension d = GetXY();
+            Dimension d = getXY();
             int tempX = d.width;
             int tempY = d.height;
             if (tempY != startY) {
@@ -96,89 +96,89 @@ public class VendingHandle extends Item {
                 carriedBy.moveLeft(tempX - (startX + maxPull));
             }
 
-            d = GetXY();
+            d = getXY();
             tempX = d.width;
             int blocks = (tempX - startX) / 28;
             switch (blocks) {
                 case 0:
-                    room.SetMaterial(1, 4, 14);
-                    room.SetMaterial(2, 4, 14);
-                    room.SetMaterial(3, 4, 14);
-                    room.SetMaterial(4, 4, 14);
-                    room.SetMaterial(5, 4, 14);
-                    room.SetMaterial(6, 4, 14);
-                    room.SetMaterial(7, 4, 14);
-                    room.SetMaterial(8, 4, 14);
-                    room.SetMaterial(9, 4, 14);
-                    room.SetMaterial(10, 4, 7);
-                    room.SetMaterial(11, 4, 0);
-                    room.SetMaterial(12, 4, 0);
-                    room.SetMaterial(13, 4, 0);
-                    room.SetMaterial(14, 4, 0);
+                    room.setMaterial(1, 4, 14);
+                    room.setMaterial(2, 4, 14);
+                    room.setMaterial(3, 4, 14);
+                    room.setMaterial(4, 4, 14);
+                    room.setMaterial(5, 4, 14);
+                    room.setMaterial(6, 4, 14);
+                    room.setMaterial(7, 4, 14);
+                    room.setMaterial(8, 4, 14);
+                    room.setMaterial(9, 4, 14);
+                    room.setMaterial(10, 4, 7);
+                    room.setMaterial(11, 4, 0);
+                    room.setMaterial(12, 4, 0);
+                    room.setMaterial(13, 4, 0);
+                    room.setMaterial(14, 4, 0);
                     break;
                 case 1:
-                    room.SetMaterial(1, 4, 0);
-                    room.SetMaterial(2, 4, 14);
-                    room.SetMaterial(3, 4, 14);
-                    room.SetMaterial(4, 4, 14);
-                    room.SetMaterial(5, 4, 14);
-                    room.SetMaterial(6, 4, 14);
-                    room.SetMaterial(7, 4, 14);
-                    room.SetMaterial(8, 4, 14);
-                    room.SetMaterial(9, 4, 14);
-                    room.SetMaterial(10, 4, 14);
-                    room.SetMaterial(11, 4, 7);
-                    room.SetMaterial(12, 4, 0);
-                    room.SetMaterial(13, 4, 0);
-                    room.SetMaterial(14, 4, 0);
+                    room.setMaterial(1, 4, 0);
+                    room.setMaterial(2, 4, 14);
+                    room.setMaterial(3, 4, 14);
+                    room.setMaterial(4, 4, 14);
+                    room.setMaterial(5, 4, 14);
+                    room.setMaterial(6, 4, 14);
+                    room.setMaterial(7, 4, 14);
+                    room.setMaterial(8, 4, 14);
+                    room.setMaterial(9, 4, 14);
+                    room.setMaterial(10, 4, 14);
+                    room.setMaterial(11, 4, 7);
+                    room.setMaterial(12, 4, 0);
+                    room.setMaterial(13, 4, 0);
+                    room.setMaterial(14, 4, 0);
                     break;
                 case 2:
-                    room.SetMaterial(1, 4, 0);
-                    room.SetMaterial(2, 4, 0);
-                    room.SetMaterial(3, 4, 14);
-                    room.SetMaterial(4, 4, 14);
-                    room.SetMaterial(5, 4, 14);
-                    room.SetMaterial(6, 4, 14);
-                    room.SetMaterial(7, 4, 14);
-                    room.SetMaterial(8, 4, 14);
-                    room.SetMaterial(9, 4, 14);
-                    room.SetMaterial(10, 4, 14);
-                    room.SetMaterial(11, 4, 14);
-                    room.SetMaterial(12, 4, 7);
-                    room.SetMaterial(13, 4, 0);
-                    room.SetMaterial(14, 4, 0);
+                    room.setMaterial(1, 4, 0);
+                    room.setMaterial(2, 4, 0);
+                    room.setMaterial(3, 4, 14);
+                    room.setMaterial(4, 4, 14);
+                    room.setMaterial(5, 4, 14);
+                    room.setMaterial(6, 4, 14);
+                    room.setMaterial(7, 4, 14);
+                    room.setMaterial(8, 4, 14);
+                    room.setMaterial(9, 4, 14);
+                    room.setMaterial(10, 4, 14);
+                    room.setMaterial(11, 4, 14);
+                    room.setMaterial(12, 4, 7);
+                    room.setMaterial(13, 4, 0);
+                    room.setMaterial(14, 4, 0);
                     break;
                 case 3:
-                    room.SetMaterial(1, 4, 0);
-                    room.SetMaterial(2, 4, 0);
-                    room.SetMaterial(3, 4, 0);
-                    room.SetMaterial(4, 4, 14);
-                    room.SetMaterial(5, 4, 14);
-                    room.SetMaterial(6, 4, 14);
-                    room.SetMaterial(7, 4, 14);
-                    room.SetMaterial(8, 4, 14);
-                    room.SetMaterial(9, 4, 14);
-                    room.SetMaterial(10, 4, 14);
-                    room.SetMaterial(11, 4, 14);
-                    room.SetMaterial(12, 4, 14);
-                    room.SetMaterial(13, 4, 7);
-                    room.SetMaterial(14, 4, 0);
+                    room.setMaterial(1, 4, 0);
+                    room.setMaterial(2, 4, 0);
+                    room.setMaterial(3, 4, 0);
+                    room.setMaterial(4, 4, 14);
+                    room.setMaterial(5, 4, 14);
+                    room.setMaterial(6, 4, 14);
+                    room.setMaterial(7, 4, 14);
+                    room.setMaterial(8, 4, 14);
+                    room.setMaterial(9, 4, 14);
+                    room.setMaterial(10, 4, 14);
+                    room.setMaterial(11, 4, 14);
+                    room.setMaterial(12, 4, 14);
+                    room.setMaterial(13, 4, 7);
+                    room.setMaterial(14, 4, 0);
                     break;
                 case 4:
-                    room.SetMaterial(1, 4, 0);
-                    room.SetMaterial(2, 4, 0);
-                    room.SetMaterial(3, 4, 0);
-                    room.SetMaterial(4, 4, 0);
-                    room.SetMaterial(5, 4, 14);
-                    room.SetMaterial(6, 4, 14);
-                    room.SetMaterial(7, 4, 14);
-                    room.SetMaterial(8, 4, 14);
-                    room.SetMaterial(9, 4, 14);
-                    room.SetMaterial(10, 4, 14);
-                    room.SetMaterial(11, 4, 14);
-                    room.SetMaterial(12, 4, 14);
-                    room.SetMaterial(13, 4, 14);
-                    room.SetMaterial(14, 4, 7);
+                    room.setMaterial(1, 4, 0);
+                    room.setMaterial(2, 4, 0);
+                    room.setMaterial(3, 4, 0);
+                    room.setMaterial(4, 4, 0);
+                    room.setMaterial(5, 4, 14);
+                    room.setMaterial(6, 4, 14);
+                    room.setMaterial(7, 4, 14);
+                    room.setMaterial(8, 4, 14);
+                    room.setMaterial(9, 4, 14);
+                    room.setMaterial(10, 4, 14);
+                    room.setMaterial(11, 4, 14);
+                    room.setMaterial(12, 4, 14);
+                    room.setMaterial(13, 4, 14);
+                    room.setMaterial(14, 4, 7);
                     break;
             }
 

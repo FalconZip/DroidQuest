@@ -14,7 +14,7 @@ public class SwitchA extends Switch {
         super(ROT_LEFT);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         value = true;
     }
 

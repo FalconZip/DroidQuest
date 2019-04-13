@@ -16,10 +16,10 @@ public class Portal extends Material {
         levelName = ln;
         bringStuff = bs;
         initLevel = il;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -38,7 +38,7 @@ public class Portal extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player && level().player.carriedBy == null) {
             if (item.x % 28 == 0 && item.y % 32 == 0) {
                 level().portal = this;

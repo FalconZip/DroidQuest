@@ -181,7 +181,7 @@ public class ChipCompiler extends Thread implements InLevel {
         if (pc.description != null) {
             sc.description = pc.description;
         }
-        sc.GenerateIcons();
+        sc.generateIcons();
         pc.grabbable = true;
         sc.grabbable = true;
     }

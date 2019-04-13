@@ -30,7 +30,7 @@ public class Graphix implements Serializable {
     public Graphix(int X, int Y) {
         x = X;
         y = Y;
-        GenerateIcons();
+        generateIcons();
     }
 
     public Graphix(String file, int X, int Y) {
@@ -39,7 +39,7 @@ public class Graphix implements Serializable {
         behavior = SIT;
         x = X;
         y = Y;
-        GenerateIcons();
+        generateIcons();
     }
 
     public Graphix(String[] files, int X, int Y) {
@@ -47,7 +47,7 @@ public class Graphix implements Serializable {
         y = Y;
         filenames = files;
         behavior = SIT;
-        GenerateIcons();
+        generateIcons();
     }
 
     public Graphix(String file, int X, int Y, int b, int DX, int DY, int L) {
@@ -59,7 +59,7 @@ public class Graphix implements Serializable {
         dx = DX;
         dy = DY;
         length = L;
-        GenerateIcons();
+        generateIcons();
     }
 
     public Graphix(String[] files, int X, int Y, int b, int DX, int DY, int L) {
@@ -70,10 +70,10 @@ public class Graphix implements Serializable {
         dx = DX;
         dy = DY;
         length = L;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         int numfiles = filenames.length;
         icons = new ImageIcon[numfiles];
         for (int a = 0; a < numfiles; a++) {
@@ -82,13 +82,13 @@ public class Graphix implements Serializable {
         icon = icons[0];
     }
 
-    public void Draw(Graphics g, RoomDisplay rd) {
+    public void draw(Graphics g, RoomDisplay rd) {
         if (icon != null) {
             g.drawImage(icon.getImage(), x, y, rd);
         }
     }
 
-    public void Animate() {
+    public void animate() {
         int numfiles = filenames.length;
         animationState++;
         if (animationState == numfiles) {

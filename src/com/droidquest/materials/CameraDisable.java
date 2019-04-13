@@ -27,7 +27,7 @@ public class CameraDisable extends Material {
     }
 
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player) {
             if (level().currentViewer != level().player) {
                 level().currentViewer = level().player;

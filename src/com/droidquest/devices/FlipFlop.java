@@ -20,7 +20,7 @@ public class FlipFlop extends Device {
         room = r;
         width = 48;
         height = 32;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[rotation % 2].getImage();
         try {
             g = icons[0].getImage().getGraphics();
@@ -31,8 +31,8 @@ public class FlipFlop extends Device {
 
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         if (!state) {
             g.drawImage(images[4 + rotation].getImage(), 0, 0, level());
         }
@@ -41,8 +41,8 @@ public class FlipFlop extends Device {
         }
     }
 
-    public void GenerateIcons() {
-        super.GenerateIcons();
+    public void generateIcons() {
+        super.generateIcons();
         if (ports == null) {
             ports = new Port[4];
             ports[0] = new Port(11, 29, Port.TYPE_INPUT, 6, Port.ROT_DOWN, this);
@@ -133,7 +133,7 @@ public class FlipFlop extends Device {
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         if (ports[0].value ^ ports[1].value) {
             state = ports[0].value;
         }

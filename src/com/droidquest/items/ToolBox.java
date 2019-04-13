@@ -19,12 +19,12 @@ public class ToolBox extends Item {
         height = 22;
 //	width=166; height=94;
         open = false;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
 
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         // Executes once during initialization
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(26, 22, BufferedImage.TYPE_4BYTE_ABGR));
@@ -89,44 +89,44 @@ public class ToolBox extends Item {
 
         Level level = level();
         ANDGate ag = new ANDGate(0, 0, null);
-        ag.Function();
-        ag.Decorate();
+        ag.function();
+        ag.decorate();
         g2.drawImage(ag.icons[0].getImage(), 30, 4, level);
 
         ORGate og = new ORGate(0, 0, null);
-        og.Function();
-        og.Decorate();
+        og.function();
+        og.decorate();
         g2.drawImage(og.icons[0].getImage(), 64, 4, level);
 
         XORGate xg = new XORGate(0, 0, null);
-        xg.Function();
-        xg.Decorate();
+        xg.function();
+        xg.decorate();
         g2.drawImage(xg.icons[0].getImage(), 98, 4, level);
 
         NOTGate ng = new NOTGate(0, 0, null);
-        ng.Function();
-        ng.Decorate();
+        ng.function();
+        ng.decorate();
         g2.drawImage(ng.icons[0].getImage(), 132, 4, level);
 
 
         FlipFlop ff = new FlipFlop(0, 0, null);
-        ff.Function();
-        ff.Decorate();
+        ff.function();
+        ff.decorate();
         g2.drawImage(ff.icons[0].getImage(), 30, 58, level);
 
         Node n1 = new Node(0, 0, null, Node.TYPE_STRAIGHT);
-        n1.Function();
-        n1.Decorate();
+        n1.function();
+        n1.decorate();
         g2.drawImage(n1.icons[0].getImage(), 74, 58, level);
 
         Node n2 = new Node(0, 0, null, Node.TYPE_RIGHT);
-        n2.Function();
-        n2.Decorate();
+        n2.function();
+        n2.decorate();
         g2.drawImage(n2.icons[0].getImage(), 98, 58, level);
 
         Node n3 = new Node(0, 0, null, Node.TYPE_THREE);
-        n3.Function();
-        n3.Decorate();
+        n3.function();
+        n3.decorate();
         g2.drawImage(n3.icons[0].getImage(), 128, 58, level);
 
         if (open) {
@@ -165,7 +165,7 @@ public class ToolBox extends Item {
         }
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         if (item != level().gameCursor) {
             return false;
         }
@@ -179,21 +179,21 @@ public class ToolBox extends Item {
             if (ix > 30 && ix < (30 + 28) && iy > 4 && iy < (4 + 50)) {
                 ANDGate ag = new ANDGate(x + 30, y + 4, item.room);
                 level().items.add(ag);
-                item.PicksUp(ag);
+                item.picksUp(ag);
                 return false;
             }
 
             if (ix > 64 && ix < (64 + 28) && iy > 4 && iy < (4 + 50)) {
                 ORGate og = new ORGate(x + 64, y + 4, item.room);
                 level().items.add(og);
-                item.PicksUp(og);
+                item.picksUp(og);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 4 && iy < (4 + 50)) {
                 XORGate xg = new XORGate(x + 98, y + 4, item.room);
                 level().items.add(xg);
-                item.PicksUp(xg);
+                item.picksUp(xg);
                 return false;
             }
 
@@ -201,7 +201,7 @@ public class ToolBox extends Item {
                 NOTGate ng = new NOTGate(x + 132, y + 4, item.room);
                 level().items.add(ng);
                 ng.ports[1].value = true;
-                item.PicksUp(ng);
+                item.picksUp(ng);
                 return false;
             }
 
@@ -209,28 +209,28 @@ public class ToolBox extends Item {
                 FlipFlop ff = new FlipFlop(x + 30, y + 58, item.room);
                 level().items.add(ff);
                 ff.ports[3].value = true;
-                item.PicksUp(ff);
+                item.picksUp(ff);
                 return false;
             }
 
             if (ix > 74 && ix < (74 + 22) && iy > 58 && iy < (58 + 32)) {
                 Node n1 = new Node(x + 74, y + 58, item.room, Node.TYPE_STRAIGHT);
                 level().items.add(n1);
-                item.PicksUp(n1);
+                item.picksUp(n1);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n2 = new Node(x + 98, y + 58, item.room, Node.TYPE_RIGHT);
                 level().items.add(n2);
-                item.PicksUp(n2);
+                item.picksUp(n2);
                 return false;
             }
 
             if (ix > 128 && ix < (128 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n3 = new Node(x + 128, y + 58, item.room, Node.TYPE_THREE);
                 level().items.add(n3);
-                item.PicksUp(n3);
+                item.picksUp(n3);
                 return false;
             }
         }

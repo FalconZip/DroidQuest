@@ -20,15 +20,15 @@ public class ElevatorSwitch extends Switch {
         super(Switch.ROT_LEFT);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         room = item.room;
         if (animationState == 0) {
             animationState = 1;
         }
     }
 
-    public void Animate() {
-        super.Animate();
+    public void animate() {
+        super.animate();
         switch (animationState) {
             case 0:
                 value = false;
@@ -36,13 +36,13 @@ public class ElevatorSwitch extends Switch {
             case 1:
                 // Play sound
                 value = true;
-                room.SetMaterial(0, 7, 4);
-                room.SetMaterial(0, 10, 4);
+                room.setMaterial(0, 7, 4);
+                room.setMaterial(0, 10, 4);
                 animationState++;
                 break;
             case 2:
-                room.SetMaterial(0, 8, 4);
-                room.SetMaterial(0, 9, 4);
+                room.setMaterial(0, 8, 4);
+                room.setMaterial(0, 9, 4);
                 animationState++;
                 break;
             case 3:
@@ -65,13 +65,13 @@ public class ElevatorSwitch extends Switch {
                 animationState++;
                 break;
             case 4:
-                room.SetMaterial(0, 8, 12);
-                room.SetMaterial(0, 9, 12);
+                room.setMaterial(0, 8, 12);
+                room.setMaterial(0, 9, 12);
                 animationState++;
                 break;
             case 5:
-                room.SetMaterial(0, 7, 12);
-                room.SetMaterial(0, 10, 12);
+                room.setMaterial(0, 7, 12);
+                room.setMaterial(0, 10, 12);
                 animationState = 0;
                 break;
         }

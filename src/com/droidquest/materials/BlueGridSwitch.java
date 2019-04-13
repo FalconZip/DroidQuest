@@ -28,7 +28,7 @@ public class BlueGridSwitch extends Material {
         super(true, false);
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[2];
         for (int a = 0; a < 2; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -65,7 +65,7 @@ public class BlueGridSwitch extends Material {
         }
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (animationState == 0) {
             animationState = 1;
             room = item.room;
@@ -74,7 +74,7 @@ public class BlueGridSwitch extends Material {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         icon = images[0];
         if (value) {
             icon = images[1];
@@ -99,8 +99,8 @@ public class BlueGridSwitch extends Material {
         switch (animationState) {
             case 1:
                 value = true;
-                room.SetMaterial(2, 0, 0);
-                room.upRoom.SetMaterial(2, 11, 0);
+                room.setMaterial(2, 0, 0);
+                room.upRoom.setMaterial(2, 11, 0);
                 for (int a = 0; a < level().materials.size(); a++) {
                     Material mat = level().materials.get(a);
                     if (mat instanceof HotWires) {
@@ -113,35 +113,35 @@ public class BlueGridSwitch extends Material {
                 for (int a = 0; a < 5; a++) {
                     Graphix gr = room.graphix.get(a);
                     gr.filenames = new String[]{"whiteHorizontal.gif"};
-                    gr.GenerateIcons();
+                    gr.generateIcons();
                 }
                 for (int a = 0; a < 5; a++) {
                     Graphix gr = room.graphix.get(a + 5);
                     gr.filenames = new String[]{"whiteVertical.gif"};
-                    gr.GenerateIcons();
+                    gr.generateIcons();
                 }
                 animationState++;
                 break;
             case 2:
-                room.SetMaterial(3, 0, 0);
-                room.upRoom.SetMaterial(3, 11, 0);
+                room.setMaterial(3, 0, 0);
+                room.upRoom.setMaterial(3, 11, 0);
                 animationState++;
                 break;
             case 3:
-                room.SetMaterial(4, 0, 0);
-                room.upRoom.SetMaterial(4, 11, 0);
+                room.setMaterial(4, 0, 0);
+                room.upRoom.setMaterial(4, 11, 0);
                 animationState++;
                 break;
             case 4:
-                room.SetMaterial(5, 0, 0);
-                room.upRoom.SetMaterial(5, 11, 0);
+                room.setMaterial(5, 0, 0);
+                room.upRoom.setMaterial(5, 11, 0);
                 animationState++;
                 break;
             case 5:
                 break;
             case 6:
-                room.SetMaterial(5, 0, 9);
-                room.upRoom.SetMaterial(5, 11, 9);
+                room.setMaterial(5, 0, 9);
+                room.upRoom.setMaterial(5, 11, 9);
                 value = false;
                 for (int a = 0; a < level().materials.size(); a++) {
                     Material mat = level().materials.get(a);
@@ -155,28 +155,28 @@ public class BlueGridSwitch extends Material {
                 for (int a = 0; a < 5; a++) {
                     Graphix gr = room.graphix.get(a);
                     gr.filenames = new String[]{"blueHorizontal.gif"};
-                    gr.GenerateIcons();
+                    gr.generateIcons();
                 }
                 for (int a = 0; a < 5; a++) {
                     Graphix gr = room.graphix.get(a + 5);
                     gr.filenames = new String[]{"blueVertical.gif"};
-                    gr.GenerateIcons();
+                    gr.generateIcons();
                 }
                 animationState++;
                 break;
             case 7:
-                room.SetMaterial(4, 0, 9);
-                room.upRoom.SetMaterial(4, 11, 9);
+                room.setMaterial(4, 0, 9);
+                room.upRoom.setMaterial(4, 11, 9);
                 animationState++;
                 break;
             case 8:
-                room.SetMaterial(3, 0, 9);
-                room.upRoom.SetMaterial(3, 11, 9);
+                room.setMaterial(3, 0, 9);
+                room.upRoom.setMaterial(3, 11, 9);
                 animationState++;
                 break;
             case 9:
-                room.SetMaterial(2, 0, 9);
-                room.upRoom.SetMaterial(2, 11, 9);
+                room.setMaterial(2, 0, 9);
+                room.upRoom.setMaterial(2, 11, 9);
                 animationState = 0;
                 break;
         }

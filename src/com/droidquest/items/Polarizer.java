@@ -21,10 +21,10 @@ public class Polarizer extends Item {
         room = r;
         width = 24;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -52,7 +52,7 @@ public class Polarizer extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         if (!searched) {
             for(Item item : level().items) {
                 searched = true;
@@ -68,17 +68,17 @@ public class Polarizer extends Item {
                 for(Iterator<Item> it= level().items.iterator(); it.hasNext(); ) {
                 	Item item = it.next();
                     if (item != null && item instanceof StormCloud) {
-                        if (Overlaps(item)) {
+                        if (overlaps(item)) {
                             room.playSound(Sounds.DISCHARGE);
-                            level().LinkRoomsUpDown(36, 4);
-                            room.SetMaterial(8, 0, 0);
-                            room.SetMaterial(9, 0, 0);
-                            room.SetMaterial(10, 0, 0);
-                            room.SetMaterial(11, 0, 0);
+                            level().linkRoomsUpDown(36, 4);
+                            room.setMaterial(8, 0, 0);
+                            room.setMaterial(9, 0, 0);
+                            room.setMaterial(10, 0, 0);
+                            room.setMaterial(11, 0, 0);
                             item.room = null;
                             it.remove();
                             if (carriedBy != null) {
-                                carriedBy.Drops();
+                                carriedBy.drops();
                             }
                             room = null;
                         }

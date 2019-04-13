@@ -16,7 +16,7 @@ public class CrystalRecharger extends Material {
         super(true, false);
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         icon = new ImageIcon(bi);
         Graphics g;
@@ -41,7 +41,7 @@ public class CrystalRecharger extends Material {
         g.fillRect(24, 22, 4, 2);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         // Check to see if it's a pure Crystal, not a Black Crystal
         if (item.getClass().toString().endsWith("Crystal")) {
             item.charge = 100000;

@@ -16,16 +16,16 @@ public class HelpCam extends Item implements Avatar {
         width = 0;
         height = 0;
         room = r;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(8, 8, BufferedImage.TYPE_4BYTE_ABGR));
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             level().player = level().gameCursor;
             level().currentViewer = level().gameCursor;
@@ -33,7 +33,7 @@ public class HelpCam extends Item implements Avatar {
         return false;
     }
 
-    public void Draw(Graphics g, JPanel jp) {
+    public void draw(Graphics g, JPanel jp) {
         // Draws nothing
     }
 

@@ -16,10 +16,10 @@ public class Handle extends Item {
         room = r;
         width = 28;
         height = 12;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -41,39 +41,39 @@ public class Handle extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         if (item != level().player) {
             return false;
         }
-        PicksUp(item);
+        picksUp(item);
         level().player = this;
         return false;
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == e.VK_RIGHT) {
             if (x < 15 * 28) {
-                room.SetMaterial(x / 28 - 12, 4, 0);
+                room.setMaterial(x / 28 - 12, 4, 0);
                 moveRight(28);
-                room.SetMaterial(x / 28 - 1, 4, 8);
+                room.setMaterial(x / 28 - 1, 4, 8);
             }
         }
 
         if (e.getKeyCode() == e.VK_LEFT) {
             if (x > 13 * 28) {
-                room.SetMaterial(x / 28 - 13, 4, 8);
-                room.SetMaterial(x / 28 - 1, 4, 0);
+                room.setMaterial(x / 28 - 13, 4, 8);
+                room.setMaterial(x / 28 - 1, 4, 0);
                 moveLeft(28);
             }
         }
 
         if (e.getKeyCode() == e.VK_SPACE) {
             level().player = carrying;
-            Drops();
-            room.SetMaterial(1, 4, 8);
-            room.SetMaterial(2, 4, 8);
-            room.SetMaterial(13, 4, 0);
-            room.SetMaterial(14, 4, 0);
+            drops();
+            room.setMaterial(1, 4, 8);
+            room.setMaterial(2, 4, 8);
+            room.setMaterial(13, 4, 0);
+            room.setMaterial(14, 4, 0);
             x = 13 * 28;
         }
         return false;

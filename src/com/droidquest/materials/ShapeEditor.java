@@ -17,11 +17,11 @@ public class ShapeEditor extends Material {
     public ShapeEditor(Item item) {
         super(true, false);
         target = item;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
-        target.GenerateIcons();
+    public void generateIcons() {
+        target.generateIcons();
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -38,7 +38,7 @@ public class ShapeEditor extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         Item newItem = null;
         if (item.editable) {
             if (item.getClass().toString().endsWith("Sensor")) {
@@ -57,7 +57,7 @@ public class ShapeEditor extends Material {
                 newItem = (Item) target.clone();
             }
             Item carrier = item.carriedBy;
-            carrier.Drops();
+            carrier.drops();
             int itemX = item.x;
             int itemY = item.y;
             level().items.remove(item);
@@ -65,7 +65,7 @@ public class ShapeEditor extends Material {
             newItem.y = itemY;
             newItem.room = carrier.room;
             level().items.add(newItem);
-            carrier.PicksUp(newItem);
+            carrier.picksUp(newItem);
         }
     }
 

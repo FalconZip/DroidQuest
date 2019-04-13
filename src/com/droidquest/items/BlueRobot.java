@@ -17,7 +17,7 @@ public class BlueRobot extends GenericRobot {
         super(X, Y, r, Color.blue);
         scan = 0;
         scandir = 2;
-        Animate();
+        animate();
         devices[0] = new Thruster(176, 16, InternalRoom, Port.ROT_UP, Color.white);
         devices[1] = new Thruster(476, 128, InternalRoom, Port.ROT_RIGHT, Color.white);
         devices[2] = new Thruster(356, 336, InternalRoom, Port.ROT_DOWN, Color.white);
@@ -34,8 +34,8 @@ public class BlueRobot extends GenericRobot {
 
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         Graphics g;
         try {
             g = icons[0].getImage().getGraphics();

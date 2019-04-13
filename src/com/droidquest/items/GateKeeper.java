@@ -25,10 +25,10 @@ public class GateKeeper extends Item {
         width = 52;
         height = 38;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -65,12 +65,12 @@ public class GateKeeper extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         // hack: check if goToY is the expected value. It is essentially
         // a constant, but it was changed in the code and older saved games
         // may bring in an older value when the object is deserialized.
         if (goToY != 8 * 32 - 6) goToY = 8 * 32 - 6;
-        
+
         if (behavior == 1) {
             if (x != goToX || y != goToY) {
                 if (x != goToX) {
@@ -102,10 +102,10 @@ public class GateKeeper extends Item {
                     }
                 }
                 if (ss != null) {
-                    ss.SetRoom(null); // Removes wires
+                    ss.setRoom(null); // Removes wires
                     level().items.remove(ss);
                 }
-                room.SetMaterial(7, 7, 21);
+                room.setMaterial(7, 7, 21);
             }
         }
     }

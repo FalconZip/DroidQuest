@@ -14,11 +14,11 @@ public class StormShield extends Device {
         room = r;
         width = 28;
         height = 52;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
-        super.GenerateIcons();
+    public void generateIcons() {
+        super.generateIcons();
         if (ports == null) {
             ports = new Port[1];
             ports[0] = new Port(15, 49, Port.TYPE_INPUT, 22, Port.ROT_DOWN, this);
@@ -62,7 +62,7 @@ public class StormShield extends Device {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
+    public void decorate() {
         try {
             g = currentIcon.getGraphics();
         }

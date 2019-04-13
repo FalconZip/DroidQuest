@@ -20,10 +20,10 @@ public class NotAButton extends Item {
         width = 28;
         height = 26;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -51,7 +51,7 @@ public class NotAButton extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         if (eb == null) {
             for (int a = 0; a < level().items.size(); a++) {
                 Item item = level().items.get(a);

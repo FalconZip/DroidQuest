@@ -73,15 +73,15 @@ class RO1 extends Level {
 
         { // Room  0, Entry point
             Room room = rooms.get(0);
-            room.SetMaterialOutline(0, 0, 19, 11, 1);
-            room.SetMaterialFill(19, 8, 19, 10, 0);
-            room.AddTextBox("Welcome Traveller!", 150, 64, 400);
-            room.AddTextBox("You have fallen into the under- ground city of Robotropolis. To escape, travel upward through all five levels of the city."
+            room.setMaterialOutline(0, 0, 19, 11, 1);
+            room.setMaterialFill(19, 8, 19, 10, 0);
+            room.addTextBox("Welcome Traveller!", 150, 64, 400);
+            room.addTextBox("You have fallen into the under- ground city of Robotropolis. To escape, travel upward through all five levels of the city."
                     , 60, 100, 400);
-            room.AddTextBox("The three robots in the next room will help you on your journey. To learn how they work, choose Robot Anatomy from the menu."
+            room.addTextBox("The three robots in the next room will help you on your journey. To learn how they work, choose Robot Anatomy from the menu."
                     , 60, 200, 400);
-            room.AddTextBox("This way to Robotropolis", 360, 290, 200);
-            room.AddArrow(559, 11 * 28 + 16, Arrow.DIR_RIGHT, 100, Color.white);
+            room.addTextBox("This way to Robotropolis", 360, 290, 200);
+            room.addArrow(559, 11 * 28 + 16, Arrow.DIR_RIGHT, 100, Color.white);
         }
         { // Room  1, Robots Here
             Room room = rooms.get(1);
@@ -212,7 +212,7 @@ class RO1 extends Level {
                     {0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1}
             };
-            room.AddTextBox("{BIG} The City Sewer", 40, 80, 500);
+            room.addTextBox("{BIG} The City Sewer", 40, 80, 500);
             items.add(new Sweeper(476, 224, room));
         }
         { // Room  3, Maze 1 "PR"
@@ -594,7 +594,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3}
             };
-            room.AddTextBox("Do you have EVERYTHING?",
+            room.addTextBox("Do you have EVERYTHING?",
                     98, 278, 168);
         }
         { // Room 24, Directional Token Sensor here
@@ -613,7 +613,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Time to board a 'Bot!",
+            room.addTextBox("Time to board a 'Bot!",
                     170, 320, 500);
             items.add(new DirectionalSensor(3 * 28 + 14, 4 * 32, room, new Token(0, 0, null)));
         }
@@ -633,7 +633,7 @@ class RO1 extends Level {
                     {4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 0, 0, 0, 4},
                     {4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4}
             };
-            room.AddTextBox("SEWER GRATE",
+            room.addTextBox("SEWER GRATE",
                     182, 48, 90);
             items.add(new Sentry3(2 * 28, 64, room));
         }
@@ -659,7 +659,7 @@ class RO1 extends Level {
             room.graphix.add(new Graphix(i4, 11 * 28, 8 * 32));
             String[] i5 = {"0068.jpg", "0069.jpg"};
             room.graphix.add(new Graphix(i5, 16 * 28, 9 * 32));
-            room.AddTextBox("These poor creatures never made it out...Will you???",
+            room.addTextBox("These poor creatures never made it out...Will you???",
                     84, 224, 500);
         }
         { // Room 27, 2nd Lock
@@ -678,9 +678,9 @@ class RO1 extends Level {
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddTextBox("Congratulations!",
+            room.addTextBox("Congratulations!",
                     2 * 28, 304, 500);
-            room.AddTextBox("That was a great job!",
+            room.addTextBox("That was a great job!",
                     2 * 28, 320, 500);
         }
         { // Room 28, Portal Chamber
@@ -699,9 +699,9 @@ class RO1 extends Level {
                     {4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4},
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
             };
-            room.AddTextBox("Prepare for an experience that will transport you to another dimension",
+            room.addTextBox("Prepare for an experience that will transport you to another dimension",
                     336, 48, 224);
-            room.AddTextBox("You CAN take it with you (If you hold on tight)....",
+            room.addTextBox("You CAN take it with you (If you hold on tight)....",
                     336, 256, 224);
         }
         { // Room 29, Help Screen
@@ -720,21 +720,21 @@ class RO1 extends Level {
                     {6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6},
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6}
             };
-            room.AddTextBox("Escape from the City Sewer!",
+            room.addTextBox("Escape from the City Sewer!",
                     3 * 28, 2 * 32, 500);
-            room.AddTextBox("HINTS:",
+            room.addTextBox("HINTS:",
                     2 * 28, 3 * 32, 500);
-            room.AddTextBox("Observe how the robots move. Each is pre-wired to help you.",
+            room.addTextBox("Observe how the robots move. Each is pre-wired to help you.",
                     2 * 28, 4 * 32, 500);
-            room.AddTextBox("Robots go where humans dare not tread.",
+            room.addTextBox("Robots go where humans dare not tread.",
                     2 * 28, 6 * 32, 500);
-            room.AddTextBox("The key to success lies within.",
+            room.addTextBox("The key to success lies within.",
                     2 * 28, 7 * 32, 500);
-            room.AddTextBox("Black crystals foil Ampire Bots.",
+            room.addTextBox("Black crystals foil Ampire Bots.",
                     2 * 28, 8 * 32, 500);
-            room.AddTextBox("Chip 1 is \"COUNT-TO-N\" Chip 2 is \"WALLHUGGER\"",
+            room.addTextBox("Chip 1 is \"COUNT-TO-N\" Chip 2 is \"WALLHUGGER\"",
                     2 * 28, 9 * 32, 400);
-            room.AddTextBox("(To continue, press RETURN.)",
+            room.addTextBox("(To continue, press RETURN.)",
                     3 * 28, 11 * 32, 500);
         }
 
@@ -771,9 +771,9 @@ class RO1 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Hi! I'm the Secret Helper. Congratulations on finding Secret #1 (and #2... wink wink!)",
+            room.addTextBox("Hi! I'm the Secret Helper. Congratulations on finding Secret #1 (and #2... wink wink!)",
                     3 * 28, 2 * 32, 450);
-            room.AddTextBox("Look at this... Somebody threw out a perfectly good suitcase. I wonder what's inside it?",
+            room.addTextBox("Look at this... Somebody threw out a perfectly good suitcase. I wonder what's inside it?",
                     3 * 28, 9 * 32, 450);
             String[] helperlist = {
                     "helper0.gif", "helper0.gif", "helper0.gif", "helper0.gif",
@@ -796,32 +796,32 @@ class RO1 extends Level {
 
 
         int[] roomlist1 = {0, 1, 2, 12, 13, 14, 23, 25, 27, 28};
-        LinkRoomsHorizontally(roomlist1);
+        linkRoomsHorizontally(roomlist1);
 
         int[] roomlist2 = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-        LinkRoomsVertically(roomlist2);
+        linkRoomsVertically(roomlist2);
 
         int[] roomlist3 = {3, 5, 7, 9};
-        LinkRoomsHorizontally(roomlist3);
+        linkRoomsHorizontally(roomlist3);
 
         int[] roomlist4 = {4, 6, 8, 10, 18, 17, 16, 22};
-        LinkRoomsHorizontally(roomlist4);
+        linkRoomsHorizontally(roomlist4);
 
-        LinkRoomsUpDown(14, 15);
-        LinkRoomsUpDown(15, 16);
+        linkRoomsUpDown(14, 15);
+        linkRoomsUpDown(15, 16);
 
-        LinkRoomsUpDown(19, 18);
+        linkRoomsUpDown(19, 18);
 
-        LinkRoomsLeftRight(19, 20);
-        LinkRoomsLeftRight(20, 15);
+        linkRoomsLeftRight(19, 20);
+        linkRoomsLeftRight(20, 15);
 
-        LinkRoomsUpDown(17, 21);
+        linkRoomsUpDown(17, 21);
 
-        LinkRoomsUpDown(23, 24);
+        linkRoomsUpDown(23, 24);
 
-        LinkRoomsUpDown(25, 26);
+        linkRoomsUpDown(25, 26);
 
-        LinkRoomsUpDown(30, 31);
+        linkRoomsUpDown(30, 31);
 
 
         for (int a = 0; a < 14; a++) {

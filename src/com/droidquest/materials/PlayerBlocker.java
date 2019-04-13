@@ -19,10 +19,10 @@ public class PlayerBlocker extends Material {
     public PlayerBlocker(String[] files) {
         detectable = false;
         filenames = files;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (filenames != null) {
             int numfiles = filenames.length;
             images = new ImageIcon[numfiles];
@@ -32,11 +32,11 @@ public class PlayerBlocker extends Material {
             icon = images[0];
         }
         else {
-            super.GenerateIcons();
+            super.generateIcons();
         }
     }
 
-    public void Animate() {
+    public void animate() {
         if (images != null) {
             animationState++;
             if (animationState == images.length) {
@@ -46,7 +46,7 @@ public class PlayerBlocker extends Material {
         }
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         if (level().gameCursor.getClass().toString().endsWith("GameCursor")) {
             GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == item) {

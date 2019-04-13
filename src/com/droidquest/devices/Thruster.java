@@ -29,7 +29,7 @@ public class Thruster extends Device {
         rotation = direction;
         color = col;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
@@ -39,10 +39,10 @@ public class Thruster extends Device {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level().FindItem(s.readInt());
+        robot = (GenericRobot) level().findItem(s.readInt());
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         robot = (GenericRobot) room.portalItem;
         if (ports == null) {
             ports = new Port[1];
@@ -99,8 +99,8 @@ public class Thruster extends Device {
         currentIcon = icons[0].getImage();
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         currentIcon = icons[0].getImage();
         try {
             g = currentIcon.getGraphics();
@@ -141,11 +141,11 @@ public class Thruster extends Device {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         boolean thrust = ports[0].value;
 
         if (robot == null && thrust) {
-            Dimension d = GetXY();
+            Dimension d = getXY();
             switch (rotation) {
                 case Port.ROT_UP:
                     level().sparks.add(new Spark(d.width + level().random.nextInt(30),
@@ -203,8 +203,8 @@ public class Thruster extends Device {
         return false;
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         robot = null;
     }
 

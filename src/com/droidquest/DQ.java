@@ -242,7 +242,7 @@ public class DQ extends JFrame implements ActionListener, Observer {
 	private void handleSaveLevel() {
 		String filePath = selectFileForWrite("ROlevels", "Save Level");
 		if (filePath != null) {
-			myRoom.SaveLevel(filePath);
+			myRoom.saveLevel(filePath);
 		}
 	}
 

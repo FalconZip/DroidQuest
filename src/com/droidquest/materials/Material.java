@@ -39,13 +39,13 @@ public class Material implements Serializable, Cloneable, InLevel {
         color = c;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (file != null) {
             icon = new ImageIcon(file);
         }
     }
 
-    public void Draw(Graphics g, RoomDisplay rd, int x, int y) {
+    public void draw(Graphics g, RoomDisplay rd, int x, int y) {
         if (icon == null) {
             // Blank Background
             g.setColor(color);
@@ -57,13 +57,13 @@ public class Material implements Serializable, Cloneable, InLevel {
         }
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
     }
 
-    public void Animate() {
+    public void animate() {
     }
 
-    public boolean Passable(Item item) {
+    public boolean passable(Item item) {
         // The PaintBrush can pass anything
         if(item instanceof PaintBrush) {
             return true;
@@ -71,7 +71,7 @@ public class Material implements Serializable, Cloneable, InLevel {
         return passable;
     }
 
-    public boolean Detectable(Item item) {
+    public boolean detectable(Item item) {
         return detectable;
     }
 
@@ -83,7 +83,7 @@ public class Material implements Serializable, Cloneable, InLevel {
                 && (file == null ? mat.file == null : file.equals(mat.file));
     }
 
-    public static Material FindSimiliar(Material mat1) {
+    public static Material findSimiliar(Material mat1) {
     	Level level = GameState.instance().getLevel();
         for (int a = 0; a < level.materials.size(); a++) {
             Material mat2 = level.materials.get(a);
