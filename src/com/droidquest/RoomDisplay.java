@@ -37,6 +37,7 @@ import com.droidquest.levels.Level;
 import com.droidquest.levels.MainMenu;
 import com.droidquest.materials.Material;
 import com.droidquest.sound.SoundPlayer;
+import com.droidquest.sound.Sounds;
 
 public class RoomDisplay extends JPanel {
 	public static final Font BIG_FONT = new Font("Courier", Font.BOLD, 45);
@@ -155,7 +156,7 @@ public class RoomDisplay extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (level.portal != null) {
                     boolean bringStuff = level.portal.bringStuff;
-                    level.PlaySound(level.currentViewer.room, Level.TELEPORTSOUND);
+                    level.currentViewer.room.playSound(Sounds.TELEPORT);
                     boolean tempsound = SoundPlayer.useSounds;
                     SoundPlayer.useSounds = false;
                     if (bringStuff) {
@@ -177,7 +178,7 @@ public class RoomDisplay extends JPanel {
                     }
 
                     SoundPlayer.useSounds = tempsound;
-                    level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
+                    level.currentViewer.room.playSound(Sounds.TRANSPORT);
 
                     gameState.setInLab(level.gameCursor instanceof LabCursor);
 
@@ -233,7 +234,7 @@ public class RoomDisplay extends JPanel {
 
 	void start() {
 		timer.start();
-        level.PlaySound(level.player.room, Level.STARTMUSICSOUND);
+        level.player.room.playSound(Sounds.STARTMUSIC);
 	}
 
 	public void pause() {
@@ -456,10 +457,6 @@ public void SaveLevel(String filename) {
         }
 
         start();
-    }
-
-    void stopAllSounds() {
-    	level.sounds.values().forEach(sound -> SoundPlayer.stop(sound));
     }
 
     Avatar getPlayer() {

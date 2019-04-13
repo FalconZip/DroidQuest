@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 import com.droidquest.items.Item;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class HotWires extends Material {
     // Hot orange wires that burn charge of any object that passes over it.
@@ -75,7 +75,7 @@ public class HotWires extends Material {
         if (value) {
             if (item.charge > 0) {
                 item.charge = 0;
-                level.PlaySound(item.room, Level.DISCHARGESOUND);
+                item.room.playSound(Sounds.DISCHARGE);
             }
         }
     }

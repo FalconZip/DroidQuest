@@ -1,5 +1,22 @@
 package com.droidquest.items;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 import com.droidquest.GameState;
 import com.droidquest.InLevel;
 import com.droidquest.Room;
@@ -9,17 +26,7 @@ import com.droidquest.levels.Level;
 import com.droidquest.materials.ChipTrash;
 import com.droidquest.pathfinder.Node;
 import com.droidquest.pathfinder.Pathfinder;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.droidquest.sound.Sounds;
 
 public class Item implements Serializable, Cloneable, InLevel {
 	protected final transient GameState gameState = GameState.instance();
@@ -114,7 +121,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 item.x -= x;
                 item.y -= y;
                 item.outline = Color.white;
-                level.PlaySound(room, Level.PICKUPSOUND);
+                room.playSound(Sounds.PICKUP);
             }
         }
     }
@@ -146,7 +153,7 @@ public class Item implements Serializable, Cloneable, InLevel {
             carrying = null;
             outline = new Color(128, 128, 128);
             item.IsDropped();
-            level.PlaySound(room, Level.DROPSOUND);
+            room.playSound(Sounds.DROP);
         }
     }
 
@@ -172,7 +179,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
                     level.items.remove(this);
-                    level.PlaySound(room, Level.DISCHARGESOUND);
+                    room.playSound(Sounds.DISCHARGE);
                     return;
                 }
             }

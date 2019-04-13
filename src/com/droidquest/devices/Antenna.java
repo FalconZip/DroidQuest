@@ -1,17 +1,19 @@
 package com.droidquest.devices;
 
-import com.droidquest.Room;
-import com.droidquest.chipstuff.Port;
-import com.droidquest.decorations.Spark;
-import com.droidquest.items.GenericRobot;
-import com.droidquest.levels.Level;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import javax.swing.ImageIcon;
+
+import com.droidquest.Room;
+import com.droidquest.chipstuff.Port;
+import com.droidquest.decorations.Spark;
+import com.droidquest.items.GenericRobot;
+import com.droidquest.sound.Sounds;
 
 public class Antenna extends Device {
     public static int radio = 0; // One frequency that all Antennas use (robots)
@@ -106,7 +108,7 @@ public class Antenna extends Device {
             g.fillRect(22, 6, 6, 16);
             g.fillRect(8, 22, 32, 2);
             if (ports[0].value && level.electricity) {
-                level.PlaySound(room, Level.BEEPSOUND);
+                room.playSound(Sounds.BEEP);
             }
         }
     }
