@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 
 import com.droidquest.items.Crystal;
 import com.droidquest.items.Item;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class BatteryIn extends Material {
     // Charges the Battery when an Energy Crystal is passed over it.
@@ -59,7 +59,8 @@ public class BatteryIn extends Material {
                     item.charge -= empty;
                     robot.charge = 100000;
                 }
-                level.PlaySound(robot.InternalRoom, Level.DISCHARGESOUND);
+                
+                robot.InternalRoom.playSound(Sounds.DISCHARGE);
             }
         }
     }

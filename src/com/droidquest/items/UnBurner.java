@@ -1,13 +1,15 @@
 package com.droidquest.items;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+
 import com.droidquest.Room;
 import com.droidquest.devices.PrototypeChip;
 import com.droidquest.devices.SmallChip;
-import com.droidquest.levels.Level;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import com.droidquest.sound.Sounds;
 
 public class UnBurner extends Item {
     private int burning;
@@ -99,7 +101,7 @@ public class UnBurner extends Item {
         // Start the ChipDecompiler thread
         ChipDecompiler cd = new ChipDecompiler((PrototypeChip) pc, (SmallChip) sc);
 
-        level.PlaySound(room, Level.BURNSOUND);
+        room.playSound(Sounds.BURN);
         burning = 10;
 
         return false;

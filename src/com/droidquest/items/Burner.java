@@ -10,7 +10,7 @@ import com.droidquest.Room;
 import com.droidquest.chipstuff.ChipCompiler;
 import com.droidquest.devices.PrototypeChip;
 import com.droidquest.devices.SmallChip;
-import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class Burner extends Item {
     private int burning;
@@ -102,7 +102,7 @@ public class Burner extends Item {
         // Start the ChipCompiler thread
         ChipCompiler cc = new ChipCompiler((PrototypeChip) pc, (SmallChip) sc);
 
-        level.PlaySound(room, Level.BURNSOUND);
+        room.playSound(Sounds.BURN);
         burning = 10;
 
         return false;

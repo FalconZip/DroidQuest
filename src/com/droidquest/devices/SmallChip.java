@@ -25,10 +25,10 @@ import com.droidquest.chipstuff.Port;
 import com.droidquest.chipstuff.PortSignal;
 import com.droidquest.chipstuff.Signal;
 import com.droidquest.decorations.TextBox;
-import com.droidquest.levels.Level;
 import com.droidquest.materials.ChipTester;
 import com.droidquest.materials.ChipTrash;
 import com.droidquest.materials.SmallChipBurner;
+import com.droidquest.sound.Sounds;
 
 public class SmallChip extends GenericChip {
     public int speed;
@@ -173,7 +173,7 @@ public class SmallChip extends GenericChip {
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
                     level.items.remove(this);
-                    level.PlaySound(room, Level.DISCHARGESOUND);
+                    room.playSound(Sounds.DISCHARGE);
                     return;
                 }
                 if (room.MaterialArray[a][b] instanceof ChipTester) {

@@ -11,6 +11,7 @@ import java.io.Serializable;
 import com.droidquest.chipstuff.Port;
 import com.droidquest.devices.Device;
 import com.droidquest.levels.Level;
+import com.droidquest.sound.Sounds;
 
 public class Wire implements Serializable, InLevel {
     public transient Port fromPort; // Connected First
@@ -38,7 +39,7 @@ public class Wire implements Serializable, InLevel {
         }
 
         from.myDevice.room.wires.add(this);
-        level().PlaySound(from.myDevice.room, Level.ATTACHSOUND);
+        from.myDevice.room.playSound(Sounds.ATTACH);
 
         if (from.type == Port.TYPE_INPUT) {
             if (to.type == Port.TYPE_INPUT) {
@@ -165,7 +166,7 @@ public class Wire implements Serializable, InLevel {
     }
 
     public void ConnectTo(Port t) {
-        level().PlaySound(fromPort.myDevice.room, Level.DETATCHSOUND);
+        fromPort.myDevice.room.playSound(Sounds.DETATCH);
 
         if (toPort.myDevice == level().solderingPen) {
             toPort.value = false;
@@ -313,7 +314,7 @@ public class Wire implements Serializable, InLevel {
     public void Remove() {
         Room room = fromPort.myDevice.room;
 
-        level().PlaySound(room, Level.DETATCHSOUND);
+        room.playSound(Sounds.DETATCH);
 
         fromPort.myWire = null;
         toPort.myWire = null;
