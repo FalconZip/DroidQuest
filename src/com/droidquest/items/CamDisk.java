@@ -13,7 +13,7 @@ public class CamDisk extends Disk {
         super(X, Y, r, Color.white, 0);
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         if (spycam == null) {
             for (int a = 0; a < level().items.size(); a++) {
                 Item item = level().items.get(a);

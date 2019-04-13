@@ -17,10 +17,10 @@ public class F12Form extends Item {
         room = r;
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -47,7 +47,7 @@ public class F12Form extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         for (int a = 0; a < level().items.size(); a++) {
             Item item = level().items.get(a);
             if (item.getClass().toString().endsWith("GateKeeper")) {
@@ -56,8 +56,8 @@ public class F12Form extends Item {
         }
 
         if (gk != null) {
-            if (Overlaps(gk)) {
-                gk.PicksUp(this);
+            if (overlaps(gk)) {
+                gk.picksUp(this);
                 gk.behavior = 1;
             }
         }

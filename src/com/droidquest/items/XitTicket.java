@@ -19,10 +19,10 @@ public class XitTicket extends Item {
         width = 28;
         height = 30;
         editable = true;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -59,7 +59,7 @@ public class XitTicket extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         int bigX = (x + width / 2) / 28;
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
@@ -67,7 +67,7 @@ public class XitTicket extends Item {
             XitSlot xitslot = (XitSlot) mat;
             xitslot.room = room;
             xitslot.doorState = 1;
-            room.SetMaterial(18, 1, 18);
+            room.setMaterial(18, 1, 18);
             room = null;
         }
     }

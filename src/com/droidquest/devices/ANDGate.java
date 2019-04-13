@@ -19,7 +19,7 @@ public class ANDGate extends Device {
         room = r;
         width = 28;
         height = 50;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[rotation % 2].getImage();
         try {
             g = icons[0].getImage().getGraphics();
@@ -30,8 +30,8 @@ public class ANDGate extends Device {
 
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         if (ports[0].value && ports[1].value) {
             g.drawImage(images[4 + rotation].getImage(), 0, 0, level());
         }
@@ -40,8 +40,8 @@ public class ANDGate extends Device {
         }
     }
 
-    public void GenerateIcons() {
-        super.GenerateIcons();
+    public void generateIcons() {
+        super.generateIcons();
         if (ports == null) {
             ports = new Port[3];
             ports[0] = new Port(7, 47, Port.TYPE_INPUT, 12, Port.ROT_DOWN, this);
@@ -145,7 +145,7 @@ public class ANDGate extends Device {
         currentIcon = icons[rotation % 2].getImage();
     }
 
-    public boolean Function() {
+    public boolean function() {
         ports[2].value = ports[0].value & ports[1].value;
         return false;
     }

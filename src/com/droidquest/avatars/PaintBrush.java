@@ -31,7 +31,7 @@ public class PaintBrush extends Player {
     public PaintBrush() {
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class PaintBrush extends Player {
         return true;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
     	Level level = level();
         icons = new ImageIcon[5];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -91,8 +91,8 @@ public class PaintBrush extends Player {
 
         paintMats = new Material[5];
         emptyIndex = 0;
-        paintMats[0] = Material.FindSimiliar(new Material(Color.red, false, true));
-        paintMats[1] = Material.FindSimiliar(new Material(Color.green, false, false));
+        paintMats[0] = Material.findSimiliar(new Material(Color.red, false, true));
+        paintMats[1] = Material.findSimiliar(new Material(Color.green, false, false));
         Item robot = null;
 
         for (Item item : level().items) {
@@ -103,14 +103,14 @@ public class PaintBrush extends Player {
         if (robot == null) {
             System.out.println("Create paintbrush AFTER creating robots.");
         }
-        paintMats[2] = Material.FindSimiliar(new RobotBlocker(robot, new Color(255, 128, 0)));
+        paintMats[2] = Material.findSimiliar(new RobotBlocker(robot, new Color(255, 128, 0)));
 
         for (Item item : level().items) {
             if (item instanceof WhiteRobot) {
                 robot = item;
             }
         }
-        paintMats[3] = Material.FindSimiliar(new RobotBlocker(robot, Color.white));
+        paintMats[3] = Material.findSimiliar(new RobotBlocker(robot, Color.white));
 
         for (Item item : level().items) {
             if (item instanceof BlueRobot) {
@@ -118,7 +118,7 @@ public class PaintBrush extends Player {
             }
         }
 
-        paintMats[4] = Material.FindSimiliar(new RobotBlocker(robot, Color.blue));
+        paintMats[4] = Material.findSimiliar(new RobotBlocker(robot, Color.blue));
 
         paintIndex = 0;
         matIndex = level().materials.indexOf(paintMats[paintIndex]);
@@ -162,10 +162,10 @@ public class PaintBrush extends Player {
         int bigX = (x + 14) / 28;
         int bigY = (y + 16) / 32;
         if (room.RoomArray[bigY][bigX] == emptyIndex) {
-            room.SetMaterial(bigX, bigY, matIndex);
+            room.setMaterial(bigX, bigY, matIndex);
         }
         else {
-            room.SetMaterial(bigX, bigY, emptyIndex);
+            room.setMaterial(bigX, bigY, emptyIndex);
         }
         return true;
     }
@@ -226,7 +226,7 @@ public class PaintBrush extends Player {
         if (y < 0) {
             if (room.getUpRoom(this) != null) { // change Rooms
                 y = y + 384;
-                SetRoom(room.getUpRoom(this));
+                setRoom(room.getUpRoom(this));
             }
             else // stop at top
             {
@@ -245,7 +245,7 @@ public class PaintBrush extends Player {
         if (y > 383) {
             if (room.getDownRoom(this) != null) { // change Rooms
                 y = y - 384;
-                SetRoom(room.getDownRoom(this));
+                setRoom(room.getDownRoom(this));
             }
             else // stop at bottom
             {
@@ -264,7 +264,7 @@ public class PaintBrush extends Player {
         if (x < 0) {
             if (room.getLeftRoom(this) != null) { // change Rooms
                 x = x + 560;
-                SetRoom(room.getLeftRoom(this));
+                setRoom(room.getLeftRoom(this));
             }
             else // stop at left
             {
@@ -283,7 +283,7 @@ public class PaintBrush extends Player {
         if (x > 559) {
             if (room.getRightRoom(this) != null) { // change Rooms
                 x = x - 560;
-                SetRoom(room.getRightRoom(this));
+                setRoom(room.getRightRoom(this));
             }
             else // stop at right
             {

@@ -24,10 +24,10 @@ public class AutoWire extends Item {
         room = r;
         width = 28;
         height = 30;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -71,7 +71,7 @@ public class AutoWire extends Item {
 
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         if (animation != 0) {
             return false;
         }
@@ -106,7 +106,7 @@ public class AutoWire extends Item {
         return false;
     }
 
-    public void Animate() {
+    public void animate() {
         if (animation == 0) {
             return;
         }
@@ -116,7 +116,7 @@ public class AutoWire extends Item {
                 portdevices[0].ports[0].myWire = new Wire(chip.ports[0], portdevices[0].ports[0]);
             }
             else { // Unwiring
-                portdevices[0].ports[0].myWire.Remove();
+                portdevices[0].ports[0].myWire.remove();
                 portdevices[0].ports[0].type = Port.TYPE_UNDEFINED;
                 portdevices[0].ports[0].value = false;
             }
@@ -133,7 +133,7 @@ public class AutoWire extends Item {
             }
             else { // Unwiring
                 if (portdevices[animation - 1].ports[0].myWire != null) {
-                    portdevices[animation - 1].ports[0].myWire.Remove();
+                    portdevices[animation - 1].ports[0].myWire.remove();
                     portdevices[animation - 1].ports[0].type = Port.TYPE_UNDEFINED;
                     portdevices[animation - 1].ports[0].value = false;
                 }
@@ -148,8 +148,8 @@ public class AutoWire extends Item {
 
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         chip = null;
         portdevices = null;
     }

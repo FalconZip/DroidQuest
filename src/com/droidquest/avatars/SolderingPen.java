@@ -24,14 +24,14 @@ public class SolderingPen extends Device implements Avatar {
     public SolderingPen() {
         width = 22;
         height = 26;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
         ports = new Port[1];
         ports[0] = new Port(2, 20, Port.TYPE_UNDEFINED, 0, Port.ROT_DOWN, this);
 
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         // Executed once during initialization
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -107,7 +107,7 @@ public class SolderingPen extends Device implements Avatar {
         currentPort = null;
         for (int a = 0; a < level().items.size(); a++) {
             Item item = level().items.get(a);
-            if (!item.isDevice() || !Overlaps(item) || item == this) {
+            if (!item.isDevice() || !overlaps(item) || item == this) {
                 item = null;
             }
             if (item != null) {
@@ -148,21 +148,21 @@ public class SolderingPen extends Device implements Avatar {
     public void moveUp(boolean nudge) {
     	Level level = level();
         Room tempRoom = room;
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.UpEnterOverlap(this)) {
+                if (item.upEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 320; // 10 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
         super.moveUp(nudge);
         if (tempRoom != room && ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
 //	  wiredPort=null;
         CheckPort();
@@ -171,21 +171,21 @@ public class SolderingPen extends Device implements Avatar {
     public void moveDown(boolean nudge) {
     	Level level = level();
         Room tempRoom = room;
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.DownEnterOverlap(this)) {
+                if (item.downEnterOverlap(this)) {
                     int newX = 280; // 10 * 28
                     int newY = 0; //  0 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
         super.moveDown(nudge);
         if (tempRoom != room && ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         CheckPort();
     }
@@ -193,21 +193,21 @@ public class SolderingPen extends Device implements Avatar {
     public void moveLeft(boolean nudge) {
     	Level level = level();
         Room tempRoom = room;
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.LeftEnterOverlap(this)) {
+                if (item.leftEnterOverlap(this)) {
                     int newX = 532; // 19 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
         super.moveLeft(nudge);
         if (tempRoom != room && ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         CheckPort();
     }
@@ -215,36 +215,36 @@ public class SolderingPen extends Device implements Avatar {
     public void moveRight(boolean nudge) {
     	Level level = level();
         Room tempRoom = room;
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (item.RightEnterOverlap(this)) {
+                if (item.rightEnterOverlap(this)) {
                     int newX = 0; // 0 * 28
                     int newY = 176; // 5.5 * 32
                     x = newX;
                     y = newY;
-                    SetRoom(item.InternalRoom);
+                    setRoom(item.InternalRoom);
                 }
             }
         }
         super.moveRight(nudge);
         if (tempRoom != room && ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         CheckPort();
     }
 
     @Override
-    public void Animate() {
+    public void animate() {
         Room tempRoom = room;
-        super.Animate();
+        super.animate();
         if (tempRoom != room && ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         CheckPort();
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
     void WirePort() {
@@ -254,7 +254,7 @@ public class SolderingPen extends Device implements Avatar {
                 if (currentPort.myWire != null) // If currentPort is wired
                 {
                     // Remove Wire from currentPort
-                    currentPort.myWire.Remove();
+                    currentPort.myWire.remove();
                     ports[0].value = false;
                     ports[0].type = Port.TYPE_UNDEFINED;
                 }
@@ -269,10 +269,10 @@ public class SolderingPen extends Device implements Avatar {
                 if (currentPort.myWire != null) // If currentPort is wired
                 {
                     // Remove wire at currentPort
-                    currentPort.myWire.Remove();
+                    currentPort.myWire.remove();
                     // Remove wire attached to Pen
                     if (ports[0].myWire != null) {
-                        ports[0].myWire.Remove();
+                        ports[0].myWire.remove();
                     }
                     ports[0].value = false;
                     ports[0].type = Port.TYPE_UNDEFINED;
@@ -280,20 +280,20 @@ public class SolderingPen extends Device implements Avatar {
                 else // If currentPort not wired
                 {
                     // Attach Wire to currentPort
-                    ports[0].myWire.ConnectTo(currentPort);
+                    ports[0].myWire.connectTo(currentPort);
                 }
             }
         }
         else if (ports[0].myWire != null) // If not hot and SP wired
         {
             // Remove Wire to Pen
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
             ports[0].value = false;
             ports[0].type = Port.TYPE_UNDEFINED;
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         if (ports[0].myWire == null) {
             ports[0].value = false;
             ports[0].type = Port.TYPE_UNDEFINED;
@@ -301,11 +301,11 @@ public class SolderingPen extends Device implements Avatar {
         return false;
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         return !i.getClass().toString().endsWith("Robot");
     }
 
-    public boolean KeyUp(KeyEvent e) {
+    public boolean keyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_C && handleGameCursor()) {
             return false;
         }
@@ -361,7 +361,7 @@ public class SolderingPen extends Device implements Avatar {
         return false;
     }
 
-    public boolean KeyDown(KeyEvent e) {
+    public boolean keyDown(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             repeating++;
             if (repeating > 10) {
@@ -420,7 +420,7 @@ public class SolderingPen extends Device implements Avatar {
     public boolean handleGameCursor() {
     	Level level = level();
         if (ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         level().gameCursor.x = x;
         level().gameCursor.y = y;
@@ -503,7 +503,7 @@ public class SolderingPen extends Device implements Avatar {
             return false;
         }
         if (ports[0].myWire != null) {
-            ports[0].myWire.Remove();
+            ports[0].myWire.remove();
         }
         level().paintbrush.x = x;
         level().paintbrush.y = y;
@@ -545,16 +545,16 @@ public class SolderingPen extends Device implements Avatar {
     @Override
     public boolean handleEnterRoom() {
     	Level level = level();
-        Item item = level().FindNearestItem(this);
+        Item item = level().findNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
-                if (Overlaps(item)) {
-                    if (!item.OverWall()) {
+                if (overlaps(item)) {
+                    if (!item.overWall()) {
                         int newX = 280; // 10 * 28
                         int newY = 176; // 5.5 * 32
                         x = newX;
                         y = newY;
-                        SetRoom(item.InternalRoom);
+                        setRoom(item.InternalRoom);
                         return true;
                     }
                 }
@@ -566,7 +566,7 @@ public class SolderingPen extends Device implements Avatar {
     @Override
     public boolean handleExitRoom() {
         if (room != null && room.portalItem != null) {
-            Dimension d = room.portalItem.GetXY();
+            Dimension d = room.portalItem.getXY();
             int newX = d.width
                     + room.portalItem.getWidth() / 2
                     - width / 2;
@@ -575,7 +575,7 @@ public class SolderingPen extends Device implements Avatar {
                     - height / 2;
             x = newX;
             y = newY;
-            SetRoom(room.portalItem.room);
+            setRoom(room.portalItem.room);
             level().currentViewer = level().player;
             return true;
         }

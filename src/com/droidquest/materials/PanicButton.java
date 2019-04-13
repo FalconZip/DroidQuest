@@ -22,10 +22,10 @@ public class PanicButton extends Material {
     public PanicButton(int n) {
         super(true, false);
         number = n;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         images = new ImageIcon[2];
         for (int a = 0; a < 2; a++) {
             images[a] = new ImageIcon(new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR));
@@ -62,7 +62,7 @@ public class PanicButton extends Material {
         icon = images[0];
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item == level().player && level().player.carriedBy == null) {
             if (sentry == null) {
                 for (int a = 0; a < level().items.size(); a++) {

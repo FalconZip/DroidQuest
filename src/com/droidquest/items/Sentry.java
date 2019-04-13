@@ -59,7 +59,7 @@ public class Sentry extends Item {
         height = 18;
         orgY = 30;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
@@ -79,11 +79,11 @@ public class Sentry extends Item {
         behavior = 0;
         goToX = pace[0];
         goToY = pace[1];
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height + orgY, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height + orgY, BufferedImage.TYPE_4BYTE_ABGR));
@@ -208,7 +208,7 @@ public class Sentry extends Item {
 
     }
 
-    public void Animate() {
+    public void animate() {
         if (carrying == null) {
             animation++;
         }
@@ -233,7 +233,7 @@ public class Sentry extends Item {
                 behavior = -1; // Pin Robot
             }
             else if (carrying != null && behavior != drag) {
-                Drops();
+                drops();
                 behavior = previousBehavior;
             }
         }
@@ -243,7 +243,7 @@ public class Sentry extends Item {
                 if(robot != null) {
                     x = robot.x + robot.width / 2 - width / 2;
                     y = robot.y + robot.height / 2 - height / 2;
-                    PicksUp(robot);
+                    picksUp(robot);
                 }
             }
         }
@@ -327,7 +327,7 @@ public class Sentry extends Item {
                 moveDown(diff * dir);
             }
             if (x == level().player.x && y == level().player.y) {
-                PicksUp(level().player);
+                picksUp(level().player);
 //			  if (level().player.carrying != null)
 //			    level().player.Drops();
                 behavior = drag;
@@ -335,7 +335,7 @@ public class Sentry extends Item {
         }
         else if (behavior == drag) {
             if (x == carryToX && y == carryToY) {
-                Drops();
+                drops();
                 behavior = previousBehavior;
             }
             else {

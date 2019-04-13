@@ -65,39 +65,39 @@ public class Level implements ImageObserver, Serializable {
         random.setSeed(System.currentTimeMillis());
     }
 
-    public void LinkRoomsLeftRight(int L, int R) {
+    public void linkRoomsLeftRight(int L, int R) {
         rooms.get(L).rightRoom = rooms.get(R);
         rooms.get(R).leftRoom = rooms.get(L);
     }
 
-    public void LinkRoomsUpDown(int U, int D) {
+    public void linkRoomsUpDown(int U, int D) {
         rooms.get(U).downRoom = rooms.get(D);
         rooms.get(D).upRoom = rooms.get(U);
     }
 
-    void LinkRoomsHorizontally(int[] roomlist) {
+    void linkRoomsHorizontally(int[] roomlist) {
         for (int a = 0; a < roomlist.length - 1; a++) {
-            LinkRoomsLeftRight(roomlist[a], roomlist[a + 1]);
+            linkRoomsLeftRight(roomlist[a], roomlist[a + 1]);
         }
     }
 
-    void LinkRoomsVertically(int[] roomlist) {
+    void linkRoomsVertically(int[] roomlist) {
         for (int a = 0; a < roomlist.length - 1; a++) {
-            LinkRoomsUpDown(roomlist[a], roomlist[a + 1]);
+            linkRoomsUpDown(roomlist[a], roomlist[a + 1]);
         }
     }
 
-    void LinkRoomsGrid(int[][] roomgrid) {
+    void linkRoomsGrid(int[][] roomgrid) {
         // Requires a rectangular grid... each array is the same length
         int height = roomgrid.length;
         int width = roomgrid[0].length;
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (x < width - 1) {
-                    LinkRoomsLeftRight(roomgrid[y][x], roomgrid[y][x + 1]);
+                    linkRoomsLeftRight(roomgrid[y][x], roomgrid[y][x + 1]);
                 }
                 if (y < height - 1) {
-                    LinkRoomsUpDown(roomgrid[y][x], roomgrid[y + 1][x]);
+                    linkRoomsUpDown(roomgrid[y][x], roomgrid[y + 1][x]);
                 }
             }
         }
@@ -133,7 +133,7 @@ public class Level implements ImageObserver, Serializable {
         }
     }
 
-    public Item FindNearestItem(Item a) {
+    public Item findNearestItem(Item a) {
         Item nearest = null;
         int dx = 100;
         int dy = 100;
@@ -141,7 +141,7 @@ public class Level implements ImageObserver, Serializable {
         int cya = a.y + a.getHeight() / 2;
         for (int i = 0; i < items.size(); i++) {
             Item b = items.get(i);
-            if (a.Overlaps(b)) {
+            if (a.overlaps(b)) {
                 int cxb = b.x + b.getWidth() / 2;
                 int cyb = b.y + b.getHeight() / 2;
                 int dx2 = Math.abs(cxb - cxa);
@@ -241,14 +241,14 @@ public class Level implements ImageObserver, Serializable {
         }
 
         electricity = s.readBoolean();
-        player = FindItem(s.readInt());
-        gameCursor = FindItem(s.readInt());
-        currentViewer = FindItem(s.readInt());
-        solderingPen = FindItem(s.readInt());
-        remote = FindItem(s.readInt());
-        toolbox = FindItem(s.readInt());
-        helpCam = FindItem(s.readInt());
-        paintbrush = FindItem(s.readInt());
+        player = findItem(s.readInt());
+        gameCursor = findItem(s.readInt());
+        currentViewer = findItem(s.readInt());
+        solderingPen = findItem(s.readInt());
+        remote = findItem(s.readInt());
+        toolbox = findItem(s.readInt());
+        helpCam = findItem(s.readInt());
+        paintbrush = findItem(s.readInt());
 
         // Read Room References (UDLRrooms, PortalItem, Wires)
         for (int a = 0; a < numRooms; a++) {
@@ -262,7 +262,7 @@ public class Level implements ImageObserver, Serializable {
 
         // Generate Material Icons
         for (int a = 0; a < numMaterials; a++) {
-            materials.get(a).GenerateIcons();
+            materials.get(a).generateIcons();
         }
 
     }
@@ -276,7 +276,7 @@ public class Level implements ImageObserver, Serializable {
         return null;
     }
 
-    public Item FindItem(int itemIndex) {
+    public Item findItem(int itemIndex) {
         if (itemIndex == -1) {
             return null;
         }
@@ -286,7 +286,7 @@ public class Level implements ImageObserver, Serializable {
         return items.get(itemIndex);
     }
 
-    public Room FindRoom(int roomIndex) {
+    public Room findRoom(int roomIndex) {
         if (roomIndex == -1) {
             return null;
         }
@@ -296,7 +296,7 @@ public class Level implements ImageObserver, Serializable {
         return rooms.get(roomIndex);
     }
 
-    public void Empty() {
+    public void empty() {
         // This goes through the entire level structure and removes all
         // references to everything.
 
@@ -304,7 +304,7 @@ public class Level implements ImageObserver, Serializable {
         // Remove all Items
         for (a = 0; a < items.size(); a++) {
             Item item = items.get(a);
-            item.Erase();
+            item.erase();
         }
         items.clear();
 
@@ -314,7 +314,7 @@ public class Level implements ImageObserver, Serializable {
         // Remove all Rooms
         for (a = 0; a < rooms.size(); a++) {
             Room room = rooms.get(a);
-            room.Erase();
+            room.erase();
         }
         rooms.clear();
 
@@ -330,16 +330,16 @@ public class Level implements ImageObserver, Serializable {
         System.gc(); // Run Garbage Collection
     }
 
-    public void WriteInventory() {
+    public void writeInventory() {
         if (player.carrying == null) {
             return;
         }
-        AddItemToInventory(player.carrying);
-        LinkInventory();
-        SaveInventory();
+        addItemToInventory(player.carrying);
+        linkInventory();
+        saveInventory();
     }
 
-    void AddItemToInventory(Item item) {
+    void addItemToInventory(Item item) {
         // Save Item
 
         if (item instanceof ToolBox) {
@@ -364,7 +364,7 @@ public class Level implements ImageObserver, Serializable {
 
         // Save carried Item
         if (item.carrying != null && item.room == player.room) {
-            AddItemToInventory(item.carrying);
+            addItemToInventory(item.carrying);
         }
 
         if (item.InternalRoom != null) {
@@ -402,14 +402,14 @@ public class Level implements ImageObserver, Serializable {
                 for (int a = 0; a < items.size(); a++) {
                     Item internalItem = items.get(a);
                     if (internalItem.room == item.InternalRoom) {
-                        AddItemToInventory(internalItem);
+                        addItemToInventory(internalItem);
                     }
                 }
             }
         }
     }
 
-    void LinkInventory() {
+    void linkInventory() {
         for (int a = 0; a < invItems.size(); a++) {
             Item item = invItems.get(a);
             if (item.carrying != null) {
@@ -565,7 +565,7 @@ public class Level implements ImageObserver, Serializable {
         }
     }
 
-    void SaveInventory() {
+    void saveInventory() {
         if (invItems.size() == 0) {
             return;
         }
@@ -662,7 +662,7 @@ public class Level implements ImageObserver, Serializable {
 
     }
 
-    public void LoadInventory() {
+    public void loadInventory() {
         roomdisplay.pause();
         String filename = "temp.inv";
         System.out.println("Loading Inventory ");
@@ -691,7 +691,7 @@ public class Level implements ImageObserver, Serializable {
                 try {
                     Material material = (Material) s.readObject();
                     materials.add(material);
-                    material.GenerateIcons();
+                    material.generateIcons();
                 }
                 catch (ClassNotFoundException e) {
                 }
@@ -765,7 +765,7 @@ public class Level implements ImageObserver, Serializable {
                     }
                 }
 
-                room.GenerateArray();
+                room.generateArray();
             }
 
             for (int a = 0; a < numItems; a++) {
@@ -856,7 +856,7 @@ public class Level implements ImageObserver, Serializable {
 
         for (int a = orgNumItems; a < items.size(); a++) {
             Item item = items.get(a);
-            item.GenerateIcons();
+            item.generateIcons();
             if (item.getClass().toString().endsWith("SmallChip")) {
                 SmallChip sc = (SmallChip) item;
                 String chipfilename = "tmp" + (a - orgNumItems) + ".chip";
@@ -873,7 +873,7 @@ public class Level implements ImageObserver, Serializable {
         // Generate all Room Material Arrays
         for (int a = 0; a < rooms.size(); a++) {
             Room room = rooms.get(a);
-            room.GenerateArray();
+            room.generateArray();
         }
 
         // Randomize the level

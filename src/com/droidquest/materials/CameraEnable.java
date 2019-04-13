@@ -13,10 +13,10 @@ public class CameraEnable extends Material {
 
     public CameraEnable() {
         super(true, false);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -42,7 +42,7 @@ public class CameraEnable extends Material {
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (hiddenCamera == null) {
             for (int a = 0; a < level().items.size(); a++) {
                 Item i = level().items.get(a);

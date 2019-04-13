@@ -234,9 +234,9 @@ class RO6 extends Level {
 
         {// Room  0 Help 
             Room room = rooms.get(0);
-            room.AddTextBox("You're on your own here!",
+            room.addTextBox("You're on your own here!",
                     136, 6 * 32, 560);
-            room.AddTextBox("(To continue, press RETURN.)",
+            room.addTextBox("(To continue, press RETURN.)",
                     96, 346, 500);
         }
         {// Room  1 Maze 
@@ -308,8 +308,8 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("Welcome to the Super Secret 6th level!", 52, 64, 560);
-            room.AddTextBox("{255,000,000} Cross {255,128,000} the {255,255,000} rainbow {000,255,000} bridge {000,000,255} to {255,000,255} freedom!",
+            room.addTextBox("Welcome to the Super Secret 6th level!", 52, 64, 560);
+            room.addTextBox("{255,000,000} Cross {255,128,000} the {255,255,000} rainbow {000,255,000} bridge {000,000,255} to {255,000,255} freedom!",
                     64, 9 * 32, 560);
 //	     items.add(new Key(2*28,3*32,room,Color.red));
 //	     items.add(new Key(2*28,4*32,room,new Color(255,128,0)));
@@ -335,8 +335,8 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2},
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2}
             };
-            room.AddTextBox("Rainbow bridge", 364, 6 * 32, 560);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Rainbow bridge", 364, 6 * 32, 560);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room  8 Rainbow Bridge 
             Room room = rooms.get(8);
@@ -373,10 +373,10 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("Orange Lock", 28, 6 * 32, 560);
-            room.AddArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddTextBox("Yellow Lock", 400, 6 * 32, 560);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Orange Lock", 28, 6 * 32, 560);
+            room.addArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Yellow Lock", 400, 6 * 32, 560);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 10 Hallway 
             Room room = rooms.get(10);
@@ -395,10 +395,10 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("Red Lock Map", 28, 9 * 32, 560);
-            room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddTextBox("Red Lock", 436, 2 * 32, 560);
-            room.AddArrow(559, 2 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Red Lock Map", 28, 9 * 32, 560);
+            room.addArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Red Lock", 436, 2 * 32, 560);
+            room.addArrow(559, 2 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 11 Hallway 
             Room room = rooms.get(11);
@@ -417,10 +417,10 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("Green Lock", 28, 6 * 32, 560);
-            room.AddArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
-            room.AddTextBox("Blue Lock", 424, 6 * 32, 560);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Green Lock", 28, 6 * 32, 560);
+            room.addArrow(0, 6 * 32, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Blue Lock", 424, 6 * 32, 560);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {// Room 12 Hallway 
             Room room = rooms.get(12);
@@ -439,8 +439,8 @@ class RO6 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("Purple Lock", 400, 6 * 32, 560);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Purple Lock", 400, 6 * 32, 560);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
 
         {// Room 13 Red Lock upper 
@@ -673,8 +673,8 @@ class RO6 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("You did it! You beat the Secret 6th level!", 2 * 28, 2 * 32, 500);
-            room.AddTextBox("Believe it or not, you have now accomplished something that Tom hasn't even done yet.!",
+            room.addTextBox("You did it! You beat the Secret 6th level!", 2 * 28, 2 * 32, 500);
+            room.addTextBox("Believe it or not, you have now accomplished something that Tom hasn't even done yet.!",
                     2 * 28, 5 * 32, 500);
             String[] helperlist = {
                     "helper0.gif", "helper0.gif", "helper0.gif", "helper0.gif",
@@ -708,22 +708,22 @@ class RO6 extends Level {
         rooms.get(5).downRoom = rooms.get(6);
         rooms.get(6).upRoom = rooms.get(1);
 
-        LinkRoomsLeftRight(6, 7);
-        LinkRoomsLeftRight(7, 8);
-        LinkRoomsLeftRight(8, 22);
+        linkRoomsLeftRight(6, 7);
+        linkRoomsLeftRight(7, 8);
+        linkRoomsLeftRight(8, 22);
 
         int[] list1 = {10, 9, 7, 11, 12};
-        LinkRoomsVertically(list1);
+        linkRoomsVertically(list1);
 
-        LinkRoomsUpDown(16, 15);
-        LinkRoomsUpDown(13, 14);
-        LinkRoomsLeftRight(15, 10);
-        LinkRoomsLeftRight(10, 13);
-        LinkRoomsLeftRight(17, 9);
-        LinkRoomsLeftRight(9, 18);
-        LinkRoomsLeftRight(19, 11);
-        LinkRoomsLeftRight(11, 20);
-        LinkRoomsLeftRight(12, 21);
+        linkRoomsUpDown(16, 15);
+        linkRoomsUpDown(13, 14);
+        linkRoomsLeftRight(15, 10);
+        linkRoomsLeftRight(10, 13);
+        linkRoomsLeftRight(17, 9);
+        linkRoomsLeftRight(9, 18);
+        linkRoomsLeftRight(19, 11);
+        linkRoomsLeftRight(11, 20);
+        linkRoomsLeftRight(12, 21);
 
         gameCursor = new GameCursor(9 * 28 + 14, 5 * 32 + 16, rooms.get(1));
         helpCam = new HelpCam(rooms.get(0));

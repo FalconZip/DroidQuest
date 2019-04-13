@@ -64,56 +64,56 @@ class ROTutF extends Level {
 
         { // Room 0, Help Screen
             Room room = rooms.get(0);
-            room.SetMaterialOutline(0, 0, 19, 11, 2);
-            room.AddTextBox("If your circuit doesn't work, check the state of the flipflops. If the robot doesn't go at all, check the Remote Control, thruster switch, and battery.",
+            room.setMaterialOutline(0, 0, 19, 11, 2);
+            room.addTextBox("If your circuit doesn't work, check the state of the flipflops. If the robot doesn't go at all, check the Remote Control, thruster switch, and battery.",
                     2 * 28, 2 * 32, 450);
-            room.AddTextBox("To continue, press RETURN.",
+            room.addTextBox("To continue, press RETURN.",
                     4 * 28, 10 * 32, 500);
         }
         { // Room 1, Title Screen
             Room room = rooms.get(1);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(19, 7, 19, 9, 0);
-            room.SetMaterial(0, 10, 0);
-            room.AddTextBox("{BIG} ROBOT TEAMWORK", 3 * 28, 2 * 32, 500);
-            room.AddTextBox("Some of the challenges you'll encounter in Robotropolis need robot teamwork. Here you'll see how to use two robots to solve puzzles.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(19, 7, 19, 9, 0);
+            room.setMaterial(0, 10, 0);
+            room.addTextBox("{BIG} ROBOT TEAMWORK", 3 * 28, 2 * 32, 500);
+            room.addTextBox("Some of the challenges you'll encounter in Robotropolis need robot teamwork. Here you'll see how to use two robots to solve puzzles.",
                     2 * 28, 4 * 32, 500);
-            room.AddArrow(559, 8 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 8 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             toolbox = new ToolBox(3 * 28, 7 * 32, room);
             items.add(toolbox);
         }
         { // Room 2, Sparky & Checkers
             Room room = rooms.get(2);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(0, 7, 0, 9, 0);
-            room.SetMaterialOutline(19, 8, 19, 10, 0);
-            room.SetMaterialOutline(13, 11, 16, 11, 0);
-            room.AddTextBox("To solve the puzzle next door, you need two robots. One robot must push the button that opens the door to the crystal. The other must get the crystal.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(0, 7, 0, 9, 0);
+            room.setMaterialOutline(19, 8, 19, 10, 0);
+            room.setMaterialOutline(13, 11, 16, 11, 0);
+            room.addTextBox("To solve the puzzle next door, you need two robots. One robot must push the button that opens the door to the crystal. The other must get the crystal.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("This sentry won't let you ride past inside a robot.",
+            room.addTextBox("This sentry won't let you ride past inside a robot.",
                     2 * 28, 5 * 32, 500);
-            room.AddTextBox("(Use the PANIC BUTTON if your robot gets stuck.)",
+            room.addTextBox("(Use the PANIC BUTTON if your robot gets stuck.)",
                     2 * 28, 7 * 32, 500);
-            room.AddTextBox("If you want help, try the following solution.",
+            room.addTextBox("If you want help, try the following solution.",
                     2 * 28, 10 * 32, 300);
-            room.AddTextBox("PUZZLE",
+            room.addTextBox("PUZZLE",
                     17 * 28, 10 * 32, 500);
-            room.AddArrow(559, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(15 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(559, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(15 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
             items.add(new OrangeRobot(11 * 28, 8 * 32, room));
             items.add(new WhiteRobot(14 * 28, 8 * 32, room));
         }
         { // Room 3, Puzzle
             Room room = rooms.get(3);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(11, 0, 19, 4, 5);
-            room.SetMaterialOutline(11, 0, 11, 6, 5);
-            room.SetMaterialOutline(0, 8, 0, 10, 0);
-            room.SetMaterial(18, 5, 7);
-            room.SetMaterial(1, 1, 11);
-            room.AddTextBox("PANIC BUTTON",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(11, 0, 19, 4, 5);
+            room.setMaterialOutline(11, 0, 11, 6, 5);
+            room.setMaterialOutline(0, 8, 0, 10, 0);
+            room.setMaterial(18, 5, 7);
+            room.setMaterial(1, 1, 11);
+            room.addTextBox("PANIC BUTTON",
                     2 * 28, 2 * 32, 150);
-            room.AddTextBox("DOOR",
+            room.addTextBox("DOOR",
                     9 * 28, 3 * 32, 200);
             int[] pace = {3 * 28, 2 * 32, 3 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 20 * 28, 12 * 32, 0, 9 * 32};
@@ -122,188 +122,188 @@ class ROTutF extends Level {
         }
         { // Room 4, Divide the tasks
             Room room = rooms.get(4);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(13, 0, 17, 0, 0);
-            room.SetMaterialOutline(15, 11, 18, 11, 0);
-            room.AddTextBox("The problem has two parts:",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(13, 0, 17, 0, 0);
+            room.setMaterialOutline(15, 11, 18, 11, 0);
+            room.addTextBox("The problem has two parts:",
                     2 * 28, 2 * 32, 300);
-            room.AddTextBox("1. Push door button",
+            room.addTextBox("1. Push door button",
                     2 * 28, 4 * 32, 300);
-            room.AddTextBox("2. Retrieve crystal",
+            room.addTextBox("2. Retrieve crystal",
                     2 * 28, 5 * 32, 300);
-            room.AddTextBox("Use one robot for each task.",
+            room.addTextBox("Use one robot for each task.",
                     2 * 28, 7 * 32, 300);
-            room.AddTextBox("Put Checkers inside Sparky and take both robots with you.",
+            room.addTextBox("Put Checkers inside Sparky and take both robots with you.",
                     2 * 28, 9 * 32, 300);
-            room.AddTextBox("SOLUTION",
+            room.addTextBox("SOLUTION",
                     15 * 28 + 14, 11 * 32, 300);
-            room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 5, Assigning tasks
             Room room = rooms.get(5);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(15, 0, 18, 0, 0);
-            room.SetMaterialOutline(19, 4, 19, 6, 0);
-            room.AddTextBox("Use Sparky to push the door button. You want Sparky to move right until it hits the right wall, and then up until it hits the top wall.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(15, 0, 18, 0, 0);
+            room.setMaterialOutline(19, 4, 19, 6, 0);
+            room.addTextBox("Use Sparky to push the door button. You want Sparky to move right until it hits the right wall, and then up until it hits the top wall.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Sparky should stop there and stay on the button until Checkers has safely retrieved the crystal.",
+            room.addTextBox("Sparky should stop there and stay on the button until Checkers has safely retrieved the crystal.",
                     2 * 28, 6 * 32, 400);
-            room.AddArrow(559, 5 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 5 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 6, Sparky goes right
             Room room = rooms.get(6);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(0, 4, 0, 6, 0);
-            room.SetMaterialOutline(15, 11, 18, 11, 0);
-            room.AddTextBox("Use a flipflop and a node. Turn the Remote Control off before you start wiring.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(0, 4, 0, 6, 0);
+            room.setMaterialOutline(15, 11, 18, 11, 0);
+            room.addTextBox("Use a flipflop and a node. Turn the Remote Control off before you start wiring.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("To make Sparky go right until it hits a wall, connect the left thruster to the \"hot\" (on) side of the flipflop. Try it to see how it works!",
+            room.addTextBox("To make Sparky go right until it hits a wall, connect the left thruster to the \"hot\" (on) side of the flipflop. Try it to see how it works!",
                     2 * 28, 8 * 32, 400);
-            room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 7, Sparky cont.
             Room room = rooms.get(7);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(15, 0, 18, 11, 0);
-            room.AddTextBox("Next you want Sparky to do two things when it hits the right wall. It should stop going right, and it should go up. Use a node.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(15, 0, 18, 11, 0);
+            room.addTextBox("Next you want Sparky to do two things when it hits the right wall. It should stop going right, and it should go up. Use a node.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Connect the node to the right bumper. The node will turn on when Sparky touches the wall on the right.",
+            room.addTextBox("Connect the node to the right bumper. The node will turn on when Sparky touches the wall on the right.",
                     2 * 28, 6 * 32, 400);
-            room.AddTextBox("Where should you wire the node so Sparky will stop going right and move up?",
+            room.addTextBox("Where should you wire the node so Sparky will stop going right and move up?",
                     2 * 28, 9 * 32, 400);
-            room.AddArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(17 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 8, Try Sparky right & up
             Room room = rooms.get(8);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(16, 6, 19, 6, 6);
-            room.SetMaterialOutline(15, 0, 18, 0, 0);
-            room.SetMaterialOutline(0, 8, 0, 10, 0);
-            room.AddTextBox("Connect one OUTPUT of the node to the flipflop INPUT that is now off. That will stop Sparky from moving right. Connect the other OUTPUT of the node to the bottom thruster. Sparky will move up while touching the right wall.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(16, 6, 19, 6, 6);
+            room.setMaterialOutline(15, 0, 18, 0, 0);
+            room.setMaterialOutline(0, 8, 0, 10, 0);
+            room.addTextBox("Connect one OUTPUT of the node to the flipflop INPUT that is now off. That will stop Sparky from moving right. Connect the other OUTPUT of the node to the bottom thruster. Sparky will move up while touching the right wall.",
                     2 * 28, 2 * 32, 400);
-            room.AddTextBox("Try it now.",
+            room.addTextBox("Try it now.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addArrow(0, 9 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         { // Room 9, Sparky comes back
             Room room = rooms.get(9);
-            room.SetMaterialOutline(0, 0, 19, 11, 1);
-            room.SetMaterialOutline(19, 8, 19, 10, 0);
-            room.SetMaterialOutline(1, 11, 4, 11, 0);
-            room.AddTextBox("The next step is to make Sparky come back after Checkers gets the crystal. Let Checkers signal Sparky with the antenna when it's okay to return.",
+            room.setMaterialOutline(0, 0, 19, 11, 1);
+            room.setMaterialOutline(19, 8, 19, 10, 0);
+            room.setMaterialOutline(1, 11, 4, 11, 0);
+            room.addTextBox("The next step is to make Sparky come back after Checkers gets the crystal. Let Checkers signal Sparky with the antenna when it's okay to return.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Use another flipflop. Connect Sparky's antenna OUTPUT to the \"cold\" (off) INPUT of the flipflop.",
+            room.addTextBox("Use another flipflop. Connect Sparky's antenna OUTPUT to the \"cold\" (off) INPUT of the flipflop.",
                     2 * 28, 5 * 32, 470);
-            room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 10, Sparky goes left & down
             Room room = rooms.get(10);
-            room.SetMaterialOutline(0, 0, 19, 11, 1);
-            room.SetMaterialOutline(1, 0, 4, 0, 0);
-            room.SetMaterialOutline(19, 3, 19, 5, 0);
-            room.AddTextBox("For Sparky to return, it should move left and down. Use a node.",
+            room.setMaterialOutline(0, 0, 19, 11, 1);
+            room.setMaterialOutline(1, 0, 4, 0, 0);
+            room.setMaterialOutline(19, 3, 19, 5, 0);
+            room.addTextBox("For Sparky to return, it should move left and down. Use a node.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("Connect the node INPUT to the cold OUTPUT of the flipflop that you just wired to the antenna. Connect the node OUTPUTS to the top and right thrusters.",
+            room.addTextBox("Connect the node INPUT to the cold OUTPUT of the flipflop that you just wired to the antenna. Connect the node OUTPUTS to the top and right thrusters.",
                     2 * 28, 8 * 32, 500);
-            room.AddArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 11, Test antenna
             Room room = rooms.get(11);
-            room.SetMaterialOutline(0, 0, 19, 11, 1);
-            room.SetMaterialOutline(0, 3, 19, 5, 0);
-            room.AddTextBox("To test the new circuit, touch Sparky's antenna INPUT with the hot cursor. (Remote Control must be on.)",
+            room.setMaterialOutline(0, 0, 19, 11, 1);
+            room.setMaterialOutline(0, 3, 19, 5, 0);
+            room.addTextBox("To test the new circuit, touch Sparky's antenna INPUT with the hot cursor. (Remote Control must be on.)",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("The antenna OUTPUT will turn on; the flipflop will flip, and both thrusters will turn on.",
+            room.addTextBox("The antenna OUTPUT will turn on; the flipflop will flip, and both thrusters will turn on.",
                     2 * 28, 5 * 32, 500);
-            room.AddTextBox("Use the hot cursor again to reset both flipflops (left sides off).",
+            room.addTextBox("Use the hot cursor again to reset both flipflops (left sides off).",
                     2 * 28, 8 * 32, 500);
-            room.AddTextBox("Turn Sparky's thruster switch off and put Spark inside of Checkers.",
+            room.addTextBox("Turn Sparky's thruster switch off and put Spark inside of Checkers.",
                     2 * 28, 10 * 32, 500);
-            room.AddArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 4 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 12, Checkers task
             Room room = rooms.get(12);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(0, 3, 0, 5, 0);
-            room.SetMaterialOutline(19, 5, 19, 7, 0);
-            room.AddTextBox("The second task is to use Checkers to get the crystal.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(0, 3, 0, 5, 0);
+            room.setMaterialOutline(19, 5, 19, 7, 0);
+            room.addTextBox("The second task is to use Checkers to get the crystal.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Grabbing the crystal is easy. Connect a NOT-gate to Checkers' grabber INPUT.",
+            room.addTextBox("Grabbing the crystal is easy. Connect a NOT-gate to Checkers' grabber INPUT.",
                     2 * 28, 10 * 32, 500);
-            room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 13, How to go right & left?
             Room room = rooms.get(13);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(0, 5, 19, 7, 0);
-            room.AddTextBox("Here is one way to move Checkers to the crystal. Connect a wire from the left thruster to the hot side of a flipflop. Checkers will move right.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(0, 5, 19, 7, 0);
+            room.addTextBox("Here is one way to move Checkers to the crystal. Connect a wire from the left thruster to the hot side of a flipflop. Checkers will move right.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Should you use the right bumper to flip the flipflop and make Checkers return? Or is there a better way?",
+            room.addTextBox("Should you use the right bumper to flip the flipflop and make Checkers return? Or is there a better way?",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 6 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 14, Use the grabber output
             Room room = rooms.get(14);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(0, 5, 0, 7, 0);
-            room.SetMaterialOutline(19, 6, 19, 8, 0);
-            room.AddTextBox("You don't want to use the right bumper to stop Checkers, since the door may not be open when Checkers reaches it. You want Checkers to keep moving right until it grabs the crystal.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(0, 5, 0, 7, 0);
+            room.setMaterialOutline(19, 6, 19, 8, 0);
+            room.addTextBox("You don't want to use the right bumper to stop Checkers, since the door may not be open when Checkers reaches it. You want Checkers to keep moving right until it grabs the crystal.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("When Checkers gabs the crystal, the grabber OUTPUT will come on. Use that to flip the flipflop and make Checkers return.",
+            room.addTextBox("When Checkers gabs the crystal, the grabber OUTPUT will come on. Use that to flip the flipflop and make Checkers return.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 15, Test grabber
             Room room = rooms.get(15);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(0, 6, 19, 8, 0);
-            room.AddTextBox("Connect a wire from the grabber OUTPUT to the cold flipflop input. Connect another wire from the cold flipflop OUTPUT to the right thruster. When Checkers grabs the crystal, the flipflop will flip and and Checkers will move left.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(0, 6, 19, 8, 0);
+            room.addTextBox("Connect a wire from the grabber OUTPUT to the cold flipflop input. Connect another wire from the cold flipflop OUTPUT to the right thruster. When Checkers grabs the crystal, the flipflop will flip and and Checkers will move left.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("Test your circuit by letting Checkers grab this crystal. Then restore the original circuit.",
+            room.addTextBox("Test your circuit by letting Checkers grab this crystal. Then restore the original circuit.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 7 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
             items.add(new Crystal(9 * 28, 6 * 32, room, 100000));
         }
         { // Room 16, Checkers signals Sparky
             Room room = rooms.get(16);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(0, 6, 0, 9, 0);
-            room.SetMaterialOutline(1, 11, 4, 11, 0);
-            room.AddTextBox("The last step is for Checkers to let Sparky know it's time to come back. Connect a wire from Checkers' left bumper to it's antenna. When Checkers comes back after grabbing the crystal it will hit the wall and beep.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(0, 6, 0, 9, 0);
+            room.setMaterialOutline(1, 11, 4, 11, 0);
+            room.addTextBox("The last step is for Checkers to let Sparky know it's time to come back. Connect a wire from Checkers' left bumper to it's antenna. When Checkers comes back after grabbing the crystal it will hit the wall and beep.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("You can test that if you want. Be sure to reset all the flipflops with the hot cursor before you continue (left sides off).",
+            room.addTextBox("You can test that if you want. Be sure to reset all the flipflops with the hot cursor before you continue (left sides off).",
                     5 * 28, 8 * 32, 400);
-            room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 17, Big test
             Room room = rooms.get(17);
-            room.SetMaterialOutline(0, 0, 19, 11, 6);
-            room.SetMaterialOutline(1, 0, 4, 11, 0);
-            room.SetMaterialOutline(19, 8, 19, 10, 0);
-            room.AddTextBox("Now it's time for the real thing! Turn the Remote Control off and the thruster switches on. Put Sparky on the S and Checkers on the C next door. Turn the Remote Control on.",
+            room.setMaterialOutline(0, 0, 19, 11, 6);
+            room.setMaterialOutline(1, 0, 4, 11, 0);
+            room.setMaterialOutline(19, 8, 19, 10, 0);
+            room.addTextBox("Now it's time for the real thing! Turn the Remote Control off and the thruster switches on. Put Sparky on the S and Checkers on the C next door. Turn the Remote Control on.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("(Use the PANIC BUTTON to stop the sentry if you get stuck. Press it again to restart it.)",
+            room.addTextBox("(Use the PANIC BUTTON to stop the sentry if you get stuck. Press it again to restart it.)",
                     5 * 28, 7 * 32, 400);
-            room.AddTextBox("GOOD LUCK!",
+            room.addTextBox("GOOD LUCK!",
                     5 * 28, 10 * 32, 500);
-            room.AddTextBox("PUZZLE",
+            room.addTextBox("PUZZLE",
                     17 * 28, 10 * 32, 500);
-            room.AddArrow(559, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
+            room.addArrow(559, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(3 * 28, 383, Arrow.DIR_DOWN, 28, Color.white);
         }
         { // Room 18, Puzzle again
             Room room = rooms.get(18);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(11, 0, 19, 4, 5);
-            room.SetMaterialOutline(11, 0, 11, 6, 5);
-            room.SetMaterialOutline(0, 8, 0, 10, 0);
-            room.SetMaterial(18, 5, 8);
-            room.SetMaterial(1, 1, 12);
-            room.AddTextBox("{BIG} C",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(11, 0, 19, 4, 5);
+            room.setMaterialOutline(11, 0, 11, 6, 5);
+            room.setMaterialOutline(0, 8, 0, 10, 0);
+            room.setMaterial(18, 5, 8);
+            room.setMaterial(1, 1, 12);
+            room.addTextBox("{BIG} C",
                     3 * 28, 3 * 32, 500);
-            room.AddTextBox("{BIG} S",
+            room.addTextBox("{BIG} S",
                     3 * 28, 10 * 32, 500);
-            room.AddTextBox("PANIC BUTTON",
+            room.addTextBox("PANIC BUTTON",
                     4 * 28, 2 * 32, 200);
             int[] pace = {3 * 28, 2 * 32, 3 * 28, 9 * 32};
             int[] program = {4 * 28, 0, 20 * 28, 12 * 32, 0, 9 * 32};
@@ -312,51 +312,51 @@ class ROTutF extends Level {
         }
         { // Room 19, End
             Room room = rooms.get(19);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(1, 0, 4, 0, 0);
-            room.SetMaterialOutline(19, 8, 19, 10, 0);
-            room.AddTextBox("You have learned some handy robot circuits. Now you are ready to move through the Town of Robotropolis. As you journey there, remember to solve the puzzles one step at a time, and use the Lab to test your ideas.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(1, 0, 4, 0, 0);
+            room.setMaterialOutline(19, 8, 19, 10, 0);
+            room.addTextBox("You have learned some handy robot circuits. Now you are ready to move through the Town of Robotropolis. As you journey there, remember to solve the puzzles one step at a time, and use the Lab to test your ideas.",
                     5 * 28, 2 * 32, 400);
-            room.AddTextBox("The levels above the Town are most easily solved with chips. Explore Chip design after you leave Town.",
+            room.addTextBox("The levels above the Town are most easily solved with chips. Explore Chip design after you leave Town.",
                     2 * 28, 9 * 32, 500);
-            room.AddArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addArrow(559, 9 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         { // Room 20, Portals
             Room room = rooms.get(20);
-            room.SetMaterialOutline(0, 0, 19, 11, 5);
-            room.SetMaterialOutline(0, 8, 0, 10, 0);
-            room.SetMaterial(19, 10, 0);
-            room.SetMaterial(4, 2, 9);
-            room.SetMaterial(4, 5, 10);
-            room.AddTextBox("Learn about Chip Design.",
+            room.setMaterialOutline(0, 0, 19, 11, 5);
+            room.setMaterialOutline(0, 8, 0, 10, 0);
+            room.setMaterial(19, 10, 0);
+            room.setMaterial(4, 2, 9);
+            room.setMaterial(4, 5, 10);
+            room.addTextBox("Learn about Chip Design.",
                     5 * 28, 3 * 32, 500);
-            room.AddTextBox("Return to the Main Menu.",
+            room.addTextBox("Return to the Main Menu.",
                     5 * 28, 6 * 32, 500);
         }
         { // Room 21, Shortcut
             Room room = rooms.get(21);
-            room.SetMaterialOutline(0, 0, 19, 9, 5);
-            room.SetMaterialOutline(0, 11, 19, 11, 5);
-            room.SetMaterial(0, 10, 0);
-            room.SetMaterial(19, 10, 0);
-            room.AddTextBox("{BIG} {000,255,000} SHORTCUT",
+            room.setMaterialOutline(0, 0, 19, 9, 5);
+            room.setMaterialOutline(0, 11, 19, 11, 5);
+            room.setMaterial(0, 10, 0);
+            room.setMaterial(19, 10, 0);
+            room.addTextBox("{BIG} {000,255,000} SHORTCUT",
                     172, 6 * 32, 400);
         }
 
         int[] list1 = {19, 20, 21, 1, 2, 3};
-        LinkRoomsHorizontally(list1);
-        LinkRoomsUpDown(2, 4);
-        LinkRoomsUpDown(4, 5);
-        LinkRoomsLeftRight(5, 6);
-        LinkRoomsUpDown(6, 7);
-        LinkRoomsUpDown(7, 8);
-        LinkRoomsLeftRight(9, 8);
-        LinkRoomsUpDown(9, 10);
+        linkRoomsHorizontally(list1);
+        linkRoomsUpDown(2, 4);
+        linkRoomsUpDown(4, 5);
+        linkRoomsLeftRight(5, 6);
+        linkRoomsUpDown(6, 7);
+        linkRoomsUpDown(7, 8);
+        linkRoomsLeftRight(9, 8);
+        linkRoomsUpDown(9, 10);
         int[] list2 = {10, 11, 12, 13, 14, 15, 16};
-        LinkRoomsHorizontally(list2);
-        LinkRoomsUpDown(16, 17);
-        LinkRoomsLeftRight(17, 18);
-        LinkRoomsUpDown(17, 19);
+        linkRoomsHorizontally(list2);
+        linkRoomsUpDown(16, 17);
+        linkRoomsLeftRight(17, 18);
+        linkRoomsUpDown(17, 19);
 
         gameCursor = new LabCursor(16 * 28 + 14, 9 * 32 + 16, rooms.get(1));
         helpCam = new HelpCam(rooms.get(0));

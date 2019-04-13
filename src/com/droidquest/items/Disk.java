@@ -24,10 +24,10 @@ public class Disk extends Item {
         height = 24;
         grabbable = true;
         helpRoom = level().rooms.get(hr);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -57,10 +57,10 @@ public class Disk extends Item {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        helpRoom = level().FindRoom(s.readInt());
+        helpRoom = level().findRoom(s.readInt());
     }
 
-    public void IsDropped() {
+    public void isDropped() {
 
         int bigX = (x + width / 2) / 28;
         int bigY = (y + height / 2) / 32;
@@ -73,7 +73,7 @@ public class Disk extends Item {
         }
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         if (level().helpCam.room == room) {
             level().helpCam.room = helpCamRoom;
         }

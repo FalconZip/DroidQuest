@@ -20,10 +20,10 @@ public class SpeedControl extends Item {
         width = 26;
         height = 26;
         direction = dir;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -65,7 +65,7 @@ public class SpeedControl extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         switch (direction) {
             case DIR_UP:
                 ChipCompiler.chipSpeed++;

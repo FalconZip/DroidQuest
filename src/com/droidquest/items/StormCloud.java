@@ -26,10 +26,10 @@ public class StormCloud extends Item {
         width = 28;
         height = 32;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[3];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -83,7 +83,7 @@ public class StormCloud extends Item {
         moveTimer = level().random.nextInt(50) + 1;
     }
 
-    public void Animate() {
+    public void animate() {
         animateState++;
         if (animateState == 3) {
             animateState = 0;
@@ -187,7 +187,7 @@ public class StormCloud extends Item {
         }
 
         if (brobot != null) {
-            if (Overlaps(brobot)) {
+            if (overlaps(brobot)) {
                 boolean drain = true;
                 if (stormshield.room == brobot.InternalRoom) {
                     if (stormshield.ports[0].value) {
@@ -204,7 +204,7 @@ public class StormCloud extends Item {
         }
 
         if (orobot != null) {
-            if (Overlaps(orobot)) {
+            if (overlaps(orobot)) {
                 boolean drain = true;
                 if (stormshield.room == orobot.InternalRoom) {
                     if (stormshield.ports[0].value) {
@@ -221,7 +221,7 @@ public class StormCloud extends Item {
         }
 
         if (wrobot != null) {
-            if (Overlaps(wrobot)) {
+            if (overlaps(wrobot)) {
                 boolean drain = true;
                 if (stormshield.room == wrobot.InternalRoom) {
                     if (stormshield.ports[0].value) {

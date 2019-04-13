@@ -28,17 +28,17 @@ public class TrashCollector extends Item {
         width = 28;
         height = 32;
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon("images/trashcollector0.gif");
         icons[1] = new ImageIcon("images/trashcollector1.gif");
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
+    public void animate() {
         animationState = 1 - animationState;
         currentIcon = icons[animationState].getImage();
 
@@ -354,7 +354,7 @@ public class TrashCollector extends Item {
                 break;
             case 7: // Approach item
                 if (target.room == room && target.carriedBy == null) {
-                    if (Overlaps(target)) {
+                    if (overlaps(target)) {
                         target.room = level().rooms.get(60);
                         behavior = previousBehavior;
                     }

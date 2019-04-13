@@ -45,13 +45,13 @@ public class SmallChip extends GenericChip {
         width = 26;
         height = 30;
         speed = 1;
-        GenerateIcons();
+        generateIcons();
         for (int a = 0; a < 8; a++) {
             portSignals[a] = new PortSignal();
         }
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (ports == null) {
             ports = new Port[8];
             ports[0] = new Port(0, 3, Port.TYPE_UNDEFINED, 0, Port.ROT_LEFT, this);
@@ -118,7 +118,7 @@ public class SmallChip extends GenericChip {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        GenerateIcons();
+        generateIcons();
         for (int a = 0; a < 8; a++) {
             int portIndex = s.readInt();
             if (portIndex >= 0) {
@@ -141,10 +141,10 @@ public class SmallChip extends GenericChip {
         }
     }
 
-    public void Decorate() {
+    public void decorate() {
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         inBurner = false;
         inTester = false;
         int bigXl = (x) / 28;
@@ -171,7 +171,7 @@ public class SmallChip extends GenericChip {
                     return;
                 }
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
-                    SetRoom(null); // Cheap way to remove the wires;
+                    setRoom(null); // Cheap way to remove the wires;
                     level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
@@ -186,7 +186,7 @@ public class SmallChip extends GenericChip {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         int a;
 
         for (int s = 0; s < speed; s++) {
@@ -217,8 +217,8 @@ public class SmallChip extends GenericChip {
         return false;
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         portSignals = null;
         signals = null;
         gates = null;
@@ -317,12 +317,12 @@ public class SmallChip extends GenericChip {
                 Wire wire = ports[a].myWire;
                 if (wire.fromPort == ports[a]) {
                     if (wire.toPort.type == ports[a].type) {
-                        wire.Remove();
+                        wire.remove();
                     }
                 }
                 else if (wire.toPort == ports[a]) {
                     if (wire.fromPort.type == ports[a].type) {
-                        wire.Remove();
+                        wire.remove();
                     }
                 }
             }

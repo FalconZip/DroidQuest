@@ -18,10 +18,10 @@ public class PC16Button extends Item {
         room = r;
         width = 28;
         height = 26;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -49,7 +49,7 @@ public class PC16Button extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         Prototype16Chip newPC = new Prototype16Chip(228, 160, room);
         level().items.add(newPC);
         room.playSound(Sounds.CHARGE);

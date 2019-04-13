@@ -16,7 +16,7 @@ public class HiddenCamera extends Item {
         grabbable = false;
     }
 
-    public void Draw(Graphics g, JPanel jp) {
+    public void draw(Graphics g, JPanel jp) {
     }
 
 }

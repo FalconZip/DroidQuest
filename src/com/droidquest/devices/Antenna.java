@@ -35,7 +35,7 @@ public class Antenna extends Device {
             }
         }
         grabbable = false;
-        GenerateIcons();
+        generateIcons();
         currentIcon = icons[0].getImage();
     }
 
@@ -46,10 +46,10 @@ public class Antenna extends Device {
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level().FindItem(s.readInt());
+        robot = (GenericRobot) level().findItem(s.readInt());
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         robot = (GenericRobot) room.portalItem;
         radio = 0;
         radio2 = 0;
@@ -69,11 +69,11 @@ public class Antenna extends Device {
         currentIcon = icons[0].getImage();
     }
 
-    public void Animate() {
-        super.Animate();
+    public void animate() {
+        super.animate();
         if (robot == null) {
             if (ports[0].value && level().electricity) {
-                Dimension d = GetXY();
+                Dimension d = getXY();
                 level().sparks.add(new Spark(d.width + 26, d.height + 4,
                         level().random.nextInt(9) - 4,
                         level().random.nextInt(9) - 4,
@@ -82,8 +82,8 @@ public class Antenna extends Device {
         }
     }
 
-    public void Decorate() {
-        super.Decorate();
+    public void decorate() {
+        super.decorate();
         try {
             g = currentIcon.getGraphics();
         }
@@ -113,7 +113,7 @@ public class Antenna extends Device {
         }
     }
 
-    public boolean Function() {
+    public boolean function() {
         if (robot != null) {
             if (radio < 0) {
                 radio = 0;
@@ -158,7 +158,7 @@ public class Antenna extends Device {
         return false;
     }
 
-    public void SetRoom(Room r) {
+    public void setRoom(Room r) {
         if (oldRadio) {
             if (robot != null) {
                 radio--;
@@ -167,7 +167,7 @@ public class Antenna extends Device {
                 radio2--;
             }
         }
-        super.SetRoom(r);
+        super.setRoom(r);
         robot = null;
         if (room.portalItem != null) {
             if (room.portalItem.getClass().toString().endsWith("Robot")) {
@@ -176,8 +176,8 @@ public class Antenna extends Device {
         }
     }
 
-    public void Erase() {
-        super.Erase();
+    public void erase() {
+        super.erase();
         robot = null;
     }
 

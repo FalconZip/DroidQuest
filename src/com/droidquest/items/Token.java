@@ -26,10 +26,10 @@ public class Token extends Item {
         room = r;
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[1];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         Graphics g;
@@ -59,7 +59,7 @@ public class Token extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         int bigX = (x + width / 2) / 28;
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
@@ -72,50 +72,50 @@ public class Token extends Item {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         if (doorState == 0) {
             return;
         }
         switch (doorState % 2) {
             case 0: // "+" to "X"
-                turnstileRoom.SetMaterial(3, 6, 0);
-                turnstileRoom.SetMaterial(2, 6, 0);
-                turnstileRoom.SetMaterial(5, 6, 0);
-                turnstileRoom.SetMaterial(6, 6, 0);
-                turnstileRoom.SetMaterial(4, 5, 0);
-                turnstileRoom.SetMaterial(4, 4, 0);
-                turnstileRoom.SetMaterial(4, 7, 0);
-                turnstileRoom.SetMaterial(4, 8, 0);
-                turnstileRoom.SetMaterial(1, 6, 0);
-                turnstileRoom.SetMaterial(7, 6, 0);
-                turnstileRoom.SetMaterial(3, 5, 6);
-                turnstileRoom.SetMaterial(2, 4, 6);
-                turnstileRoom.SetMaterial(5, 5, 6);
-                turnstileRoom.SetMaterial(6, 4, 6);
-                turnstileRoom.SetMaterial(3, 7, 6);
-                turnstileRoom.SetMaterial(2, 8, 6);
-                turnstileRoom.SetMaterial(5, 7, 6);
-                turnstileRoom.SetMaterial(6, 8, 6);
+                turnstileRoom.setMaterial(3, 6, 0);
+                turnstileRoom.setMaterial(2, 6, 0);
+                turnstileRoom.setMaterial(5, 6, 0);
+                turnstileRoom.setMaterial(6, 6, 0);
+                turnstileRoom.setMaterial(4, 5, 0);
+                turnstileRoom.setMaterial(4, 4, 0);
+                turnstileRoom.setMaterial(4, 7, 0);
+                turnstileRoom.setMaterial(4, 8, 0);
+                turnstileRoom.setMaterial(1, 6, 0);
+                turnstileRoom.setMaterial(7, 6, 0);
+                turnstileRoom.setMaterial(3, 5, 6);
+                turnstileRoom.setMaterial(2, 4, 6);
+                turnstileRoom.setMaterial(5, 5, 6);
+                turnstileRoom.setMaterial(6, 4, 6);
+                turnstileRoom.setMaterial(3, 7, 6);
+                turnstileRoom.setMaterial(2, 8, 6);
+                turnstileRoom.setMaterial(5, 7, 6);
+                turnstileRoom.setMaterial(6, 8, 6);
                 break;
             case 1: // "X" to "+"
-                turnstileRoom.SetMaterial(3, 5, 0);
-                turnstileRoom.SetMaterial(2, 4, 0);
-                turnstileRoom.SetMaterial(5, 5, 0);
-                turnstileRoom.SetMaterial(6, 4, 0);
-                turnstileRoom.SetMaterial(3, 7, 0);
-                turnstileRoom.SetMaterial(2, 8, 0);
-                turnstileRoom.SetMaterial(5, 7, 0);
-                turnstileRoom.SetMaterial(6, 8, 0);
-                turnstileRoom.SetMaterial(3, 6, 6);
-                turnstileRoom.SetMaterial(2, 6, 6);
-                turnstileRoom.SetMaterial(5, 6, 6);
-                turnstileRoom.SetMaterial(6, 6, 6);
-                turnstileRoom.SetMaterial(4, 5, 6);
-                turnstileRoom.SetMaterial(4, 4, 6);
-                turnstileRoom.SetMaterial(4, 7, 6);
-                turnstileRoom.SetMaterial(4, 8, 6);
-                turnstileRoom.SetMaterial(1, 6, 6);
-                turnstileRoom.SetMaterial(7, 6, 6);
+                turnstileRoom.setMaterial(3, 5, 0);
+                turnstileRoom.setMaterial(2, 4, 0);
+                turnstileRoom.setMaterial(5, 5, 0);
+                turnstileRoom.setMaterial(6, 4, 0);
+                turnstileRoom.setMaterial(3, 7, 0);
+                turnstileRoom.setMaterial(2, 8, 0);
+                turnstileRoom.setMaterial(5, 7, 0);
+                turnstileRoom.setMaterial(6, 8, 0);
+                turnstileRoom.setMaterial(3, 6, 6);
+                turnstileRoom.setMaterial(2, 6, 6);
+                turnstileRoom.setMaterial(5, 6, 6);
+                turnstileRoom.setMaterial(6, 6, 6);
+                turnstileRoom.setMaterial(4, 5, 6);
+                turnstileRoom.setMaterial(4, 4, 6);
+                turnstileRoom.setMaterial(4, 7, 6);
+                turnstileRoom.setMaterial(4, 8, 6);
+                turnstileRoom.setMaterial(1, 6, 6);
+                turnstileRoom.setMaterial(7, 6, 6);
                 break;
         }
         doorState++;

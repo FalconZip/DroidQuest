@@ -38,12 +38,12 @@ public class Pathfinder implements InLevel{
             return results;
         }
 
-        if(!nodeList.get(startY).get(startX).getMaterial().Passable(player)) {
+        if(!nodeList.get(startY).get(startX).getMaterial().passable(player)) {
             System.out.println("Starting node isn't passable!");
             return results;
         }
 
-        if(!nodeList.get(endY).get(endX).getMaterial().Passable(player)) {
+        if(!nodeList.get(endY).get(endX).getMaterial().passable(player)) {
             System.out.println("Ending node isn't passable!");
             return results;
         }
@@ -109,7 +109,7 @@ public class Pathfinder implements InLevel{
                 if(deltaX != 0 || deltaY != 0) {
                     int checkX = x + deltaX;
                     int checkY = y + deltaY;
-                    if(checkY >= 0 && checkY < nodeList.size() && checkX >= 0 && checkX < nodeList.get(checkY).size() && nodeList.get(checkY).get(checkX).getMaterial().Passable(player)) {
+                    if(checkY >= 0 && checkY < nodeList.size() && checkX >= 0 && checkX < nodeList.get(checkY).size() && nodeList.get(checkY).get(checkX).getMaterial().passable(player)) {
                         Node currentNode = nodeList.get(checkY).get(checkX);
                         if(closedList.contains(currentNode)) {
                             continue;
@@ -118,7 +118,7 @@ public class Pathfinder implements InLevel{
                         if(deltaX != 0 && deltaY != 0) {
 
                             // Diagonal, check to make sure other squares are passable
-                            if(!nodeList.get(y).get(checkX).getMaterial().Passable(player) || !nodeList.get(checkY).get(x).getMaterial().Passable(player)) {
+                            if(!nodeList.get(y).get(checkX).getMaterial().passable(player) || !nodeList.get(checkY).get(x).getMaterial().passable(player)) {
                                 diagonalCost = 500; // don't make impassible, just really expensive
                             }
                         }

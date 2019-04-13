@@ -22,7 +22,7 @@ public class Pellet extends Item {
         pelletCount++;
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         if (!counted) {
             int index = level().items.indexOf(this);
             if (!(level().items.get(index - 1) instanceof Pellet)) {
@@ -50,17 +50,17 @@ public class Pellet extends Item {
         currentIcon = icons[0].getImage();
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         if (item instanceof GenericRobot) {
             level().items.remove(this);
             pelletCount--;
             if (pelletCount == 0) {
-                room.SetMaterial(15, 1, 0);
-                room.SetMaterial(15, 2, 0);
-                room.SetMaterial(15, 5, 0);
-                room.SetMaterial(15, 6, 0);
-                room.SetMaterial(15, 9, 0);
-                room.SetMaterial(15, 10, 0);
+                room.setMaterial(15, 1, 0);
+                room.setMaterial(15, 2, 0);
+                room.setMaterial(15, 5, 0);
+                room.setMaterial(15, 6, 0);
+                room.setMaterial(15, 9, 0);
+                room.setMaterial(15, 10, 0);
                 level().items.removeIf(i -> i instanceof Ghost);
             }
         }

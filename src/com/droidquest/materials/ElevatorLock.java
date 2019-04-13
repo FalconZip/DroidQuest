@@ -21,10 +21,10 @@ private Room room;
 
     public ElevatorLock() {
         super(true, false);
-        GenerateIcons();
+        generateIcons();
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         BufferedImage bi = new BufferedImage(28, 32, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g;
         try {
@@ -49,7 +49,7 @@ private Room room;
         icon = new ImageIcon(bi);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (item.getClass().toString().endsWith("ElevatorKey")) {
             room = item.room;
             if (doorstate == 0) {
@@ -61,26 +61,26 @@ private Room room;
         }
     }
 
-    public void Animate() {
+    public void animate() {
         switch (doorstate) {
             case 0: // Do nothing
                 break;
             case 1:
-                room.SetMaterial(15, 5, 0);
+                room.setMaterial(15, 5, 0);
                 doorstate++;
                 break;
             case 2:
-                room.SetMaterial(15, 4, 0);
+                room.setMaterial(15, 4, 0);
                 doorstate++;
                 break;
             case 3:
                 break;
             case 4:
-                room.SetMaterial(15, 4, 7);
+                room.setMaterial(15, 4, 7);
                 doorstate++;
                 break;
             case 5:
-                room.SetMaterial(15, 5, 7);
+                room.setMaterial(15, 5, 7);
                 doorstate = 0;
                 break;
         }

@@ -11,7 +11,7 @@ public class Switch1 extends Switch {
         super(Switch.ROT_UP);
     }
 
-    public void TouchedByItem(Item item) {
+    public void touchedByItem(Item item) {
         if (train == null) {
             for (int a = 0; a < level().items.size(); a++) {
                 Item t = level().items.get(a);

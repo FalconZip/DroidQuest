@@ -10,11 +10,11 @@ public class SlipperyToken extends Token {
         super(X, Y, r);
     }
 
-    public boolean CanBePickedUp(Item item) {
+    public boolean canBePickedUp(Item item) {
         return !(item == level().player && jumping);
     }
 
-    public void IsDropped() {
+    public void isDropped() {
         int bigX = (x + width / 2) / 28;
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
@@ -33,12 +33,12 @@ public class SlipperyToken extends Token {
         }
     }
 
-    public void Animate() {
+    public void animate() {
         if (carriedBy != null) {
             jumping = false;
         }
         if (jumping) {
-            if (Overlaps(level().player)) {
+            if (overlaps(level().player)) {
                 x = level().random.nextInt(16 * 28) + 28;
                 y = level().random.nextInt(8 * 32) + (2 * 32);
             }

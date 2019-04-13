@@ -99,105 +99,105 @@ class RO4 extends Level {
 
         {// Room  0 : Help Screen 
             Room room = rooms.get(0);
-            room.SetMaterialOutline(0, 0, 19, 11, 1);
-            room.AddTextBox("MASTER COMPUTER CENTER", 136, 64, 560);
-            room.AddTextBox("HINTS:", 2 * 28, 3 * 32, 560);
-            room.AddTextBox("A central robot can become your friend.", 4 * 28, 4 * 32, 400);
-            room.AddTextBox("The Sweeper 'Bot likes to keep the hallways clean.", 4 * 28, 6 * 32 + 16, 400);
-            room.AddTextBox("Chips 7 & 8 are blank.", 4 * 28, 9 * 32, 400);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
+            room.setMaterialOutline(0, 0, 19, 11, 1);
+            room.addTextBox("MASTER COMPUTER CENTER", 136, 64, 560);
+            room.addTextBox("HINTS:", 2 * 28, 3 * 32, 560);
+            room.addTextBox("A central robot can become your friend.", 4 * 28, 4 * 32, 400);
+            room.addTextBox("The Sweeper 'Bot likes to keep the hallways clean.", 4 * 28, 6 * 32 + 16, 400);
+            room.addTextBox("Chips 7 & 8 are blank.", 4 * 28, 9 * 32, 400);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
         }
         {// Room  1 : Master Computer Help 
             Room room = rooms.get(1);
-            room.SetMaterialOutline(0, 0, 19, 11, 3);
-            room.AddTextBox("THE MASTER COMPUTER", 6 * 28, 2 * 32, 500);
-            room.AddTextBox("The master computer controls many of the features of Robotropolis.",
+            room.setMaterialOutline(0, 0, 19, 11, 3);
+            room.addTextBox("THE MASTER COMPUTER", 6 * 28, 2 * 32, 500);
+            room.addTextBox("The master computer controls many of the features of Robotropolis.",
                     72, 4 * 32, 480);
-            room.AddTextBox("Use the cameras to monitor robot progress.",
+            room.addTextBox("Use the cameras to monitor robot progress.",
                     72, 6 * 32, 500);
-            room.AddTextBox("The computer can be turned off and the robot released by pressing the four buttons.",
+            room.addTextBox("The computer can be turned off and the robot released by pressing the four buttons.",
                     72, 8 * 32, 450);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
 
         }
         {// Room  2 : Minefield Help 
             Room room = rooms.get(2);
             room.SetMaterialFromRoom(1);
-            room.AddTextBox("THE MINEFIELD", 6 * 28, 2 * 32, 450);
-            room.AddTextBox("The walls in the map room are in the same position as the mines in the minefield.",
+            room.addTextBox("THE MINEFIELD", 6 * 28, 2 * 32, 450);
+            room.addTextBox("The walls in the map room are in the same position as the mines in the minefield.",
                     2 * 28, 3 * 32, 500);
-            room.AddTextBox("Mines are set off when a robot thrusts against them for more than an instant.",
+            room.addTextBox("Mines are set off when a robot thrusts against them for more than an instant.",
                     2 * 28, 6 * 32, 500);
-            room.AddTextBox("Additional mines keep out non-robots.", 2 * 28, 8 * 32, 500);
-            room.AddTextBox("Robot communication is helpful.", 2 * 28, 9 * 32, 500);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
+            room.addTextBox("Additional mines keep out non-robots.", 2 * 28, 8 * 32, 500);
+            room.addTextBox("Robot communication is helpful.", 2 * 28, 9 * 32, 500);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
         }
         {// Room  3 : Force Field Help 
             Room room = rooms.get(3);
             room.SetMaterialFromRoom(1);
-            room.AddTextBox("THE FORCE FIELD TUNNEL", 6 * 28, 2 * 32, 500);
-            room.AddTextBox("Robot relays pass key items along.", 2 * 28, 4 * 32, 500);
-            room.AddTextBox("Plan ahead for the return journey.", 2 * 28, 6 * 32, 500);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
+            room.addTextBox("THE FORCE FIELD TUNNEL", 6 * 28, 2 * 32, 500);
+            room.addTextBox("Robot relays pass key items along.", 2 * 28, 4 * 32, 500);
+            room.addTextBox("Plan ahead for the return journey.", 2 * 28, 6 * 32, 500);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
         }
         {// Room  4 : Ventilation Shaft Help 
             Room room = rooms.get(4);
             room.SetMaterialFromRoom(1);
-            room.AddTextBox("THE VENTILATION SHAFT", 6 * 28, 2 * 32, 500);
-            room.AddTextBox("Counting chips can pick out air tubes.", 2 * 28, 4 * 32, 500);
-            room.AddTextBox("Be sure to pick the right tube.", 2 * 28, 6 * 32, 560);
-            room.AddTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
+            room.addTextBox("THE VENTILATION SHAFT", 6 * 28, 2 * 32, 500);
+            room.addTextBox("Counting chips can pick out air tubes.", 2 * 28, 4 * 32, 500);
+            room.addTextBox("Be sure to pick the right tube.", 2 * 28, 6 * 32, 560);
+            room.addTextBox("(To continue, press RETURN.)", 4 * 28, 11 * 32, 560);
         }
         {// Room  5 : Top Left Corridor 
             Room room = rooms.get(5);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room  6 : Top Corridor 
             Room room = rooms.get(6);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room  7 : Top Corridor 
             Room room = rooms.get(7);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room  8 : Top Corridor, Entance to Map Room 
             Room room = rooms.get(8);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 7, 11, 3);
-            room.SetMaterialFill(12, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 7, 11, 3);
+            room.setMaterialFill(12, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room  9 : Top Corridor 
             Room room = rooms.get(9);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 10 : Top Corridor 
             Room room = rooms.get(10);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 11 : Top Right Corridor 
             Room room = rooms.get(11);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(15, 0, 19, 11, 3);
-            room.SetMaterialFill(0, 9, 4, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(15, 0, 19, 11, 3);
+            room.setMaterialFill(0, 9, 4, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 12 : Right Corridor, Exit from Map Room 
@@ -217,7 +217,7 @@ class RO4 extends Level {
                     {3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 13 : Right Corridor 
@@ -241,7 +241,7 @@ class RO4 extends Level {
             rooms.get(33).RoomArray = table;
             rooms.get(35).RoomArray = table;
 
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 14 : Right Corridor, Key Tunnel 
@@ -263,17 +263,17 @@ class RO4 extends Level {
             room.RoomArray = table;
             rooms.get(16).RoomArray = table;
 
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 15 : Right Corridor 
             Room room = rooms.get(15);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 16 : Right Corridor, Main Office 
             Room room = rooms.get(16);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 17 : Bottom Right Corridor 
@@ -293,22 +293,22 @@ class RO4 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 18 : Bottom Corridor 
             Room room = rooms.get(18);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 19 : Bottom Corridor, Entrance 
             Room room = rooms.get(19);
-            room.SetMaterialFill(0, 0, 7, 2, 3);
-            room.SetMaterialFill(12, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 7, 2, 3);
+            room.setMaterialFill(12, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new TrashCollector(266, 176, room));
         }
@@ -329,131 +329,131 @@ class RO4 extends Level {
                     {5, 5, 5, 5, 5, 5, 0, 0, 0, 5, 5, 0, 0, 0, 5, 5, 0, 0, 0, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 21 : Ventilation Shaft Exit (Entrance to Master Chamber) 
             Room room = rooms.get(21);
-            room.SetMaterialFill(0, 0, 19, 1, 3);
-            room.SetMaterialFill(0, 0, 2, 11, 3);
-            room.SetMaterialFill(17, 0, 19, 4, 3);
-            room.SetMaterialFill(17, 8, 19, 11, 3);
-            room.SetMaterialFill(7, 10, 19, 11, 3);
-            room.SetMaterialFill(19, 5, 19, 8, 17);
-            room.AddTextBox("{BIG} {000,204,000} NORTH CHAMBER", 98, 708, 560);
+            room.setMaterialFill(0, 0, 19, 1, 3);
+            room.setMaterialFill(0, 0, 2, 11, 3);
+            room.setMaterialFill(17, 0, 19, 4, 3);
+            room.setMaterialFill(17, 8, 19, 11, 3);
+            room.setMaterialFill(7, 10, 19, 11, 3);
+            room.setMaterialFill(19, 5, 19, 8, 17);
+            room.addTextBox("{BIG} {000,204,000} NORTH CHAMBER", 98, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 22 : Key Tunnel, Bottom Right 
             Room room = rooms.get(22);
-            room.SetMaterialFill(0, 0, 14, 1, 3);
-            room.SetMaterialFill(18, 0, 19, 11, 3);
-            room.SetMaterialFill(0, 10, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} TUNNEL BYPASS", 104, 708, 560);
+            room.setMaterialFill(0, 0, 14, 1, 3);
+            room.setMaterialFill(18, 0, 19, 11, 3);
+            room.setMaterialFill(0, 10, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} TUNNEL BYPASS", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 23 : Key Tunnel, Bottom Left 
             Room room = rooms.get(23);
-            room.SetMaterialFill(0, 0, 2, 11, 3);
-            room.SetMaterialFill(0, 10, 19, 11, 3);
-            room.SetMaterialFill(5, 0, 19, 1, 3);
-            room.AddTextBox("{BIG} {000,204,000} TUNNEL BYPASS", 104, 708, 560);
+            room.setMaterialFill(0, 0, 2, 11, 3);
+            room.setMaterialFill(0, 10, 19, 11, 3);
+            room.setMaterialFill(5, 0, 19, 1, 3);
+            room.addTextBox("{BIG} {000,204,000} TUNNEL BYPASS", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 24 : Upper Library 
             Room room = rooms.get(24);
-            room.SetMaterialFill(0, 0, 19, 0, 3);
-            room.SetMaterialFill(0, 0, 0, 3, 3);
-            room.SetMaterialFill(0, 7, 0, 11, 3);
-            room.SetMaterial(19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
+            room.setMaterialFill(0, 0, 19, 0, 3);
+            room.setMaterialFill(0, 0, 0, 3, 3);
+            room.setMaterialFill(0, 7, 0, 11, 3);
+            room.setMaterial(19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 25 : Library, entrance to Ventilation Shaft 
             Room room = rooms.get(25);
-            room.SetMaterialOutline(0, 0, 19, 11, 3);
-            room.SetMaterialFill(0, 1, 0, 10, 0);
-            room.SetMaterialFill(19, 5, 19, 6, 17);
-            room.AddTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
+            room.setMaterialOutline(0, 0, 19, 11, 3);
+            room.setMaterialFill(0, 1, 0, 10, 0);
+            room.setMaterialFill(19, 5, 19, 6, 17);
+            room.addTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new Disk(17 * 28, 3 * 32, room, Color.blue, 4));
         }
         {// Room 26 : Lower Library 
             Room room = rooms.get(26);
-            room.SetMaterialOutline(0, 0, 19, 11, 3);
-            room.SetMaterialFill(1, 0, 18, 0, 0);
-            room.SetMaterialFill(19, 7, 19, 9, 0);
-            room.AddTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
+            room.setMaterialOutline(0, 0, 19, 11, 3);
+            room.setMaterialFill(1, 0, 18, 0, 0);
+            room.setMaterialFill(19, 7, 19, 9, 0);
+            room.addTextBox("{BIG} {000,204,000} LIBRARY", 185, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 27 : Computer Room 
             Room room = rooms.get(27);
-            room.SetMaterialOutline(0, 0, 19, 11, 3);
-            room.SetMaterialFill(0, 7, 0, 9, 0);
-            room.SetMaterial(10, 2, 12);
-            room.AddTextBox("{BIG} {000,204,000} COMPUTER ROOM", 104, 708, 560);
-            room.AddGraphix("monitor.gif", 8 * 28, 2 * 32);
+            room.setMaterialOutline(0, 0, 19, 11, 3);
+            room.setMaterialFill(0, 7, 0, 9, 0);
+            room.setMaterial(10, 2, 12);
+            room.addTextBox("{BIG} {000,204,000} COMPUTER ROOM", 104, 708, 560);
+            room.addGraphix("monitor.gif", 8 * 28, 2 * 32);
             room.graphix.add(camGraphix);
             items.add(new CamDisk(2 * 28, 9 * 32, room));
             items.add(new SpyCam(room));
         }
         {// Room 28 : Bottom Corridor, Entrance 
             Room room = rooms.get(28);
-            room.SetMaterialFill(0, 0, 7, 2, 3);
-            room.SetMaterialFill(12, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 7, 2, 3);
+            room.setMaterialFill(12, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 29 : Bottom Corridor 
             Room room = rooms.get(29);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 30 : Bottom Corridor 
             Room room = rooms.get(30);
-            room.SetMaterialFill(0, 0, 19, 2, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 19, 2, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 31 : Bottom Left Corridor 
             Room room = rooms.get(31);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(0, 9, 19, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 2, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(0, 9, 19, 11, 3);
+            room.setMaterialFill(15, 0, 19, 2, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 32 : Left Corridor, Entrance to Elevator 
             Room room = rooms.get(32);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 3, 3);
-            room.SetMaterialFill(15, 7, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 0, 19, 3, 3);
+            room.setMaterialFill(15, 7, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 33 : Left Corridor 
             Room room = rooms.get(33);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 0, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 34 : Left Corridor, Entrance to Minefield 
             Room room = rooms.get(34);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 6, 3);
-            room.SetMaterialFill(15, 10, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 0, 19, 6, 3);
+            room.setMaterialFill(15, 10, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 35 : Left Corridor 
             Room room = rooms.get(35);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 0, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 36 : Master Chamber 
@@ -473,16 +473,16 @@ class RO4 extends Level {
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 0, 4}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MASTER    COMPUTER", 37, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MASTER    COMPUTER", 37, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new MasterRobot(9 * 28, 5 * 32 + 12, room));
         }
         {// Room 37 : Left Corridor, Entrance to Library 
             Room room = rooms.get(37);
-            room.SetMaterialFill(0, 0, 4, 11, 3);
-            room.SetMaterialFill(15, 0, 19, 3, 3);
-            room.SetMaterialFill(15, 7, 19, 11, 3);
-            room.AddTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
+            room.setMaterialFill(0, 0, 4, 11, 3);
+            room.setMaterialFill(15, 0, 19, 3, 3);
+            room.setMaterialFill(15, 7, 19, 11, 3);
+            room.addTextBox("{BIG} {000,204,000} HALLWAY", 180, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 38 : Map Antechamber 
@@ -502,7 +502,7 @@ class RO4 extends Level {
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MAP ANTEROOM", 118, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MAP ANTEROOM", 118, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new Disk(6 * 28, 8 * 32, room, Color.yellow, 2));
         }
@@ -523,7 +523,7 @@ class RO4 extends Level {
                     {6, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 6}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 40 : Main Office 
@@ -543,7 +543,7 @@ class RO4 extends Level {
                     {7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MAIN OFFICE", 131, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MAIN OFFICE", 131, 708, 560);
             items.add(new Disk(17 * 28, 2 * 32, room, Color.red, 1));
             room.graphix.add(camGraphix);
         }
@@ -564,7 +564,7 @@ class RO4 extends Level {
                     {6, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 42 : Minefield, Bottom Left 
@@ -584,7 +584,7 @@ class RO4 extends Level {
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 43 : Minefield, Bottom Right 
@@ -604,7 +604,7 @@ class RO4 extends Level {
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 44 : Minefield, Top Left 
@@ -624,7 +624,7 @@ class RO4 extends Level {
                     {8, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0, 8}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 45 : Minefield, Top Right 
@@ -644,7 +644,7 @@ class RO4 extends Level {
                     {8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD", 159, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 46 : Key Tunnel, Top Left 
@@ -664,7 +664,7 @@ class RO4 extends Level {
                     {9, 9, 9, 0, 0, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} FORCE FIELD    TUNNEL", 132, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} FORCE FIELD    TUNNEL", 132, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 47 : Key Tunnel, Top Right 
@@ -684,7 +684,7 @@ class RO4 extends Level {
                     {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 9, 9}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} FORCE FIELD    TUNNEL", 132, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} FORCE FIELD    TUNNEL", 132, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new Disk(16 * 28, 2 * 32, room, Color.green, 3));
         }
@@ -705,7 +705,7 @@ class RO4 extends Level {
                     {5, 5, 5, 5, 5, 5, 0, 0, 0, 5, 5, 0, 0, 0, 5, 5, 0, 0, 0, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 49 : Ventilation Shaft Right 
@@ -725,7 +725,7 @@ class RO4 extends Level {
                     {5, 5, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 5, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
             String[] fanlist = {
                     "fan0.gif",
@@ -753,7 +753,7 @@ class RO4 extends Level {
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 51 : Ventilation Shaft Maze 
@@ -773,7 +773,7 @@ class RO4 extends Level {
                     {5, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 5, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 52 : Ventilation Shaft Maze 
@@ -793,7 +793,7 @@ class RO4 extends Level {
                     {5, 5, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 5, 5, 0, 0, 0, 5, 5, 5}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} VENTILATION    SHAFT", 126, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 53 : Map Room, Bottom Left 
@@ -813,7 +813,7 @@ class RO4 extends Level {
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 54 : Map Room, Bottom Right 
@@ -833,7 +833,7 @@ class RO4 extends Level {
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} MINEFIELD MAP", 104, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 55 : Energy Chamber, Upper 
@@ -853,7 +853,7 @@ class RO4 extends Level {
                     {10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} HIGH VOLTAGE     ROOM", 118, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} HIGH VOLTAGE     ROOM", 118, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new NotAButton(10 * 28, 6 * 32, room));
             items.add(new EnergyButton());
@@ -875,7 +875,7 @@ class RO4 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} LOBBY", 212, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} LOBBY", 212, 708, 560);
             room.graphix.add(camGraphix);
         }
         {// Room 57 : Energy Chamber, Lower 
@@ -895,11 +895,11 @@ class RO4 extends Level {
                     {10, 10, 10, 10, 10, 10, 10, 10, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 10, 10}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} SAFETY ROOM", 131, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} SAFETY ROOM", 131, 708, 560);
             room.graphix.add(camGraphix);
-            room.AddGraphix("FFleft.gif", 30, 4 * 32 + 3);
-            room.AddGraphix("FFright.gif", 18 * 28 - 2, 4 * 32 + 3);
-            room.AddTextBox("..........................................", 28, 4 * 32 + 16, 560);
+            room.addGraphix("FFleft.gif", 30, 4 * 32 + 3);
+            room.addGraphix("FFright.gif", 18 * 28 - 2, 4 * 32 + 3);
+            room.addTextBox("..........................................", 28, 4 * 32 + 16, 560);
         }
         {// Room 58 : Trash Dump 
             Room room = rooms.get(58);
@@ -918,7 +918,7 @@ class RO4 extends Level {
                     {11, 11, 11, 11, 11, 11, 11, 11, 0, 0, 0, 0, 11, 11, 11, 11, 11, 11, 11, 11}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} TRASH DUMP", 145, 708, 560);
+            room.addTextBox("{BIG} {000,204,000} TRASH DUMP", 145, 708, 560);
             room.graphix.add(camGraphix);
             items.add(new SmallChip(3 * 28, 9 * 32, room, "7"));
         }
@@ -939,11 +939,11 @@ class RO4 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
             };
 
-            room.AddTextBox("{BIG} {000,204,000} ELEVATOR", 172, 708, 560);
-            room.AddTextBox("\"Hold, please!\"", 84, 54, 560);
-            room.AddTextBox("HOLD", 480, 350, 560);
+            room.addTextBox("{BIG} {000,204,000} ELEVATOR", 172, 708, 560);
+            room.addTextBox("\"Hold, please!\"", 84, 54, 560);
+            room.addTextBox("HOLD", 480, 350, 560);
             room.graphix.add(camGraphix);
-            room.AddGraphix("hold.gif", 18 * 28, 10 * 32 - 4);
+            room.addGraphix("hold.gif", 18 * 28, 10 * 32 - 4);
             items.add(new SmallChip(3 * 28, 9 * 32, room, "8"));
         }
 
@@ -962,8 +962,8 @@ class RO4 extends Level {
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 5},
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}};
-            room.AddTextBox("{BIG} {255,000,000} PURGATORIUM", 131, 64, 500);
-            room.AddTextBox("(Please wait for Trash Room)", 112, 11 * 32, 500);
+            room.addTextBox("{BIG} {255,000,000} PURGATORIUM", 131, 64, 500);
+            room.addTextBox("(Please wait for Trash Room)", 112, 11 * 32, 500);
         }
         {// Room 61 : Secret Room 
             Room room = rooms.get(61);
@@ -980,8 +980,8 @@ class RO4 extends Level {
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
                     {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
                     {5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5}};
-            room.AddTextBox("Hello again, organic dude!", 2 * 28, 4 * 32, 500);
-            room.AddTextBox("To find secret #5, you must enter a Zen state of mind... To open a door is to close a door, and to close a door is to open a door.",
+            room.addTextBox("Hello again, organic dude!", 2 * 28, 4 * 32, 500);
+            room.addTextBox("To find secret #5, you must enter a Zen state of mind... To open a door is to close a door, and to close a door is to open a door.",
                     2 * 28, 6 * 32, 500);
             String[] helperlist = {
                     "helper0.gif", "helper0.gif", "helper0.gif", "helper0.gif",
@@ -1011,7 +1011,7 @@ class RO4 extends Level {
                         {32, 56, 59, 57, 58, 40, 16},
                         {31, 30, 29, 28, 19, 18, 17}
                 };
-        LinkRoomsGrid(roomgrid);
+        linkRoomsGrid(roomgrid);
 
         // Ventilation shaft map
         // 
@@ -1031,13 +1031,13 @@ class RO4 extends Level {
         int[] roomlist4 = {20, 48, 50, 20};
         int[] roomlist5 = {52, 49, 51, 52};
 
-        LinkRoomsHorizontally(roomlist1);
-        LinkRoomsHorizontally(roomlist2);
-        LinkRoomsHorizontally(roomlist3);
-        LinkRoomsVertically(roomlist4);
-        LinkRoomsVertically(roomlist5);
+        linkRoomsHorizontally(roomlist1);
+        linkRoomsHorizontally(roomlist2);
+        linkRoomsHorizontally(roomlist3);
+        linkRoomsVertically(roomlist4);
+        linkRoomsVertically(roomlist5);
 
-        LinkRoomsUpDown(60, 61);
+        linkRoomsUpDown(60, 61);
 
         gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.get(40));
         helpCam = new HelpCam(rooms.get(0));

@@ -18,7 +18,7 @@ public class PowerSwitch extends Item {
         room = r;
         width = 28;
         height = 32;
-        GenerateIcons();
+        generateIcons();
         if (((GenericRobot) room.portalItem).thrusterPower) {
             currentIcon = icons[1].getImage();
         }
@@ -27,7 +27,7 @@ public class PowerSwitch extends Item {
         }
     }
 
-    public void GenerateIcons() {
+    public void generateIcons() {
         icons = new ImageIcon[2];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -83,7 +83,7 @@ public class PowerSwitch extends Item {
 
     }
 
-    public boolean CanBePickedUp(Item i) {
+    public boolean canBePickedUp(Item i) {
         if (i != level().player) {
             return false;
         }

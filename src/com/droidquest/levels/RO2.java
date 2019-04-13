@@ -133,13 +133,13 @@ class RO2 extends Level {
                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
-            room.AddTextBox("Ride the Subway to the Town!", 4 * 28, 64, 500);
-            room.AddTextBox("HINTS:", 2 * 28, 3 * 32, 500);
-            room.AddTextBox("Find the token to drop into the Turnstyle slot.", 2 * 28, 4 * 32, 500);
-            room.AddTextBox("Ride the Subway to places that no one has ever dared to go.", 2 * 28, 6 * 32, 500);
-            room.AddTextBox("Use the Exit Ticket to start the escalators going up, up, up...", 2 * 28, 8 * 32, 500);
-            room.AddTextBox("Chips 3 & 4 are blank.", 2 * 28, 10 * 32, 500);
-            room.AddTextBox("(To continue, press RETURN.)", 96, 350, 500);
+            room.addTextBox("Ride the Subway to the Town!", 4 * 28, 64, 500);
+            room.addTextBox("HINTS:", 2 * 28, 3 * 32, 500);
+            room.addTextBox("Find the token to drop into the Turnstyle slot.", 2 * 28, 4 * 32, 500);
+            room.addTextBox("Ride the Subway to places that no one has ever dared to go.", 2 * 28, 6 * 32, 500);
+            room.addTextBox("Use the Exit Ticket to start the escalators going up, up, up...", 2 * 28, 8 * 32, 500);
+            room.addTextBox("Chips 3 & 4 are blank.", 2 * 28, 10 * 32, 500);
+            room.addTextBox("(To continue, press RETURN.)", 96, 350, 500);
         }
         {  // Room 1: Escalator 
             Room room = rooms.get(1);
@@ -157,7 +157,7 @@ class RO2 extends Level {
                     {2, 2, 2, 2, 2, 2, 2, 17, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2},
                     {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2}
             };
-            room.AddTextBox("Insert Exit Ticket", 244, 10 * 32, 100);
+            room.addTextBox("Insert Exit Ticket", 244, 10 * 32, 100);
         }
         {  // Room 2: Secret Room 
             Room room = rooms.get(2);
@@ -175,9 +175,9 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Congratulations!!", 176, 66, 560);
-            room.AddTextBox("You have reached the Secret Room of Public Knowledge.", 2 * 28, 4 * 32, 500);
-            room.AddTextBox("Robot Odyssey I is dedicated to Warren Robinett, author of Atari Adventure, Rocky's Boots, and the animation utility underlying Robot Odyssey I.", 2 * 28, 6 * 32, 500);
+            room.addTextBox("Congratulations!!", 176, 66, 560);
+            room.addTextBox("You have reached the Secret Room of Public Knowledge.", 2 * 28, 4 * 32, 500);
+            room.addTextBox("Robot Odyssey I is dedicated to Warren Robinett, author of Atari Adventure, Rocky's Boots, and the animation utility underlying Robot Odyssey I.", 2 * 28, 6 * 32, 500);
         }
 
         {  // Room 3: Laundrobot, Level 1
@@ -252,7 +252,7 @@ class RO2 extends Level {
                     {8, 0, 0, 0, 8, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 8, 0, 0, 0, 8},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8}
             };
-            room.AddTextBox("Laundrobot Station", 6 * 28, 2 * 32, 300);
+            room.addTextBox("Laundrobot Station", 6 * 28, 2 * 32, 300);
         }
 
         {  // Room 7: Muse Robotique Station, Level 1 
@@ -322,7 +322,7 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8},
                     {8, 8, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 0, 0, 0}
             };
-            room.AddTextBox("Muse Robotique Station", 216, 178, 200);
+            room.addTextBox("Muse Robotique Station", 216, 178, 200);
         }
 
         {  // Room 11: Jack in the Bot Station, Level 1 
@@ -360,8 +360,8 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
                     {0, 0, 0, 0, 0, 2, 0, 0, 2, 2, 2, 0, 0, 2, 2, 2, 2, 0, 0, 2}
             };
-            room.AddTextBox("Subway token", 28, 122, 560);
-            room.AddArrow(0, 3 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
+            room.addTextBox("Subway token", 28, 122, 560);
+            room.addArrow(0, 3 * 32 + 16, Arrow.DIR_LEFT, 28, Color.white);
         }
         {  // Room 13: Big Magnet 
             Room room = rooms.get(13);
@@ -397,7 +397,7 @@ class RO2 extends Level {
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}
             };
-            room.AddTextBox("Jack in the 'Bot     Station", 160, 178, 300);
+            room.addTextBox("Jack in the 'Bot     Station", 160, 178, 300);
         }
 
         {  // Room 15: Game starts here 
@@ -471,7 +471,7 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}
             };
-            room.AddTextBox("Seer's and Robot Station", 164, 178, 300);
+            room.addTextBox("Seer's and Robot Station", 164, 178, 300);
         }
 
         {  // Room 19: Picadilly Circuit Station, Level 1 
@@ -542,7 +542,7 @@ class RO2 extends Level {
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 0, 0, 8}
             };
-            room.AddTextBox("Picadilly Circuit Station", 76, 178, 500);
+            room.addTextBox("Picadilly Circuit Station", 76, 178, 500);
         }
 
         {  // Room 23: Cobble Bot Station, Level 1 
@@ -596,8 +596,8 @@ class RO2 extends Level {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0},
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0}
             };
-            room.AddTextBox("Restroom", 392, 198, 560);
-            room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("Restroom", 392, 198, 560);
+            room.addArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 26: Cobble Bot Square Station 
             Room room = rooms.get(26);
@@ -615,7 +615,7 @@ class RO2 extends Level {
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8},
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8}
             };
-            room.AddTextBox("Cobble 'Bot Square     Station", 160, 178, 250);
+            room.addTextBox("Cobble 'Bot Square     Station", 160, 178, 250);
         }
 
         {  // Room 27: Jack in the Bot Station, Level 1 
@@ -672,9 +672,9 @@ class RO2 extends Level {
                     {0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0},
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 0, 0, 6}
             };
-            room.AddTextBox("{BIG} {000,204,000} B {BSP} {SML} {255,255,255} ay   {BIG} {000,204,000} A {BSP} {SML} {255,255,255} rea   {BIG} {000,204,000} R {BSP} {SML} {255,255,255} obot   {BIG} {000,204,000} T {BSP} {SML} {255,255,255} ransport", 2 * 28, 58, 560);
-            room.AddTextBox("Insert token, please.", 9 * 28, 9 * 32, 200);
-            room.AddArrow(13 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
+            room.addTextBox("{BIG} {000,204,000} B {BSP} {SML} {255,255,255} ay   {BIG} {000,204,000} A {BSP} {SML} {255,255,255} rea   {BIG} {000,204,000} R {BSP} {SML} {255,255,255} obot   {BIG} {000,204,000} T {BSP} {SML} {255,255,255} ransport", 2 * 28, 58, 560);
+            room.addTextBox("Insert token, please.", 9 * 28, 9 * 32, 200);
+            room.addArrow(13 * 28, 10 * 32 + 16, Arrow.DIR_RIGHT, 28, Color.white);
         }
         {  // Room 30: Jack in the Bot Station 
             Room room = rooms.get(30);
@@ -692,7 +692,7 @@ class RO2 extends Level {
                     {8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8}
             };
-            room.AddTextBox("Robotoplatz  Station", 216, 178, 150);
+            room.addTextBox("Robotoplatz  Station", 216, 178, 150);
         }
 
         {  // Room 31: Subway Depot, Level 1 
@@ -762,10 +762,10 @@ class RO2 extends Level {
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8},
                     {8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8}
             };
-            room.AddTextBox("SUBWAY DEPOT", 408, 84, 100);
-            room.AddTextBox("Push this button to call train.", 104, 2 * 32, 200);
-            room.AddTextBox("Pull here", 384, 206, 560);
-            room.AddArrow(13 * 28 + 14, 5 * 32, Arrow.DIR_UP, 32, Color.white);
+            room.addTextBox("SUBWAY DEPOT", 408, 84, 100);
+            room.addTextBox("Push this button to call train.", 104, 2 * 32, 200);
+            room.addTextBox("Pull here", 384, 206, 560);
+            room.addArrow(13 * 28 + 14, 5 * 32, Arrow.DIR_UP, 32, Color.white);
             items.add(new Handle(13 * 28, 4 * 32 + 12, room));
             items.add(new Train());
         }
@@ -786,7 +786,7 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("At last...", 220, 2 * 32, 450);
+            room.addTextBox("At last...", 220, 2 * 32, 450);
         }
         {  // Room 36: Secret tunnel 2 
             Room room = rooms.get(36);
@@ -804,7 +804,7 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("the mystery is finally revealed!", 88, 2 * 32, 450);
+            room.addTextBox("the mystery is finally revealed!", 88, 2 * 32, 450);
         }
         {  // Room 37: Secret tunnel 3 
             Room room = rooms.get(37);
@@ -822,7 +822,7 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Just what does the lock in the Secret Room of Public Knowledge open?",
+            room.addTextBox("Just what does the lock in the Secret Room of Public Knowledge open?",
                     2 * 28, 2 * 32, 500);
         }
         {  // Room 38: Secret tunnel 4 
@@ -841,7 +841,7 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("What else, but a secret passage to...", 58, 2 * 32, 450);
+            room.addTextBox("What else, but a secret passage to...", 58, 2 * 32, 450);
         }
         {  // Room 39: Secret lock 
             Room room = rooms.get(39);
@@ -859,9 +859,9 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("...ANOTHER LOCK!", 2 * 28, 2 * 32, 450);
-            room.AddTextBox("You DO have the green key, don't you?", 58, 8 * 32, 450);
-            room.AddTextBox("If not, go back to the sewers and look around.", 58, 10 * 32, 450);
+            room.addTextBox("...ANOTHER LOCK!", 2 * 28, 2 * 32, 450);
+            room.addTextBox("You DO have the green key, don't you?", 58, 8 * 32, 450);
+            room.addTextBox("If not, go back to the sewers and look around.", 58, 10 * 32, 450);
         }
         {  // Room 40: Secret room 
             Room room = rooms.get(40);
@@ -879,9 +879,9 @@ class RO2 extends Level {
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3},
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-            room.AddTextBox("Hello again! Yes, every level has a secret! Here's the key to Secret #3.",
+            room.addTextBox("Hello again! Yes, every level has a secret! Here's the key to Secret #3.",
                     2 * 28, 2 * 32, 500);
-            room.AddTextBox("This Polarizer will open a door when it is hit by a random surge of energy, and the direction of the door will match the polarity of the energy.",
+            room.addTextBox("This Polarizer will open a door when it is hit by a random surge of energy, and the direction of the door will match the polarity of the energy.",
                     2 * 28 - 8, 9 * 32 - 10, 500);
             String[] helperlist = {
                     "helper0.gif", "helper0.gif", "helper0.gif", "helper0.gif",
@@ -914,16 +914,16 @@ class RO2 extends Level {
                 {31, 27, 23, 19, 15, 11, 7, 3, 31},
                 {34, 30, 26, 22, 18, 14, 10, 6, 34}
         };
-        LinkRoomsGrid(roomgrid);
+        linkRoomsGrid(roomgrid);
 
         // 14
         //  1
         // 11
-        LinkRoomsUpDown(11, 1);
-        LinkRoomsUpDown(1, 14);
+        linkRoomsUpDown(11, 1);
+        linkRoomsUpDown(1, 14);
 
         int[] secretlist = {2, 35, 36, 37, 38, 39, 40};
-        LinkRoomsHorizontally(secretlist);
+        linkRoomsHorizontally(secretlist);
 
         gameCursor = new GameCursor(6 * 28, 8 * 32, rooms.get(15));
         solderingPen = new SolderingPen();
