@@ -51,7 +51,7 @@ public class PCButton extends Item {
 
     public boolean CanBePickedUp(Item i) {
         PrototypeChip newPC = new PrototypeChip(228, 160, room);
-        level.items.add(newPC);
+        level().items.add(newPC);
         room.playSound(Sounds.CHARGE);
         return false;
     }

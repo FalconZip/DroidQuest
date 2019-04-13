@@ -13,8 +13,8 @@ public class Switch1 extends Switch {
 
     public void TouchedByItem(Item item) {
         if (train == null) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item t = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item t = level().items.get(a);
                 if (t.getClass().toString().endsWith("Train")) {
                     train = (Train) t;
                 }

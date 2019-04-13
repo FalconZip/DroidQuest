@@ -6,6 +6,7 @@ import com.droidquest.devices.SmallChip;
 import com.droidquest.items.GenericRobot;
 import com.droidquest.items.Item;
 import com.droidquest.items.ToolBox;
+import com.droidquest.levels.Level;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,52 +93,54 @@ public class LabCursor extends Player {
             currentIcon = icons[0].getImage();
         }
 
-        gameState.setUsingHotCursor(hot);
+        gameState().setUsingHotCursor(hot);
         return true;
     }
 
     @Override
     public boolean handlePaintbrush() {
-        if (level.paintbrush == null) {
+    	Level level = level();
+        if (level().paintbrush == null) {
             return false;
         }
         if (carrying != null) {
             Drops();
         }
-        level.paintbrush.x = (x / 28) * 28;
-        level.paintbrush.y = (y / 32) * 32;
-        level.paintbrush.room = room;
+        level().paintbrush.x = (x / 28) * 28;
+        level().paintbrush.y = (y / 32) * 32;
+        level().paintbrush.room = room;
         room = null;
-        if (level.currentViewer == level.player) {
-            level.currentViewer = level.paintbrush;
+        if (level().currentViewer == level().player) {
+            level().currentViewer = level().paintbrush;
         }
-        level.player = level.paintbrush;
+        level().player = level().paintbrush;
         handleRemote();
 
-        gameState.usePaintBrush();
+        gameState().usePaintBrush();
         return true;
     }
 
     @Override
     public boolean handleToolbox() {
-        if (level.toolbox == null) {
+    	Level level = level();
+        if (level().toolbox == null) {
             return false;
         }
-        if (level.toolbox.room != room) {
+        if (level().toolbox.room != room) {
             // Summon Toolbox
             if (carrying != null) {
                 return false;
             }
-            if (((ToolBox) level.toolbox).open) {
-                ((ToolBox) level.toolbox).Toggle();
+            if (((ToolBox) level().toolbox).open) {
+                ((ToolBox) level().toolbox).Toggle();
             }
-            level.toolbox.room = room;
-            level.toolbox.x = x + 28;
-            level.toolbox.y = y + 6;
-            PicksUp(level.toolbox);
+            level().toolbox.room = room;
+            level().toolbox.x = x + 28;
+            level().toolbox.y = y + 6;
+            PicksUp(level().toolbox);
         }
         else {
-            ((ToolBox) level.toolbox).Toggle();
+            ((ToolBox) level().toolbox).Toggle();
         }
         return true;
     }

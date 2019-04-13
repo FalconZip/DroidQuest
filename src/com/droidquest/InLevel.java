@@ -4,6 +4,10 @@ import com.droidquest.levels.Level;
 
 public interface InLevel {
 	default Level level() {
-		return GameState.instance().getLevel();
+		return gameState().getLevel();
+	}
+	
+	default GameState gameState() {
+		return GameState.instance();
 	}
 }

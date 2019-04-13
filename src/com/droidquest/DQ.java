@@ -76,7 +76,6 @@ public class DQ extends JFrame implements ActionListener, Observer {
 
 		contentPane.add(myRoom);
 		myRoom.setLocation(0, 0);
-		myRoom.start();
 
 		JMenuBar menuBar;
 		JMenu fileMenu;
@@ -388,7 +387,7 @@ public class DQ extends JFrame implements ActionListener, Observer {
 // case 1: // Destroy Device
 // // remove all wires
 // dev.Erase()
-// dev.level.items.removeElement(dev);
+// dev.level().items.removeElement(dev);
 // break;
 // case 2: // Re-summon Device
 //

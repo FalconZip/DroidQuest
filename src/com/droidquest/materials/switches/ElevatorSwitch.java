@@ -46,7 +46,7 @@ public class ElevatorSwitch extends Switch {
                 animationState++;
                 break;
             case 3:
-                if (outPortal.outRoom == level.rooms.get(11)) {
+                if (outPortal.outRoom == level().rooms.get(11)) {
                     for (int a = 0; a < room.arrows.size(); a++) {
                         Arrow arrow = room.arrows.get(a);
                         arrow.direction = Arrow.DIR_UP;

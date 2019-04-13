@@ -44,15 +44,15 @@ public class CameraEnable extends Material {
 
     public void TouchedByItem(Item item) {
         if (hiddenCamera == null) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item i = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item i = level().items.get(a);
                 if (i.getClass().toString().endsWith("HiddenCamera")) {
                     hiddenCamera = i;
                 }
             }
         }
-        if (item == level.player) {
-            level.currentViewer = hiddenCamera;
+        if (item == level().player) {
+            level().currentViewer = hiddenCamera;
         }
     }
 

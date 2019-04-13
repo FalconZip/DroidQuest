@@ -71,7 +71,7 @@ class ROTutA extends Level {
                     2 * 28, 6 * 32, 500);
             room.AddTextBox("Use C to change to Cursor",
                     2 * 28, 8 * 32, 500);
-            room.AddTextBox("Use the Menubar above to control sound, or to return to the Main Menu level.",
+            room.AddTextBox("Use the Menubar above to control sound, or to return to the Main Menu level().",
                     2 * 28, 9 * 32, 450);
             room.AddTextBox("To continue, press RETURN",
                     5 * 28, 11 * 32, 500);

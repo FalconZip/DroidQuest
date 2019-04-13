@@ -34,7 +34,7 @@ public class ShapeEditor extends Material {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, 28, 32);
-        g.drawImage(target.currentIcon, 14 - target.getWidth() / 2, 16 - target.getHeight() / 2, level);
+        g.drawImage(target.currentIcon, 14 - target.getWidth() / 2, 16 - target.getHeight() / 2, level());
         icon = new ImageIcon(bi);
     }
 
@@ -60,11 +60,11 @@ public class ShapeEditor extends Material {
             carrier.Drops();
             int itemX = item.x;
             int itemY = item.y;
-            level.items.remove(item);
+            level().items.remove(item);
             newItem.x = itemX;
             newItem.y = itemY;
             newItem.room = carrier.room;
-            level.items.add(newItem);
+            level().items.add(newItem);
             carrier.PicksUp(newItem);
         }
     }

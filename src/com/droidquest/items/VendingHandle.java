@@ -51,7 +51,7 @@ public class VendingHandle extends Item {
     }
 
     public boolean CanBePickedUp(Item item) {
-        return item != level.player;
+        return item != level().player;
     }
 
     public void IsDropped() {

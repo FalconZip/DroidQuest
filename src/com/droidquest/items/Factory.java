@@ -49,7 +49,7 @@ public class Factory extends Item {
         g.drawImage(target.currentIcon,
                 width / 2 - target.width / 2 - target.orgX,
                 height / 2 - target.height / 2 - target.orgY,
-                level);
+                level());
         currentIcon = icons[0].getImage();
     }
 
@@ -65,7 +65,7 @@ public class Factory extends Item {
         item.x = (560 - item.width) / 2;
         item.y = (384 - item.height) / 2;
         item.room = room;
-        level.items.add(item);
+        level().items.add(item);
         room.playSound(Sounds.CHARGE);
         return false;
     }

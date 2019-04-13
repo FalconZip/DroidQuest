@@ -231,20 +231,20 @@ public class AmpireBot extends Item {
 
         if (alive) {
             if (behaviorState < 6) {
-                for (int a = 0; a < level.items.size(); a++) {
-                    target = level.items.get(a);
+                for (int a = 0; a < level().items.size(); a++) {
+                    target = level().items.get(a);
                     if (target.room == room) {
                         if (target.charge != 0) {
                             previousBehavior = behaviorState;
                             behaviorState = 6;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                     }
                 }
             }
             switch (behaviorState) {
                 case 0:
-                    if (level.player.room == room) {
+                    if (level().player.room == room) {
                         behaviorState = 1;
                     }
                     break;
@@ -263,7 +263,7 @@ public class AmpireBot extends Item {
                     }
                     break;
                 case 2:
-                    if (room == level.rooms.get(18) && x <= 280) {
+                    if (room == level().rooms.get(18) && x <= 280) {
                         behaviorState = 3;
                     }
                     else {
@@ -277,7 +277,7 @@ public class AmpireBot extends Item {
                     }
                     break;
                 case 3:
-                    if (room == level.rooms.get(19) && y <= 192) {
+                    if (room == level().rooms.get(19) && y <= 192) {
                         behaviorState = 4;
                     }
                     else {
@@ -291,7 +291,7 @@ public class AmpireBot extends Item {
                     }
                     break;
                 case 4:
-                    if (room == level.rooms.get(15) && x >= 280) {
+                    if (room == level().rooms.get(15) && x >= 280) {
                         behaviorState = 5;
                     }
                     else {
@@ -305,7 +305,7 @@ public class AmpireBot extends Item {
                     }
                     break;
                 case 5:
-                    if (room == level.rooms.get(16) && y >= 192) {
+                    if (room == level().rooms.get(16) && y >= 192) {
                         behaviorState = 2;
                     }
                     else {

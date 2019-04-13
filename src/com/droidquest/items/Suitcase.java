@@ -36,9 +36,9 @@ public class Suitcase extends Item {
         };
 
         InternalRoom.portalItem = this;
-        level.rooms.add(InternalRoom);
+        level().rooms.add(InternalRoom);
         Material mat1 = Material.FindSimiliar(new Material(Color.blue, false, true));
-        int mat1Index = level.materials.indexOf(mat1);
+        int mat1Index = level().materials.indexOf(mat1);
 
         for (int rY = 0; rY < 12; rY++) {
             for (int rX = 0; rX < 20; rX++) {

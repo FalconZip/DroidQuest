@@ -11,7 +11,7 @@ public class SlipperyToken extends Token {
     }
 
     public boolean CanBePickedUp(Item item) {
-        return !(item == level.player && jumping);
+        return !(item == level().player && jumping);
     }
 
     public void IsDropped() {
@@ -19,8 +19,8 @@ public class SlipperyToken extends Token {
         int bigY = (y + height / 2) / 32;
         Material mat = room.MaterialArray[bigY][bigX];
         if (mat.getClass().toString().endsWith("VendingSlot")) {
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.getClass().toString().endsWith("VendingHandle")) {
                     VendingHandle vh = (VendingHandle) item;
                     vh.paid = true;
@@ -28,7 +28,7 @@ public class SlipperyToken extends Token {
             }
             x = 3 * 28;
             y = 3 * 32;
-            room = level.rooms.get(34);
+            room = level().rooms.get(34);
             jumping = true;
         }
     }
@@ -38,9 +38,9 @@ public class SlipperyToken extends Token {
             jumping = false;
         }
         if (jumping) {
-            if (Overlaps(level.player)) {
-                x = level.random.nextInt(16 * 28) + 28;
-                y = level.random.nextInt(8 * 32) + (2 * 32);
+            if (Overlaps(level().player)) {
+                x = level().random.nextInt(16 * 28) + 28;
+                y = level().random.nextInt(8 * 32) + (2 * 32);
             }
         }
     }

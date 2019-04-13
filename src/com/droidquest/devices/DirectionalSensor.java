@@ -50,8 +50,8 @@ public class DirectionalSensor extends Device {
         ports[3].value = false;
         if (room.portalItem == null) {
             // Directional Sensor is not inside robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         Dimension d = GetXY();
@@ -59,19 +59,19 @@ public class DirectionalSensor extends Device {
                         int Y = d.height;
                         if (item.y < Y) {
                             ports[0].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.x + item.getWidth() > X + width) {
                             ports[1].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.y + item.getHeight() > Y + height) {
                             ports[2].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.x < X) {
                             ports[3].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                     }
                 }
@@ -79,8 +79,8 @@ public class DirectionalSensor extends Device {
         }
         else {
             // Directional Sensor is inside Robot.
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item.room == room.portalItem.room && item.carriedBy == null) {
                     if (target.getClass().isInstance(item)) {
                         Dimension d = room.portalItem.GetXY();
@@ -88,19 +88,19 @@ public class DirectionalSensor extends Device {
                         int Y = d.height;
                         if (item.y < Y) {
                             ports[0].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.x + item.getWidth() > X + room.portalItem.getWidth()) {
                             ports[1].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.y + item.getHeight() > Y + room.portalItem.getHeight()) {
                             ports[2].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                         if (item.x < X) {
                             ports[3].value = true;
-                            a = level.items.size();
+                            a = level().items.size();
                         }
                     }
                 }
@@ -114,7 +114,7 @@ public class DirectionalSensor extends Device {
         g.setColor(Color.white);
         g.drawRect(24, 24, target.getWidth() + 12, target.getHeight() + 12);
         g.drawRect(25, 25, target.getWidth() + 10, target.getHeight() + 10);
-        g.drawImage(target.currentIcon, 30, 30, level);
+        g.drawImage(target.currentIcon, 30, 30, level());
     }
 
     public void rotate(int dir) {

@@ -17,13 +17,13 @@ public class RobotBlocker extends Material {
     }
 
     public boolean Passable(Item item) {
-        if (level.gameCursor.getClass().toString().endsWith("GameCursor")) {
-            GameCursor gc = (GameCursor) level.gameCursor;
+        if (level().gameCursor.getClass().toString().endsWith("GameCursor")) {
+            GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == robot) {
                 return false;
             }
         }
-        return !(item == robot || item == level.player);
+        return !(item == robot || item == level().player);
     }
 
 }

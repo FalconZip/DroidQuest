@@ -30,10 +30,10 @@ public class NOTGate extends Device {
     public void Decorate() {
         super.Decorate();
         if (!ports[0].value) {
-            g.drawImage(images[4 + rotation].getImage(), 0, 0, level);
+            g.drawImage(images[4 + rotation].getImage(), 0, 0, level());
         }
         else {
-            g.drawImage(images[rotation].getImage(), 0, 0, level);
+            g.drawImage(images[rotation].getImage(), 0, 0, level());
         }
     }
 

@@ -36,12 +36,12 @@ public class Grabber extends Device {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.items.indexOf(robot)); // Index of fromport device
+        s.writeInt(level().items.indexOf(robot)); // Index of fromport device
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level.FindItem(s.readInt());
+        robot = (GenericRobot) level().FindItem(s.readInt());
     }
 
     public void GenerateIcons() {
@@ -96,7 +96,7 @@ public class Grabber extends Device {
         else { // Input High
             if (robot.carrying == null) {
                 // Try and pick up something
-                Item item = level.FindNearestItem(robot);
+                Item item = level().FindNearestItem(robot);
                 if (item != null) {
                     if (item.CanBePickedUp(robot) && item.carriedBy == null) {
                         int CX = item.x + item.getWidth() / 2;

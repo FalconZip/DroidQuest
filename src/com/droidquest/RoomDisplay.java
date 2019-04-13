@@ -43,10 +43,10 @@ public class RoomDisplay extends JPanel {
 	public static final Font BIG_FONT = new Font("Courier", Font.BOLD, 45);
 	public static final Font SMALL_FONT = new Font("Courier", Font.BOLD, 20);
 
-	private final GameState gameState = GameState.instance();
+	private final transient GameState gameState = GameState.instance();
 	private final AffineTransform at = new AffineTransform();
     
-	private Level level;
+	private volatile Level level;
     private final Timer timer;
     private int timerspeed = 128;
 
@@ -169,7 +169,7 @@ public class RoomDisplay extends JPanel {
                     createLevelWhenNessasary(filename);
                     System.out.println("Loading level " + filename);
                     LoadLevel(filename);
-                    if (level.portal.initLevel) {
+                    if (level.portal != null && level.portal.initLevel) {
                         System.out.println("Initializing Level");
                         level.Init();
                     }
@@ -209,31 +209,12 @@ public class RoomDisplay extends JPanel {
                 level.sparks.removeIf(x -> x.age >6);
             }
 
-			private void createLevelWhenNessasary(String filename) {
-				if(!new File(filename).exists()) {
-				    // filename does not exist
-				    String basename = filename.replaceAll("\\..*", "");
-				    String classname = DQ.class.getPackage() + ".levels." + basename;
-				    Constructor<? extends Level> constructor = null;
-				    try {
-				        @SuppressWarnings("unchecked")
-						Class<? extends Level> levelClass = (Class<? extends Level>)Class.forName(classname);
-				        Class<?>[] argTypes = {RoomDisplay.class};
-				        constructor = levelClass.getConstructor(argTypes);
-				        constructor.setAccessible(true);
-				        Object[] args = {this};
-				        level = constructor.newInstance(args);
-				        SaveLevel();
-				    }
-				    catch (Exception ex) {
-				        throw new RuntimeException(ex);
-				    }
-				}
-			}
+
         });
 	}
 
 	void start() {
+		System.out.println("Start " + this.getClass().getSimpleName());
 		timer.start();
         level.player.room.playSound(Sounds.STARTMUSIC);
 	}
@@ -249,6 +230,7 @@ public class RoomDisplay extends JPanel {
 	void reset() {
 		level.Empty();
 		level = new MainMenu(this);
+		gameState.setLevel(level);
 		level.Init();
 	}
 
@@ -396,7 +378,32 @@ public class RoomDisplay extends JPanel {
 
     }
 
-    void SaveLevel() {
+	private void createLevelWhenNessasary(String filename) {
+		if(!new File(filename).exists()) {
+		    // filename does not exist
+		    createLevel(filename);
+		    SaveLevel();
+		}
+	}
+
+	private void createLevel(String filename) {
+		String basename = filename.replaceAll("\\..*", "");
+		String classname = DQ.class.getPackage().getName() + ".levels." + basename;
+		Constructor<? extends Level> constructor = null;
+		try {
+		    @SuppressWarnings("unchecked")
+			Class<? extends Level> levelClass = (Class<? extends Level>)Class.forName(classname);
+		    Class<?>[] argTypes = {RoomDisplay.class};
+		    constructor = levelClass.getConstructor(argTypes);
+		    constructor.setAccessible(true);
+		    Object[] args = {this};
+		    level = constructor.newInstance(args);
+		}
+		catch (Exception ex) {
+		    throw new RuntimeException(ex);
+		}
+	}
+    private void SaveLevel() {
         SaveLevel(level.getClass().getSimpleName() + ".lvl");
     }
 
@@ -438,7 +445,7 @@ public class RoomDisplay extends JPanel {
             }
         }
 
-        start();
+        timer.start();
     }
     
     Avatar getPlayer() {

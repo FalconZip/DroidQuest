@@ -29,8 +29,8 @@ public class LockS1 extends Material {
             Date now = new Date();
             if (now.getTime() > timeout.getTime()) {
                 if (magnet.room == room) {
-                    level.LinkRoomsLeftRight(11, 30);
-                    level.LinkRoomsLeftRight(30, 11);
+                    level().LinkRoomsLeftRight(11, 30);
+                    level().LinkRoomsLeftRight(30, 11);
                     room.SetMaterial(10, 3, 0);
                     room.SetMaterial(11, 3, 0);
                 }
