@@ -1,5 +1,7 @@
 package com.droidquest.materials;
 
+import com.droidquest.GameState;
+import com.droidquest.InLevel;
 import com.droidquest.RoomDisplay;
 import com.droidquest.avatars.PaintBrush;
 import com.droidquest.items.Item;
@@ -9,8 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 
-public class Material implements Serializable, Cloneable {
-    public transient static Level level;
+public class Material implements Serializable, Cloneable, InLevel {
+	protected final Level level = level();
     public transient ImageIcon icon;
     private String file;
     public boolean passable;
@@ -83,6 +85,7 @@ public class Material implements Serializable, Cloneable {
     }
 
     public static Material FindSimiliar(Material mat1) {
+    	Level level = GameState.instance().getLevel();
         for (int a = 0; a < level.materials.size(); a++) {
             Material mat2 = level.materials.get(a);
             if (mat1.equals(mat2)) {
