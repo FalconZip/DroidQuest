@@ -11,7 +11,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -28,11 +27,11 @@ import com.droidquest.items.Item;
 import com.droidquest.items.ToolBox;
 import com.droidquest.materials.Material;
 import com.droidquest.materials.Portal;
-import com.droidquest.sound.Sound;
-import com.droidquest.sound.SoundPlayer;
 
 public class Level implements ImageObserver, Serializable {
-	protected final GameState gameState = GameState.instance();
+	protected final transient GameState gameState = GameState.instance();
+	private String name;
+	
     public Item player;
     public Item gameCursor;
     public Item solderingPen;
@@ -891,6 +890,14 @@ public class Level implements ImageObserver, Serializable {
     protected <T> T lastOf(List<T> list) {
     	return list.get(list.size() - 1);
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
 

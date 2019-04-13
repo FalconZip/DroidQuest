@@ -46,8 +46,8 @@ public class PrototypeChip extends GenericChip {
                 {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1}
         };
         Material mat1 = new Material(Color.blue, false, true);
-        level.materials.add(mat1);
-        int mat1Index = level.materials.size() - 1;
+        level().materials.add(mat1);
+        int mat1Index = level().materials.size() - 1;
         for (int rY = 0; rY < 12; rY++) {
             for (int rX = 0; rX < 20; rX++) {
                 if (InternalRoom.RoomArray[rY][rX] == 1) {
@@ -57,7 +57,7 @@ public class PrototypeChip extends GenericChip {
         }
         InternalRoom.GenerateArray();
         InternalRoom.portalItem = this;
-        level.rooms.add(InternalRoom);
+        level().rooms.add(InternalRoom);
         InternalRoom.upRoom = null;
         InternalRoom.downRoom = null;
         InternalRoom.leftRoom = null;
@@ -86,7 +86,7 @@ public class PrototypeChip extends GenericChip {
         portdevices[7].rotate(-1);
 
         for (int a = 0; a < 8; a++) {
-            level.items.add(portdevices[a]);
+            level().items.add(portdevices[a]);
         }
     }
 
@@ -164,7 +164,7 @@ public class PrototypeChip extends GenericChip {
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
         for (int a = 0; a < 8; a++) {
-            s.writeInt(level.items.indexOf(portdevices[a]));
+            s.writeInt(level().items.indexOf(portdevices[a]));
         }
     }
 
@@ -172,7 +172,7 @@ public class PrototypeChip extends GenericChip {
         super.readRef(s);
         portdevices = new PortDevice[8];
         for (int a = 0; a < ports.length; a++) {
-            Item item = level.FindItem(s.readInt());
+            Item item = level().FindItem(s.readInt());
             portdevices[a] = (PortDevice) item;
         }
         GenerateIcons();
@@ -246,18 +246,18 @@ public class PrototypeChip extends GenericChip {
 
         for (int a = bigYt; a <= bigYb; a++) {
             for (int b = bigXl; b <= bigXr; b++) {
-                if (level.materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("PrototypeBurner")) {
+                if (level().materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("PrototypeBurner")) {
                     a = bigYb;
                     b = bigXr;
                     x = 3 * 28 + 4;
                     y = 5 * 32 + 12;
                     inBurner = true;
                 }
-                if (level.materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("ChipTrash")) {
-                    level.items.remove(this);
+                if (level().materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("ChipTrash")) {
+                    level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                 }
-                if (level.materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("ChipTester")) {
+                if (level().materials.get(room.RoomArray[a][b]).getClass().toString().endsWith("ChipTester")) {
                     a = bigYb;
                     b = bigXr;
                     x = 10 * 28 - width / 2;

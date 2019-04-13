@@ -88,8 +88,8 @@ public class Ghost extends Item {
 
         if (!searched) {
             int rcounter = 0;
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item instanceof GenericRobot) {
                     robot[rcounter] = item;
                     rcounter++;
@@ -141,7 +141,7 @@ public class Ghost extends Item {
                 int backwards = (animationState + 2) % 4;
                 do {
                     good = true;
-                    animationState = level.random.nextInt(4);
+                    animationState = level().random.nextInt(4);
                     if (animationState == 0 && x == 378) {
                         good = false;
                     }

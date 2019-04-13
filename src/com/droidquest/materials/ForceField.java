@@ -39,11 +39,11 @@ public class ForceField extends Material {
     }
 
     public boolean Passable(Item item) {
-        if (item == level.player) {
+        if (item == level().player) {
             return false;
         }
         else if (item instanceof GenericRobot) {
-            GameCursor gc = (GameCursor) level.gameCursor;
+            GameCursor gc = (GameCursor) level().gameCursor;
             if (gc.PlayerInRobot(null) == item) {
                 return false;
             }

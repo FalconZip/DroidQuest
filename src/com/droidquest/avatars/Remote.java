@@ -13,7 +13,7 @@ public class Remote extends Item implements Avatar {
     public Remote() {
         width = 4;
         height = 20;
-        level.electricity = true;
+        level().electricity = true;
         GenerateIcons();
     }
 
@@ -54,48 +54,48 @@ public class Remote extends Item implements Avatar {
 
     public boolean KeyUp(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            if (level.solderingPen == null) {
+            if (level().solderingPen == null) {
                 return false;
             }
-            level.solderingPen.x = x;
-            level.solderingPen.y = y;
-            level.solderingPen.room = room;
+            level().solderingPen.x = x;
+            level().solderingPen.y = y;
+            level().solderingPen.room = room;
             room = null;
-            if (level.currentViewer == level.player) {
-                level.currentViewer = level.solderingPen;
+            if (level().currentViewer == level().player) {
+                level().currentViewer = level().solderingPen;
             }
-            level.player = level.solderingPen;
+            level().player = level().solderingPen;
         }
         else if (e.getKeyCode() == KeyEvent.VK_C) {
-            level.gameCursor.x = x;
-            level.gameCursor.y = y;
-            level.gameCursor.room = room;
+            level().gameCursor.x = x;
+            level().gameCursor.y = y;
+            level().gameCursor.room = room;
             room = null;
-            if (level.currentViewer == level.player) {
-                level.currentViewer = level.gameCursor;
+            if (level().currentViewer == level().player) {
+                level().currentViewer = level().gameCursor;
             }
-            level.player = level.gameCursor;
+            level().player = level().gameCursor;
         }
         else if (e.getKeyCode() == KeyEvent.VK_P) {
-            if (level.paintbrush == null) {
+            if (level().paintbrush == null) {
                 return false;
             }
-            level.paintbrush.x = x;
-            level.paintbrush.y = y;
-            level.paintbrush.room = room;
+            level().paintbrush.x = x;
+            level().paintbrush.y = y;
+            level().paintbrush.room = room;
             room = null;
-            if (level.currentViewer == level.player) {
-                level.currentViewer = level.paintbrush;
+            if (level().currentViewer == level().player) {
+                level().currentViewer = level().paintbrush;
             }
-            level.player = level.paintbrush;
+            level().player = level().paintbrush;
         }
         else if (e.getKeyCode() == KeyEvent.VK_SLASH) {
-            if (level.helpCam == null) {
+            if (level().helpCam == null) {
                 return false;
             }
-            if (level.player != level.helpCam) {
-                level.player = level.helpCam;
-                level.currentViewer = level.helpCam;
+            if (level().player != level().helpCam) {
+                level().player = level().helpCam;
+                level().currentViewer = level().helpCam;
             }
         }
         else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -127,7 +127,7 @@ public class Remote extends Item implements Avatar {
             return true;
         }
         else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            level.electricity = !level.electricity;
+            level().electricity = !level().electricity;
         }
         return false;
     }
@@ -169,7 +169,7 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveUp(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.UpEnterOverlap(this)) {
@@ -185,7 +185,7 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveDown(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.DownEnterOverlap(this)) {
@@ -201,7 +201,7 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveLeft(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.LeftEnterOverlap(this)) {
@@ -217,7 +217,7 @@ public class Remote extends Item implements Avatar {
     }
 
     public void moveRight(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.RightEnterOverlap(this)) {

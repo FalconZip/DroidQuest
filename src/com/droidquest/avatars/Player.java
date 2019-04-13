@@ -1,11 +1,13 @@
 package com.droidquest.avatars;
 
 import com.droidquest.DQ;
+import com.droidquest.GameState;
 import com.droidquest.devices.Device;
 import com.droidquest.devices.GenericChip;
 import com.droidquest.devices.SmallChip;
 import com.droidquest.items.Item;
 import com.droidquest.items.ToolBox;
+import com.droidquest.levels.Level;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -23,15 +25,17 @@ public class Player extends Item implements Avatar {
     }
 
     public void handleRemote() {
-        if (level.remote != null) {
-            if (level.remote.carriedBy != null) {
-                level.remote.carriedBy = level.player;
+    	Level level = level();
+        if (level().remote != null) {
+            if (level().remote.carriedBy != null) {
+                level().remote.carriedBy = level().player;
             }
         }
     }
 
     public boolean handleSolderPen() {
-        if (level.solderingPen == null) {
+    	Level level = level();
+       if (level().solderingPen == null) {
             return false;
         }
         if (carrying != null) {
@@ -42,85 +46,88 @@ public class Player extends Item implements Avatar {
             }
             Drops();
         }
-        level.solderingPen.x = x;
-        level.solderingPen.y = y;
-        level.solderingPen.room = room;
+        level().solderingPen.x = x;
+        level().solderingPen.y = y;
+        level().solderingPen.room = room;
         room = null;
-        if (level.currentViewer == level.player) {
-            level.currentViewer = level.solderingPen;
+        if (level().currentViewer == level().player) {
+            level().currentViewer = level().solderingPen;
         }
-        level.player = level.solderingPen;
+        level().player = level().solderingPen;
 
         handleRemote();
 
-        gameState.useSolderPen();
+        gameState().useSolderPen();
 
         return true;
     }
 
     public boolean handleRadio() {
-        if (level.remote == null) {
+    	Level level = level();
+        if (level().remote == null) {
             return false;
         }
-        if (level.remote.carriedBy == null) { // Summon Remote
-            level.remote.x = 28;
-            level.remote.y = -20;
-            level.remote.carriedBy = level.player;
-            level.remote.room = level.player.room;
-            level.electricity = true;
+        if (level().remote.carriedBy == null) { // Summon Remote
+            level().remote.x = 28;
+            level().remote.y = -20;
+            level().remote.carriedBy = level().player;
+            level().remote.room = level().player.room;
+            level().electricity = true;
 
-            gameState.setUsingRemote(true);
+            gameState().setUsingRemote(true);
         }
         else { // Hide Remote
-            level.remote.carriedBy = null;
-            level.remote.room = null;
-            level.electricity = false;
+            level().remote.carriedBy = null;
+            level().remote.room = null;
+            level().electricity = false;
 
-            gameState.setUsingRemote(false);
+            gameState().setUsingRemote(false);
         }
         return true;
     }
 
     public boolean handleHelp() {
+    	Level level = level();
         if (carrying != null) {
             if (carrying instanceof GenericChip) {
                 ((GenericChip) carrying).ShowText(true);
                 return false;
             }
         }
-        if (level.helpCam == null) {
+        if (level().helpCam == null) {
             return false;
         }
-        level.player = level.helpCam;
-        level.currentViewer = level.helpCam;
+        level().player = level().helpCam;
+        level().currentViewer = level().helpCam;
         return true;
     }
 
     public boolean handleToolbox() {
-        if (level.toolbox == null) {
+    	Level level = level();
+        if (level().toolbox == null) {
             if (carrying != null) {
                 Drops();
             }
-            level.toolbox = new ToolBox(x, y + 8, room);
-            level.items.add(level.toolbox);
-            ((ToolBox) level.toolbox).Toggle();
-            PicksUp(level.toolbox);
+            level().toolbox = new ToolBox(x, y + 8, room);
+            level().items.add(level().toolbox);
+            ((ToolBox) level().toolbox).Toggle();
+            PicksUp(level().toolbox);
         }
-        if (level.toolbox.room != room) {
+        if (level().toolbox.room != room) {
             // Summon Toolbox
             if (carrying != null) {
                 return false;
             }
-            if (((ToolBox) level.toolbox).open) {
-                ((ToolBox) level.toolbox).Toggle();
+            if (((ToolBox) level().toolbox).open) {
+                ((ToolBox) level().toolbox).Toggle();
             }
-            level.toolbox.room = room;
-            level.toolbox.x = x + 28;
-            level.toolbox.y = y + 6;
-            PicksUp(level.toolbox);
+            level().toolbox.room = room;
+            level().toolbox.x = x + 28;
+            level().toolbox.y = y + 6;
+            PicksUp(level().toolbox);
         }
         else {
-            ((ToolBox) level.toolbox).Toggle();
+            ((ToolBox) level().toolbox).Toggle();
         }
         return true;
     }
@@ -148,6 +155,7 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void PicksUp(Item item) {
+    	GameState gameState = gameState();
         super.PicksUp(item);
         if (carrying instanceof SmallChip) {
         	gameState.setCanLoadChip(true);
@@ -162,12 +170,13 @@ public class Player extends Item implements Avatar {
     @Override
     public void Drops() {
         super.Drops();
-        gameState.setCanRotate(false);
-        gameState.setCanLoadChip(false);
-        gameState.setCanFlipDevice(false);
+        gameState().setCanRotate(false);
+        gameState().setCanLoadChip(false);
+        gameState().setCanFlipDevice(false);
     }
 
     public boolean handlePickupDrop() {
+    	Level level = level();
         if (handleTrain()) {
             return false;
         }
@@ -175,9 +184,9 @@ public class Player extends Item implements Avatar {
             Drops();
         }
         else {
-            Item item = level.FindNearestItem(level.gameCursor);
+            Item item = level().FindNearestItem(level().gameCursor);
             if (item != null) {
-                if (item.CanBePickedUp(level.gameCursor)) {
+                if (item.CanBePickedUp(level().gameCursor)) {
                     PicksUp(item);
                 }
             }
@@ -201,7 +210,7 @@ public class Player extends Item implements Avatar {
     }
 
     public boolean handleEnterRoom() {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (Overlaps(item)) {
@@ -231,7 +240,7 @@ public class Player extends Item implements Avatar {
             x = newX;
             y = newY;
             SetRoom(room.portalItem.room);
-            level.currentViewer = level.player;
+            level().currentViewer = level().player;
             return true;
         }
         return false;
@@ -437,7 +446,7 @@ public class Player extends Item implements Avatar {
     }
 
     protected boolean handleRepeatSpace() {
-        if (level.player == level.gameCursor) {
+        if (level().player == level().gameCursor) {
             setOutline(true);
             return true;
         }
@@ -484,7 +493,7 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveRight(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.RightEnterOverlap(this)) {
@@ -501,7 +510,7 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveLeft(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.LeftEnterOverlap(this)) {
@@ -518,7 +527,7 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveDown(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.DownEnterOverlap(this)) {
@@ -535,7 +544,7 @@ public class Player extends Item implements Avatar {
 
     @Override
     public void moveUp(boolean nudge) {
-        Item item = level.FindNearestItem(this);
+        Item item = level().FindNearestItem(this);
         if (item != null) {
             if (item.InternalRoom != null) {
                 if (item.UpEnterOverlap(this)) {

@@ -2,6 +2,7 @@ package com.droidquest.items;
 
 import com.droidquest.Room;
 import com.droidquest.devices.*;
+import com.droidquest.levels.Level;
 
 import javax.swing.*;
 import java.awt.*;
@@ -86,6 +87,7 @@ public class ToolBox extends Item {
         // Width  = 48 + 36 + 28 + 28 + 6*4 + 26 = 190
         // Height = 50 + 50 + 6 = 106
 
+        Level level = level();
         ANDGate ag = new ANDGate(0, 0, null);
         ag.Function();
         ag.Decorate();
@@ -164,7 +166,7 @@ public class ToolBox extends Item {
     }
 
     public boolean CanBePickedUp(Item item) {
-        if (item != level.gameCursor) {
+        if (item != level().gameCursor) {
             return false;
         }
         if (open) {
@@ -176,28 +178,28 @@ public class ToolBox extends Item {
 
             if (ix > 30 && ix < (30 + 28) && iy > 4 && iy < (4 + 50)) {
                 ANDGate ag = new ANDGate(x + 30, y + 4, item.room);
-                level.items.add(ag);
+                level().items.add(ag);
                 item.PicksUp(ag);
                 return false;
             }
 
             if (ix > 64 && ix < (64 + 28) && iy > 4 && iy < (4 + 50)) {
                 ORGate og = new ORGate(x + 64, y + 4, item.room);
-                level.items.add(og);
+                level().items.add(og);
                 item.PicksUp(og);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 4 && iy < (4 + 50)) {
                 XORGate xg = new XORGate(x + 98, y + 4, item.room);
-                level.items.add(xg);
+                level().items.add(xg);
                 item.PicksUp(xg);
                 return false;
             }
 
             if (ix > 132 && ix < (132 + 28) && iy > 4 && iy < (4 + 50)) {
                 NOTGate ng = new NOTGate(x + 132, y + 4, item.room);
-                level.items.add(ng);
+                level().items.add(ng);
                 ng.ports[1].value = true;
                 item.PicksUp(ng);
                 return false;
@@ -205,7 +207,7 @@ public class ToolBox extends Item {
 
             if (ix > 30 && ix < (30 + 48) && iy > 58 && iy < (58 + 32)) {
                 FlipFlop ff = new FlipFlop(x + 30, y + 58, item.room);
-                level.items.add(ff);
+                level().items.add(ff);
                 ff.ports[3].value = true;
                 item.PicksUp(ff);
                 return false;
@@ -213,21 +215,21 @@ public class ToolBox extends Item {
 
             if (ix > 74 && ix < (74 + 22) && iy > 58 && iy < (58 + 32)) {
                 Node n1 = new Node(x + 74, y + 58, item.room, Node.TYPE_STRAIGHT);
-                level.items.add(n1);
+                level().items.add(n1);
                 item.PicksUp(n1);
                 return false;
             }
 
             if (ix > 98 && ix < (98 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n2 = new Node(x + 98, y + 58, item.room, Node.TYPE_RIGHT);
-                level.items.add(n2);
+                level().items.add(n2);
                 item.PicksUp(n2);
                 return false;
             }
 
             if (ix > 128 && ix < (128 + 28) && iy > 58 && iy < (58 + 32)) {
                 Node n3 = new Node(x + 128, y + 58, item.room, Node.TYPE_THREE);
-                level.items.add(n3);
+                level().items.add(n3);
                 item.PicksUp(n3);
                 return false;
             }

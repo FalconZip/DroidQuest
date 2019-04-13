@@ -4,6 +4,7 @@ import com.droidquest.items.BlueRobot;
 import com.droidquest.items.Item;
 import com.droidquest.items.OrangeRobot;
 import com.droidquest.items.WhiteRobot;
+import com.droidquest.levels.Level;
 import com.droidquest.materials.Material;
 import com.droidquest.materials.RobotBlocker;
 
@@ -25,7 +26,7 @@ public class PaintBrush extends Player {
     private int emptyIndex = 0;
     private int paintIndex; // Which paintMats[] am I using?
     private transient Material[] paintMats;
-    private int matIndex;   // index of chosen paintMax in level.materials
+    private int matIndex;   // index of chosen paintMax in level().materials
 
     public PaintBrush() {
         width = 28;
@@ -39,6 +40,7 @@ public class PaintBrush extends Player {
     }
 
     public void GenerateIcons() {
+    	Level level = level();
         icons = new ImageIcon[5];
         icons[0] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
         icons[1] = new ImageIcon(new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR));
@@ -93,7 +95,7 @@ public class PaintBrush extends Player {
         paintMats[1] = Material.FindSimiliar(new Material(Color.green, false, false));
         Item robot = null;
 
-        for (Item item : level.items) {
+        for (Item item : level().items) {
             if (item instanceof OrangeRobot) {
                 robot = item;
             }
@@ -103,14 +105,14 @@ public class PaintBrush extends Player {
         }
         paintMats[2] = Material.FindSimiliar(new RobotBlocker(robot, new Color(255, 128, 0)));
 
-        for (Item item : level.items) {
+        for (Item item : level().items) {
             if (item instanceof WhiteRobot) {
                 robot = item;
             }
         }
         paintMats[3] = Material.FindSimiliar(new RobotBlocker(robot, Color.white));
 
-        for (Item item : level.items) {
+        for (Item item : level().items) {
             if (item instanceof BlueRobot) {
                 robot = item;
             }
@@ -119,7 +121,7 @@ public class PaintBrush extends Player {
         paintMats[4] = Material.FindSimiliar(new RobotBlocker(robot, Color.blue));
 
         paintIndex = 0;
-        matIndex = level.materials.indexOf(paintMats[paintIndex]);
+        matIndex = level().materials.indexOf(paintMats[paintIndex]);
 
     }
 
@@ -140,7 +142,7 @@ public class PaintBrush extends Player {
         if (paintIndex == 5) {
             paintIndex = 0;
         }
-        matIndex = level.materials.indexOf(paintMats[paintIndex]);
+        matIndex = level().materials.indexOf(paintMats[paintIndex]);
         currentIcon = icons[paintIndex].getImage();
         return true;
     }
@@ -191,18 +193,19 @@ public class PaintBrush extends Player {
 
     @Override
     public boolean handleGameCursor() {
-        level.gameCursor.x = x;
-        level.gameCursor.y = y;
-        level.gameCursor.room = room;
+    	Level level = level();
+        level().gameCursor.x = x;
+        level().gameCursor.y = y;
+        level().gameCursor.room = room;
         room = null;
-        if (level.currentViewer == level.player) {
-            level.currentViewer = level.gameCursor;
+        if (level().currentViewer == level().player) {
+            level().currentViewer = level().gameCursor;
         }
-        level.player = level.gameCursor;
+        level().player = level().gameCursor;
 
         handleRemote();
 
-        gameState.useCursor();
+        gameState().useCursor();
 
         return true;
     }

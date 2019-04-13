@@ -29,8 +29,8 @@ import com.droidquest.pathfinder.Pathfinder;
 import com.droidquest.sound.Sounds;
 
 public class Item implements Serializable, Cloneable, InLevel {
-	protected final transient GameState gameState = GameState.instance();
-    protected final transient Level level = level();
+//	protected final transient GameState gameState = GameState.instance();
+//    protected final transient Level level = level();
     public transient Item carrying; // What this item is carrying.
     public transient Item carriedBy; // What is carrying this item.
     public transient Image currentIcon; // Current image of this item.
@@ -74,17 +74,19 @@ public class Item implements Serializable, Cloneable, InLevel {
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
-        s.writeInt(level.items.indexOf(carrying));
-        s.writeInt(level.items.indexOf(carriedBy));
-        s.writeInt(level.rooms.indexOf(room));
-        s.writeInt(level.rooms.indexOf(InternalRoom));
+    	Level level = level();
+        s.writeInt(level().items.indexOf(carrying));
+        s.writeInt(level().items.indexOf(carriedBy));
+        s.writeInt(level().rooms.indexOf(room));
+        s.writeInt(level().rooms.indexOf(InternalRoom));
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
-        carrying = level.FindItem(s.readInt());
-        carriedBy = level.FindItem(s.readInt());
-        room = level.FindRoom(s.readInt());
-        InternalRoom = level.FindRoom(s.readInt());
+    	Level level = level();
+        carrying = level().FindItem(s.readInt());
+        carriedBy = level().FindItem(s.readInt());
+        room = level().FindRoom(s.readInt());
+        InternalRoom = level().FindRoom(s.readInt());
         GenerateIcons();
     }
 
@@ -178,7 +180,7 @@ public class Item implements Serializable, Cloneable, InLevel {
             for (int b = bigXl; b <= bigXr; b++) {
                 if (room.MaterialArray[a][b] instanceof ChipTrash) {
                     SetRoom(null); // Cheap way to remove the wires;
-                    level.items.remove(this);
+                    level().items.remove(this);
                     room.playSound(Sounds.DISCHARGE);
                     return;
                 }
@@ -320,11 +322,12 @@ public class Item implements Serializable, Cloneable, InLevel {
     }
 
     protected void moveUp(int dist) {
+    	Level level = level();
         int bigXl = x / 28;
         int bigXr = (x + getWidth() - 1) / 28;
         int bigY = (y - dist) / 32;
-        if ((!level.materialAt(bigXl, bigY, room).Passable(this))
-                || (!level.materialAt(bigXr, bigY, room).Passable(this))) {
+        if ((!level().materialAt(bigXl, bigY, room).Passable(this))
+                || (!level().materialAt(bigXr, bigY, room).Passable(this))) {
             automove = 0;
             y = (bigY + 1) * 32;
             ItemEffectsMaterials();
@@ -336,7 +339,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 y = y + 384;
                 SetRoom(room.getUpRoom(this));
             }
-            else if (this == level.player && room.portalItem != null) { // Exit item, Player only
+            else if (this == level().player && room.portalItem != null) { // Exit item, Player only
                 Dimension d = room.portalItem.GetXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
@@ -352,11 +355,12 @@ public class Item implements Serializable, Cloneable, InLevel {
     }
 
     protected void moveDown(int dist) {
+    	Level level = level();
         int bigXl = x / 28;
         int bigXr = (x + getWidth() - 1) / 28;
         int bigY = (y + getHeight() - 1 + dist) / 32;
-        if ((!level.materialAt(bigXl, bigY, room).Passable(this))
-                || (!level.materialAt(bigXr, bigY, room).Passable(this))) {
+        if ((!level().materialAt(bigXl, bigY, room).Passable(this))
+                || (!level().materialAt(bigXr, bigY, room).Passable(this))) {
             automove = 0;
             int newDist = bigY * 32 - getHeight() - y;
             y += newDist;
@@ -369,7 +373,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 y = y - 384;
                 SetRoom(room.getDownRoom(this));
             }
-            else if (this == level.player && room.portalItem != null) { // Exit item, GameCursor only
+            else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
                 Dimension d = room.portalItem.GetXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
@@ -385,11 +389,12 @@ public class Item implements Serializable, Cloneable, InLevel {
     }
 
     protected void moveLeft(int dist) {
+    	Level level = level();
         int bigX = (x - dist) / 28;
         int bigYt = y / 32;
         int bigYb = (y + getHeight() - 1) / 32;
-        if ((!level.materialAt(bigX, bigYt, room).Passable(this))
-                || (!level.materialAt(bigX, bigYb, room).Passable(this))) {
+        if ((!level().materialAt(bigX, bigYt, room).Passable(this))
+                || (!level().materialAt(bigX, bigYb, room).Passable(this))) {
             automove = 0;
             x = (bigX + 1) * 28;
             ItemEffectsMaterials();
@@ -401,7 +406,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 x = x + 560;
                 SetRoom(room.getLeftRoom(this));
             }
-            else if (this == level.player && room.portalItem != null) { // Exit item, GameCursor only
+            else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
                 Dimension d = room.portalItem.GetXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;
@@ -417,12 +422,13 @@ public class Item implements Serializable, Cloneable, InLevel {
     }
 
     protected void moveRight(int dist) {
+    	Level level = level();
         int bigX = (x + getWidth() - 1 + dist) / 28;
         int bigYt = y / 32;
         int bigYb = (y + getHeight() - 1) / 32;
         //	if (bigX<20 && bigYb<20 && bigYt>=0)
-        if ((!level.materialAt(bigX, bigYt, room).Passable(this))
-                || (!level.materialAt(bigX, bigYb, room).Passable(this))) {
+        if ((!level().materialAt(bigX, bigYt, room).Passable(this))
+                || (!level().materialAt(bigX, bigYb, room).Passable(this))) {
             automove = 0;
             int newDist = bigX * 28 - getWidth() - x;
             x += newDist;
@@ -435,7 +441,7 @@ public class Item implements Serializable, Cloneable, InLevel {
                 x = x - 560;
                 SetRoom(room.getRightRoom(this));
             }
-            else if (this == level.player && room.portalItem != null) { // Exit item, GameCursor only
+            else if (this == level().player && room.portalItem != null) { // Exit item, GameCursor only
                 Dimension d = room.portalItem.GetXY();
                 x = d.width + (room.portalItem.width - width) / 2;
                 y = d.height + (room.portalItem.height - height) / 2;

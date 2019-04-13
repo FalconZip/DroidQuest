@@ -9,11 +9,11 @@ public class SkyGuardMat extends Material {
     }
 
     public void TouchedByItem(Item item) {
-        if (item == level.player) {
-            level.player.room.playSound(Sounds.DISCHARGE);
-            level.player.x = 2 * 28;
-            level.player.y = 8 * 32;
-            level.player.SetRoom(level.player.room.downRoom);
+        if (item == level().player) {
+            level().player.room.playSound(Sounds.DISCHARGE);
+            level().player.x = 2 * 28;
+            level().player.y = 8 * 32;
+            level().player.SetRoom(level().player.room.downRoom);
         }
     }
 

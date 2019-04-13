@@ -41,12 +41,12 @@ public class Antenna extends Device {
 
     public void writeRef(ObjectOutputStream s) throws IOException {
         super.writeRef(s);
-        s.writeInt(level.items.indexOf(robot)); // Index of fromport device
+        s.writeInt(level().items.indexOf(robot)); // Index of fromport device
     }
 
     public void readRef(ObjectInputStream s) throws IOException {
         super.readRef(s);
-        robot = (GenericRobot) level.FindItem(s.readInt());
+        robot = (GenericRobot) level().FindItem(s.readInt());
     }
 
     public void GenerateIcons() {
@@ -72,11 +72,11 @@ public class Antenna extends Device {
     public void Animate() {
         super.Animate();
         if (robot == null) {
-            if (ports[0].value && level.electricity) {
+            if (ports[0].value && level().electricity) {
                 Dimension d = GetXY();
-                level.sparks.add(new Spark(d.width + 26, d.height + 4,
-                        level.random.nextInt(9) - 4,
-                        level.random.nextInt(9) - 4,
+                level().sparks.add(new Spark(d.width + 26, d.height + 4,
+                        level().random.nextInt(9) - 4,
+                        level().random.nextInt(9) - 4,
                         room));
             }
         }
@@ -107,7 +107,7 @@ public class Antenna extends Device {
             g.fillRect(18, 0, 14, 6);
             g.fillRect(22, 6, 6, 16);
             g.fillRect(8, 22, 32, 2);
-            if (ports[0].value && level.electricity) {
+            if (ports[0].value && level().electricity) {
                 room.playSound(Sounds.BEEP);
             }
         }

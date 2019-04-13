@@ -249,7 +249,7 @@ public class Sentry extends Item {
         }
 
         if (behavior >= 0 && behavior < pounce) {
-            if (protect.length > 0 && level.player.room == room) {
+            if (protect.length > 0 && level().player.room == room) {
                 for (int p = 0; p < protect.length / 6; p++) {
                     int x1 = protect[p * 6];
                     int y1 = protect[p * 6 + 1];
@@ -258,10 +258,10 @@ public class Sentry extends Item {
                     int x3 = protect[p * 6 + 4];
                     int y3 = protect[p * 6 + 5];
 
-                    if (level.player.x >= x1
-                            && level.player.x <= x2
-                            && level.player.y >= y1
-                            && level.player.y <= y2) {
+                    if (level().player.x >= x1
+                            && level().player.x <= x2
+                            && level().player.y >= y1
+                            && level().player.y <= y2) {
                         carryToX = x3;
                         carryToY = y3;
                         previousBehavior = behavior;
@@ -303,33 +303,33 @@ public class Sentry extends Item {
             }
         }
         else if (behavior == pounce) {
-            if (level.player.room != room) {
+            if (level().player.room != room) {
                 behavior = previousBehavior;
             }
             if (animation == 0) {
-                x = level.player.x;
-                y = level.player.y;
+                x = level().player.x;
+                y = level().player.y;
             }
-            if (x != level.player.x) {
-                int diff = Math.abs(level.player.x - x);
-                int dir = diff / (level.player.x - x);
+            if (x != level().player.x) {
+                int diff = Math.abs(level().player.x - x);
+                int dir = diff / (level().player.x - x);
                 if (diff > 50) {
                     diff /= 2;
                 }
                 moveRight(diff * dir);
             }
-            if (y != level.player.y) {
-                int diff = Math.abs(level.player.y - y);
-                int dir = diff / (level.player.y - y);
+            if (y != level().player.y) {
+                int diff = Math.abs(level().player.y - y);
+                int dir = diff / (level().player.y - y);
                 if (diff > 50) {
                     diff /= 2;
                 }
                 moveDown(diff * dir);
             }
-            if (x == level.player.x && y == level.player.y) {
-                PicksUp(level.player);
-//			  if (level.player.carrying != null)
-//			    level.player.Drops();
+            if (x == level().player.x && y == level().player.y) {
+                PicksUp(level().player);
+//			  if (level().player.carrying != null)
+//			    level().player.Drops();
                 behavior = drag;
             }
         }
@@ -361,9 +361,9 @@ public class Sentry extends Item {
 
     GenericRobot PlayerInRobot(GenericRobot robot) {
         if (robot == null) {
-            if (level.player.room.portalItem != null) {
-                if (level.player.room.portalItem.getClass().toString().endsWith("Robot")) {
-                    return (PlayerInRobot((GenericRobot) level.player.room.portalItem));
+            if (level().player.room.portalItem != null) {
+                if (level().player.room.portalItem.getClass().toString().endsWith("Robot")) {
+                    return (PlayerInRobot((GenericRobot) level().player.room.portalItem));
                 }
                 else {
                     return (null);

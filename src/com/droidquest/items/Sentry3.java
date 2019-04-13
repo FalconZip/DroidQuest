@@ -35,19 +35,19 @@ public class Sentry3 extends Sentry {
             currentIcon = icons[animation].getImage();
         }
 
-        if (level.player.room != room) {
+        if (level().player.room != room) {
             if (smart) {
                 behavior = previousBehavior;
             }
             smart = false;
         }
-        else if (level.player.y > 320) {
-            carryToX = level.player.x;
+        else if (level().player.y > 320) {
+            carryToX = level().player.x;
             smart = true;
         }
 
         if (behavior < 2 && smart) {
-            if (level.player.y <= 256) {
+            if (level().player.y <= 256) {
                 previousBehavior = behavior;
                 behavior = 2;
             }
@@ -83,12 +83,12 @@ public class Sentry3 extends Sentry {
                 }
                 break;
             case 2:
-                if (level.player.room != room) {
+                if (level().player.room != room) {
                     behavior = previousBehavior;
                     break;
                 }
-                int dx = level.player.x - x;
-                int dy = level.player.y - y;
+                int dx = level().player.x - x;
+                int dy = level().player.y - y;
                 if (dx < -50) {
                     dx = -50;
                 }
@@ -114,7 +114,7 @@ public class Sentry3 extends Sentry {
                     moveDown(dy);
                 }
                 if (dx == 0 && dy == 0) {
-                    PicksUp(level.player);
+                    PicksUp(level().player);
                     behavior = 3;
                 }
                 break;

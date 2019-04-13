@@ -16,8 +16,8 @@ public class FFButton extends Button {
         if (robots == null) {
             robots = new GenericRobot[3];
             int rcount = 0;
-            for (int a = 0; a < level.items.size(); a++) {
-                Item item = level.items.get(a);
+            for (int a = 0; a < level().items.size(); a++) {
+                Item item = level().items.get(a);
                 if (item instanceof GenericRobot) {
                     robots[rcount] = (GenericRobot) item;
                     rcount++;
@@ -39,7 +39,7 @@ public class FFButton extends Button {
                         room.SetMaterial(19, 5, 0);
                         room.SetMaterial(19, 6, 0);
                         room = null;
-                        level.items.remove(this);
+                        level().items.remove(this);
                     }
                 }
             }
