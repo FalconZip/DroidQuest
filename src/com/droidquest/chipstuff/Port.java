@@ -7,12 +7,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import com.droidquest.InLevel;
 import com.droidquest.Wire;
 import com.droidquest.devices.Device;
 import com.droidquest.items.Item;
 import com.droidquest.levels.Level;
 
-public class Port implements Serializable {
+public class Port implements Serializable, InLevel {
     // Input or Output of a Device
 
     public int type; // 0=Input, 1=Output, 2=Undefined
@@ -73,15 +74,14 @@ public class Port implements Serializable {
     }
 
     public void writeRef(ObjectOutputStream s) throws IOException {
-        Level level = myDevice.level;
-        s.writeInt(level.items.indexOf(myDevice));
+    	s.writeInt(level().items.indexOf(myDevice));
         if (myDevice.room != null) {
             s.writeInt(myDevice.room.wires.indexOf(myWire));
         }
     }
 
-    public void readRef(ObjectInputStream s, Level level) throws IOException {
-        myDevice = level.FindItem(s.readInt());
+    public void readRef(ObjectInputStream s) throws IOException {
+        myDevice = level().FindItem(s.readInt());
         if (myDevice != null) {
             if (myDevice.room != null) {
                 myWire = myDevice.room.FindWire(s.readInt());

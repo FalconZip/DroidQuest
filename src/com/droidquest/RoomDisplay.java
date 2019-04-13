@@ -1,8 +1,35 @@
 package com.droidquest;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Constructor;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import com.droidquest.avatars.Avatar;
 import com.droidquest.avatars.LabCursor;
 import com.droidquest.chipstuff.Port;
-import com.droidquest.decorations.Graphix;
 import com.droidquest.decorations.Spark;
 import com.droidquest.devices.Device;
 import com.droidquest.items.Item;
@@ -11,24 +38,16 @@ import com.droidquest.levels.MainMenu;
 import com.droidquest.materials.Material;
 import com.droidquest.sound.SoundPlayer;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 public class RoomDisplay extends JPanel {
-    private final GameState gameState = GameState.instance();
-    Level level;
+	public static final Font BIG_FONT = new Font("Courier", Font.BOLD, 45);
+	public static final Font SMALL_FONT = new Font("Courier", Font.BOLD, 20);
+
+	private final GameState gameState = GameState.instance();
+	private final AffineTransform at = new AffineTransform();
+
+	private Level level;
     private final Timer timer;
     private int timerspeed = 128;
-    private AffineTransform at = new AffineTransform();
-
-    public Font bigFont;
-    public Font smallFont;
 
     public boolean isFocusable() {
         // Necessary to get the keyboard focus to work with
@@ -36,14 +55,10 @@ public class RoomDisplay extends JPanel {
         return (true);
     }
 
-    public RoomDisplay rd;
-
-    RoomDisplay(final DQ dq) {
+    RoomDisplay() {
         setSize(new Dimension(560, 384));
         level = new MainMenu(this);
         level.Init();
-        smallFont = new Font("Courier", Font.BOLD, 20);
-        bigFont = new Font("Courier", Font.BOLD, 45);
         requestFocus();
 
         // Resizing Fuctions
@@ -195,7 +210,6 @@ public class RoomDisplay extends JPanel {
 			private void createLevelWhenNessasary(String filename) {
 				if(!new File(filename).exists()) {
 				    // filename does not exist
-				    RoomDisplay rd = level.roomdisplay;
 				    String basename = filename.replaceAll("\\..*", "");
 				    String classname = DQ.class.getPackage() + ".levels." + basename;
 				    Constructor<? extends Level> constructor = null;
@@ -205,9 +219,9 @@ public class RoomDisplay extends JPanel {
 				        Class<?>[] argTypes = {RoomDisplay.class};
 				        constructor = levelClass.getConstructor(argTypes);
 				        constructor.setAccessible(true);
-				        Object[] args = {rd};
+				        Object[] args = {this};
 				        level = constructor.newInstance(args);
-				        rd.SaveLevel();
+				        SaveLevel();
 				    }
 				    catch (Exception ex) {
 				        throw new RuntimeException(ex);
@@ -217,7 +231,7 @@ public class RoomDisplay extends JPanel {
         });
 	}
 
-	public void start() {
+	void start() {
 		timer.start();
         level.PlaySound(level.player.room, Level.STARTMUSICSOUND);
 	}
@@ -228,6 +242,12 @@ public class RoomDisplay extends JPanel {
 
 	public void resume() {
 		timer.start();
+	}
+
+	void reset() {
+		level.Empty();
+		level = new MainMenu(this);
+		level.Init();
 	}
 
     public void paintComponent(Graphics g) {
@@ -404,8 +424,6 @@ public void SaveLevel(String filename) {
         timer.stop();
         level.Empty();
         level = new Level(this);
-        Item.level = level;
-        Room.level = level;
         Material.level = level;
 
 		String[] split = filename.split("/");
@@ -438,6 +456,17 @@ public void SaveLevel(String filename) {
         }
 
         start();
+    }
+
+    void stopAllSounds() {
+    	level.sounds.values().forEach(sound -> SoundPlayer.stop(sound));
+    }
+
+    Avatar getPlayer() {
+    	if(level.player instanceof Avatar) {
+    		return (Avatar)level.player;
+    	}
+    	return null;
     }
 
 }
