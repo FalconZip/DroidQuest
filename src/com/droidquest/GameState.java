@@ -2,6 +2,8 @@ package com.droidquest;
 
 import java.util.Observable;
 
+import com.droidquest.levels.Level;
+
 public class GameState extends Observable{
 	private static final GameState _instance = new GameState();
 	
@@ -20,6 +22,8 @@ public class GameState extends Observable{
 	private boolean usingSolderPen;
 	private boolean canUseToolbox;
 	private boolean isInLab;
+	
+	private Level level;
 	
 	public static GameState instance() {
 		return _instance;
@@ -201,5 +205,20 @@ public class GameState extends Observable{
 		this.usingHotCursor = false;
 		publish();
 	}
+
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		if(this.level == level) {
+			return;
+		}
+		if(this.level != null) {
+			this.level.Empty();
+		}
+		this.level = level;
+	}
+	
 	
 }

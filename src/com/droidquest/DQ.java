@@ -13,7 +13,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.ButtonGroup;
@@ -29,8 +28,6 @@ import javax.swing.JRadioButtonMenuItem;
 //This is the source code for DroidQuest 2.7. Copyright 2003 by Thomas Foote.
 
 import com.droidquest.avatars.Avatar;
-import com.droidquest.levels.MainMenu;
-import com.droidquest.sound.Sound;
 import com.droidquest.sound.SoundPlayer;
 
 public class DQ extends JFrame implements ActionListener, Observer {
@@ -67,7 +64,7 @@ public class DQ extends JFrame implements ActionListener, Observer {
 		setIconImage(new ImageIcon("images/helper0.gif").getImage());
 
 		Container contentPane = getContentPane();
-		myRoom = new RoomDisplay(this);
+		myRoom = new RoomDisplay();
 
 		addFocusListener(new FocusAdapter() {
 			public void focusGained(FocusEvent e) {
@@ -77,6 +74,7 @@ public class DQ extends JFrame implements ActionListener, Observer {
 
 		contentPane.add(myRoom);
 		myRoom.setLocation(0, 0);
+		myRoom.start();
 
 		JMenuBar menuBar;
 		JMenu fileMenu;
@@ -243,12 +241,8 @@ public class DQ extends JFrame implements ActionListener, Observer {
 
 	private void toggleSound() {
 		SoundPlayer.useSounds = !SoundPlayer.useSounds;
-		if (SoundPlayer.useSounds) {
-			Set<String> keys = myRoom.level.sounds.keySet();
-			for (String soundFile : keys) {
-				Sound sound = myRoom.level.sounds.get(soundFile);
-				SoundPlayer.play(sound);
-			}
+		if (!SoundPlayer.useSounds) {
+			myRoom.stopAllSounds();
 		}
 	}
 
@@ -259,45 +253,43 @@ public class DQ extends JFrame implements ActionListener, Observer {
 	}
 
 	private void handleGamePlayAction(ActionEvent e) {
-		if (myRoom.level.player == null || !(myRoom.level.player instanceof Avatar)) {
+		Avatar player = myRoom.getPlayer();
+		if (player == null) {
 			return;
 		}
-		Avatar playerAvatar = (Avatar) myRoom.level.player;
 
 		if (e.getActionCommand().equals("Cursor")) {
-			playerAvatar.handleGameCursor();
+			player.handleGameCursor();
 		} else if (e.getActionCommand().equals("Solderpen")) {
-			playerAvatar.handleSolderPen();
+			player.handleSolderPen();
 		} else if (e.getActionCommand().equals("Paintbrush")) {
-			playerAvatar.handlePaintbrush();
+			player.handlePaintbrush();
 		} else if (e.getActionCommand().equals("Toolbox")) {
-			playerAvatar.handleToolbox();
+			player.handleToolbox();
 		} else if (e.getActionCommand().equals("Radio")) {
-			playerAvatar.handleRadio();
+			player.handleRadio();
 		} else if (e.getActionCommand().equals("Rotate Part Clockwise")) {
-			playerAvatar.handleRotateDevice(1);
+			player.handleRotateDevice(1);
 		} else if (e.getActionCommand().equals("Rotate Part Counter-clockwise")) {
-			playerAvatar.handleRotateDevice(-1);
+			player.handleRotateDevice(-1);
 		} else if (e.getActionCommand().equals("Hot Cursor")) {
-			playerAvatar.handleHotCursor();
+			player.handleHotCursor();
 		} else if (e.getActionCommand().equals("Load Chip")) {
-			playerAvatar.handleLoadSmallChip();
+			player.handleLoadSmallChip();
 		} else if (e.getActionCommand().equals("Help")) {
-			playerAvatar.handleHelp();
+			player.handleHelp();
 		} else if (e.getActionCommand().equals("Enter Robot")) {
-			playerAvatar.handleEnterRoom();
+			player.handleEnterRoom();
 		} else if (e.getActionCommand().equals("Exit Robot")) {
-			playerAvatar.handleExitRoom();
+			player.handleExitRoom();
 		} else if (e.getActionCommand().equals("Flip Device/Wire")) {
-			playerAvatar.handleFlipDevice();
+			player.handleFlipDevice();
 		}
 	}
 
 	private void goHome() {
-		myRoom.level.Empty();
-		myRoom.level = new MainMenu(myRoom);
-		myRoom.level.Init();
 		GameState.instance().reset();
+		myRoom.reset();
 	}
 
 	public String selectFileForWrite(String directory, String prompt) {
