@@ -144,7 +144,7 @@ public class MainMenu extends Level {
             room.AddTextBox("Saved Games", 9 * 28, 10 * 32, 80);
             room.AddTextBox("Games", 450, 6 * 32 + 8, 500);
             room.AddArrow(559, 6 * 32, Arrow.DIR_RIGHT, 28, Color.white);
-            room.AddTextBox("{000,000,000} Version 2.7", 0, 16, 500);
+            room.AddTextBox("{000,000,000} Version 2.8", 0, 16, 500);
             if (cheatmode) {
                 room.AddTextBox("{BIG} CHEAT ENABLED!", 91, 8 * 32, 500);
             }
@@ -267,11 +267,11 @@ public class MainMenu extends Level {
         player = gameCursor;
         currentViewer = player;
 
-        File f = new File("ROlevels/");
-        if (!f.exists()) {
-            f.mkdir();
+        File file = new File(System.getProperty("user.home") + "/.DroidQuest/Saves/");
+        if (!file.exists()) {
+            file.mkdirs();
         }
-        String[] files = f.list();
+        String[] files = file.list();
         int pageIndex = 5;
         for (int a = 0; a < files.length; a++) {
             if (a > 4 && a % 5 == 0) {
@@ -301,7 +301,7 @@ public class MainMenu extends Level {
                 LinkRoomsUpDown(pageIndex, newPageIndex);
                 pageIndex = newPageIndex;
             }
-            materials.addElement(new Portal("ROlevels/" + files[a], false, false));
+            materials.addElement(new Portal(System.getProperty("user.home") + "/.DroidQuest/Saves/" + files[a], false, false));
             int matIndex = materials.size() - 1;
             int y = 1 + (a % 5) * 2;
             Room room = rooms.elementAt(pageIndex);

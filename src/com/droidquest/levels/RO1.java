@@ -71,7 +71,7 @@ class RO1 extends Level {
             rooms.addElement(new Room());
         }
 
-        { // Room  0, Entry point 
+        { // Room  0, Entry point
             Room room = rooms.elementAt(0);
             room.SetMaterialOutline(0, 0, 19, 11, 1);
             room.SetMaterialFill(19, 8, 19, 10, 0);
@@ -83,7 +83,7 @@ class RO1 extends Level {
             room.AddTextBox("This way to Robotropolis", 360, 290, 200);
             room.AddArrow(559, 11 * 28 + 16, Arrow.DIR_RIGHT, 100, Color.white);
         }
-        { // Room  1, Robots Here 
+        { // Room  1, Robots Here
             Room room = rooms.elementAt(1);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -181,7 +181,7 @@ class RO1 extends Level {
                 items.addElement(ng);
                 SmallChip sc = new SmallChip(10 * 28, 6 * 32, orobot.InternalRoom, "2");
                 items.addElement(sc);
-                sc.LoadChip("chips/WallHugger.chip");
+                sc.LoadChip("WallHugger.chip", true);
                 Wire dummy;
                 dummy = new Wire(rSensor.ports[0], ng.ports[0]);
                 dummy = new Wire(ng.ports[1], orobot.devices[9].ports[0]); // Antenna
@@ -196,7 +196,7 @@ class RO1 extends Level {
             }
             items.addElement(new Key(8 * 28, 8 * 32, room, Color.blue));
         }
-        { // Room  2, Sewer Door 
+        { // Room  2, Sewer Door
             Room room = rooms.elementAt(2);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -215,7 +215,7 @@ class RO1 extends Level {
             room.AddTextBox("{BIG} The City Sewer", 40, 80, 500);
             items.addElement(new Sweeper(476, 224, room));
         }
-        { // Room  3, Maze 1 "PR" 
+        { // Room  3, Maze 1 "PR"
             Room room = rooms.elementAt(3);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1},
@@ -234,7 +234,7 @@ class RO1 extends Level {
             String[] i1 = {"0073.jpg", "0074.jpg"};
             room.graphix.addElement(new Graphix(i1, 4 * 28 + 14, 5 * 32));
         }
-        { // Room  4, Maze 2 "CG" 
+        { // Room  4, Maze 2 "CG"
             Room room = rooms.elementAt(4);
             room.RoomArray = new int[][]{
                     {1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
@@ -254,7 +254,7 @@ class RO1 extends Level {
             room.graphix.addElement(new Graphix(i6, 13 * 28, 4 * 32,
                     Graphix.BOUNCE, 0, 2, 3 * 16));
         }
-        { // Room  5, Maze 3 "PC" 
+        { // Room  5, Maze 3 "PC"
             Room room = rooms.elementAt(5);
             room.RoomArray = new int[][]{
                     {1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -271,7 +271,7 @@ class RO1 extends Level {
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1}
             };
         }
-        { // Room  6, Maze 4 "RC" 
+        { // Room  6, Maze 4 "RC"
             Room room = rooms.elementAt(6);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1},
@@ -291,7 +291,7 @@ class RO1 extends Level {
             room.graphix.addElement(new Graphix(i7, 12 * 28, 4 * 32,
                     Graphix.BOUNCE, 0, 2, 3 * 16));
         }
-        { // Room  7, Maze 5 "MW" 
+        { // Room  7, Maze 5 "MW"
             Room room = rooms.elementAt(7);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
@@ -310,7 +310,7 @@ class RO1 extends Level {
             String[] i2 = {"0086.jpg", "0087.jpg"};
             room.graphix.addElement(new Graphix(i2, 5 * 28, 2 * 32));
         }
-        { // Room  8, Maze 6 "CIG" 
+        { // Room  8, Maze 6 "CIG"
             Room room = rooms.elementAt(8);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -327,7 +327,7 @@ class RO1 extends Level {
                     {1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1}
             };
         }
-        { // Room  9, Maze 7 "NH" 
+        { // Room  9, Maze 7 "NH"
             Room room = rooms.elementAt(9);
             room.RoomArray = new int[][]{
                     {1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
@@ -344,7 +344,7 @@ class RO1 extends Level {
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1}
             };
         }
-        { // Room 10, Maze 8 "SG" 
+        { // Room 10, Maze 8 "SG"
             Room room = rooms.elementAt(10);
             room.RoomArray = new int[][]{
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -364,7 +364,7 @@ class RO1 extends Level {
             room.graphix.addElement(new Graphix(i8, 13 * 28, 10 * 32,
                     Graphix.BOUNCE, 2, 0, 5 * 14));
         }
-        { // Room 11, Maze Bottom 
+        { // Room 11, Maze Bottom
             Room room = rooms.elementAt(11);
             room.RoomArray = new int[][]{
                     {3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -382,7 +382,7 @@ class RO1 extends Level {
             };
             items.addElement(new ContactSensor(9 * 28, 2 * 32, room, new Token(0, 0, null)));
         }
-        { // Room 12, Top Corridor 1 
+        { // Room 12, Top Corridor 1
             Room room = rooms.elementAt(12);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -399,7 +399,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 13, Top Corridor 2 
+        { // Room 13, Top Corridor 2
             Room room = rooms.elementAt(13);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -416,7 +416,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 14, Top Corridor Branch 
+        { // Room 14, Top Corridor Branch
             Room room = rooms.elementAt(14);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -433,7 +433,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 15, Hallway Top Right 
+        { // Room 15, Hallway Top Right
             Room room = rooms.elementAt(15);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3},
@@ -450,7 +450,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 16, Hallway Bottom Right 
+        { // Room 16, Hallway Bottom Right
             Room room = rooms.elementAt(16);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3},
@@ -467,7 +467,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 17, Hallway Bottom 
+        { // Room 17, Hallway Bottom
             Room room = rooms.elementAt(17);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -485,7 +485,7 @@ class RO1 extends Level {
             };
             items.addElement(new AmpireBot(10 * 28, 3 * 32, room));
         }
-        { // Room 18, Hallway Bottom Left 
+        { // Room 18, Hallway Bottom Left
             Room room = rooms.elementAt(18);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3},
@@ -502,7 +502,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 19, Hallway Top Left 
+        { // Room 19, Hallway Top Left
             Room room = rooms.elementAt(19);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -519,7 +519,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 20, Hallway Top 
+        { // Room 20, Hallway Top
             Room room = rooms.elementAt(20);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -536,7 +536,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 21, WallHugger Puzzle 
+        { // Room 21, WallHugger Puzzle
             Room room = rooms.elementAt(21);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3},
@@ -557,7 +557,7 @@ class RO1 extends Level {
             int[] protect = {0, 3 * 32, 19 * 28, 11 * 32, 10 * 28, 0};
             items.addElement(new Sentry(3 * 28, 120, room, pace, protect, false));
         }
-        { // Room 22, Bouncer Puzzle 
+        { // Room 22, Bouncer Puzzle
             Room room = rooms.elementAt(22);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -578,7 +578,7 @@ class RO1 extends Level {
             int[] protect = {4 * 28, 0, 19 * 28, 11 * 32, 0, 5 * 32};
             items.addElement(new Sentry(3 * 28, 94, room, pace, protect, false));
         }
-        { // Room 23, AnteChamber 
+        { // Room 23, AnteChamber
             Room room = rooms.elementAt(23);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -597,7 +597,7 @@ class RO1 extends Level {
             room.AddTextBox("Do you have EVERYTHING?",
                     98, 278, 168);
         }
-        { // Room 24, Directional Token Sensor here 
+        { // Room 24, Directional Token Sensor here
             Room room = rooms.elementAt(24);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3},
@@ -617,7 +617,7 @@ class RO1 extends Level {
                     170, 320, 500);
             items.addElement(new DirectionalSensor(3 * 28 + 14, 4 * 32, room, new Token(0, 0, null)));
         }
-        { // Room 25, Sewer Grate Top 
+        { // Room 25, Sewer Grate Top
             Room room = rooms.elementAt(25);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -637,7 +637,7 @@ class RO1 extends Level {
                     182, 48, 90);
             items.addElement(new Sentry3(2 * 28, 64, room));
         }
-        { // Room 26, Sewer Grate Bottom 
+        { // Room 26, Sewer Grate Bottom
             Room room = rooms.elementAt(26);
             room.RoomArray = new int[][]{
                     {4, 0, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4, 0, 0, 4},
@@ -662,7 +662,7 @@ class RO1 extends Level {
             room.AddTextBox("These poor creatures never made it out...Will you???",
                     84, 224, 500);
         }
-        { // Room 27, 2nd Lock 
+        { // Room 27, 2nd Lock
             Room room = rooms.elementAt(27);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -683,7 +683,7 @@ class RO1 extends Level {
             room.AddTextBox("That was a great job!",
                     2 * 28, 320, 500);
         }
-        { // Room 28, Portal Chamber 
+        { // Room 28, Portal Chamber
             Room room = rooms.elementAt(28);
             room.RoomArray = new int[][]{
                     {4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
@@ -704,7 +704,7 @@ class RO1 extends Level {
             room.AddTextBox("You CAN take it with you (If you hold on tight)....",
                     336, 256, 224);
         }
-        { // Room 29, Help Screen 
+        { // Room 29, Help Screen
             Room room = rooms.elementAt(29);
             room.RoomArray = new int[][]{
                     {6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6},
@@ -738,7 +738,7 @@ class RO1 extends Level {
                     3 * 28, 11 * 32, 500);
         }
 
-        { // Room 30, Secret Trash-flow 
+        { // Room 30, Secret Trash-flow
             Room room = rooms.elementAt(30);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -755,7 +755,7 @@ class RO1 extends Level {
                     {3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         }
-        { // Room 31, Secret room 
+        { // Room 31, Secret room
             Room room = rooms.elementAt(31);
             room.RoomArray = new int[][]{
                     {3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -846,7 +846,7 @@ class RO1 extends Level {
         items.addElement(gameCursor);
 
         SmallChip sc = new SmallChip(0, 0, null, "1");
-        sc.LoadChip("chips/CountToN.chip");
+        sc.LoadChip("CountToN.chip", true);
         items.addElement(sc);
         items.addElement(new RO1Init());
 
@@ -903,14 +903,14 @@ class RO1Init extends Initializer {
         }
 
         // The Black Crystal and Chip 1 go somewhere in the Maze
-        // Room=3, 2,7  
-        // Room=4  4,1  
-        // Room=5  1,18 
-        // Room=6  6,6  
-        // Room=7  4,4  
-        // Room=8  16,5 
-        // Room=9  4,3  
-        // Room=10 6,8  
+        // Room=3, 2,7
+        // Room=4  4,1
+        // Room=5  1,18
+        // Room=6  6,6
+        // Room=7  4,4
+        // Room=8  16,5
+        // Room=9  4,3
+        // Room=10 6,8
 
         Item bcrystal = level.FindItem("BlackCrystal");
         switch (level.random.nextInt(8)) {

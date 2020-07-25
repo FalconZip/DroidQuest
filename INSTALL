@@ -1,0 +1,10 @@
+To compile the game you must run:
+	$ make
+
+To install the game use the command:
+	# make install
+
+To uninstall:
+	# make uninstall
+
+The compilation requires gcc and maven to be installed on the system.

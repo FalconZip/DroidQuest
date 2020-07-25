@@ -18,10 +18,10 @@ then
 fi
 
 
-if [ -f "target/dq-1.2.jar" ];
+if [ -f "target/dq-2.8.jar" ];
 then
   echo "Starting DQ."
-  ${RUNPRG} -jar "target/dq-1.2.jar"
+  ${RUNPRG} -jar "target/dq-2.8.jar"
 else
   echo "No jar found, building DQ before running."
   MVNPRG="mvn"

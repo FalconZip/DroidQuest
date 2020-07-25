@@ -21,7 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class RoomDisplay extends JPanel {
     public final DQ dq;
-    Level level;
+    public Level level;
     public Timer timer;
     private int timerspeed = 128;
     public boolean useSounds = true;
@@ -35,6 +35,8 @@ public class RoomDisplay extends JPanel {
         // the ScrenDisplay class.
         return (true);
     }
+
+    public RoomDisplay rd;
 
     public RoomDisplay(final DQ dq) {
         this.dq = dq;
@@ -131,7 +133,7 @@ public class RoomDisplay extends JPanel {
                     }
                     catch (FileNotFoundException ie) {
                         // filename does not exist
-                        RoomDisplay rd = level.roomdisplay;
+                        rd = level.roomdisplay;
                         String classname = "com.droidquest.levels." + filename.substring(0, filename.length() - 4);
                         Constructor constructor = null;
                         try {
@@ -188,8 +190,7 @@ public class RoomDisplay extends JPanel {
                     }
 
                     level.roomdisplay.useSounds = tempsound;
-                    level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
-
+					level.PlaySound(level.currentViewer.room, Level.TRANSPORTSOUND);
 
                     // Handle menu item initialization
                     if (level.gameCursor instanceof LabCursor) {
@@ -444,16 +445,45 @@ public class RoomDisplay extends JPanel {
 
     public void SaveLevel(String filename) {
         System.out.println("Saving level " + filename);
+        String[] filenames = filename.split("/");
+        if (filenames.length > 1) {
+			filename = filenames[filenames.length - 1];
+		}
         try {
-            FileOutputStream out = new FileOutputStream(filename);
+            FileOutputStream out = new FileOutputStream(System.getProperty("user.home") + "/.DroidQuest/Saves/" + filename);
             ObjectOutputStream s = new ObjectOutputStream(out);
             level.writeObject(s);
             s.flush();
             s.close();
             out.close();
         }
-        catch (FileNotFoundException e) {
-            System.out.println("File Not Found");
+		catch (FileNotFoundException e) {
+            System.out.println("File Not Found" + filename);
+            return;
+        }
+        catch (IOException e) {
+            System.out.println("IO Exception");
+            System.out.println(e.getMessage());
+        }
+    }
+
+	public void SaveLevelAuto(String filename) {
+        System.out.println("Saving level " + filename);
+        String[] filenames = filename.split("/");
+        if (filenames.length > 1) {
+			filename = filenames[filenames.length - 1];
+		}
+        try {
+			File file = new File(System.getProperty("user.home") + "/.DroidQuest/" + filename);
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+            FileOutputStream out = new FileOutputStream(file);
+            ObjectOutputStream s = new ObjectOutputStream(out);
+            level.writeObject(s);
+            s.flush();
+            s.close();
+            out.close();
         }
         catch (IOException e) {
             System.out.println("IO Exception");
@@ -469,6 +499,13 @@ public class RoomDisplay extends JPanel {
         Room.level = level;
         Material.level = level;
 
+		String[] split = filename.split("/");
+		if (split.length == 1) {
+			filename = System.getProperty("user.home") + "/.DroidQuest/Saves/" + filename;
+		}
+
+        System.out.println("Loading level " + filename);
+
         // Add flags for loading Object inventories or running Init()
         try {
             FileInputStream in = new FileInputStream(filename);
@@ -478,7 +515,7 @@ public class RoomDisplay extends JPanel {
             in.close();
         }
         catch (FileNotFoundException e) {
-            System.out.println("File Not Found");
+            System.out.println("File Not Found" + filename);
             return;
         }
         catch (IOException e) {

@@ -77,7 +77,7 @@ public class Graphix implements Serializable {
         int numfiles = filenames.length;
         icons = new ImageIcon[numfiles];
         for (int a = 0; a < numfiles; a++) {
-            icons[a] = new ImageIcon("images/" + filenames[a]);
+            icons[a] = new ImageIcon(getClass().getResource("/images/" + filenames[a]));
         }
         icon = icons[0];
     }

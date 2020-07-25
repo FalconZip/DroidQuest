@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Set;
 
+import java.io.*;
+
 public class DQ extends JFrame implements ActionListener {
     private RoomDisplay myRoom;
 
@@ -39,7 +41,7 @@ public class DQ extends JFrame implements ActionListener {
             }
         });
 
-        setIconImage(new ImageIcon("images/helper0.gif").getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/images/helper0.gif")).getImage());
 
         Container contentPane = getContentPane();
         myRoom = new RoomDisplay(this);
@@ -276,15 +278,14 @@ public class DQ extends JFrame implements ActionListener {
         }
     }
 
-
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Save Level")) {
             FileDialog fd = new FileDialog(this, "Save Level", FileDialog.SAVE);
-            fd.setDirectory("ROlevels");
+            fd.setDirectory(System.getProperty("user.home") + "/.DroidQuest/" + "Saves");
             fd.show();
             System.out.println("Dialog returned with "
-                    + fd.getDirectory()
-                    + fd.getFile());
+				+ fd.getDirectory()
+				+ fd.getFile());
             if (fd.getFile() != null) {
                 myRoom.SaveLevel(fd.getDirectory() + fd.getFile());
             }
@@ -485,16 +486,16 @@ public class DQ extends JFrame implements ActionListener {
 //            dev.level.items.removeElement(dev);
 //            break;
 //    case 2: // Re-summon Device
-//            
+//
 //            break;
 //    case 3: // Move Device
-//            
+//
 //            break;
 //    case 4: // Delete Wire
-//            
+//
 //            break;
 //    case 5: // Remake Wire
-//            
+//
 //            break;
 //  }
 //  type=TYPE_BLANK;
@@ -513,7 +514,7 @@ public class DQ extends JFrame implements ActionListener {
 //
 //Hot cursor makes input port true, but it doesn't show graphically.
 //Add some way to show how much of a charge a Crystal has.
-//Add {CENTER}, {LEFT}, & {RIGHT} to TextBoxes 
+//Add {CENTER}, {LEFT}, & {RIGHT} to TextBoxes
 //Give Rooms an array of Materials that's used instead of the RoomArray matrix.
 //Make burners & tester put chips on even pixels
 //
@@ -524,7 +525,7 @@ public class DQ extends JFrame implements ActionListener {
 //Bus
 //Clock Chip
 //Delay
-//One Shot Chip 
+//One Shot Chip
 //RS
 //6 bit Counter
 //Full Adder
@@ -542,7 +543,7 @@ public class DQ extends JFrame implements ActionListener {
 //
 //
 //JAR file created with this command:
-//% jar cmf0 manifest.txt DQ.jar *.class 
+//% jar cmf0 manifest.txt DQ.jar *.class
 //
 //ZIP file created with these files:
 //DQ.jar

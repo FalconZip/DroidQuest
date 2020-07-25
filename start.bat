@@ -1,1 +1,1 @@
-java -jar "target\dq-1.2.jar"
+java -jar "target\dq-2.8.jar"

@@ -1,5 +1,7 @@
 *.lvl
 *.class
 target/
+*.o
+DroidQuest
 .idea/
 *.iml

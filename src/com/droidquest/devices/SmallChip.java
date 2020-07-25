@@ -12,8 +12,11 @@ import com.droidquest.materials.SmallChipBurner;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.event.*;
 import java.io.*;
 import java.util.Vector;
+
+import java.nio.file.Files;
 
 public class SmallChip extends GenericChip {
     public int speed;
@@ -231,8 +234,15 @@ public class SmallChip extends GenericChip {
         }
     }
 
-    public void LoadChip(String filename) {
+    public void LoadChip(String filename, boolean gameChip) {
         try {
+			File file;
+			InputStream link;
+
+			if (gameChip) {
+				filename = "/usr/share/DroidQuest/chips/" + filename;
+			}
+
             FileInputStream in = new FileInputStream(filename);
             ObjectInputStream s = new ObjectInputStream(in);
 
@@ -366,5 +376,13 @@ public class SmallChip extends GenericChip {
         }
 
     }
+
+	public void copyFile(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[1024];
+		int read;
+		while((read = in.read(buffer)) != -1){
+		  out.write(buffer, 0, read);
+		}
+	}
 
 }
